@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Freire Chavez Jose Andres">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Publicaciones</title>
+    <style>
+      *{
+        font-family: Verdana;
+        font-size: 1em;
+      }
+
+      h1{
+        margin-left: 15px;
+      }
+
+      .publicaciones{
+        width: 70%;
+        height: 60%;
+      }
+
+      .campoDescripcion textarea{
+        width: 442px;
+        height: 100px;
+        border-radius: 3px;
+        resize: none;
+      }
+
+      #form_publicaciones{
+        margin: 10px 5px 10px 15px;
+        border: 1px solid black;
+      }
+
+      input[placeholder] {
+        font-size: 0.9rem;
+      }
+
+      .tituloPublicacion input,
+      .campoNombre input,
+      .campoTelefono input,
+      .campoCorreo input{
+        width: 443px;
+        border: 1px solid black;
+        border-radius: 3px;
+      }
+
+      .tipoPublicacion select{
+        width: 448px;
+        border: 1px solid black;
+        border-radius: 3px;
+      }
+
+      .campoFechaPublicacion input{
+        width: 446px;
+        border: 1px solid black;
+        border-radius: 3px;
+      }
+
+      .tituloPublicacion,
+      .tipoPublicacion,
+      .campoDescripcion,
+      .campoPrioridad,
+      .campoNombre, 
+      .campoTelefono,
+      .campoCorreo,
+      .campoFechaPublicacion{
+        margin-bottom: 10px;
+      }
+
+      .grupoBotones{
+        display: flex;
+        flex-direction: row;
+        gap: 0px 30px;
+      }
+
+      .grupoRadio{
+        display: flex;
+        flex-direction: row;
+        gap: 0px 25px;
+      }
+
+      .grupoBotones button{
+        width: 23%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <a href="index.html">
+          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        </a>
+        <ul>
+          <li><a href="instalaciones.html">Instalaciones</a></li>
+          <li><a href="herramientas.html">Herramientas</a></li>
+          <li><a href="historial.html">Historial</a></li>
+          <li><a href="nosotros.html" class="activo">Nosotros</a></li>
+          <li>
+            <a href="#" class="user">
+              <span class="material-symbols-outlined"> account_circle </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1 class="titulos">Publicaciones</h1>
+      <section class="publicaciones">
+        <form id="form_publicaciones" onsubmit="return validarPublicacion()">
+          <h2>Datos de la publicación</h2>
+          <div class="tituloPublicacion">
+            <label for="titulo_publicacion">Título de la publicación:</label><br/>
+            <input
+              type="text"
+              id="titulo_publicacion"
+              name="nombre"
+              placeholder="Ingrese un título"
+            />
+          </div>
+
+          <div class="tipoPublicacion">
+            <label for="tipo_publicacion">Tipo de publicación:</label><br/>
+            <select name="tipo_publicacion" id="tipo_publicacion">
+              <option value="">Seleccione...</option>
+              <option value="reporteDanios">Reporte de daños</option>
+              <option value="avisosGenerales">Avisos generales</option>
+              <option value="avisosMantenimiento">Avisos de mantenimiento</option>
+              <option value="solicitudesRecursos">Solicitudes de recursos</option>
+              <option value="otros">Otros</option>
+            </select>
+          </div>
+    
+          <div class="campoDescripcion">
+            <label for="descripcion">Descripción:</label><br/>
+            <textarea
+              id="descripcion"
+              class="publicacionDescripcion"
+              name="descripcion"
+              placeholder="Escribe la descripción de la publicación"
+            ></textarea>
+          </div>
+
+          <label for="">Seleccione la prioridad de la publicación: </label><br/>
+          <div class="grupoRadio">
+            <input type="radio" id="alta" name="prioridad" value="alta">
+            <label for="alta">Alta</label>
+            <input type="radio" id="media" name="prioridad" value="media">
+            <label for="media">Media</label>
+            <input type="radio" id="baja" name="prioridad" value="baja">
+            <label for="baja">Baja</label>
+          </div>
+
+          <div class="campoFechaPublicacion">
+            <label for="fecha_publicacion">Fecha del evento:</label><br/>
+            <input
+              type="date"
+              id="fecha_publicacion"
+              name="fecha_publicacion"
+            />
+          </div>
+
+          <h2>Datos del publicante</h2>
+          <div class="campoNombre">
+            <label for="nombre">Nombres:</label><br/>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Ingrese su nombre"
+            />
+          </div>
+    
+          <div class="campoTelefono">
+            <label for="telefono">Teléfono:</label><br/>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="Ingrese su número telefónico"
+            />
+          </div>
+
+          <div class="campoCorreo">
+            <label for="correo">Correo:</label><br/>
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              placeholder="Ingrese su correo"
+            />
+          </div>
+
+          <div class="grupoBotones">
+            <button
+              type="submit" 
+              class="boton-pequenio"
+            >Enviar</button>
+
+            <button
+              type="reset" 
+              class="boton-pequenio"
+            >Cancelar</button>
+          </div>
+        </form>
+      </section>
+      <script type="text/javascript" src="validacion_publicaciones.js"></script>
+    </main>
+
+    <footer>
+      <section id="redes-sociales">
+        <ul>
+          <li><a href="">Redes sociales</a></li>
+          <li><a href="">Youtube</a></li>
+          <li><a href="">Facebook</a></li>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Twitter</a></li>
+        </ul>
+      </section>
+
+      <section id="lista-pie">
+        <ul>
+          <li><a href="">Documentacion</a></li>
+          <li><a href="">Politicas de uso</a></li>
+          <li><a href="">Terminos y condiciones</a></li>
+          <li><a href="">Soporte Tecnico</a></li>
+          <li><a href="">Manual de usuario</a></li>
+          <li><a href="">Contactanos</a></li>
+        </ul>
+      </section>
+
+      <section id="copiright">
+        <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
+      </section>
+    </footer>
+  </body>
+</html>
