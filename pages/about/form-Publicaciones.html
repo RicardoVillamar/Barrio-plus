@@ -13,28 +13,50 @@
       }
 
       h1{
-        margin-left: 15px;
+        margin-left: 25px;
       }
 
+      label{
+        display: block;
+      }
+
+      label[for=titulo_publicacion],
+      label[for=nombre]{
+        margin-top: 20px;
+      } 
+
       .publicaciones{
-        width: 70%;
+        margin: auto;
+        width: 90%;
         height: 60%;
+        border: 1px solid black;
       }
 
       .campoDescripcion textarea{
         width: 442px;
         height: 100px;
-        border-radius: 3px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
         resize: none;
       }
 
       #form_publicaciones{
+        padding: 20px;
+        width: 50%;
+        background-color: white;
         margin: 10px 5px 10px 15px;
-        border: 1px solid black;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      #form_publicaciones h2{
+        font-size: 1.3rem; 
+        margin-bottom: 40px;
       }
 
       input[placeholder] {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
 
       .tituloPublicacion input,
@@ -42,20 +64,23 @@
       .campoTelefono input,
       .campoCorreo input{
         width: 443px;
-        border: 1px solid black;
-        border-radius: 3px;
+        padding: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
       }
 
       .tipoPublicacion select{
         width: 448px;
-        border: 1px solid black;
-        border-radius: 3px;
+        padding: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
       }
 
       .campoFechaPublicacion input{
         width: 446px;
-        border: 1px solid black;
-        border-radius: 3px;
+        padding: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);;
+        border-radius: 8px;
       }
 
       .tituloPublicacion,
@@ -79,10 +104,12 @@
         display: flex;
         flex-direction: row;
         gap: 0px 25px;
+        margin-bottom: 10px;
       }
 
       .grupoBotones button{
         width: 23%;
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -109,7 +136,7 @@
       <h1 class="titulos">Publicaciones</h1>
       <section class="publicaciones">
         <form id="form_publicaciones" onsubmit="return validarPublicacion()">
-          <h2>Datos de la publicación</h2>
+          <h2 class="subtitulos">Datos de la publicación</h2>
           <div class="tituloPublicacion">
             <label for="titulo_publicacion">Título de la publicación:</label><br/>
             <input
@@ -161,7 +188,7 @@
             />
           </div>
 
-          <h2>Datos del publicante</h2>
+          <h2 class="subtitulos">Datos del publicante</h2>
           <div class="campoNombre">
             <label for="nombre">Nombres:</label><br/>
             <input
