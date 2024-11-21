@@ -1,6 +1,7 @@
 //Función para validar las publicaciones
 function validarPublicacion(){
     let esValido = true;
+    let validarCaracteres = /^[a-zA-Z\s]+$/;
 
     //Valida título de la publicación
     let titulo = document.getElementById("titulo_publicacion");
@@ -10,6 +11,9 @@ function validarPublicacion(){
         esValido = false;
     }else if(titulo.value.length < 10){
         alert("El título debe tener mínimo 10 caracteres");
+        esValido = false;
+    }else if(!validarCaracteres.test(titulo.value)){
+        alert("El título solo puede tener letras");
         esValido = false;
     }
 
@@ -32,33 +36,10 @@ function validarPublicacion(){
         esValido = false;
     }
 
-    //Valida nombre del publicante
-    let nombre = document.getElementById("nombre");
-    let nombreRegex = /^[a-zA-Z\s]+$/;
-
-    if(nombre.value === ""){
-        alert("El nombre no puede estar vacío");
-        esValido = false;
-    }else if(nombre.value.length < 5){
-        alert("El nombre debe tener minimo 5 caracteres");
-        esValido = false;
-    }else if(!nombreRegex.test(nombre.value)){
-        alert("El nombre solo puede tener letras");
-        esValido = false;
-    }
-
-    //Valida teléfono del publicante
-    let telefono = document.getElementById("telefono");
-    let telefonoRegex = /^[0-9]+$/;
-
-    if(telefono.value === ""){
-        alert("El teléfono no puede estar vacío");
-        esValido = false;
-    }else if(telefono.value.length !== 10){
-        alert("El teléfono debe tener 10 digitos");
-        esValido = false;
-    }else if(!telefonoRegex.test(telefono.value)){
-        alert("El teléfono solo puede tener números");
+    //Valida prioridad del evento
+    let prioridad = document.querySelector('input[name="prioridad"]:checked');
+    if(!prioridad){
+        alert("Debe seleccionar una prioridad para su publicación");
         esValido = false;
     }
 
@@ -78,6 +59,43 @@ function validarPublicacion(){
             alert("La fecha seleccionada no puede ser menor a la fecha actual");
             esValido = false;
         }
+    }
+
+    //Valida nombre del publicante
+    let nombre = document.getElementById("nombre");
+    
+    if(nombre.value === ""){
+        alert("El nombre no puede estar vacío");
+        esValido = false;
+    }else if(nombre.value.length < 5){
+        alert("El nombre debe tener minimo 5 caracteres");
+        esValido = false;
+    }else if(!validarCaracteres.test(nombre.value)){
+        alert("El nombre solo puede tener letras");
+        esValido = false;
+    }
+
+    //Valida teléfono del publicante
+    let telefono = document.getElementById("telefono");
+    let telefonoRegex = /^[0-9]+$/;
+
+    if(telefono.value === ""){
+        alert("El teléfono no puede estar vacío");
+        esValido = false;
+    }else if(telefono.value.length !== 10){
+        alert("El teléfono debe tener 10 digitos");
+        esValido = false;
+    }else if(!telefonoRegex.test(telefono.value)){
+        alert("El teléfono solo puede tener números");
+        esValido = false;
+    }
+
+    //Valida el correo electrónico del publicante
+    let correo = document.querySelector('.campoCorreo input');
+
+    if(correo.value === ""){
+        alert("El correo electrónico es requerido");
+        esValido = false;
     }
     
     return esValido;
