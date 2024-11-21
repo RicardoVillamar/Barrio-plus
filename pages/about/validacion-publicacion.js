@@ -1,15 +1,9 @@
 //Función para validar las publicaciones
 function validarPublicacion(){
     let esValido = true;
+
+    //Valida título de la publicación
     let titulo = document.getElementById("titulo_publicacion");
-    let descripcion = document.querySelector(".publicacionDescripcion");
-    let nombre = document.getElementById("nombre");
-    let telefono = document.getElementById("telefono");
-    let tipoPublicacion = document.getElementById("tipo_publicacion");
-    let fechaPublicacion = document.getElementById("fecha_publicacion");
-    let fechaActual = new Date();
-    let nombreRegex = /^[a-zA-Z\s]+$/;
-    let telefonoRegex = /^[0-9]+$/;
 
     if(titulo.value === ""){
         alert("El título no puede estar vacío");
@@ -19,10 +13,16 @@ function validarPublicacion(){
         esValido = false;
     }
 
+    //Valida tipo de publicación
+    let tipoPublicacion = document.getElementById("tipo_publicacion");
+
     if(tipoPublicacion === ""){
         alert("Seleccione el tipo de publicacion");
         esValido = false;
     }
+
+    //Valida descripción de la publicación
+    let descripcion = document.querySelector(".publicacionDescripcion");
 
     if(descripcion.value === ""){
         alert("La descripción no puede estar vacía");
@@ -31,6 +31,10 @@ function validarPublicacion(){
         alert("La descripcion debe tener mínimo 15 caracteres");
         esValido = false;
     }
+
+    //Valida nombre del publicante
+    let nombre = document.getElementById("nombre");
+    let nombreRegex = /^[a-zA-Z\s]+$/;
 
     if(nombre.value === ""){
         alert("El nombre no puede estar vacío");
@@ -42,7 +46,11 @@ function validarPublicacion(){
         alert("El nombre solo puede tener letras");
         esValido = false;
     }
-        
+
+    //Valida teléfono del publicante
+    let telefono = document.getElementById("telefono");
+    let telefonoRegex = /^[0-9]+$/;
+
     if(telefono.value === ""){
         alert("El teléfono no puede estar vacío");
         esValido = false;
@@ -54,6 +62,10 @@ function validarPublicacion(){
         esValido = false;
     }
 
+    //Valida fecha del evento
+    let fechaPublicacion = document.getElementById("fecha_publicacion");
+    let fechaActual = new Date();
+    
     if(fechaPublicacion === ""){
         alert("La fecha es requerida");
         esValido = false;
@@ -67,5 +79,6 @@ function validarPublicacion(){
             esValido = false;
         }
     }
+    
     return esValido;
 }
