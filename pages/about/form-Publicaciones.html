@@ -30,6 +30,11 @@
         margin-top: 20px;
       } 
 
+      label[for=soloAdmins]{
+        display: inline-block;
+        font-size: 0.8rem;
+      }
+
       .publicaciones{
         margin-left: 3%;
         width: 90%;
@@ -101,6 +106,11 @@
       .campoTelefono,
       .campoCorreo,
       .campoFechaPublicacion{
+        margin-bottom: 10px;
+      }
+
+      .campoCheckbox{
+        margin-top: 25px;
         margin-bottom: 10px;
       }
 
@@ -227,6 +237,16 @@
               name="correo"
               placeholder="Ingrese su correo"
             />
+          </div>
+
+          <div class="campoCheckbox">
+            <input 
+              type="checkbox" 
+              id="soloAdmins"
+              name="notificarSoloAdmins"
+              value="Solo administradores"
+            />
+            <label for="soloAdmins">Notificar solo a los administradores</label>
           </div>
 
           <div class="grupoBotones">

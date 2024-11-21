@@ -97,6 +97,12 @@ function validarPublicacion(){
         alert("El correo electrónico es requerido");
         esValido = false;
     }
-    
+
+    //Valida checkbox notificar de la publicación
+    let notificarSoloAdmin = document.querySelector('input[name="notificarSoloAdmins"]:checked');
+    if(notificarSoloAdmin){
+        alert("Ha seleccionado solo enviar a los administradores");
+        esValido = false;
+    }
     return esValido;
 }
