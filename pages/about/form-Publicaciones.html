@@ -21,12 +21,17 @@
       }
 
       label[for=titulo_publicacion],
-      label[for=nombre]{
+      label[for=nombre],
+      label[for=tipo_publicacion],
+      label[for=descripcion],
+      label[for=fecha_publicacion],
+      label[for=telefono],
+      label[for=correo]{
         margin-top: 20px;
       } 
 
       .publicaciones{
-        margin: auto;
+        margin-left: 3%;
         width: 90%;
         height: 60%;
         border: 1px solid black;
@@ -44,7 +49,6 @@
         padding: 20px;
         width: 50%;
         background-color: white;
-        margin: 10px 5px 10px 15px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -65,7 +69,7 @@
       .campoNombre input,
       .campoTelefono input,
       .campoCorreo input{
-        width: 443px;
+        width: 425px;
         padding: 10px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
@@ -79,7 +83,7 @@
       }
 
       .campoFechaPublicacion input{
-        width: 446px;
+        width: 425px;
         padding: 10px;
         border: 1px solid rgba(0, 0, 0, 0.1);;
         border-radius: 8px;
@@ -105,12 +109,12 @@
       .grupoRadio{
         display: flex;
         flex-direction: row;
-        gap: 0px 15px;
+        gap: 0px 25px;
         margin-bottom: 15px;
       }
 
       .grupoBotones button{
-        width: 35%;
+        width: 31%;
         margin-top: 20px;
       }
     </style>
@@ -138,7 +142,7 @@
       <h1 class="titulos">Publicaciones</h1>
       <section class="publicaciones">
         <form id="form_publicaciones" onsubmit="return validarPublicacion()">
-          <h2 class="subtitulos">Datos de la publicación</h2>
+          <h2 class="subtitulos">Información de la publicación</h2>
           <div class="tituloPublicacion">
             <label for="titulo_publicacion">Título de la publicación:</label><br/>
             <input
@@ -190,7 +194,7 @@
             />
           </div>
 
-          <h2 class="subtitulos">Datos del publicante</h2>
+          <h2 class="subtitulos">Información del publicante</h2>
           <div class="campoNombre">
             <label for="nombre">Nombres:</label><br/>
             <input
@@ -228,13 +232,14 @@
             >Enviar</button>
 
             <button
+              style="font-size: 0.7rem;"
               type="reset" 
               class="boton-pequenio"
             >Cancelar</button>
           </div>
         </form>
       </section>
-      <script type="text/javascript" src="validacion_publicaciones.js"></script>
+      <script type="text/javascript" src="validacion-publicacion.js"></script>
     </main>
 
     <footer>
