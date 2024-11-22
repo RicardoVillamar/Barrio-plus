@@ -13,7 +13,13 @@
       }
 
       h1{
-        margin-left: 25px;
+        margin-left: 2%;
+      }
+
+      h1::selection,
+      h2::selection{
+        color: white;
+        background-color: #504643;
       }
 
       label{
@@ -36,6 +42,10 @@
       }
 
       .publicaciones{
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        align-items: flex-start;
         margin-left: 3%;
         width: 90%;
       }
@@ -49,6 +59,7 @@
       }
 
       #form_publicaciones{
+        flex: 3;
         padding: 35px;
         width: 50%;
         background-color: white;
@@ -80,6 +91,13 @@
         padding: 10px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
+      }
+
+      .tituloPublicacion input:hover,
+      .campoNombre input:hover,
+      .campoTelefono input:hover,
+      .campoCorreo input:hover{
+        background-color: #C6BBB8;
       }
 
       .tipoPublicacion select{
@@ -141,6 +159,18 @@
         color: #C62B09;
       }
 
+      .imagenComunidad{
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+      }
+
+      .imagenComunidad img{
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
     </style>
   </head>
   <body>
@@ -165,7 +195,7 @@
     <main>
       <h1 class="titulos">Publicaciones</h1>
       <section class="publicaciones">
-        <form id="form_publicaciones" onsubmit="return validarPublicacion()">
+        <form novalidate id="form_publicaciones" onsubmit="return validarPublicacion()">
           <h2 class="subtitulos">Información de la publicación</h2>
           <div class="tituloPublicacion">
             <label for="titulo_publicacion">Título de la publicación:</label><br/>
@@ -273,6 +303,13 @@
             >Cancelar</button>
           </div>
         </form>
+
+        <div class="imagenComunidad">
+          <img 
+            src="https://img.freepik.com/free-vector/online-community_24877-50878.jpg?t=st=1732315953~exp=1732319553~hmac=759028a5b586a885341d0d7b5459d46da54da2a602fece2edd57652ea53d4d07&w=740" 
+            alt="imagen-comunidad"
+          />
+        </div>
       </section>
       <script type="text/javascript" src="validacion-publicacion.js"></script>
     </main>
