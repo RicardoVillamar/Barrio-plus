@@ -96,10 +96,8 @@ function validarPublicacion(){
     let notificarAdmin = document.querySelector('input[name="notificarSoloAdmins"]:checked');
     if(!notificarAdmin){
         alert("!La publicación se notificará a toda la comunidad!");
-        esValido = true;
     }else{
         alert("!Ha seleccionado notificar solo a los administradores!");
-        esValido = true;
     }
     return esValido;
 }
