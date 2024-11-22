@@ -37,7 +37,7 @@ function validarPublicacion(){
     //Valida prioridad del evento
     let prioridad = document.querySelector('input[name="prioridad"]:checked');
     if(!prioridad){
-        //cargarMensaje("*Debe seleccionar una prioridad para su publicación*", prioridad);
+        alert("!Debe seleccionar una prioridad para su publicación!");
         esValido = false;
     }
 
@@ -49,8 +49,8 @@ function validarPublicacion(){
         esValido = false;
     }else{
         let fechaSeleccionada = new Date(fechaPublicacion.value);
-        if(fechaSeleccionada > fechaActual){
-            cargarMensaje("*La fecha selecionada no puede ser mayor a la fecha actual", fechaPublicacion);
+        if(fechaSeleccionada<fechaActual){
+            cargarMensaje("*La fecha no es válida", fechaPublicacion);
             esValido = false;
         }
     }
@@ -93,6 +93,14 @@ function validarPublicacion(){
         esValido = false;
     }
 
+    let notificarAdmin = document.querySelector('input[name="notificarSoloAdmins"]:checked');
+    if(!notificarAdmin){
+        alert("!La publicación se notificará a toda la comunidad!");
+        esValido = true;
+    }else{
+        alert("!Ha seleccionado notificar solo a los administradores!");
+        esValido = true;
+    }
     return esValido;
 }
 
