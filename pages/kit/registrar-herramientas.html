@@ -1,10 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="author" content="Roitman Andres Palacios Herdoiza" />
+    <title>Registro de Herramientas</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
 </head>
+    <style>
+        #formulario{
+            padding: 30px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        }
+        main {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #f9f9f9; 
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        main h1 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        #formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+        }
+
+        
+        #formulario input[type="text"],
+        #formulario input[type="number"],
+        #formulario input[type="date"],
+        #formulario select,
+        #formulario textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+
+        #formulario input:focus,
+        #formulario select:focus,
+        #formulario textarea:focus {
+            border-color: #0078d7;
+            outline: none;
+            box-shadow: 0 0 4px rgba(0, 120, 215, 0.5);
+        }
+
+
+        #formulario button[type="submit"] {
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+
+        #formulario button[type="submit"]:hover {
+            background: #005a9e;
+        }
+
+        
+        #formulario input[type="checkbox"],
+        #formulario input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        
+        #formulario label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+
+            #formulario textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+    </style>
 <body>
     <header>
         <nav id="navbar">
@@ -31,7 +131,7 @@
          <h1>Registro de Herramientas</h1>
       <main>
         <section>
-            <form action="">
+            <form id="formulario">
                 <div>
                     <label for="tool-name">Nombre de la herramienta:</label><br>
                     <input type="text" id="tool-name" name="tool-name" required>
