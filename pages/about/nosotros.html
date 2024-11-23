@@ -211,6 +211,14 @@
         border-radius: 1px;
       }
 
+      .esconderImagen img{
+        display: none;
+      }
+
+      .infoIntegrante{
+        display: none;
+      }
+
       @media (max-width: 1024px) {
         .contenedor-principal {
           width: 90%;
@@ -372,9 +380,13 @@
               alt="villamar"
               class="tarjeta-imagen"
             />
-            <p class="tarjeta-titulo">Villamar Minuche Ricardo Daniel</p>
-            <span class="integrante"> </span>
-            <p class="texto">Página html instalaciones.</p>
+            <div class="infoIntegrante">
+              <p class="tarjeta-titulo">Villamar Minuche Ricardo Daniel</p>
+              <span class="integrante"> </span>
+              <p class="texto">
+                Página html instalaciones y formulario para reservar instalaciones. 
+              </p>
+            </div>
           </article>
 
           <article class="tarjeta col-md-4">
@@ -383,9 +395,13 @@
               alt="quinionez"
               class="tarjeta-imagen"
             />
-            <p class="tarjeta-titulo">Quiñonez Castrellón Anthony Joel</p>
-            <span class="integrante"> </span>
-            <p class="texto">Página html herramientas.</p>
+            <div class="infoIntegrante">
+              <p class="tarjeta-titulo">Quiñonez Castrellón Anthony Joel</p>
+              <span class="integrante"> </span>
+              <p class="texto">
+                Página html herramientas y formulario para reservar herramientas. 
+              </p>
+            </div>
           </article>
 
           <article class="tarjeta col-md-4">
@@ -394,9 +410,11 @@
               alt="palacios"
               class="tarjeta-imagen"
             />
-            <p class="tarjeta-titulo">Palacios Herdoiza Roitman Andres</p>
-            <span class="integrante"> </span>
-            <p class="texto">Página html historial.</p>
+            <div class="infoIntegrante">
+              <p class="tarjeta-titulo">Palacios Herdoiza Roitman Andres</p>
+              <span class="integrante"> </span>
+              <p class="texto">Página html historial.</p>
+            </div>
           </article>
         </section>
 
@@ -407,9 +425,11 @@
               alt="larrea"
               class="tarjeta-imagen"
             />
-            <p class="tarjeta-titulo">Larrea Rosales Alejandro Sebastián</p>
-            <span class="integrante"> </span>
-            <p class="texto">Página html home.</p>
+            <div class="infoIntegrante">
+              <p class="tarjeta-titulo">Larrea Rosales Alejandro Sebastián</p>
+              <span class="integrante"> </span>
+              <p class="texto">Página html home.</p>
+            </div>
           </article>
 
           <article class="tarjeta col-md-6">
@@ -418,9 +438,11 @@
               alt="freire"
               class="tarjeta-imagen"
             />
-            <p class="tarjeta-titulo">Freire Chávez José Andrés</p>
-            <span class="integrante"> </span>
-            <p class="texto">Página html nosotros.</p>
+            <div class="infoIntegrante">
+              <p class="tarjeta-titulo">Freire Chávez José Andrés</p>
+              <span class="integrante"> </span>
+              <p class="texto">Página html nosotros.</p>
+            </div>
           </article>
         </section>
       </section>
@@ -566,6 +588,28 @@
           </div>
         </form>
       </section>
+      <script>
+        let arrIntegrantes = document.querySelectorAll('.tarjeta');
+        arrIntegrantes.forEach((integrante)=>{
+            integrante.addEventListener("mouseenter", cambiarEstiloInfo);
+            integrante.addEventListener("mouseout", cambiarEstiloInfo);
+          }
+        );
+        
+        function cambiarEstiloInfo(evento){
+          let tarjeta = evento.target;
+          let imgIntegrante = tarjeta.querySelector('img');
+          let infoIntegrante = tarjeta.querySelector('.infoIntegrante');
+          if(evento.type === "mouseenter"){
+            imgIntegrante.style.display = "none";
+            infoIntegrante.style.display = "block";
+            infoIntegrante.style.fontSize = "0.9rem";
+          }else if(evento.type === "mouseout"){
+            imgIntegrante.style.display = "block";
+            infoIntegrante.style.display = "none";
+          }
+        }
+      </script>
     </main>
 
     <footer>
