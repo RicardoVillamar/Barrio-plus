@@ -1,3 +1,5 @@
+const formulario = document.getElementById("formulario-instalaciones");
+
 // Personal
 const nombre = document.getElementById("nombre");
 const telefono = document.getElementById("telefono");
@@ -230,13 +232,21 @@ function validarFormulario() {
     correcto = false;
   }
   validarNotas();
-
+  if (correcto) {
+    window.location.href = "/pages/instalations/instalaciones.html";
+  }
   return correcto;
 }
 
 function actualizarBoton() {
   const btn = document.getElementById("btn");
   const formularioValido = validarFormulario();
-
   btn.disabled = !formularioValido;
 }
+
+formulario.addEventListener("submit", () => {
+  if (validarFormulario()) {
+    alert("Formulario enviado correctamente");
+    window.location.href = "/pages/instalations/instalaciones.html";
+  }
+});

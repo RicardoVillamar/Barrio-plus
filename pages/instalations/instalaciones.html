@@ -360,13 +360,16 @@
         <section class="cabezera">
           <h2 class="titulo-buscar titulos">Instalaciones</h2>
           <div class="buscar">
-            <label for="buscar-barra" class="texto"></label>
+            <label for="buscar-barra" class="texto" style="font-weight: bold"
+              >Buscar</label
+            >
             <input
-              placeholder="Buscar..."
+              placeholder="Nombre de la instalación"
               type="text"
               id="buscar-barra"
               style="
                 padding: 0 10px;
+                padding-right: 30px;
                 margin: 10px;
                 border-radius: 4px;
                 border: 1px solid rgba(0, 0, 0, 0.1);
@@ -395,14 +398,14 @@
                 <td><span class="libre"> </span></td>
                 <td class="imagen">
                   <img
-                    src="https://www.fundacionheres.org/wp-content/uploads/2021/02/1.jpg"
+                    src="/assets/img/instalaciones/salon-comunal.png"
                     alt="saloncomunal"
                     class="imagen-tabla"
                   />
-                  <p class="texto nombre-instalacion">Salón comunal</p>
+                  <p class="texto nombre-instalacion">Salon comunal</p>
                 </td>
                 <td>
-                  <span class="texto">Grande</span>
+                  <span class="texto tamanio-instalacion">Grande</span>
                 </td>
                 <td>
                   <span class="texto">Salón</span>
@@ -417,15 +420,15 @@
                 <td><span class="ocupado"> </span></td>
                 <td>
                   <img
-                    src="https://www.am.com.mx/u/fotografias/m/2018/3/22/f776x436-307559_355910_5050.jpg"
+                    src="/assets/img/instalaciones/area-deportiva.png"
                     alt="areadeportiva"
                     class="imagen-tabla"
                   />
-                  <p class="texto nombre-instalacion">Área deportiva</p>
+                  <p class="texto nombre-instalacion">Area deportiva</p>
                 </td>
 
                 <td>
-                  <span class="texto">Mediano</span>
+                  <span class="texto tamanio-instalacion">Mediano</span>
                 </td>
                 <td>
                   <span class="texto">Aire libre</span>
@@ -440,7 +443,7 @@
                 <td><span class="ocupado"> </span></td>
                 <td>
                   <img
-                    src="https://johnsonfitness.tienda/media/wysiwyg/johnson_gimnasios_comunidad_vecinos.jpg"
+                    src="/assets/img/instalaciones/gimnasio.png"
                     alt="gimnasio"
                     class="imagen-tabla"
                   />
@@ -448,7 +451,7 @@
                 </td>
 
                 <td>
-                  <span class="texto">Pequeño</span>
+                  <span class="texto tamanio-instalacion">Pequeño</span>
                 </td>
                 <td>
                   <span class="texto">Taller</span>
@@ -463,14 +466,14 @@
                 <td><span class="libre"> </span></td>
                 <td>
                   <img
-                    src="https://urfintek.com/wp-content/uploads/2023/09/Control-de-acceso-piscina-comunitaria.jpg"
+                    src="/assets/img/instalaciones/piscina.png"
                     alt="piscina"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Piscina comunitaria</p>
                 </td>
                 <td>
-                  <span class="texto">Pequeño</span>
+                  <span class="texto tamanio-instalacion">Pequeño</span>
                 </td>
                 <td>
                   <span class="texto">Aire libre</span>
@@ -485,14 +488,14 @@
                 <td><span class="ocupado"> </span></td>
                 <td>
                   <img
-                    src="https://www.elsoldemorelia.com.mx/local/lf38kv-biblioteca-comunitaria-a-comachuen/ALTERNATES/LANDSCAPE_1140/BIBLIOTECA%20COMUNITARIA%20A%20COMACHUEN"
+                    src="/assets/img/instalaciones/biblioteca.png"
                     alt="biblioteca"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Biblioteca comunitaria</p>
                 </td>
                 <td>
-                  <span class="texto">Pequeño</span>
+                  <span class="texto tamanio-instalacion">Pequeño</span>
                 </td>
                 <td>
                   <span class="texto">Taller</span>
@@ -507,14 +510,14 @@
                 <td><span class="ocupado"> </span></td>
                 <td>
                   <img
-                    src="https://oziona.es/wp-content/uploads/2021/02/parqueinfantil-oziona-01.jpg"
+                    src="/assets/img/instalaciones/parque-infantil.png"
                     alt="parque"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Parque infantil</p>
                 </td>
                 <td>
-                  <span class="texto">Grande</span>
+                  <span class="texto tamanio-instalacion">Grande</span>
                 </td>
                 <td>
                   <p class="texto">Aire libre</p>
@@ -529,14 +532,14 @@
                 <td><span class="libre"> </span></td>
                 <td>
                   <img
-                    src="https://www.viacelere.com/wp-content/uploads/old-blog/2020/10/sala-de-juegos.jpg"
+                    src="/assets/img/instalaciones/sala-recreativa.png"
                     alt="salarecreativa"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Sala recreativa</p>
                 </td>
                 <td>
-                  <span class="texto">Mediano</span>
+                  <span class="texto tamanio-instalacion">Mediano</span>
                 </td>
                 <td>
                   <span class="texto">Salón</span>
@@ -577,6 +580,27 @@
       </section>
     </footer>
     <script>
+      // Buscar en la tabla
+      const buscarBarra = document.getElementById("buscar-barra");
+      const tabla = document.querySelector("table tbody");
+      buscarBarra.addEventListener("input", () => {
+        const datoBusqueda = buscarBarra.value.toLowerCase();
+        const filas = tabla.querySelectorAll("tr");
+
+        filas.forEach((fila) => {
+          const nombreInstalacion = fila.querySelector(".nombre-instalacion");
+          if (nombreInstalacion) {
+            const nombre = nombreInstalacion.textContent.toLowerCase();
+            if (nombre.includes(datoBusqueda)) {
+              fila.style.display = "";
+            } else {
+              fila.style.display = "none";
+            }
+          }
+        });
+      });
+
+      // Boton Reservar
       const reserva = document.querySelectorAll(".reserva");
       reserva.forEach((e) => {
         e.addEventListener("click", () => {
