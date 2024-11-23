@@ -33,13 +33,11 @@ function validarRegistro() {
         formularioValido = false;
     }
 
-    const estadoNueva = document.querySelector('input[name="Estado1"]:checked');
-    const estadoUsada = document.querySelector('input[name="Estado2"]:checked');
-    if (!estadoNueva && !estadoUsada) {
+    const estadoSeleccionado = document.querySelector('input[name="estado"]:checked');
+    if (!estadoSeleccionado) {
         alert("Debe seleccionar el estado de la herramienta.");
         formularioValido = false;
     }
-
     const descripcion = document.getElementById("Descripción").value.trim();
     if (descripcion.length > 200) {
         alert("La descripción no puede superar los 200 caracteres.");
