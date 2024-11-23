@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alejandro Larrea" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <title>Barrio Plus</title>
+
+    <style>
+      input{                
+        border-radius: 10px;
+        margin-bottom: 5px;
+      }
+      .contenedorForm{
+        flex: 1;
+        max-width: 45%;
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);     
+        margin-left: 20px;          
+      }
+      .contenedorForm, #botones{        
+        padding: 15px;
+        margin-top: 20px;
+        height: fit-content;
+        width: fit-content;   
+      }
+
+      #botones{  
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;        
+        height: fit-content;
+        width: fit-content;
+        margin-top: 1px;                  
+        padding: 10px;
+        gap: 90px;        
+      }
+
+      #mensaje, .error{
+            color: red;
+            font-size: 9pt;
+            margin-left: 10px;
+      }
+
+      .campo{
+        position: relative;
+        margin-bottom: 10px;    
+        padding: 1px;    
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <a href="index.html">
+          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        </a>
+        <ul>
+          <li><a href="instalaciones.html">Instalaciones</a></li>
+          <li><a href="herramientas.html">Herramientas</a></li>
+          <li><a href="historial.html">Historial</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li>
+            <a href="#" class="user">
+              <span class="material-symbols-outlined"> account_circle </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <body>
+    <div class="contenedorForm">
+      <form action="" id="formulario" onsubmit="return validarFormulario()">
+        <div>
+          <h2>Contribucion</h2>                   
+        </div>
+        <div class="campo">              
+          <label for="">Contribuir a:</label>        
+          <input type="checkbox" id="producto1" name="productos" value="instalaciones">
+          <label for="producto1">Instalaciones</label>
+          <input type="checkbox" id="producto2" name="productos" value="herramientas">
+          <label for="producto2">Herramientas</label>
+        </div>  
+        <div class="campo">
+          <label for="selecProdu">Seleccione tipo de instalacion o herramientas:</label>        
+          <select name="selecProdu" id="selecProdu" class="selecProductos"> 
+            <option value="">Seleccione instalacion...</option>
+            <option value="capilla">Capilla</option> 
+            <option value="salon_comunal">Salon Comunal</option>  
+            <option value="cancha_golf">Cancha de Golf</option>       
+            <option value="area_recreativa">Area Recreativa</option>   
+       
+            <select name="selecProdu2" id="selecProdu2" class="selecProductos"> 
+              <option value="">Seleccione herramienta...</option>
+              <option value="llave_maestra">Llave Maestra</option> 
+              <option value="podadora">Podadora</option>  
+              <option value="gata">Gata</option>       
+              <option value="asador">Asador</option> 
+        </div>
+        <div class="campo">
+          <label for="">Seleccione metodo de pago:</label>
+          <input type="radio" id="efectivo" name="pago" value="efectivo"/>
+          <label for="efectivo">Efectivo</label>
+          <input type="radio" id="debito" name="pago" value="debito"/>
+          <label for="debito">Debito</label>
+        </div>
+        <div>
+          <h4>Efectivo:</h4>
+        <div class="campo">
+        <label for="nombre">Ingrese su nombre:</label>
+          <input type="text" name="nombre" id="nombre" placeholder="Alejandro Larrea"/> 
+        </div>
+        <div class="campo">
+          <label for="manzana">Ingrese la manzana de la casa:</label>       
+          <input type="text" name="manzana" id="manzana" placeholder="A21"/>  
+        </div>
+        <div class="campo">
+          <label for="villa">Ingrese la villa de la casa: </label>        
+          <input type="text" name="villa" id="villa" placeholder="253"/>  
+        </div>   
+        <div class="campo">
+          <label for="numero_casa">Ingrese el numero de casa:</label>
+          <input type="text" name="numero_casa" id="numero_casa" placeholder="2519"/>
+        </div>
+        
+          <h4>Debito:</h4>
+        <div class="campo">
+          <label for="nombre_titular">Nombre Titular </label> <br>            
+          <input type="text" name="nombre_titular" id="nombre_titular" placeholder="ALEJANDRO LARREA"/>
+        </div>
+        <div class="campo">
+          <label for="numero_tarjeta">Numero de la Tarjeta</label>
+        </br>
+          <input type="text" name="numero_tarjeta" id="numero_tarjeta" placeholder="0000 1111 2222 4444"/>
+        </div>
+        <div class="campo">
+          <label for="fecha_vencimiento">Fecha de Vencimiento</label>
+        </br>
+          <input style="width: 40px;" type="text" name="fecha_vencimiento_mes" id="fecha_vencimiento_mes" placeholder="01"/>
+          <input style="width: 40px"; type="text" name="fecha_vencimiento_anio" id="fecha_vencimiento_anio" placeholder="27">
+        </div>             
+        <div class="campo">
+          <label for="codigo">Codigo CVV</label>
+        </br>
+          <input style="width: 30px" type="text" name="codigo" id="codigo" placeholder="007">
+        </div>
+      </div>
+        <div id="botones">        
+          <button class="boton-mediano" type="submit">Guardar</button>
+          <button class="boton-mediano" type="reset">Cancelar</button> 
+      </div>    
+      </form>
+    </div>    
+    </body>
+    <footer>
+      <section id="redes-sociales">
+        <ul>
+          <li><a href="">Redes sociales</a></li>
+          <li><a href="">Youtube</a></li>
+          <li><a href="">Facebook</a></li>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Twitter</a></li>
+        </ul>
+      </section>
+      <section id="lista-pie">
+        <ul>
+          <li><a href="">Documentacion</a></li>
+          <li><a href="">Politicas de uso</a></li>
+          <li><a href="">Terminos y condiciones</a></li>
+          <li><a href="">Soporte Tecnico</a></li>
+          <li><a href="">Manual de usuario</a></li>
+          <li><a href="">Contactanos</a></li>
+        </ul>
+      </section>
+      <section id="copiright">
+        <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
+      </section>
+    </footer>
+    <div id="mensaje">
+        
+    </div>
+    <script type="text/javascript" src="contribucionForm.js"></script> 
+  </body>
+</html>
