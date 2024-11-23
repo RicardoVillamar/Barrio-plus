@@ -52,6 +52,11 @@
         padding: 10px;
       }
 
+      .cancelar {
+        background-color: white;
+        border: 3px solid #a8d0e6;
+      }
+
       .informacion-extra div {
         display: flex;
         justify-content: space-between;
@@ -218,7 +223,9 @@
         </ul>
       </nav>
     </header>
-    <h1 class="titulos" style="padding: 0px 10px">Reservación</h1>
+    <h1 class="titulos" style="padding: 0px 10px">
+      Reservación de Instalación
+    </h1>
     <main>
       <section class="contenedor-formulario">
         <form
@@ -317,7 +324,9 @@
             <span id="notas-error" class="error"></span>
           </fieldset>
           <fieldset class="contenedor-botones">
-            <button type="reset" class="boton-mediano">Cancelar</button>
+            <button type="reset" class="boton-mediano cancelar">
+              Cancelar
+            </button>
             <button type="submit" class="boton-mediano" id="btn">
               Reservar
             </button>
@@ -325,7 +334,7 @@
         </form>
       </section>
       <section class="contenedor-informacion">
-        <h3 class="subtitulos nombre-instalacion">Nombre</h3>
+        <h3 class="subtitulos nombre-instalacion">Salon comunal</h3>
         <img
           id="imagen-instalacion"
           src="/assets/img/instalaciones/salon-comunal.png"
@@ -334,7 +343,7 @@
             object-fit: cover;
             border-radius: 8px;
             width: 100%;
-            height: 200px;
+            height: 300px;
           "
         />
         <div
@@ -348,16 +357,16 @@
         >
           <div>
             <p class="texto">Tamaño:</p>
-            <span class="texto tamanio-instalacion">Tamaño</span>
+            <span class="texto tamanio-instalacion">Grande</span>
           </div>
           <div>
             <p class="texto">Tipo:</p>
-            <span class="texto tipo-instalacion">Tipo</span>
+            <span class="texto tipo-instalacion">Salon</span>
           </div>
           <hr class="linea-divisoria" />
           <div>
             <p class="texto">Precio de reserva:</p>
-            <span class="texto precio-instalacion">Precio</span>
+            <span class="texto precio-instalacion">$15.00</span>
           </div>
         </div>
       </section>
