@@ -104,6 +104,23 @@
             resize: vertical;
             min-height: 80px;
         }
+        .form-row {
+            display: flex;
+            gap: 20px; 
+          }
+
+        .form-column {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          @media (max-width: 400px) {
+          .form-row {
+              flex-direction: column; 
+              }
+           }
     </style>
 <body>
     <header>
@@ -132,6 +149,8 @@
       <main>
         <section>
             <form id="formulario" onsubmit="return validarRegistro()" >
+              <div class="form-row">
+                <div class="form-column">
                 <div>
                     <label for="nombre">Nombre de la herramienta:</label><br>
                     <input type="text" id="nombre" name="nombre" >
@@ -152,7 +171,8 @@
                     <label for="cantidad">Cantidad disponible:</label><br>
                     <input type="number" id="cantidad" name="cantidad" >
                 </div>
-                  
+              </div>
+              <div class="form-column">
                 <div>
                     <label for="fecha">Fecha de adquisición:</label><br>
                     <input type="date" id="fecha" name="fecha" >
@@ -172,7 +192,8 @@
                         Requiere mantenimiento
                     </label>
                 </div>
-            
+              </div>
+            </div>
                 <div>
                     <label for="Descripción">Descripción adicional:</label><br>
                     <textarea id="Descripción" name="Descripción" rows="5"></textarea>
