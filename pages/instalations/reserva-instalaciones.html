@@ -93,6 +93,22 @@
         border: 1px solid rgba(0, 0, 0, 0.1);
       }
 
+      .error {
+        color: red;
+        font-size: 0.8rem;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 5px;
+      }
+
+      .input-error {
+        border: 1px solid red;
+      }
+
+      .input-error::placeholder {
+        color: red;
+      }
+
       textarea {
         width: 100%;
         height: 90px;
@@ -104,9 +120,10 @@
         border: 1px solid rgba(0, 0, 0, 0.1);
       }
 
-      .checkbox-grupo {
+      .radio-grupo {
         display: flex;
         align-items: center;
+        justify-content: left;
         gap: 10px;
         padding-left: 10px;
       }
@@ -218,6 +235,7 @@
               id="nombre"
               name="nombre"
             />
+            <span id="nombre-error" class="error"></span>
 
             <label for="telefono">Teléfono</label>
             <input
@@ -227,30 +245,43 @@
               name="telefono"
               maxlength="10"
             />
+            <span id="telefono-error" class="error"></span>
 
-            <div class="checkbox-grupo">
-              <input
-                style="
-                  display: inline-block;
-                  width: auto;
-                  height: auto;
-                  margin: 0px;
-                "
-                type="checkbox"
-                value="miembro"
-                name="miembro"
-              />
-              <label> ¿Es un miembro de la comunidad?</label>
+            <label>¿Es un miembro de la comunidad?</label>
+            <div class="radio-grupo">
+              <div style="display: flex; margin-right: 10px">
+                <input
+                  style="width: auto; height: auto; margin: 0px 10px"
+                  type="radio"
+                  id="miembro-si"
+                  name="miembro"
+                  value="si"
+                />
+                <label for="miembro-si">Sí</label>
+              </div>
+              <div style="display: flex; margin-left: 10px">
+                <input
+                  style="width: auto; height: auto; margin: 0px 10px"
+                  type="radio"
+                  id="miembro-no"
+                  name="miembro"
+                  value="no"
+                />
+                <label for="miembro-no">No</label>
+              </div>
             </div>
+            <span id="miembro-error" class="error"></span>
           </fieldset>
 
           <fieldset>
             <h3 class="subtitulos">Fecha de la reserva</h3>
             <label for="fecha-desde">Desde</label>
             <input type="date" id="fecha-desde" name="fecha-desde" />
+            <span id="fechaD-error" class="error"></span>
 
             <label for="fecha-hasta">Hasta</label>
             <input type="date" id="fecha-hasta" name="fecha-hasta" />
+            <span id="fechaH-error" class="error"></span>
           </fieldset>
 
           <fieldset>
@@ -264,6 +295,7 @@
                 id="personas"
                 name="personas"
               />
+              <span id="personas-error" class="error"></span>
 
               <label for="proposito">Proposito de la reserva</label>
               <select name="proposito" id="proposito" class="propositos">
@@ -273,6 +305,7 @@
                 <option value="conferencia">Conferencia</option>
                 <option value="otro">Otro</option>
               </select>
+              <span id="proposito-error" class="error"></span>
             </div>
 
             <label for="notas">Datos adicionales (opcional)</label>
@@ -281,18 +314,22 @@
               name="notas"
               placeholder="Agregue información adicional (opcional)"
             ></textarea>
+            <span id="notas-error" class="error"></span>
           </fieldset>
           <fieldset class="contenedor-botones">
             <button type="reset" class="boton-mediano">Cancelar</button>
-            <button type="submit" class="boton-mediano">Reservar</button>
+            <button type="submit" class="boton-mediano" id="btn">
+              Reservar
+            </button>
           </fieldset>
         </form>
       </section>
       <section class="contenedor-informacion">
-        <h3 class="subtitulos">Salón Comunal</h3>
+        <h3 class="subtitulos instalaciones-nombre"></h3>
         <img
-          src="https://www.fundacionheres.org/wp-content/uploads/2021/02/1.jpg"
-          alt="saloncomunal"
+          id="instalaciones-imagen"
+          src=""
+          alt=""
           style="
             object-fit: cover;
             border-radius: 8px;

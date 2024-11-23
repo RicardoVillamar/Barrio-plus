@@ -94,12 +94,13 @@
         height: 100px;
         object-fit: cover;
         border-radius: 8px;
+        transition: ease-in 0.2s;
       }
 
       .imagen-tabla:hover {
         cursor: pointer;
         transform: scale(1.02);
-        transition: ease 0.3s;
+        transition: ease-out 0.3s;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       }
 
@@ -398,7 +399,7 @@
                     alt="saloncomunal"
                     class="imagen-tabla"
                   />
-                  <p class="texto">Salón comunal</p>
+                  <p class="texto nombre-instalacion">Salón comunal</p>
                 </td>
                 <td>
                   <span class="texto">Grande</span>
@@ -408,7 +409,7 @@
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
-                  <button class="boton-mediano">Reservar</button>
+                  <button class="boton-mediano reserva">Reservar</button>
                 </td>
               </tr>
               <!-- Instalación 2 -->
@@ -420,7 +421,7 @@
                     alt="areadeportiva"
                     class="imagen-tabla"
                   />
-                  <p class="texto">Área deportiva</p>
+                  <p class="texto nombre-instalacion">Área deportiva</p>
                 </td>
 
                 <td>
@@ -431,7 +432,7 @@
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
-                  <button class="boton-mediano">Reservar</button>
+                  <button class="boton-mediano reserva">Reservar</button>
                 </td>
               </tr>
               <!-- Instalación 3 -->
@@ -443,7 +444,7 @@
                     alt="gimnasio"
                     class="imagen-tabla"
                   />
-                  <p class="texto">Gimnasio comunitario</p>
+                  <p class="texto nombre-instalacion">Gimnasio comunitario</p>
                 </td>
 
                 <td>
@@ -454,7 +455,7 @@
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
-                  <button class="boton-mediano">Reservar</button>
+                  <button class="boton-mediano reserva">Reservar</button>
                 </td>
               </tr>
               <!-- Instalación 4 -->
@@ -466,7 +467,7 @@
                     alt="piscina"
                     class="imagen-tabla"
                   />
-                  <p class="texto">Piscina comunitaria</p>
+                  <p class="texto nombre-instalacion">Piscina comunitaria</p>
                 </td>
                 <td>
                   <span class="texto">Pequeño</span>
@@ -476,7 +477,7 @@
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
-                  <button class="boton-mediano">Reservar</button>
+                  <button class="boton-mediano reserva">Reservar</button>
                 </td>
               </tr>
               <!-- Instalación 5 -->
@@ -488,7 +489,7 @@
                     alt="biblioteca"
                     class="imagen-tabla"
                   />
-                  <p class="texto">Biblioteca comunitaria</p>
+                  <p class="texto nombre-instalacion">Biblioteca comunitaria</p>
                 </td>
                 <td>
                   <span class="texto">Pequeño</span>
@@ -498,7 +499,7 @@
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
-                  <button class="boton-mediano">Reservar</button>
+                  <button class="boton-mediano reserva">Reservar</button>
                 </td>
               </tr>
               <!-- Instalación 6 -->
@@ -510,7 +511,7 @@
                     alt="parque"
                     class="imagen-tabla"
                   />
-                  <p class="texto">Parque infantil</p>
+                  <p class="texto nombre-instalacion">Parque infantil</p>
                 </td>
                 <td>
                   <span class="texto">Grande</span>
@@ -520,7 +521,7 @@
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
-                  <button class="boton-mediano">Reservar</button>
+                  <button class="boton-mediano reserva">Reservar</button>
                 </td>
               </tr>
               <!-- Instalación 7 -->
@@ -532,7 +533,7 @@
                     alt="salarecreativa"
                     class="imagen-tabla"
                   />
-                  <p class="texto">Sala recreativa</p>
+                  <p class="texto nombre-instalacion">Sala recreativa</p>
                 </td>
                 <td>
                   <span class="texto">Mediano</span>
@@ -542,7 +543,7 @@
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
-                  <button class="boton-mediano">Reservar</button>
+                  <button class="boton-mediano reserva">Reservar</button>
                 </td>
               </tr>
             </tbody>
@@ -575,5 +576,14 @@
         <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
       </section>
     </footer>
+    <script>
+      const reserva = document.querySelectorAll(".reserva");
+      reserva.forEach((e) => {
+        e.addEventListener("click", () => {
+          window.location.href =
+            "/pages/instalations/reserva-instalaciones.html";
+        });
+      });
+    </script>
   </body>
 </html>
