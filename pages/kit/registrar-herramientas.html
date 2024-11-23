@@ -131,15 +131,15 @@
          <h1>Registro de Herramientas</h1>
       <main>
         <section>
-            <form id="formulario">
+            <form id="formulario" onsubmit="return validarRegistro()" >
                 <div>
-                    <label for="tool-name">Nombre de la herramienta:</label><br>
-                    <input type="text" id="tool-name" name="tool-name" required>
+                    <label for="nombre">Nombre de la herramienta:</label><br>
+                    <input type="text" id="nombre" name="nombre" >
                 </div>
             
                 <div>
-                    <label for="tool-type">Tipo de herramienta:</label><br>
-                    <select id="tool-type" name="tool-type" required>
+                    <label for="tipo">Tipo de herramienta:</label><br>
+                    <select id="tipo" name="tipo" >
                         <option value="">Seleccione un tipo</option>
                         <option value="herramienta de jardín">Herramienta de jardín</option>
                         <option value="mesa">Mesa</option>
@@ -149,33 +149,33 @@
                 </div>
             
                 <div>
-                    <label for="tool-quantity">Cantidad disponible:</label><br>
-                    <input type="number" id="tool-quantity" name="tool-quantity" min="0" required>
+                    <label for="cantidad">Cantidad disponible:</label><br>
+                    <input type="number" id="cantidad" name="cantidad" >
                 </div>
                   
                 <div>
-                    <label for="acquisition-date">Fecha de adquisición:</label><br>
-                    <input type="date" id="acquisition-date" name="acquisition-date" required>
+                    <label for="fecha">Fecha de adquisición:</label><br>
+                    <input type="date" id="fecha" name="fecha" >
                 </div>
 
                 <div>
                     <label>Estado de la herramienta:</label><br>
-                    <input type="radio" id="tool-state-new" name="tool-state" value="nueva" required>
-                    <label for="tool-state-new">Nueva</label>
-                    <input type="radio" id="tool-state-used" name="tool-state" value="usada">
-                    <label for="tool-state-used">Usada</label>
+                    <input type="radio" id="Estado" name="Estado1" value="nueva" >
+                    <label for="Estado" style="display: inline-block; margin-right: 20px;">Nueva</label>
+                    <input type="radio" id="Estado" name="Estado2" value="usada">
+                    <label for="Estado"style="display: inline-block;">Usada</label>
                 </div>
             
                 <div>
-                    <label for="tool-maintenance"><br>
-                        <input type="checkbox" id="tool-maintenance" name="tool-maintenance" value="required">
+                    <label for="mantenimiento"><br>
+                        <input type="checkbox" id="mantenimiento" name="mantenimiento" >
                         Requiere mantenimiento
                     </label>
                 </div>
             
                 <div>
-                    <label for="tool-description">Descripción adicional:</label><br>
-                    <textarea id="tool-description" name="tool-description" rows="4"></textarea>
+                    <label for="Descripción">Descripción adicional:</label><br>
+                    <textarea id="Descripción" name="Descripción" rows="5"></textarea>
                 </div>
             
                 <div>
@@ -211,6 +211,9 @@
           <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
         </section>
       </footer>
-
+      <script
+      type="text/javascript"
+      src="/pages/kit/validar-registro.js"
+    ></script>
 </body>
 </html>
