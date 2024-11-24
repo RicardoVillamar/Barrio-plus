@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Autor" content="Roitman Andres Palacios Herdoiza" />
     <title>Historial de Reservas</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
 
     <style>
       * {
@@ -115,18 +115,18 @@
   <body>
     <header>
       <nav id="navbar">
-        <a href="/pages/homes/index.html">
-          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
-            <a href="/pages/instalations/instalaciones.html">Instalaciones</a>
+            <a href="../instalations/instalaciones.html">Instalaciones</a>
           </li>
-          <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
+          <li><a href="../kit/herramientas.html">Herramientas</a></li>
           <li>
-            <a href="/pages/record/historial.html" class="activo">Historial</a>
+            <a href="../record/historial.html" class="activo">Historial</a>
           </li>
-          <li><a href="/pages/about/nosotros.html">Nosotros</a></li>
+          <li><a href="../about/nosotros.html">Nosotros</a></li>
           <li>
             <a href="#" class="user">
               <span class="material-symbols-outlined"> account_circle </span>
@@ -137,8 +137,8 @@
     </header>
     <section>
       <h1 class="titulos" style="text-align: center">Historial de Reservas</h1>
-      <label for="buscador-nombre" class=" titulos">Buscar:</label>
-      <input type="text"placeholder="Escribe el nombre aquí" />
+      <label for="buscador-nombre" class="titulos">Buscar:</label>
+      <input type="text" placeholder="Escribe el nombre aquí" />
       <button>Buscar</button>
       <h2 class="subtitulos" style="padding-left: 20px">
         Historial de Reservas Activas
@@ -351,31 +351,31 @@
     </footer>
 
     <script>
-      
-      const inputBusqueda = document.querySelector('input[placeholder="Escribe el nombre aquí"]');
-      const botonBuscar = document.querySelector('button');
-      const filasTabla = document.querySelectorAll('tbody tr'); 
+      const inputBusqueda = document.querySelector(
+        'input[placeholder="Escribe el nombre aquí"]'
+      );
+      const botonBuscar = document.querySelector("button");
+      const filasTabla = document.querySelectorAll("tbody tr");
 
-     
-      botonBuscar.addEventListener('click', () => {
-        const nombreBuscado = inputBusqueda.value.toLowerCase().trim(); 
-        let encontrado = false; 
+      botonBuscar.addEventListener("click", () => {
+        const nombreBuscado = inputBusqueda.value.toLowerCase().trim();
+        let encontrado = false;
 
-        
-        filasTabla.forEach(fila => {
-          const nombreCelda = fila.querySelector('td:nth-child(2)').textContent.toLowerCase(); 
+        filasTabla.forEach((fila) => {
+          const nombreCelda = fila
+            .querySelector("td:nth-child(2)")
+            .textContent.toLowerCase();
 
           if (nombreCelda.includes(nombreBuscado)) {
-            fila.style.display = ''; 
-            encontrado = true; 
+            fila.style.display = "";
+            encontrado = true;
           } else {
-            fila.style.display = 'none'; 
+            fila.style.display = "none";
           }
         });
 
-        
         if (!encontrado) {
-          alert('El nombre ingresado no está registrado.');
+          alert("El nombre ingresado no está registrado.");
         }
       });
     </script>

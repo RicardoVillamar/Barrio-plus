@@ -2,18 +2,18 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="author" content="Freire Chavez Jose Andres" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Freire Chavez Jose Andres">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
-    />
+    >
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
-    />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    >
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Nosotros</title>
     <style>
       /**Selector de Clase**/
@@ -81,6 +81,8 @@
       input {
         border: 1px solid black;
         border-radius: 6px;
+        width: 300px;
+        padding: 5px;
       }
 
       /**Selector de Atributo**/
@@ -100,10 +102,13 @@
       /**Selector Combinatorio de Descendientes**/
       .campo-asunto textarea {
         font-size: 0.8rem;
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 300px;
+        height: 100px;
+        padding: 5px;
+        resize: none;
       }
-
-      /**Seccion Nosotros**/
-      /**Selector de ID**/
 
       /**Selector de Descendientes**/
       #acercaDenosotros blockquote {
@@ -186,10 +191,15 @@
       /**Selector de ID**/
       #listaValores {
         margin-left: 5px;
-        margin-right: 30px;
+        margin-right: 40px;
         display: flex;
         align-items: flex-start;
-        gap: 30px;
+        gap: 40px;
+      }
+
+      #listaValores img{
+        width: 300px;
+        height: 200px;
       }
 
       #listaValores img:hover,
@@ -211,12 +221,15 @@
         border-radius: 1px;
       }
 
-      .esconderImagen img{
+      .infoIntegrante {
         display: none;
       }
 
-      .infoIntegrante{
-        display: none;
+      .error {
+        display: block;
+        margin-top: 3px;
+        font-size: 0.7rem;
+        color: #c62b09;
       }
 
       @media (max-width: 1024px) {
@@ -303,17 +316,17 @@
   <body>
     <header>
       <nav id="navbar">
-        <a href="/pages/homes/index.html">
-          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
-            <a href="/pages/instalations/instalaciones.html">Instalaciones</a>
+            <a href="../instalations/instalaciones.html">Instalaciones</a>
           </li>
-          <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
-          <li><a href="/pages/record/historial.html">Historial</a></li>
+          <li><a href="../kit/herramientas.html">Herramientas</a></li>
+          <li><a href="../record/historial.html">Historial</a></li>
           <li>
-            <a href="/pages/about/nosotros.html" class="activo">Nosotros</a>
+            <a href="../about/nosotros.html" class="activo">Nosotros</a>
           </li>
           <li>
             <a href="#" class="user">
@@ -338,8 +351,11 @@
           <strong>respeto</strong> y
           <strong>responsabilidad</strong> compartida. Conoce más sobre nuestra
           <a class="enlaceSeccion" href="#historia">historia</a> y
-          <a class="enlaceSeccion" href="#valores">valores</a>. Una de las
-          frases que guía nuestros objetivos es del ex presidente Samora Machel:
+          <a class="enlaceSeccion" href="#valores">valores</a>. Si buscas
+          realizar una publicación visita el siguiente
+          <a class="enlaceSeccion" href="form-Publicaciones.html">enlace</a>.
+          Una de las frases que guía nuestros objetivos es del ex presidente
+          Samora Machel:
         </p>
         <blockquote
           cite="https://psicologiaymente.com/reflexiones/frases-colaboracion"
@@ -376,7 +392,7 @@
           <h2 class="titulos">Integrantes</h2>
           <article class="tarjeta col-md-4">
             <img
-              src="/assets/img/grupo/villamar.png"
+              src="../../assets/img/grupo/villamar.png"
               alt="villamar"
               class="tarjeta-imagen"
             />
@@ -384,14 +400,18 @@
               <p class="tarjeta-titulo">Villamar Minuche Ricardo Daniel</p>
               <span class="integrante"> </span>
               <p class="texto">
-                Página html instalaciones y formulario para reservar instalaciones. 
+                <b>Especialización: </b><br>Diseñador UX/UI busca crear
+                interfaces gráficas intuitivas para todas las personas.<br><b
+                  >Aportaciones: </b
+                ><br>Página html instalaciones y formulario para reservar
+                instalaciones.
               </p>
             </div>
           </article>
 
           <article class="tarjeta col-md-4">
             <img
-              src="/assets/img/grupo/quinionez.png"
+              src="../../assets/img/grupo/quinionez.png"
               alt="quinionez"
               class="tarjeta-imagen"
             />
@@ -399,21 +419,31 @@
               <p class="tarjeta-titulo">Quiñonez Castrellón Anthony Joel</p>
               <span class="integrante"> </span>
               <p class="texto">
-                Página html herramientas y formulario para reservar herramientas. 
+                <b>Especialización: </b><br />Gestión de base de datos
+                relacionales y no relacionales como Oracle y MongoDB.<br><b
+                  >Aportaciones:
+                </b>
+                Página html herramientas y formulario para reservar
+                herramientas.
               </p>
             </div>
           </article>
 
           <article class="tarjeta col-md-4">
             <img
-              src="/assets/img/grupo/palacios.png"
+              src="../../assets/img/grupo/palacios.png"
               alt="palacios"
               class="tarjeta-imagen"
             />
             <div class="infoIntegrante">
               <p class="tarjeta-titulo">Palacios Herdoiza Roitman Andres</p>
               <span class="integrante"> </span>
-              <p class="texto">Página html historial.</p>
+              <p class="texto">
+                <b>Especialización: </b><br>Recolección y análisis de datos
+                usando python, PowerBI y RStudio.<br><b>Aportaciones: </b
+                ><br>
+                Página html historial y formulario para registrar herramientas.
+              </p>
             </div>
           </article>
         </section>
@@ -421,27 +451,36 @@
         <section class="row">
           <article class="tarjeta col-md-6">
             <img
-              src="/assets/img/grupo/larrea.png"
+              src="../../assets/img/grupo/larrea.png"
               alt="larrea"
               class="tarjeta-imagen"
             />
             <div class="infoIntegrante">
               <p class="tarjeta-titulo">Larrea Rosales Alejandro Sebastián</p>
               <span class="integrante"> </span>
-              <p class="texto">Página html home.</p>
+              <p class="texto">
+                <b>Especialización: </b><br>Desarrollador frontend usando
+                JavaScript, HTML5, React.js y Angular.<br><b>Aportaciones: </b
+                ><br>
+                Página html home y formulario de contribuciones.
+              </p>
             </div>
           </article>
 
           <article class="tarjeta col-md-6">
             <img
-              src="/assets/img/grupo/freire.png"
+              src="../../assets/img/grupo/freire.png"
               alt="freire"
               class="tarjeta-imagen"
             />
             <div class="infoIntegrante">
               <p class="tarjeta-titulo">Freire Chávez José Andrés</p>
               <span class="integrante"> </span>
-              <p class="texto">Página html nosotros.</p>
+              <p class="texto">
+                <b>Especialización: </b><br>Desarrollador backend usando
+                Node.js, Django y Laravel.<br><b>Aportaciones: </b><br>
+                Página html nosotros y formulario de publicaciones.
+              </p>
             </div>
           </article>
         </section>
@@ -528,8 +567,7 @@
               <p class="texto">
                 <b>Sostenibilidad:</b> Queremos optimizar el uso de los
                 recursos, promoviendo el
-                <mark>cuidado del medio ambiente</mark> y evitando el
-                desperdicio.
+                <mark>cuidado del medio ambiente</mark> y evitar el desperdicio.
               </p>
             </li>
           </ul>
@@ -543,9 +581,13 @@
 
       <section id="contacto">
         <h2 class="titulos">Contáctanos</h2>
-        <form class="form_contacto">
+        <form 
+          novalidate 
+          class="form_contacto" 
+          onsubmit="return validarFormContacto()"
+        >
           <div class="campo-nombre">
-            <label for="nombre">Nombres:</label><br />
+            <label for="nombre">Nombres:</label><br>
             <input
               type="text"
               id="nombre"
@@ -555,7 +597,7 @@
           </div>
 
           <div class="campo-apellido">
-            <label for="apellidos">Apellidos:</label><br />
+            <label for="apellidos">Apellidos:</label><br>
             <input
               type="text"
               id="apellidos"
@@ -565,7 +607,7 @@
           </div>
 
           <div class="campo-correo">
-            <label for="correo">Correo:</label><br />
+            <label for="correo">Correo:</label><br>
             <input
               type="email"
               id="correo"
@@ -575,7 +617,7 @@
           </div>
 
           <div class="campo-asunto">
-            <label for="asunto">Asunto:</label><br />
+            <label for="asunto">Asunto:</label><br>
             <textarea
               id="asunto"
               name="asunto"
@@ -589,25 +631,110 @@
         </form>
       </section>
       <script>
-        let arrIntegrantes = document.querySelectorAll('.tarjeta');
-        arrIntegrantes.forEach((integrante)=>{
-            integrante.addEventListener("mouseenter", cambiarEstiloInfo);
-            integrante.addEventListener("mouseout", cambiarEstiloInfo);
-          }
-        );
-        
-        function cambiarEstiloInfo(evento){
-          let tarjeta = evento.target;
-          let imgIntegrante = tarjeta.querySelector('img');
-          let infoIntegrante = tarjeta.querySelector('.infoIntegrante');
-          if(evento.type === "mouseenter"){
+        let arrIntegrantes = document.querySelectorAll(".tarjeta");
+        arrIntegrantes.forEach((integrante) => {
+          integrante.addEventListener("mouseover", cambiarEstiloInfo);
+          integrante.addEventListener("mouseleave", cambiarEstiloInfo);
+        });
+
+        function cambiarEstiloInfo(evento) {
+          let tarjeta = evento.currentTarget;
+          let imgIntegrante = tarjeta.querySelector("img");
+          let infoIntegrante = tarjeta.querySelector(".infoIntegrante");
+          if (evento.type === "mouseover") {
             imgIntegrante.style.display = "none";
             infoIntegrante.style.display = "block";
+            infoIntegrante.style.padding = "10px";
             infoIntegrante.style.fontSize = "0.9rem";
-          }else if(evento.type === "mouseout"){
+          } else if (evento.type === "mouseleave") {
             imgIntegrante.style.display = "block";
             infoIntegrante.style.display = "none";
           }
+        }
+
+        arrUrlsImagenes = [
+          "https://image.isu.pub/180709153603-f9cf09ffc6cae7faafdba9f890bed4a6/jpg/page_1_social.jpg",
+          "https://blogs.iadb.org/ciudades-sostenibles/wp-content/uploads/sites/17/2020/05/002_ECOELCE.jpg",
+          "https://www.rededuca.net/sites/default/files/2023-08/Dise%C3%B1o%20sin%20t%C3%ADtulo%20%2815%29.jpg",
+          "https://d2k7w3fmrpj0w4.cloudfront.net/advices/photos/000/000/837/medium/38bfa332a8c1be5fd2cfff58f70f6c7e09bc4a7c.webp?1704485576"
+        ];
+
+        let indice = 0;
+        function cambiarImagen(){
+          indice++;
+          if(indice >= arrUrlsImagenes.length){
+            indice = 0;
+          }
+          let imagenValores = document.querySelector("#listaValores img");
+          imagenValores.src = arrUrlsImagenes[indice];
+        }
+        setInterval(cambiarImagen, 1500);
+
+        //Validando form de contacto
+        function validarFormContacto(){
+          eliminarMensajes();
+          let esValido = true;
+          let validarCaracteres = /^[a-zA-Z\s]+$/;
+    
+          let nombre = document.getElementById("nombre");
+          if(nombre.value === ""){
+              cargarMensaje("*El nombre no puede estar vacío", nombre);
+              esValido = false;
+          }else if(nombre.value.length < 5){
+              cargarMensaje("*El nombre debe tener minimo 5 caracteres", nombre);
+              esValido = false;
+          }else if(!validarCaracteres.test(nombre.value)){
+              cargarMensaje("*El nombre solo puede tener letras", nombre);
+              esValido = false;
+          }
+
+          let apellido = document.getElementById("apellidos");
+          if(apellido.value === ""){
+              cargarMensaje("*El apellido no puede estar vacío", apellido);
+              esValido = false;
+          }else if(apellido.value.length < 5){
+              cargarMensaje("*El apellido debe tener minimo 5 caracteres", apellido);
+              esValido = false;
+          }else if(!validarCaracteres.test(apellido.value)){
+              cargarMensaje("*El apellido solo puede tener letras", apellido);
+              esValido = false;
+          }
+
+          let correo = document.querySelector('input[name="correo"]');
+          let correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if(correo.value === ""){
+              cargarMensaje("*El correo electrónico es requerido", correo);
+              esValido = false;
+          }else if(!correoRegex.test(correo.value)){
+              cargarMensaje("*El correo electrónico no es válido", correo);
+              esValido = false;
+          }
+
+          let asunto = document.querySelector('textarea[name="asunto"]');
+          if(asunto.value === ""){
+              cargarMensaje("*El asunto no puede estar vacío", asunto);
+              esValido = false;
+          }else if(asunto.value.length < 15){
+              cargarMensaje("*El asunto debe tener mínimo 15 caracteres", asunto);
+              esValido = false;
+          }
+          return esValido;
+        }
+
+        function cargarMensaje(mensajeError, elemento){
+          elemento.focus();
+          let span = document.createElement("span");
+          span.textContent = mensajeError;
+          span.classList.add("error");
+          elemento.parentNode.appendChild(span);
+        }
+
+        function eliminarMensajes(){
+            let arrSpan = document.querySelectorAll(".error")
+            arrSpan.forEach((span)=>{
+                    span.remove();
+                }
+            );
         }
       </script>
     </main>

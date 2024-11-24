@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Quiñonez Castrellón Anthony Joel" />
     <title>Reserva de Herramientas</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
     <style>
-       main {
+      main {
         display: grid;
-        grid-template-columns: 2fr 2fr; 
+        grid-template-columns: 2fr 2fr;
         gap: 30px;
         padding: 20px;
       }
-      
+
       .info {
-        grid-column: span 1; 
+        grid-column: span 1;
         background-color: white;
         border-radius: 12px;
         padding: 1.5rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-      
+
       .herra {
         grid-column: span 1;
         background-color: white;
@@ -35,13 +36,13 @@
         padding: 1.5rem;
         border: 1px solid rgba(0, 0, 0, 0.1);
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 200%; 
+        max-width: 200%;
         height: 250px;
-        margin: 0 auto; 
+        margin: 0 auto;
       }
-      
-      .herra img{
-        object-fit:contain;
+
+      .herra img {
+        object-fit: contain;
         border-radius: 8px;
         width: 100%;
         height: 200px;
@@ -53,7 +54,7 @@
         width: 100%;
         border: 1px solid rgba(0, 0, 0, 0.1);
       }
-      
+
       textarea {
         resize: none;
         padding: 10px;
@@ -68,13 +69,13 @@
         gap: 10px;
         margin-top: 10px;
       }
-  
+
       .detalles div {
         display: grid;
-        grid-template-columns: 1fr auto; 
+        grid-template-columns: 1fr auto;
         align-items: center;
       }
-  
+
       .detalles p {
         margin: 0;
         font-weight: bold;
@@ -86,7 +87,6 @@
         margin-left: 310px;
         padding-left: 150px;
       }
-  
 
       h3 ~ fieldset {
         margin: 1rem;
@@ -94,26 +94,26 @@
         padding-right: 1.5rem;
         padding-left: 0px;
       }
-      
-      .capaci{
+
+      .capaci {
         width: auto;
         height: auto;
         display: inline-block;
         margin: 0px;
       }
-      
+
       .check {
         display: flex;
         align-items: center;
         gap: 10px;
       }
-      
+
       .botones {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
       }
-      
+
       label {
         padding: 10px 0px;
         display: block;
@@ -129,31 +129,33 @@
         }
       }
 
-       @media (max-width: 480px) {
+      @media (max-width: 480px) {
         main {
           grid-template-columns: 1fr;
         }
 
-        .herra,.info {
+        .herra,
+        .info {
           grid-column: span 1;
         }
       }
-
     </style>
   </head>
   <body>
     <header>
       <nav id="navbar">
-        <a href="/pages/homes/index.html">
-          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
-            <a href="/pages/instalations/instalaciones.html">Instalaciones</a>
+            <a href="../instalations/instalaciones.html">Instalaciones</a>
           </li>
-          <li><a href="/pages/kit/herramientas.html" class="activo">Herramientas</a></li>
-          <li><a href="/pages/record/historial.html">Historial</a></li>
-          <li><a href="/pages/about/nosotros.html">Nosotros</a></li>
+          <li>
+            <a href="../kit/herramientas.html" class="activo">Herramientas</a>
+          </li>
+          <li><a href="../record/historial.html">Historial</a></li>
+          <li><a href="../about/nosotros.html">Nosotros</a></li>
           <li>
             <a href="#" class="user">
               <span class="material-symbols-outlined"> account_circle </span>
@@ -162,60 +164,81 @@
         </ul>
       </nav>
     </header>
-    <h1 class="titulos" style=" margin: 1rem; padding: 0px 10px;">Reservación de Herramientas</h1>
+    <h1 class="titulos" style="margin: 1rem; padding: 0px 10px">
+      Reservación de Herramientas
+    </h1>
     <main>
       <section class="info">
-        <form id="formu-herra" onsubmit="return validarFormulario()"
-        >
+        <form id="formu-herra" onsubmit="return validarFormulario()">
           <h3 class="subtitulos">Reservación</h3>
 
           <fieldset>
             <h3 class="subtitulos">Información personal</h3>
-            
+
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre"
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
               placeholder="Ingrese su nombre completo"
             />
 
             <label for="apellido">Apellidos</label>
-            <input type="text" id="apellido" name="apellido"
+            <input
+              type="text"
+              id="apellido"
+              name="apellido"
               placeholder="Ingrese sus Apellidos"
             />
 
             <label for="correo">Correo Electronico</label>
-            <input type="text" id="correo" name="correo"
+            <input
+              type="text"
+              id="correo"
+              name="correo"
               placeholder="Ingrese su Correo Electronico"
             />
           </fieldset>
-<!--- ----------------------------------------->
+          <!--- ----------------------------------------->
 
           <fieldset>
             <h3 class="subtitulos">Detalles de la reserva</h3>
             <div>
               <label for="cant">Cantidad</label>
-              <input type="number" id="cant" name="cant" value="cant" 
-                placeholder="Cantidad a reservar" min="1"/>
+              <input
+                type="number"
+                id="cant"
+                name="cant"
+                value="0"
+                placeholder="Cantidad a reservar"
+                min="1"
+              />
             </div>
 
             <label for="fecha-inicio">Inicio</label>
-              <input type="date" id="fecha-inicio" name="fecha-inicio" value="fecha-inicio" />
-  
+            <input type="date" id="fecha-inicio" name="fecha-inicio" />
+
             <label for="fecha-final">Fin</label>
-              <input type="date" id="fecha-final" name="fecha-final" />
+            <input type="date" id="fecha-final" name="fecha-final" />
 
-              <label for="uso">Propósito del uso</label>
-              <textarea id="uso" name="uso"
+            <label for="uso">Propósito del uso</label>
+            <textarea
+              id="uso"
+              name="uso"
               placeholder="Agregue el Propósito del uso"
-              ></textarea>
+            ></textarea>
 
-              <div class="check">
-                  <input class ="capaci" type="checkbox" name="capacita"
-                  value="capacita"
-                  />
-                  <label> ¿Requiere capacitación para usar la herramienta?</label>
-              </div>
-            </fieldset>
-<!-------------------------------->
+            <div class="check">
+              <input
+                class="capaci"
+                type="checkbox"
+                name="capacita"
+                value="capacita"
+              />
+              <label> ¿Requiere capacitación para usar la herramienta?</label>
+            </div>
+          </fieldset>
+          <!-------------------------------->
           <fieldset class="botones">
             <button type="reset" class="boton-mediano">Cancelar</button>
             <button type="submit" class="boton-mediano">Reservar</button>
@@ -224,17 +247,19 @@
       </section>
       <section class="herra">
         <h3 class="subtitulos">Pala de Jardin</h3>
-      <img src="https://www.megamaxi.com/wp-content/uploads/2021/09/items2Figm2F1000x10002F7501206653180-1-11.jpg"
-        alt="Pala de Jardin"/>
-      <div class="detalles">
-        <div>
-          <p class="texto">Precio:</p>
-          <span class="texto">$15.00</span>
+        <img
+          src="https://www.megamaxi.com/wp-content/uploads/2021/09/items2Figm2F1000x10002F7501206653180-1-11.jpg"
+          alt="Pala de Jardin"
+        />
+        <div class="detalles">
+          <div>
+            <p class="texto">Precio:</p>
+            <span class="texto">$15.00</span>
+          </div>
         </div>
-      </div>
-    </section>
-    
-<!--- ----------------------------------------->
+      </section>
+
+      <!--- ----------------------------------------->
     </main>
     <footer>
       <section id="redes-sociales">
@@ -260,9 +285,6 @@
         <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
       </section>
     </footer>
-        <script
-        type="text/javascript"
-        src="/pages/kit/valid.js"
-      ></script>
+    <script type="text/javascript" src="valid.js"></script>
   </body>
 </html>
