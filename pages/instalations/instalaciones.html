@@ -277,7 +277,7 @@
         <section>
           <p class="texto">Estado</p>
           <select
-            id="disponibilidad"
+            id="estado"
             style="width: 90%; height: 25px; border-radius: 4px"
           >
             <option value="todos">Todos</option>
@@ -290,26 +290,26 @@
           <ul>
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="todos" />
                 Todos
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="grande" />
                 Grande
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="mediano" />
                 Mediano
               </label>
             </li>
 
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="pequeño" />
                 Pequeño
               </label>
             </li>
@@ -320,31 +320,31 @@
           <ul>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="todos" />
                 Todos
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="aire" />
                 Aire libre
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="aula" />
                 Aula
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="salon" />
                 Salón
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="taller" />
                 Taller
               </label>
             </li>
@@ -405,7 +405,7 @@
                   <span class="texto tam-instalacion">Grande</span>
                 </td>
                 <td>
-                  <span class="texto">Salón</span>
+                  <span class="texto">Salon</span>
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
@@ -539,7 +539,7 @@
                   <span class="texto tam-instalacion">Mediano</span>
                 </td>
                 <td>
-                  <span class="texto">Salón</span>
+                  <span class="texto">Aula</span>
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
@@ -579,10 +579,10 @@
     <script>
       // Buscar en la tabla
       const buscarBarra = document.getElementById("buscar-barra");
-      const tabla = document.querySelector("table tbody");
+      const tablaBody = document.querySelector("table tbody");
       buscarBarra.addEventListener("input", () => {
         const datoBusqueda = buscarBarra.value.toLowerCase();
-        const filas = tabla.querySelectorAll("tr");
+        const filas = tablaBody.querySelectorAll("tr");
 
         filas.forEach((fila) => {
           const nombreInstalacion = fila.querySelector(".nombre-instalacion");
@@ -594,6 +594,88 @@
               fila.style.display = "none";
             }
           }
+        });
+      });
+
+      //Filtrar por estado
+      const estado = document.getElementById("estado");
+      estado.addEventListener("change", () => {
+        const valor = estado.value;
+        const filas = tabla.querySelectorAll("tr");
+
+        filas.forEach((fila) => {
+          const estado = fila.querySelector("td span");
+          if (estado) {
+            if (valor === "todos") {
+              fila.style.display = "";
+            } else if (
+              valor === "libre" &&
+              estado.classList.contains("disponible")
+            ) {
+              fila.style.display = "";
+            } else if (
+              valor === "ocupado" &&
+              estado.classList.contains("no-disponible")
+            ) {
+              fila.style.display = "";
+            } else {
+              fila.style.display = "none";
+            }
+          }
+        });
+      });
+
+      // Filtrar por tamaño
+      const tamanios = document.querySelectorAll("input[name='tamanio']");
+      const tabla = document.querySelector("table");
+      tamanios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          const valor = document.querySelector(
+            "input[name='tamanio']:checked"
+          ).value;
+
+          const filas = tabla.querySelectorAll("tr");
+
+          filas.forEach((row) => {
+            const tamanioInstalacion = row.querySelector("td:nth-child(3)");
+
+            if (tamanioInstalacion) {
+              const tipo = tamanioInstalacion.textContent.toLowerCase();
+
+              if (valor === "todos") {
+                row.style.display = "";
+              } else if (tipo.includes(valor.toLowerCase())) {
+                row.style.display = "";
+              } else {
+                row.style.display = "none";
+              }
+            }
+          });
+        });
+      });
+
+      // Filtrar por tipo
+      const tipos = document.querySelectorAll("input[name='tipos']");
+      tipos.forEach((e) => {
+        e.addEventListener("change", () => {
+          const valor = document.querySelector(
+            "input[name='tipos']:checked"
+          ).value;
+          const filas = tabla.querySelectorAll("tr");
+
+          filas.forEach((fila) => {
+            const tipoInstalacion = fila.querySelector("td:nth-child(4)");
+            if (tipoInstalacion) {
+              const tipo = tipoInstalacion.textContent.toLowerCase();
+              if (valor === "todos") {
+                fila.style.display = "";
+              } else if (tipo.includes(valor.toLowerCase())) {
+                fila.style.display = "";
+              } else {
+                fila.style.display = "none";
+              }
+            }
+          });
         });
       });
 
