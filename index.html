@@ -108,29 +108,31 @@
         color: #4a4a4a;
       }
 
-      .imgNosotros{ /*agg*/
+      .imgNosotros {
+        /*agg*/
         position: relative;
         display: inline-block;
       }
 
-      .imgNosotros img{ /*agg*/
+      .imgNosotros img {
+        /*agg*/
         width: 100%;
         height: auto;
       }
 
-      .imgNosotros .lema{ /*agg*/
+      .imgNosotros .lema {
+        /*agg*/
         font-weight: bold;
-         position: absolute;      
-         color: #4a4a4a;
-         background-color: #a3b5c8;
-         padding: 10px;
-         border-radius: 5px;
-         text-align: center;
-         font-size: 1.2em;
-      }              
+        position: absolute;
+        color: #4a4a4a;
+        background-color: #a3b5c8;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-size: 1.2em;
+      }
 
       #publicacionesRecientes {
-
         padding: 10px;
         margin-top: 20px;
       }
@@ -361,8 +363,10 @@
 
     <section class="sobreNosotros">
       <div class="imgNosotros">
-        <img src="/assets/img/fotos/nosotros.png" alt="Nosotros" id="imgNos"/>
-        <div class="lema" style="display: none;">"Facilitando el acceso, fortaleciendo la comunidad"</div>
+        <img src="/assets/img/fotos/nosotros.png" alt="Nosotros" id="imgNos" />
+        <div class="lema" style="display: none">
+          "Facilitando el acceso, fortaleciendo la comunidad"
+        </div>
       </div>
       <div class="nosotros">
         <h3>Grupo 6</h3>
@@ -481,7 +485,7 @@
 
       <section id="lista-pie">
         <ul>
-          <li><a href="">Documentacion</a></li>
+          <li><a href="">Documentación</a></li>
           <li><a href="">Politicas de uso</a></li>
           <li><a href="">Terminos y condiciones</a></li>
           <li><a href="">Soporte Tecnico</a></li>
@@ -532,29 +536,29 @@
         }
       }
 
-        function cambiarEstilo3(evento){
-            if(evento.type==="mouseover"){                            
-             escalera.style.transform="scale(1.3)";                                     
-            }else if(evento.type==="mouseout"){                
-             escalera.style.transform="scale(1.0)";                                     
-            }
-        }        
-        
-        let imgNos = document.getElementById("imgNos");
-        let lema = document.querySelector(".imgNosotros .lema");
-
-        imgNos.addEventListener("mouseenter", mostrarLema);
-        imgNos.addEventListener("mouseout", ocultarLema);
-
-        function mostrarLema(){
-          imgNos.style.display = "none";
-          lema.style.display = "block";          
+      function cambiarEstilo3(evento) {
+        if (evento.type === "mouseover") {
+          escalera.style.transform = "scale(1.3)";
+        } else if (evento.type === "mouseout") {
+          escalera.style.transform = "scale(1.0)";
         }
+      }
 
-        function ocultarLema(){
-          imgNos.style.display = "block";
-          lema.style.display = "none";   
-        }
+      let imgNos = document.getElementById("imgNos");
+      let lema = document.querySelector(".imgNosotros .lema");
+
+      imgNos.addEventListener("mouseenter", mostrarLema);
+      imgNos.addEventListener("mouseout", ocultarLema);
+
+      function mostrarLema() {
+        imgNos.style.display = "none";
+        lema.style.display = "block";
+      }
+
+      function ocultarLema() {
+        imgNos.style.display = "block";
+        lema.style.display = "none";
+      }
 
       function cambiarEstilo3(evento) {
         if (evento.type === "mouseover") {
