@@ -233,7 +233,7 @@ function validarFormulario() {
   }
   validarNotas();
   if (correcto) {
-    window.location.href = "/pages/instalations/instalaciones.html";
+    window.location.href = "pages/instalations/instalaciones.html";
   }
   return correcto;
 }
@@ -247,6 +247,6 @@ function actualizarBoton() {
 formulario.addEventListener("submit", () => {
   if (validarFormulario()) {
     alert("Formulario enviado correctamente");
-    window.location.href = "/pages/instalations/instalaciones.html";
+    window.location.href = "pages/instalations/instalaciones.html";
   }
 });
