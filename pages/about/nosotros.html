@@ -435,7 +435,7 @@
               <span class="integrante"> </span>
               <p class="texto">
                 <b>Especialización: </b><br />Recolección y análisis de datos
-                usando python, PowerBI y RStudio<br /><b>Aportaciones: </b
+                usando python, PowerBI y RStudio.<br /><b>Aportaciones: </b
                 ><br />
                 Página html historial y formulario para registrar herramientas.
               </p>
@@ -625,20 +625,20 @@
       <script>
         let arrIntegrantes = document.querySelectorAll(".tarjeta");
         arrIntegrantes.forEach((integrante) => {
-          integrante.addEventListener("mouseenter", cambiarEstiloInfo);
-          integrante.addEventListener("mouseout", cambiarEstiloInfo);
+          integrante.addEventListener("mouseover", cambiarEstiloInfo);
+          integrante.addEventListener("mouseleave", cambiarEstiloInfo);
         });
 
         function cambiarEstiloInfo(evento) {
-          let tarjeta = evento.target;
+          let tarjeta = evento.currentTarget;
           let imgIntegrante = tarjeta.querySelector("img");
           let infoIntegrante = tarjeta.querySelector(".infoIntegrante");
-          if (evento.type === "mouseenter") {
+          if (evento.type === "mouseover") {
             imgIntegrante.style.display = "none";
             infoIntegrante.style.display = "block";
             infoIntegrante.style.padding = "10px";
             infoIntegrante.style.fontSize = "0.9rem";
-          } else if (evento.type === "mouseout") {
+          } else if (evento.type === "mouseleave") {
             imgIntegrante.style.display = "block";
             infoIntegrante.style.display = "none";
           }
