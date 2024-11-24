@@ -18,7 +18,11 @@
         border: 5px solid rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
       }
+    
       main {
         max-width: 800px;
         margin: 20px auto;
@@ -27,7 +31,7 @@
         border-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
-
+    
       main h1 {
         font-size: 2rem;
         text-align: center;
@@ -35,13 +39,7 @@
         color: #333;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
       }
-
-      #formulario {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-
+    
       #formulario input[type="text"],
       #formulario input[type="number"],
       #formulario input[type="date"],
@@ -55,7 +53,7 @@
         background: #fff;
         transition: border-color 0.3s ease;
       }
-
+    
       #formulario input:focus,
       #formulario select:focus,
       #formulario textarea:focus {
@@ -63,7 +61,7 @@
         outline: none;
         box-shadow: 0 0 4px rgba(0, 120, 215, 0.5);
       }
-
+    
       #formulario button[type="submit"] {
         background: #a8d0e6;
         color: #4a4a4a;
@@ -75,67 +73,53 @@
         cursor: pointer;
         transition: background 0.3s ease;
       }
-
+    
       #formulario button[type="submit"]:hover {
         background: #a3b5c8;
         color: #fff;
       }
-
+    
       #formulario input[type="checkbox"],
       #formulario input[type="radio"] {
         margin-right: 10px;
       }
-
+    
       #formulario label {
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
       }
-
+    
       #formulario textarea {
         resize: vertical;
         min-height: 80px;
       }
+    
       .form-row {
         display: flex;
         gap: 20px;
+        justify-content: space-between;
       }
-
+    
       .form-column {
         flex: 1;
         display: flex;
         flex-direction: column;
         gap: 15px;
       }
-
-      #formulario label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        display: block;
-      }
-
-      #formulario textarea {
-        resize: vertical;
-        min-height: 80px;
-      }
-      .form-row {
-        display: flex;
-        gap: 20px;
-      }
-
-      .form-column {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-      }
-
+    
       @media (max-width: 400px) {
         .form-row {
           flex-direction: column;
         }
       }
+    
+      p {
+        color: gray;
+      }
     </style>
+    
+    
   </head>
 
   <body>
@@ -172,10 +156,20 @@
                 <input type="text" id="nombre" name="nombre" />
               </div>
               <div>
+                <label for="tipo">Tipo de herramienta:</label><br>
+                <select id="tipo" name="tipo" >
+                    <option value="">Seleccione un tipo</option>
+                    <option value="herramienta de jardín">Herramienta de jardín</option>
+                    <option value="mesa">Mesa</option>
+                    <option value="accesorio">accesorio de jardinería</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+              <div>
                 <label for="cantidad">Cantidad disponible:</label>
                 <input type="number" id="cantidad" name="cantidad">
             </div>
-
+            
             </div>
           </div>
           <div class="form-column">
@@ -218,11 +212,13 @@
                 />
                 Requiere mantenimiento
               </label>
+              <p>(Opcional)</p>
             </div>
           </div>
 
           <div>
-            <label for="Descripción">Descripción adicional:</label><br />
+            <label for="Descripción">Descripción adicional:</label>
+            <p>(Opcional)</p><br />
             <textarea id="Descripción" name="Descripción" rows="5"></textarea>
           </div>
 
