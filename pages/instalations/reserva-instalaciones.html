@@ -159,6 +159,19 @@
         margin-bottom: 1rem;
       }
 
+      .cabecera-reserva {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+      }
+
+      .cabecera-reserva a {
+        color: #212526;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      }
+
       @media (max-width: 768px) {
         .titulos {
           font-size: 1.8rem;
@@ -223,9 +236,14 @@
         </ul>
       </nav>
     </header>
-    <h1 class="titulos" style="padding: 0px 10px">
-      Reservación de Instalación
-    </h1>
+    <div class="cabecera-reserva">
+      <a href="instalaciones.html" style="padding: 0px; margin-left: 10px">
+        <span class="material-symbols-outlined"> arrow_back_ios_new </span>
+      </a>
+      <h1 class="titulos" style="padding: 0px 10px">
+        Reservación de Instalación
+      </h1>
+    </div>
     <main>
       <section class="contenedor-formulario">
         <form
