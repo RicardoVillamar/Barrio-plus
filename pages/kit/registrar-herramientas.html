@@ -1,240 +1,251 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Roitman Andres Palacios Herdoiza" />
     <title>Registro de Herramientas</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-    rel="stylesheet"
-  />
-  <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
-</head>
-    <style>
-        #formulario{
-            padding: 30px;
-            border: 5px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-        }
-        main {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background: #f9f9f9; 
-        border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+  </head>
+  <style>
+    #formulario {
+      padding: 30px;
+      border: 5px solid rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        
-        main h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-        }
+    main h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
 
-        
-        #formulario {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; 
-        }
+    #formulario {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        
-        #formulario input[type="text"],
-        #formulario input[type="number"],
-        #formulario input[type="date"],
-        #formulario select,
-        #formulario textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: #fff;
-            transition: border-color 0.3s ease;
-        }
+    #formulario input[type="text"],
+    #formulario input[type="number"],
+    #formulario input[type="date"],
+    #formulario select,
+    #formulario textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #fff;
+      transition: border-color 0.3s ease;
+    }
 
+    #formulario input:focus,
+    #formulario select:focus,
+    #formulario textarea:focus {
+      border-color: #0078d7;
+      outline: none;
+      box-shadow: 0 0 4px rgba(0, 120, 215, 0.5);
+    }
 
-        #formulario input:focus,
-        #formulario select:focus,
-        #formulario textarea:focus {
-            border-color: #0078d7;
-            outline: none;
-            box-shadow: 0 0 4px rgba(0, 120, 215, 0.5);
-        }
+    #formulario button[type="submit"] {
+      background: #0078d7;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
+    #formulario button[type="submit"]:hover {
+      background: #005a9e;
+    }
 
-        #formulario button[type="submit"] {
-            background: #0078d7;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
+    #formulario input[type="checkbox"],
+    #formulario input[type="radio"] {
+      margin-right: 10px;
+    }
 
+    #formulario label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
 
-        #formulario button[type="submit"]:hover {
-            background: #005a9e;
-        }
+    #formulario textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
 
-        
-        #formulario input[type="checkbox"],
-        #formulario input[type="radio"] {
-            margin-right: 10px;
-        }
+    .form-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        
-        #formulario label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-
-            #formulario textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-        .form-row {
-            display: flex;
-            gap: 20px; 
-          }
-
-        .form-column {
-            flex: 1; 
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-          }
-
-          @media (max-width: 400px) {
-          .form-row {
-              flex-direction: column; 
-              }
-           }
-    </style>
-<body>
+    @media (max-width: 400px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+  <body>
     <header>
-        <nav id="navbar">
-          <a href="/pages/homes/index.html">
-            <img class="logo" src="/assets/logo-icon.png" alt="logo" />
-          </a>
-          <ul>
-            <li>
-              <a href="/pages/instalations/instalaciones.html" class="activo"
-                >Instalaciones</a
-              >
-            </li>
-            <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
-            <li><a href="/pages/record/historial.html">Historial</a></li>
-            <li><a href="/pages/about/nosotros.html">Nosotros</a></li>
-            <li>
-              <a href="#" class="user">
-                <span class="material-symbols-outlined"> account_circle </span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-         <h1>Registro de Herramientas</h1>
-      <main>
-        <section>
-            <form id="formulario" onsubmit="return validarRegistro()" >
-              <div class="form-row">
-                <div class="form-column">
-                <div>
-                    <label for="nombre">Nombre de la herramienta:</label><br>
-                    <input type="text" id="nombre" name="nombre" >
-                </div>
-            
-                <div>
-                    <label for="tipo">Tipo de herramienta:</label><br>
-                    <select id="tipo" name="tipo" >
-                        <option value="">Seleccione un tipo</option>
-                        <option value="herramienta de jardín">Herramienta de jardín</option>
-                        <option value="mesa">Mesa</option>
-                        <option value="accesorio">accesorio de jardinería</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
-            
-                <div>
-                    <label for="cantidad">Cantidad disponible:</label><br>
-                    <input type="number" id="cantidad" name="cantidad" >
-                </div>
+      <nav id="navbar">
+        <a href="/index.html">
+          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        </a>
+        <ul>
+          <li>
+            <a href="/pages/instalations/instalaciones.html" class="activo"
+              >Instalaciones</a
+            >
+          </li>
+          <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
+          <li><a href="/pages/record/historial.html">Historial</a></li>
+          <li><a href="/pages/about/nosotros.html">Nosotros</a></li>
+          <li>
+            <a href="#" class="user">
+              <span class="material-symbols-outlined"> account_circle </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Registro de Herramientas</h1>
+    <main>
+      <section>
+        <form id="formulario" onsubmit="return validarRegistro()">
+          <div class="form-row">
+            <div class="form-column">
+              <div>
+                <label for="nombre">Nombre de la herramienta:</label><br />
+                <input type="text" id="nombre" name="nombre" />
               </div>
-              <div class="form-column">
-                <div>
-                    <label for="fecha">Fecha de adquisición:</label><br>
-                    <input type="date" id="fecha" name="fecha" >
-                </div>
 
-                <div>
-                    <label>Estado de la herramienta:</label><br>
-                    <input type="radio" id="Estadonuevo" name="estado" value="nueva" >
-                    <label for="Estadonuevo" style="display: inline-block; margin-right: 20px;">Nueva</label>
-                    <input type="radio" id="Estadousado" name="estado" value="usada">
-                    <label for="Estadousado"style="display: inline-block;">Usada</label>
-                </div>
-            
-                <div>
-                    <label for="mantenimiento"><br>
-                        <input type="checkbox" id="mantenimiento" name="mantenimiento" >
-                        Requiere mantenimiento
-                    </label>
-                </div>
+              <div>
+                <label for="tipo">Tipo de herramienta:</label><br />
+                <select id="tipo" name="tipo">
+                  <option value="">Seleccione un tipo</option>
+                  <option value="herramienta de jardín">
+                    Herramienta de jardín
+                  </option>
+                  <option value="mesa">Mesa</option>
+                  <option value="accesorio">accesorio de jardinería</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="cantidad">Cantidad disponible:</label><br />
+                <input type="number" id="cantidad" name="cantidad" />
               </div>
             </div>
-                <div>
-                    <label for="Descripción">Descripción adicional:</label><br>
-                    <textarea id="Descripción" name="Descripción" rows="5"></textarea>
-                </div>
-            
-                <div>
-                    <button type="submit">Registrar herramienta</button>
-                </div>
-            </form>
-        </section>
-      </main>
+            <div class="form-column">
+              <div>
+                <label for="fecha">Fecha de adquisición:</label><br />
+                <input type="date" id="fecha" name="fecha" />
+              </div>
 
-      <footer>
-        <section id="redes-sociales">
-          <ul>
-            <li><a href="">Redes sociales</a></li>
-            <li><a href="">Youtube</a></li>
-            <li><a href="">Facebook</a></li>
-            <li><a href="">Instagram</a></li>
-            <li><a href="">Twitter</a></li>
-          </ul>
-        </section>
-  
-        <section id="lista-pie">
-          <ul>
-            <li><a href="">Documentacion</a></li>
-            <li><a href="">Politicas de uso</a></li>
-            <li><a href="">Terminos y condiciones</a></li>
-            <li><a href="">Soporte Tecnico</a></li>
-            <li><a href="">Manual de usuario</a></li>
-            <li><a href="">Contactanos</a></li>
-          </ul>
-        </section>
-  
-        <section id="copiright">
-          <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
-        </section>
-      </footer>
-      <script
-      type="text/javascript"
-      src="validar-registro.js"
-    ></script>
-</body>
+              <div>
+                <label>Estado de la herramienta:</label><br />
+                <input
+                  type="radio"
+                  id="Estadonuevo"
+                  name="estado"
+                  value="nueva"
+                />
+                <label
+                  for="Estadonuevo"
+                  style="display: inline-block; margin-right: 20px"
+                  >Nueva</label
+                >
+                <input
+                  type="radio"
+                  id="Estadousado"
+                  name="estado"
+                  value="usada"
+                />
+                <label for="Estadousado" style="display: inline-block"
+                  >Usada</label
+                >
+              </div>
+
+              <div>
+                <label for="mantenimiento"
+                  ><br />
+                  <input
+                    type="checkbox"
+                    id="mantenimiento"
+                    name="mantenimiento"
+                  />
+                  Requiere mantenimiento
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="Descripción">Descripción adicional:</label><br />
+            <textarea id="Descripción" name="Descripción" rows="5"></textarea>
+          </div>
+
+          <div>
+            <button type="submit">Registrar herramienta</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <section id="redes-sociales">
+        <ul>
+          <li><a href="">Redes sociales</a></li>
+          <li><a href="">Youtube</a></li>
+          <li><a href="">Facebook</a></li>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Twitter</a></li>
+        </ul>
+      </section>
+
+      <section id="lista-pie">
+        <ul>
+          <li><a href="">Documentacion</a></li>
+          <li><a href="">Politicas de uso</a></li>
+          <li><a href="">Terminos y condiciones</a></li>
+          <li><a href="">Soporte Tecnico</a></li>
+          <li><a href="">Manual de usuario</a></li>
+          <li><a href="">Contactanos</a></li>
+        </ul>
+      </section>
+
+      <section id="copiright">
+        <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
+      </section>
+    </footer>
+    <script type="text/javascript" src="validar-registro.js"></script>
+  </body>
 </html>

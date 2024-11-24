@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Freire Chavez Jose Andres">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="author" content="Freire Chavez Jose Andres" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <title>Publicaciones</title>
     <style>
-      *{
+      * {
         font-family: Verdana;
         font-size: 1rem;
       }
 
-      h1{
+      h1 {
         margin-left: 2%;
       }
 
       h1::selection,
-      h2::selection{
+      h2::selection {
         color: white;
         background-color: #504643;
       }
 
-      label{
+      label {
         display: block;
       }
 
-      label[for=titulo_publicacion],
-      label[for=nombre],
-      label[for=tipo_publicacion],
-      label[for=descripcion],
-      label[for=fecha_publicacion],
-      label[for=telefono],
-      label[for=correo]{
+      label[for="titulo_publicacion"],
+      label[for="nombre"],
+      label[for="tipo_publicacion"],
+      label[for="descripcion"],
+      label[for="fecha_publicacion"],
+      label[for="telefono"],
+      label[for="correo"] {
         margin-top: 20px;
-      } 
+      }
 
-      label[for=soloAdmins]{
+      label[for="soloAdmins"] {
         display: inline-block;
         font-size: 0.8rem;
       }
 
-      .publicaciones{
+      .publicaciones {
         display: flex;
         justify-content: space-between;
         gap: 30px;
@@ -50,7 +50,7 @@
         width: 90%;
       }
 
-      .campoDescripcion textarea{
+      .campoDescripcion textarea {
         width: 80%;
         height: 100px;
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -58,7 +58,7 @@
         resize: none;
       }
 
-      #form_publicaciones{
+      #form_publicaciones {
         flex: 3;
         padding: 35px;
         width: 50%;
@@ -68,8 +68,8 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
-      #form_publicaciones h2{
-        font-size: 1.3rem; 
+      #form_publicaciones h2 {
+        font-size: 1.3rem;
         margin-bottom: 40px;
       }
 
@@ -79,14 +79,14 @@
         font-size: 0.9rem;
       }
 
-      textarea[placeholder]{
+      textarea[placeholder] {
         padding: 10px;
       }
-      
+
       .tituloPublicacion input,
       .campoNombre input,
       .campoTelefono input,
-      .campoCorreo input{
+      .campoCorreo input {
         width: 80%;
         padding: 10px;
         border: 1px solid rgba(0, 0, 0, 0.1);
@@ -96,25 +96,25 @@
       .tituloPublicacion input:hover,
       .campoNombre input:hover,
       .campoTelefono input:hover,
-      .campoCorreo input:hover{
-        background-color: #C6BBB8;
+      .campoCorreo input:hover {
+        background-color: #c6bbb8;
       }
 
-      .tipoPublicacion select{
+      .tipoPublicacion select {
         width: 84%;
         padding: 10px;
         border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
       }
 
-      .campoFechaPublicacion input{
+      .campoFechaPublicacion input {
         width: 80%;
         padding: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.1);;
+        border: 1px solid rgba(0, 0, 0, 0.1);
         border-radius: 8px;
       }
 
-      input[type="date"]{
+      input[type="date"] {
         margin-bottom: 10px;
       }
 
@@ -122,72 +122,72 @@
       .tipoPublicacion,
       .campoDescripcion,
       .campoPrioridad,
-      .campoNombre, 
+      .campoNombre,
       .campoTelefono,
       .campoCorreo,
-      .campoFechaPublicacion{
+      .campoFechaPublicacion {
         margin-bottom: 10px;
       }
 
-      .campoCheckbox{
+      .campoCheckbox {
         margin-top: 25px;
         margin-bottom: 10px;
       }
 
-      .grupoBotones{
+      .grupoBotones {
         display: flex;
         flex-direction: row;
         gap: 0px 40px;
       }
 
-      .grupoRadio{
+      .grupoRadio {
         display: flex;
         flex-direction: row;
         gap: 0px 25px;
         margin-bottom: 15px;
       }
 
-      .grupoBotones button{
+      .grupoBotones button {
         width: 38%;
         margin-top: 20px;
       }
 
-      .error{
+      .error {
         display: block;
         margin-top: 3px;
         font-size: 0.7rem;
-        color: #C62B09;
+        color: #c62b09;
       }
 
-      .imagenComunidad{
+      .imagenComunidad {
         justify-content: center;
         align-items: center;
         width: 50%;
       }
 
-      .imagenComunidad img{
+      .imagenComunidad img {
         width: 100%;
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
 
-      .imagenComunidad img:hover{
+      .imagenComunidad img:hover {
         transform: scale(1.01);
         transition: 0.3s ease;
       }
 
       @media (max-width: 1024px) {
-        .publicaciones{
+        .publicaciones {
           flex-direction: column;
           gap: 20px;
         }
 
-        #form_publicaciones{
+        #form_publicaciones {
           width: 90%;
           margin: auto;
         }
 
-        .imagenComunidad{
+        .imagenComunidad {
           margin-left: 13px;
           width: 80%;
           height: 20%;
@@ -195,38 +195,38 @@
       }
 
       @media (max-width: 768px) {
-        h1{
+        h1 {
           margin-left: 3%;
         }
 
-        #form_publicaciones{
+        #form_publicaciones {
           width: 90%;
           margin: auto;
           padding: 40px;
         }
 
-        .imagenComunidad{
+        .imagenComunidad {
           margin-left: 3px;
         }
 
-        .imagenComunidad img{
+        .imagenComunidad img {
           width: 90%;
         }
       }
 
       @media (max-width: 480px) {
-        body{
+        body {
           font-size: 0.8rem;
         }
 
-        .publicaciones{
+        .publicaciones {
           flex-direction: column;
           gap: 20px;
         }
 
-        #form_publicaciones{
+        #form_publicaciones {
           width: 90%;
-          margin:auto;
+          margin: auto;
           padding: 20px;
         }
 
@@ -238,7 +238,7 @@
           width: 80%;
         }
 
-        .imagenComunidad img{
+        .imagenComunidad img {
           width: 100%;
         }
       }
@@ -247,7 +247,7 @@
   <body>
     <header>
       <nav id="navbar">
-        <a href="index.html">
+        <a href="/index.html">
           <img class="logo" src="/assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
@@ -266,10 +266,15 @@
     <main>
       <h1 class="titulos">Publicaciones</h1>
       <section class="publicaciones">
-        <form novalidate id="form_publicaciones" onsubmit="return validarPublicacion()">
+        <form
+          novalidate
+          id="form_publicaciones"
+          onsubmit="return validarPublicacion()"
+        >
           <h2 class="subtitulos">Información de la publicación</h2>
           <div class="tituloPublicacion">
-            <label for="titulo_publicacion">Título de la publicación:</label><br/>
+            <label for="titulo_publicacion">Título de la publicación:</label
+            ><br />
             <input
               type="text"
               id="titulo_publicacion"
@@ -279,19 +284,23 @@
           </div>
 
           <div class="tipoPublicacion">
-            <label for="tipo_publicacion">Tipo de publicación:</label><br/>
+            <label for="tipo_publicacion">Tipo de publicación:</label><br />
             <select name="tipo_publicacion" id="tipo_publicacion">
               <option value="">Seleccione...</option>
               <option value="reporteDanios">Reporte de daños</option>
               <option value="avisosGenerales">Avisos generales</option>
-              <option value="avisosMantenimiento">Avisos de mantenimiento</option>
-              <option value="solicitudesRecursos">Solicitudes de recursos</option>
+              <option value="avisosMantenimiento">
+                Avisos de mantenimiento
+              </option>
+              <option value="solicitudesRecursos">
+                Solicitudes de recursos
+              </option>
               <option value="otros">Otros</option>
             </select>
           </div>
-    
+
           <div class="campoDescripcion">
-            <label for="descripcion">Descripción:</label><br/>
+            <label for="descripcion">Descripción:</label><br />
             <textarea
               id="descripcion"
               class="publicacionDescripcion"
@@ -300,18 +309,19 @@
             ></textarea>
           </div>
 
-          <label for="">Seleccione la prioridad de la publicación: </label><br/>
+          <label for="">Seleccione la prioridad de la publicación: </label
+          ><br />
           <div class="grupoRadio">
-            <input type="radio" id="alta" name="prioridad" value="alta">
+            <input type="radio" id="alta" name="prioridad" value="alta" />
             <label for="alta">Alta</label>
-            <input type="radio" id="media" name="prioridad" value="media">
+            <input type="radio" id="media" name="prioridad" value="media" />
             <label for="media">Media</label>
-            <input type="radio" id="baja" name="prioridad" value="baja">
+            <input type="radio" id="baja" name="prioridad" value="baja" />
             <label for="baja">Baja</label>
           </div>
-          
+
           <div class="campoFechaPublicacion">
-            <label for="fecha_publicacion">Fecha del evento:</label><br/>
+            <label for="fecha_publicacion">Fecha del evento:</label><br />
             <input
               type="date"
               id="fecha_publicacion"
@@ -321,7 +331,7 @@
 
           <h2 class="subtitulos">Información del publicante</h2>
           <div class="campoNombre">
-            <label for="nombre">Nombres:</label><br/>
+            <label for="nombre">Nombres:</label><br />
             <input
               type="text"
               id="nombre"
@@ -329,9 +339,9 @@
               placeholder="Ingrese su nombre"
             />
           </div>
-    
+
           <div class="campoTelefono">
-            <label for="telefono">Teléfono:</label><br/>
+            <label for="telefono">Teléfono:</label><br />
             <input
               type="tel"
               id="telefono"
@@ -341,7 +351,7 @@
           </div>
 
           <div class="campoCorreo">
-            <label for="correo">Correo:</label><br/>
+            <label for="correo">Correo:</label><br />
             <input
               type="email"
               id="correo"
@@ -351,8 +361,8 @@
           </div>
 
           <div class="campoCheckbox">
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               id="soloAdmins"
               name="notificarSoloAdmins"
               value="Solo administradores"
@@ -362,22 +372,26 @@
 
           <div class="grupoBotones">
             <button
-              style="font-size: 0.8rem;"
-              type="submit" 
+              style="font-size: 0.8rem"
+              type="submit"
               class="boton-pequenio"
-            >Enviar</button>
+            >
+              Enviar
+            </button>
 
             <button
-              style="font-size: 0.8rem;"
-              type="reset" 
+              style="font-size: 0.8rem"
+              type="reset"
               class="boton-pequenio"
-            >Cancelar</button>
+            >
+              Cancelar
+            </button>
           </div>
         </form>
 
         <div class="imagenComunidad">
-          <img 
-            src="https://img.freepik.com/free-vector/online-community_24877-50878.jpg?t=st=1732315953~exp=1732319553~hmac=759028a5b586a885341d0d7b5459d46da54da2a602fece2edd57652ea53d4d07&w=740" 
+          <img
+            src="https://img.freepik.com/free-vector/online-community_24877-50878.jpg?t=st=1732315953~exp=1732319553~hmac=759028a5b586a885341d0d7b5459d46da54da2a602fece2edd57652ea53d4d07&w=740"
             alt="imagen-comunidad"
           />
         </div>
