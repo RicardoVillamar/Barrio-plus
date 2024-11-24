@@ -109,6 +109,27 @@
         color: #4a4a4a;                
       }     
 
+      .imgNosotros{ /*agg*/
+        position: relative;
+        display: inline-block;
+      }
+
+      .imgNosotros img{ /*agg*/
+        width: 100%;
+        height: auto;
+      }
+
+      .imgNosotros .lema{ /*agg*/
+        font-weight: bold;
+         position: absolute;      
+         color: #4a4a4a;
+         background-color: #a3b5c8;
+         padding: 10px;
+         border-radius: 5px;
+         text-align: center;
+         font-size: 1.2em;
+      }
+
 
       #publicacionesRecientes{        
         padding: 10px;
@@ -334,6 +355,7 @@
     <section class="sobreNosotros">
       <div class="imgNosotros">
         <img src="/assets/img/fotos/nosotros.png" alt="Nosotros" id="imgNos"/>
+        <div class="lema" style="display: none;">"Facilitando el acceso, fortaleciendo la comunidad"</div>
       </div>
       <div class="nosotros">
         <h3>Grupo 6</h3>
@@ -478,6 +500,21 @@
             }
         }        
         
+        let imgNos = document.getElementById("imgNos");
+        let lema = document.querySelector(".imgNosotros .lema");
+
+        imgNos.addEventListener("mouseenter", mostrarLema);
+        imgNos.addEventListener("mouseout", ocultarLema);
+
+        function mostrarLema(){
+          imgNos.style.display = "none";
+          lema.style.display = "block";          
+        }
+
+        function ocultarLema(){
+          imgNos.style.display = "block";
+          lema.style.display = "none";   
+        }
     </script>
   </body>
 </html>
