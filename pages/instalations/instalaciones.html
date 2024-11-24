@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Ricardo-Daniel-Villamar-Minuche" />
     <title>Instalaciones</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
     <style>
       * {
         box-sizing: border-box;
@@ -114,16 +115,12 @@
         margin-bottom: 5px;
       }
 
-      .libre::before {
+      .disponible::before {
         content: "Libre";
-        font-size: 0.8rem;
-        color: #4a4a4a;
       }
 
-      .ocupado::before {
+      .no-disponible::before {
         content: "Ocupado";
-        font-size: 0.8rem;
-        color: #4a4a4a;
       }
 
       aside section ul li label.texto:hover {
@@ -221,8 +218,8 @@
         button.boton-mediano {
           margin-top: 10px;
         }
-        .libre::before,
-        .ocupado::before,
+        .disponible::before,
+        .no-disponible::before,
         button.boton-mediano {
           font-size: 1.2rem;
         }
@@ -241,8 +238,8 @@
           font-size: 0.95rem;
         }
 
-        .libre::before,
-        .ocupado::before {
+        .disponible::before,
+        .no-disponible::before {
           font-size: 1rem;
         }
       }
@@ -252,18 +249,18 @@
     <!-- Navbar -->
     <header>
       <nav id="navbar">
-        <a href="/pages/homes/index.html">
-          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
-            <a href="/pages/instalations/instalaciones.html" class="activo"
+            <a href="../instalations/instalaciones.html" class="activo"
               >Instalaciones</a
             >
           </li>
-          <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
-          <li><a href="/pages/record/historial.html">Historial</a></li>
-          <li><a href="/pages/about/nosotros.html">Nosotros</a></li>
+          <li><a href="../kit/herramientas.html">Herramientas</a></li>
+          <li><a href="../record/historial.html">Historial</a></li>
+          <li><a href="../about/nosotros.html">Nosotros</a></li>
           <li>
             <a href="#" class="user">
               <span class="material-symbols-outlined"> account_circle </span>
@@ -280,12 +277,12 @@
         <section>
           <p class="texto">Estado</p>
           <select
-            id="disponibilidad"
+            id="estado"
             style="width: 90%; height: 25px; border-radius: 4px"
           >
             <option value="todos">Todos</option>
-            <option value="ocupado">Ocuapado</option>
-            <option value="libre">No ocupado</option>
+            <option value="ocupado">Ocupado</option>
+            <option value="libre">Libre</option>
           </select>
         </section>
         <section>
@@ -293,26 +290,26 @@
           <ul>
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="todos" />
                 Todos
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="grande" />
                 Grande
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="mediano" />
                 Mediano
               </label>
             </li>
 
             <li>
               <label class="texto">
-                <input type="radio" name="tamaño" />
+                <input type="radio" name="tamanio" value="pequeño" />
                 Pequeño
               </label>
             </li>
@@ -323,31 +320,31 @@
           <ul>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="todos" />
                 Todos
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="aire" />
                 Aire libre
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="aula" />
                 Aula
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="salon" />
                 Salón
               </label>
             </li>
             <li>
               <label class="texto">
-                <input type="radio" name="tipos" />
+                <input type="radio" name="tipos" value="taller" />
                 Taller
               </label>
             </li>
@@ -360,13 +357,16 @@
         <section class="cabezera">
           <h2 class="titulo-buscar titulos">Instalaciones</h2>
           <div class="buscar">
-            <label for="buscar-barra" class="texto"></label>
+            <label for="buscar-barra" class="texto" style="font-weight: bold"
+              >Buscar</label
+            >
             <input
-              placeholder="Buscar..."
+              placeholder="Nombre de la instalación"
               type="text"
               id="buscar-barra"
               style="
                 padding: 0 10px;
+                padding-right: 30px;
                 margin: 10px;
                 border-radius: 4px;
                 border: 1px solid rgba(0, 0, 0, 0.1);
@@ -392,20 +392,20 @@
             <tbody>
               <!-- Instalación 1 -->
               <tr>
-                <td><span class="libre"> </span></td>
+                <td><span class="disponible"> </span></td>
                 <td class="imagen">
                   <img
-                    src="https://www.fundacionheres.org/wp-content/uploads/2021/02/1.jpg"
+                    src="../../assets/img/instalaciones/salon-comunal.png"
                     alt="saloncomunal"
                     class="imagen-tabla"
                   />
-                  <p class="texto nombre-instalacion">Salón comunal</p>
+                  <p class="texto nombre-instalacion">Salon comunal</p>
                 </td>
                 <td>
-                  <span class="texto">Grande</span>
+                  <span class="texto tam-instalacion">Grande</span>
                 </td>
                 <td>
-                  <span class="texto">Salón</span>
+                  <span class="texto">Salon</span>
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
@@ -414,18 +414,18 @@
               </tr>
               <!-- Instalación 2 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
-                    src="https://www.am.com.mx/u/fotografias/m/2018/3/22/f776x436-307559_355910_5050.jpg"
+                    src="../../assets/img/instalaciones/area-deportiva.png"
                     alt="areadeportiva"
                     class="imagen-tabla"
                   />
-                  <p class="texto nombre-instalacion">Área deportiva</p>
+                  <p class="texto nombre-instalacion">Area deportiva</p>
                 </td>
 
                 <td>
-                  <span class="texto">Mediano</span>
+                  <span class="texto tam-instalacion">Mediano</span>
                 </td>
                 <td>
                   <span class="texto">Aire libre</span>
@@ -437,10 +437,10 @@
               </tr>
               <!-- Instalación 3 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
-                    src="https://johnsonfitness.tienda/media/wysiwyg/johnson_gimnasios_comunidad_vecinos.jpg"
+                    src="../../assets/img/instalaciones/gimnasio.png"
                     alt="gimnasio"
                     class="imagen-tabla"
                   />
@@ -448,7 +448,7 @@
                 </td>
 
                 <td>
-                  <span class="texto">Pequeño</span>
+                  <span class="texto tam-instalacion">Pequeño</span>
                 </td>
                 <td>
                   <span class="texto">Taller</span>
@@ -460,17 +460,17 @@
               </tr>
               <!-- Instalación 4 -->
               <tr>
-                <td><span class="libre"> </span></td>
+                <td><span class="disponible"> </span></td>
                 <td>
                   <img
-                    src="https://urfintek.com/wp-content/uploads/2023/09/Control-de-acceso-piscina-comunitaria.jpg"
+                    src="../../assets/img/instalaciones/piscina.png"
                     alt="piscina"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Piscina comunitaria</p>
                 </td>
                 <td>
-                  <span class="texto">Pequeño</span>
+                  <span class="texto tam-instalacion">Pequeño</span>
                 </td>
                 <td>
                   <span class="texto">Aire libre</span>
@@ -482,17 +482,17 @@
               </tr>
               <!-- Instalación 5 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
-                    src="https://www.elsoldemorelia.com.mx/local/lf38kv-biblioteca-comunitaria-a-comachuen/ALTERNATES/LANDSCAPE_1140/BIBLIOTECA%20COMUNITARIA%20A%20COMACHUEN"
+                    src="../../assets/img/instalaciones/biblioteca.png"
                     alt="biblioteca"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Biblioteca comunitaria</p>
                 </td>
                 <td>
-                  <span class="texto">Pequeño</span>
+                  <span class="texto tam-instalacion">Pequeño</span>
                 </td>
                 <td>
                   <span class="texto">Taller</span>
@@ -504,17 +504,17 @@
               </tr>
               <!-- Instalación 6 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
-                    src="https://oziona.es/wp-content/uploads/2021/02/parqueinfantil-oziona-01.jpg"
+                    src="../../assets/img/instalaciones/parque-infantil.png"
                     alt="parque"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Parque infantil</p>
                 </td>
                 <td>
-                  <span class="texto">Grande</span>
+                  <span class="texto tam-instalacion">Grande</span>
                 </td>
                 <td>
                   <p class="texto">Aire libre</p>
@@ -526,20 +526,20 @@
               </tr>
               <!-- Instalación 7 -->
               <tr>
-                <td><span class="libre"> </span></td>
+                <td><span class="disponible"> </span></td>
                 <td>
                   <img
-                    src="https://www.viacelere.com/wp-content/uploads/old-blog/2020/10/sala-de-juegos.jpg"
+                    src="../../assets/img/instalaciones/sala-recreativa.png"
                     alt="salarecreativa"
                     class="imagen-tabla"
                   />
                   <p class="texto nombre-instalacion">Sala recreativa</p>
                 </td>
                 <td>
-                  <span class="texto">Mediano</span>
+                  <span class="texto tam-instalacion">Mediano</span>
                 </td>
                 <td>
-                  <span class="texto">Salón</span>
+                  <span class="texto">Aula</span>
                 </td>
                 <td>
                   <p class="texto">$15.00</p>
@@ -577,11 +577,113 @@
       </section>
     </footer>
     <script>
+      // Buscar en la tabla
+      const buscarBarra = document.getElementById("buscar-barra");
+      const tablaBody = document.querySelector("table tbody");
+      buscarBarra.addEventListener("input", () => {
+        const datoBusqueda = buscarBarra.value.toLowerCase();
+        const filas = tablaBody.querySelectorAll("tr");
+
+        filas.forEach((fila) => {
+          const nombreInstalacion = fila.querySelector(".nombre-instalacion");
+          if (nombreInstalacion) {
+            const nombre = nombreInstalacion.textContent.toLowerCase();
+            if (nombre.includes(datoBusqueda)) {
+              fila.style.display = "";
+            } else {
+              fila.style.display = "none";
+            }
+          }
+        });
+      });
+
+      //Filtrar por estado
+      const estado = document.getElementById("estado");
+      estado.addEventListener("change", () => {
+        const valor = estado.value;
+        const filas = tabla.querySelectorAll("tr");
+
+        filas.forEach((fila) => {
+          const estado = fila.querySelector("td span");
+          if (estado) {
+            if (valor === "todos") {
+              fila.style.display = "";
+            } else if (
+              valor === "libre" &&
+              estado.classList.contains("disponible")
+            ) {
+              fila.style.display = "";
+            } else if (
+              valor === "ocupado" &&
+              estado.classList.contains("no-disponible")
+            ) {
+              fila.style.display = "";
+            } else {
+              fila.style.display = "none";
+            }
+          }
+        });
+      });
+
+      // Filtrar por tamaño
+      const tamanios = document.querySelectorAll("input[name='tamanio']");
+      const tabla = document.querySelector("table");
+      tamanios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          const valor = document.querySelector(
+            "input[name='tamanio']:checked"
+          ).value;
+
+          const filas = tablas.querySelectorAll("tr");
+
+          filas.forEach((row) => {
+            const tamanioInstalacion = row.querySelector("td:nth-child(3)");
+
+            if (tamanioInstalacion) {
+              const tipo = tamanioInstalacion.textContent.toLowerCase();
+
+              if (valor === "todos") {
+                row.style.display = "";
+              } else if (tipo.includes(valor.toLowerCase())) {
+                row.style.display = "";
+              } else {
+                row.style.display = "none";
+              }
+            }
+          });
+        });
+      });
+
+      // Filtrar por tipo
+      const tipos = document.querySelectorAll("input[name='tipos']");
+      tipos.forEach((e) => {
+        e.addEventListener("change", () => {
+          const valor = document.querySelector(
+            "input[name='tipos']:checked"
+          ).value;
+          const filas = tabla.querySelectorAll("tr");
+
+          filas.forEach((fila) => {
+            const tipoInstalacion = fila.querySelector("td:nth-child(4)");
+            if (tipoInstalacion) {
+              const tipo = tipoInstalacion.textContent.toLowerCase();
+              if (valor === "todos") {
+                fila.style.display = "";
+              } else if (tipo.includes(valor.toLowerCase())) {
+                fila.style.display = "";
+              } else {
+                fila.style.display = "none";
+              }
+            }
+          });
+        });
+      });
+
+      // Boton Reservar
       const reserva = document.querySelectorAll(".reserva");
       reserva.forEach((e) => {
         e.addEventListener("click", () => {
-          window.location.href =
-            "/pages/instalations/reserva-instalaciones.html";
+          window.location.href = "reserva-instalaciones.html";
         });
       });
     </script>

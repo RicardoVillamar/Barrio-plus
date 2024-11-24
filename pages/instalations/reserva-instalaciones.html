@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Ricardo-Daniel-Villamar-Minuche" />
     <title>Reserva Instalaciones</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
     <style>
       main {
         display: flex;
@@ -50,6 +50,11 @@
         margin: 0px 10px;
         font-size: 1rem;
         padding: 10px;
+      }
+
+      .cancelar {
+        background-color: white;
+        border: 3px solid #a8d0e6;
       }
 
       .informacion-extra div {
@@ -198,18 +203,18 @@
   <body>
     <header>
       <nav id="navbar">
-        <a href="/pages/homes/index.html">
-          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
-            <a href="/pages/instalations/instalaciones.html" class="activo"
+            <a href="../instalations/instalaciones.html" class="activo"
               >Instalaciones</a
             >
           </li>
-          <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
-          <li><a href="/pages/record/historial.html">Historial</a></li>
-          <li><a href="/pages/about/nosotros.html">Nosotros</a></li>
+          <li><a href="../kit/herramientas.html">Herramientas</a></li>
+          <li><a href="../record/historial.html">Historial</a></li>
+          <li><a href="../about/nosotros.html">Nosotros</a></li>
           <li>
             <a href="#" class="user">
               <span class="material-symbols-outlined"> account_circle </span>
@@ -218,7 +223,9 @@
         </ul>
       </nav>
     </header>
-    <h1 class="titulos" style="padding: 0px 10px">Reservación</h1>
+    <h1 class="titulos" style="padding: 0px 10px">
+      Reservación de Instalación
+    </h1>
     <main>
       <section class="contenedor-formulario">
         <form
@@ -317,7 +324,9 @@
             <span id="notas-error" class="error"></span>
           </fieldset>
           <fieldset class="contenedor-botones">
-            <button type="reset" class="boton-mediano">Cancelar</button>
+            <button type="reset" class="boton-mediano cancelar">
+              Cancelar
+            </button>
             <button type="submit" class="boton-mediano" id="btn">
               Reservar
             </button>
@@ -325,16 +334,16 @@
         </form>
       </section>
       <section class="contenedor-informacion">
-        <h3 class="subtitulos instalaciones-nombre"></h3>
+        <h3 class="subtitulos nombre-instalacion">Salon comunal</h3>
         <img
-          id="instalaciones-imagen"
-          src=""
-          alt=""
+          id="imagen-instalacion"
+          src="../../assets/img/instalaciones/salon-comunal.png"
+          alt="instalaciones"
           style="
             object-fit: cover;
             border-radius: 8px;
             width: 100%;
-            height: 200px;
+            height: 300px;
           "
         />
         <div
@@ -348,16 +357,16 @@
         >
           <div>
             <p class="texto">Tamaño:</p>
-            <span class="texto">Grande</span>
+            <span class="texto tamanio-instalacion">Grande</span>
           </div>
           <div>
             <p class="texto">Tipo:</p>
-            <span class="texto">Salón</span>
+            <span class="texto tipo-instalacion">Salon</span>
           </div>
           <hr class="linea-divisoria" />
           <div>
             <p class="texto">Precio de reserva:</p>
-            <span class="texto">$15.00</span>
+            <span class="texto precio-instalacion">$15.00</span>
           </div>
         </div>
       </section>
@@ -386,9 +395,6 @@
         <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
       </section>
     </footer>
-    <script
-      type="text/javascript"
-      src="/pages/instalations/validaciones.js"
-    ></script>
+    <script type="text/javascript" src="validaciones.js"></script>
   </body>
 </html>

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Alejandro Larrea" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" href="assets/logo-icon.png" type="image/png" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -22,7 +22,7 @@
 
       .banner {
         height: 550px;
-        background: url(/assets/img/fotos/breed.jpg);
+        background: url(assets/img/fotos/breed.jpg);
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -108,6 +108,56 @@
         color: #4a4a4a;
       }
 
+      #publicacionesRecientes {
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      #contenedorPub {
+        max-height: 450px;
+        overflow-y: auto;
+      }
+
+      .comentarios {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 2px solid #4a4a4a;
+        border-radius: 5px;
+        text-align: justify;
+      }
+
+      .user {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 1px;
+      }
+
+      .comentarios img {
+        height: 30px;
+        width: 30px;
+        border-radius: 30%;
+      }
+
+      #publicacionesRecientes :nth-child(2n + 1) {
+        background-color: #a3b5c8;
+      }
+
+      #contribucion {
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      #contenedorCont {
+        flex: 1;
+        max-width: 94%;
+        background-color: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        margin-left: 20px;
+      }
+
       /* Media Queries */
       @media (max-width: 768px) {
         .banner {
@@ -177,16 +227,16 @@
   <body>
     <header>
       <nav id="navbar">
-        <a href="/pages/homes/index.html">
-          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        <a href="/index.html">
+          <img class="logo" src="assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
-            <a href="/pages/instalations/instalaciones.html">Instalaciones</a>
+            <a href="pages/instalations/instalaciones.html">Instalaciones</a>
           </li>
-          <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
-          <li><a href="/pages/record/historial.html">Historial</a></li>
-          <li><a href="/pages/about/nosotros.html">Nosotros</a></li>
+          <li><a href="pages/kit/herramientas.html">Herramientas</a></li>
+          <li><a href="pages/record/historial.html">Historial</a></li>
+          <li><a href="pages/about/nosotros.html">Nosotros</a></li>
           <li>
             <a href="#" class="user">
               <span class="material-symbols-outlined"> account_circle </span>
@@ -224,15 +274,20 @@
 
       <div class="elementos">
         <img
-          src="/assets/img/fotos/comunidad.jpg"
+          src="assets/img/fotos/comunidad.jpg"
           alt="Instalacion Reservada"
+          id="cancha"
         />
         <span>Cancha de Futbol</span>
         <span>Reservado hasta: 20/11/2024</span>
       </div>
 
       <div class="elementos">
-        <img src="/assets/img/fotos/sala.jpeg" alt="Instalacion Reservada" />
+        <img
+          src="assets/img/fotos/sala.jpeg"
+          alt="Instalacion Reservada"
+          id="sala"
+        />
         <span>Sala de eventos</span>
         <span>Reservado hasta: 21/11/2024</span>
       </div>
@@ -246,8 +301,9 @@
 
       <div class="elementos">
         <img
-          src="/assets/img/fotos/podadora.jpeg"
+          src="assets/img/fotos/podadora.jpeg"
           alt="Herramienta Reservada"
+          id="podadora"
         />
         <span>Podadora</span>
         <span>Reservado hasta: 19/11/2024</span>
@@ -255,8 +311,9 @@
 
       <div class="elementos">
         <img
-          src="/assets/img/fotos/escalera.jpeg"
+          src="assets/img/fotos/escalera.jpeg"
           alt="Herramientas Reservada"
+          id="escalera"
         />
         <span>Escalera</span>
         <span>Reservado hasta: 20/11/2024</span>
@@ -282,7 +339,7 @@
 
     <section class="sobreNosotros">
       <div class="imgNosotros">
-        <img src="/assets/img/fotos/nosotros.png" alt="Nosotros" />
+        <img src="assets/img/fotos/nosotros.png" alt="Nosotros" id="imgNos" />
       </div>
       <div class="nosotros">
         <h3>Grupo 6</h3>
@@ -298,6 +355,94 @@
           comunes.
         </p>
         <button class="boton-grande">Más información aquí...</button>
+      </div>
+    </section>
+
+    <section id="publicacionesRecientes">
+      <h3 style="background-color: #f0f4f8">Publicaciones Recientes</h3>
+      <div id="contenedorPub">
+        <div class="comentarios">
+          <div class="user">
+            <img
+              class="imgUsuario"
+              src="assets/img/fotos/images.jpeg"
+              alt="usuario"
+            />
+            <h5>Pedro Lopez R.</h5>
+          </div>
+          <p>
+            Es frustrante que las herramientas de jardinería estén siempre
+            reservadas y no haya un sistema claro para saber cuándo estarán
+            disponibles. Esto dificulta que podamos mantener nuestros espacios
+            comunes en buen estado. Necesitamos una mejor gestión de las
+            reservas.
+          </p>
+        </div>
+
+        <div class="comentarios">
+          <div style="background-color: #f0f4f8" class="user">
+            <img
+              class="imgUsuario"
+              src="assets/img/fotos/userimg.png"
+              alt="usuario"
+            />
+            <h5>Ana Maria H.</h5>
+          </div>
+          <p>
+            Quiero agradecer al administrador por la reciente mejora en el
+            sistema de reservas de las instalaciones. Ahora es mucho más fácil
+            acceder a las herramientas y planificar nuestros proyectos
+            comunitarios. ¡Definitivamente estamos viendo un cambio positivo!
+          </p>
+        </div>
+
+        <div class="comentarios">
+          <div class="user">
+            <img
+              class="imgUsuario"
+              src="assets/img/fotos/images.jpeg"
+              alt="usuario"
+            />
+            <h5>Diego Holan D.</h5>
+          </div>
+          <p>
+            Quisiera comunicarme con el administrador de la comunidad, es
+            insensato que aun no tengamos las herramientas disponibles para
+            hacer un mejor mantenimiento a nuestros jardines.
+          </p>
+        </div>
+        <div class="comentarios">
+          <div style="background-color: #f0f4f8" class="user">
+            <img
+              class="imgUsuario"
+              src="assets/img/fotos/userimg.png"
+              alt="usuario"
+            />
+            <h5>Lourdes De las Mercedes</h5>
+          </div>
+          <p>
+            Me parece inaceptable que algunas herramientas estén dañadas y no se
+            hayan reparado aún. Esto está afectando la capacidad de los
+            residentes para realizar tareas importantes en la comunidad. Espero
+            que se tomen medidas pronto para solucionar este problema.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contribucion">
+      <h3>Contribuciones</h3>
+      <div id="contenedorCont">
+        <h5 style="font-size: medium">Deseas contribuir en la comunidad?</h5>
+        <p>
+          Con un solo clic, puedes contribuir, asi podemos entre todos los
+          miembros de la comunidad ampliar nuestra gama de herramientas e
+          instalaciones para el servicio y comodidad de la comunidad, presiona
+          clic en el boton de abajo.
+        </p>
+        <button class="boton-mediano">
+          <a href="pages/homes/contribucion_form.html">Contribuir</a>
+        </button>
       </div>
     </section>
     <footer>
@@ -326,5 +471,51 @@
         <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
       </section>
     </footer>
+    <script>
+      let sala = document.getElementById("sala");
+      let cancha = document.getElementById("cancha");
+      let podadora = document.getElementById("podadora");
+      let escalera = document.getElementById("escalera");
+      sala.addEventListener("mouseover", cambiarEstilo);
+      sala.addEventListener("mouseout", cambiarEstilo);
+      cancha.addEventListener("mouseover", cambiarEstilo1);
+      cancha.addEventListener("mouseout", cambiarEstilo1);
+      podadora.addEventListener("mouseover", cambiarEstilo2);
+      podadora.addEventListener("mouseout", cambiarEstilo2);
+      escalera.addEventListener("mouseover", cambiarEstilo3);
+      escalera.addEventListener("mouseout", cambiarEstilo3);
+
+      function cambiarEstilo(evento) {
+        if (evento.type === "mouseover") {
+          sala.style.transform = "scale(1.3)";
+        } else if (evento.type === "mouseout") {
+          sala.style.transform = "scale(1.0)";
+        }
+      }
+
+      function cambiarEstilo1(evento) {
+        if (evento.type === "mouseover") {
+          cancha.style.transform = "scale(1.3)";
+        } else if (evento.type === "mouseout") {
+          cancha.style.transform = "scale(1.0)";
+        }
+      }
+
+      function cambiarEstilo2(evento) {
+        if (evento.type === "mouseover") {
+          podadora.style.transform = "scale(1.3)";
+        } else if (evento.type === "mouseout") {
+          podadora.style.transform = "scale(1.0)";
+        }
+      }
+
+      function cambiarEstilo3(evento) {
+        if (evento.type === "mouseover") {
+          escalera.style.transform = "scale(1.3)";
+        } else if (evento.type === "mouseout") {
+          escalera.style.transform = "scale(1.0)";
+        }
+      }
+    </script>
   </body>
 </html>

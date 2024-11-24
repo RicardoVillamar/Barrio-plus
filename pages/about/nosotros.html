@@ -12,8 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
     <title>Nosotros</title>
     <style>
       /**Selector de Clase**/
@@ -81,6 +81,8 @@
       input {
         border: 1px solid black;
         border-radius: 6px;
+        width: 300px;
+        padding: 5px;
       }
 
       /**Selector de Atributo**/
@@ -100,6 +102,12 @@
       /**Selector Combinatorio de Descendientes**/
       .campo-asunto textarea {
         font-size: 0.8rem;
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 300px;
+        height: 100px;
+        padding: 5px;
+        resize: none;
       }
 
       /**Seccion Nosotros**/
@@ -211,11 +219,11 @@
         border-radius: 1px;
       }
 
-      .esconderImagen img{
+      .esconderImagen img {
         display: none;
       }
 
-      .infoIntegrante{
+      .infoIntegrante {
         display: none;
       }
 
@@ -303,17 +311,17 @@
   <body>
     <header>
       <nav id="navbar">
-        <a href="/pages/homes/index.html">
-          <img class="logo" src="/assets/logo-icon.png" alt="logo" />
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
-            <a href="/pages/instalations/instalaciones.html">Instalaciones</a>
+            <a href="../instalations/instalaciones.html">Instalaciones</a>
           </li>
-          <li><a href="/pages/kit/herramientas.html">Herramientas</a></li>
-          <li><a href="/pages/record/historial.html">Historial</a></li>
+          <li><a href="../kit/herramientas.html">Herramientas</a></li>
+          <li><a href="../record/historial.html">Historial</a></li>
           <li>
-            <a href="/pages/about/nosotros.html" class="activo">Nosotros</a>
+            <a href="../about/nosotros.html" class="activo">Nosotros</a>
           </li>
           <li>
             <a href="#" class="user">
@@ -338,8 +346,11 @@
           <strong>respeto</strong> y
           <strong>responsabilidad</strong> compartida. Conoce más sobre nuestra
           <a class="enlaceSeccion" href="#historia">historia</a> y
-          <a class="enlaceSeccion" href="#valores">valores</a>. Una de las
-          frases que guía nuestros objetivos es del ex presidente Samora Machel:
+          <a class="enlaceSeccion" href="#valores">valores</a>. Si buscas
+          realizar una publicación visita el siguiente
+          <a class="enlaceSeccion" href="form-Publicaciones.html">enlace</a>.
+          Una de las frases que guía nuestros objetivos es del ex presidente
+          Samora Machel:
         </p>
         <blockquote
           cite="https://psicologiaymente.com/reflexiones/frases-colaboracion"
@@ -376,7 +387,7 @@
           <h2 class="titulos">Integrantes</h2>
           <article class="tarjeta col-md-4">
             <img
-              src="/assets/img/grupo/villamar.png"
+              src="../../assets/img/grupo/villamar.png"
               alt="villamar"
               class="tarjeta-imagen"
             />
@@ -384,14 +395,18 @@
               <p class="tarjeta-titulo">Villamar Minuche Ricardo Daniel</p>
               <span class="integrante"> </span>
               <p class="texto">
-                Página html instalaciones y formulario para reservar instalaciones. 
+                <b>Especialización: </b><br />Diseñador UX/UI busca crear
+                interfaces gráficas intuitivas para todas las personas.<br /><b
+                  >Aportaciones: </b
+                ><br />Página html instalaciones y formulario para reservar
+                instalaciones.
               </p>
             </div>
           </article>
 
           <article class="tarjeta col-md-4">
             <img
-              src="/assets/img/grupo/quinionez.png"
+              src="../../assets/img/grupo/quinionez.png"
               alt="quinionez"
               class="tarjeta-imagen"
             />
@@ -399,21 +414,31 @@
               <p class="tarjeta-titulo">Quiñonez Castrellón Anthony Joel</p>
               <span class="integrante"> </span>
               <p class="texto">
-                Página html herramientas y formulario para reservar herramientas. 
+                <b>Especialización: </b><br />Gestión de base de datos
+                relacionales y no relacionales como Oracle y MongoDB.<br /><b
+                  >Aportaciones:
+                </b>
+                Página html herramientas y formulario para reservar
+                herramientas.
               </p>
             </div>
           </article>
 
           <article class="tarjeta col-md-4">
             <img
-              src="/assets/img/grupo/palacios.png"
+              src="../../assets/img/grupo/palacios.png"
               alt="palacios"
               class="tarjeta-imagen"
             />
             <div class="infoIntegrante">
               <p class="tarjeta-titulo">Palacios Herdoiza Roitman Andres</p>
               <span class="integrante"> </span>
-              <p class="texto">Página html historial.</p>
+              <p class="texto">
+                <b>Especialización: </b><br />Recolección y análisis de datos
+                usando python, PowerBI y RStudio.<br /><b>Aportaciones: </b
+                ><br />
+                Página html historial y formulario para registrar herramientas.
+              </p>
             </div>
           </article>
         </section>
@@ -421,27 +446,36 @@
         <section class="row">
           <article class="tarjeta col-md-6">
             <img
-              src="/assets/img/grupo/larrea.png"
+              src="../../assets/img/grupo/larrea.png"
               alt="larrea"
               class="tarjeta-imagen"
             />
             <div class="infoIntegrante">
               <p class="tarjeta-titulo">Larrea Rosales Alejandro Sebastián</p>
               <span class="integrante"> </span>
-              <p class="texto">Página html home.</p>
+              <p class="texto">
+                <b>Especialización: </b><br />Desarrollador frontend usando
+                JavaScript, HTML5, React.js y Angular.<br /><b>Aportaciones: </b
+                ><br />
+                Página html home y formulario de contribuciones.
+              </p>
             </div>
           </article>
 
           <article class="tarjeta col-md-6">
             <img
-              src="/assets/img/grupo/freire.png"
+              src="../../assets/img/grupo/freire.png"
               alt="freire"
               class="tarjeta-imagen"
             />
             <div class="infoIntegrante">
               <p class="tarjeta-titulo">Freire Chávez José Andrés</p>
               <span class="integrante"> </span>
-              <p class="texto">Página html nosotros.</p>
+              <p class="texto">
+                <b>Especialización: </b><br />Desarrollador backend usando
+                Node.js, Django y Laravel.<br /><b>Aportaciones: </b><br />
+                Página html nosotros y formulario de publicaciones.
+              </p>
             </div>
           </article>
         </section>
@@ -528,8 +562,7 @@
               <p class="texto">
                 <b>Sostenibilidad:</b> Queremos optimizar el uso de los
                 recursos, promoviendo el
-                <mark>cuidado del medio ambiente</mark> y evitando el
-                desperdicio.
+                <mark>cuidado del medio ambiente</mark> y evitar el desperdicio.
               </p>
             </li>
           </ul>
@@ -589,22 +622,22 @@
         </form>
       </section>
       <script>
-        let arrIntegrantes = document.querySelectorAll('.tarjeta');
-        arrIntegrantes.forEach((integrante)=>{
-            integrante.addEventListener("mouseenter", cambiarEstiloInfo);
-            integrante.addEventListener("mouseout", cambiarEstiloInfo);
-          }
-        );
-        
-        function cambiarEstiloInfo(evento){
-          let tarjeta = evento.target;
-          let imgIntegrante = tarjeta.querySelector('img');
-          let infoIntegrante = tarjeta.querySelector('.infoIntegrante');
-          if(evento.type === "mouseenter"){
+        let arrIntegrantes = document.querySelectorAll(".tarjeta");
+        arrIntegrantes.forEach((integrante) => {
+          integrante.addEventListener("mouseover", cambiarEstiloInfo);
+          integrante.addEventListener("mouseleave", cambiarEstiloInfo);
+        });
+
+        function cambiarEstiloInfo(evento) {
+          let tarjeta = evento.currentTarget;
+          let imgIntegrante = tarjeta.querySelector("img");
+          let infoIntegrante = tarjeta.querySelector(".infoIntegrante");
+          if (evento.type === "mouseover") {
             imgIntegrante.style.display = "none";
             infoIntegrante.style.display = "block";
+            infoIntegrante.style.padding = "10px";
             infoIntegrante.style.fontSize = "0.9rem";
-          }else if(evento.type === "mouseout"){
+          } else if (evento.type === "mouseleave") {
             imgIntegrante.style.display = "block";
             infoIntegrante.style.display = "none";
           }
