@@ -65,8 +65,8 @@ function validarFormulario() {
     }
   
    let fechaInicio;
-   let fechainicio = document.getElementById("fecha-inicio").value;
-   if (!fechainicio) {
+   let fechainicio = document.getElementById("fecha-inicio");
+   if (fechainicio.value == "") {
      alert("La fecha de inicio de la reserva es obligatoria");
      correcto = false;
    } else {
@@ -79,8 +79,8 @@ function validarFormulario() {
      }
    }
   
-   let fechafinal = document.getElementById("fecha-final").value;
-   if (!fechafinal) {
+   let fechafinal = document.getElementById("fecha-final");
+   if (fechafinal.value == "") {
      alert("La fecha final de la reserva es obligatoria");
      correcto = false;
    } else {
