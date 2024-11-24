@@ -38,6 +38,7 @@ function validarRegistro() {
         alert("Debe seleccionar el estado de la herramienta.");
         formularioValido = false;
     }
+
     const descripcion = document.getElementById("Descripción").value.trim();
     if (descripcion.length > 200) {
         alert("La descripción no puede superar los 200 caracteres.");
