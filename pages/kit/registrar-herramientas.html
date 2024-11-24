@@ -6,140 +6,138 @@
     <meta name="author" content="Roitman Andres Palacios Herdoiza" />
     <title>Registro de Herramientas</title>
     <link rel="stylesheet" href="../../assets/css/style.css" />
-
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
     <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-    rel="stylesheet"
-  />
-  <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
-      <style>
-        #formulario{
-            padding: 30px;
-            border: 5px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-        }
-        main {
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <style>
+      #formulario {
+        padding: 30px;
+        border: 5px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+      }
+      main {
         max-width: 800px;
         margin: 20px auto;
         padding: 20px;
-        background: #f9f9f9; 
+        background: #f9f9f9;
         border-radius: 12px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+      }
 
-    main h1 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    }
+      main h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
 
-    #formulario {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+      #formulario {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
 
-    #formulario input[type="text"],
-    #formulario input[type="number"],
-    #formulario input[type="date"],
-    #formulario select,
-    #formulario textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-      background: #fff;
-      transition: border-color 0.3s ease;
-    }
+      #formulario input[type="text"],
+      #formulario input[type="number"],
+      #formulario input[type="date"],
+      #formulario select,
+      #formulario textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        background: #fff;
+        transition: border-color 0.3s ease;
+      }
 
-    #formulario input:focus,
-    #formulario select:focus,
-    #formulario textarea:focus {
-      border-color: #0078d7;
-      outline: none;
-      box-shadow: 0 0 4px rgba(0, 120, 215, 0.5);
-    }
+      #formulario input:focus,
+      #formulario select:focus,
+      #formulario textarea:focus {
+        border-color: #0078d7;
+        outline: none;
+        box-shadow: 0 0 4px rgba(0, 120, 215, 0.5);
+      }
 
-    #formulario button[type="submit"] {
-      background: #0078d7;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
+      #formulario button[type="submit"] {
+        background: #0078d7;
+        color: #fff;
+        border: none;
+        padding: 12px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
 
-    #formulario button[type="submit"]:hover {
-      background: #005a9e;
-    }
+      #formulario button[type="submit"]:hover {
+        background: #005a9e;
+      }
 
-    #formulario input[type="checkbox"],
-    #formulario input[type="radio"] {
-      margin-right: 10px;
-    }
+      #formulario input[type="checkbox"],
+      #formulario input[type="radio"] {
+        margin-right: 10px;
+      }
 
-    #formulario label {
-      font-weight: bold;
-      margin-bottom: 5px;
-      display: block;
-    }
+      #formulario label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+      }
 
-    #formulario textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    .form-row {
-      display: flex;
-      gap: 20px;
-    }
+      #formulario textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+      .form-row {
+        display: flex;
+        gap: 20px;
+      }
 
-    .form-column {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+      .form-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
 
-        
-        #formulario label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-        }
+      #formulario label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+      }
 
+      #formulario textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+      .form-row {
+        display: flex;
+        gap: 20px;
+      }
 
-            #formulario textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
+      .form-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      @media (max-width: 400px) {
         .form-row {
-            display: flex;
-            gap: 20px; 
-          }
-
-        .form-column {
-            flex: 1; 
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-          }
-
-          @media (max-width: 400px) {
-          .form-row {
-              flex-direction: column; 
-              }
-          }
+          flex-direction: column;
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
       <nav id="navbar">
         <a href="../../index.html">
@@ -171,28 +169,6 @@
               <div>
                 <label for="nombre">Nombre de la herramienta:</label><br />
                 <input type="text" id="nombre" name="nombre" />
-              </div>
-
-                <div>
-                    <label>Estado de la herramienta:</label><br>
-                    <input type="radio" id="Estadonuevo" name="estado" value="nueva" >
-                    <label for="Estadonuevo" style="display: inline-block; margin-right: 20px;">Nueva</label>
-                    <input type="radio" id="Estadousado" name="estado" value="usada">
-                    <label for="Estadousado" style="display: inline-block;">Usada</label>
-                </div>
-            
-                <div>
-                    <label for="mantenimiento"><br>
-                        <input type="checkbox" id="mantenimiento" name="mantenimiento" >
-                        Requiere mantenimiento
-                    </label>
-                </div>
-              </div>
-            </div>
-            <div class="form-column">
-              <div>
-                <label for="fecha">Fecha de adquisición:</label><br />
-                <input type="date" id="fecha" name="fecha" />
               </div>
 
               <div>
@@ -232,6 +208,49 @@
               </div>
             </div>
           </div>
+          <div class="form-column">
+            <div>
+              <label for="fecha">Fecha de adquisición:</label><br />
+              <input type="date" id="fecha" name="fecha" />
+            </div>
+
+            <div>
+              <label>Estado de la herramienta:</label><br />
+              <input
+                type="radio"
+                id="Estadonuevo"
+                name="estado"
+                value="nueva"
+              />
+              <label
+                for="Estadonuevo"
+                style="display: inline-block; margin-right: 20px"
+                >Nueva</label
+              >
+              <input
+                type="radio"
+                id="Estadousado"
+                name="estado"
+                value="usada"
+              />
+              <label for="Estadousado" style="display: inline-block"
+                >Usada</label
+              >
+            </div>
+
+            <div>
+              <label for="mantenimiento"
+                ><br />
+                <input
+                  type="checkbox"
+                  id="mantenimiento"
+                  name="mantenimiento"
+                />
+                Requiere mantenimiento
+              </label>
+            </div>
+          </div>
+
           <div>
             <label for="Descripción">Descripción adicional:</label><br />
             <textarea id="Descripción" name="Descripción" rows="5"></textarea>
