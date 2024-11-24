@@ -357,15 +357,21 @@
       const botonBuscar = document.querySelector("button");
       const filasTabla = document.querySelectorAll("tbody tr");
 
+      function normalizarTexto(texto) {
+    return texto
+      .normalize("NFD") 
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase(); 
+  }
+
       botonBuscar.addEventListener("click", () => {
-        const nombreBuscado = inputBusqueda.value.toLowerCase().trim();
+        const nombreBuscado = normalizarTexto(inputBusqueda.value.trim());
         let encontrado = false;
 
         filasTabla.forEach((fila) => {
-          const nombreCelda = fila
-            .querySelector("td:nth-child(2)")
-            .textContent.toLowerCase();
-
+          const nombreCelda =  normalizarTexto(
+      fila.querySelector("td:nth-child(2)").textContent.trim()
+    );
           if (nombreCelda.includes(nombreBuscado)) {
             fila.style.display = "";
             encontrado = true;
