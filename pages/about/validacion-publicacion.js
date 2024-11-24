@@ -1,3 +1,4 @@
+// Freire Chavez Jose Andres
 //Función para validar las publicaciones
 function validarPublicacion(){
     eliminarMensajes();
