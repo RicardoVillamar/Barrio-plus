@@ -8,26 +8,25 @@
     <link rel="stylesheet" href="../../assets/css/style.css" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
-  </head>
-  <style>
-    #formulario {
-      padding: 30px;
-      border: 5px solid rgba(0, 0, 0, 0.1);
-      border-radius: 12px;
-      box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
-    }
-    main {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #f9f9f9;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    rel="stylesheet"
+  />
+  <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+      <style>
+        #formulario{
+            padding: 30px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+        }
+        main {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #f9f9f9; 
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
     main h1 {
       font-size: 2rem;
@@ -108,13 +107,39 @@
       gap: 15px;
     }
 
-    @media (max-width: 400px) {
-      .form-row {
-        flex-direction: column;
-      }
-    }
-  </style>
-  <body>
+        
+        #formulario label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+
+            #formulario textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px; 
+          }
+
+        .form-column {
+            flex: 1; 
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          @media (max-width: 400px) {
+          .form-row {
+              flex-direction: column; 
+              }
+          }
+    </style>
+</head>
+
+<body>
     <header>
       <nav id="navbar">
         <a href="../../index.html">
@@ -148,22 +173,20 @@
                 <input type="text" id="nombre" name="nombre" />
               </div>
 
-              <div>
-                <label for="tipo">Tipo de herramienta:</label><br />
-                <select id="tipo" name="tipo">
-                  <option value="">Seleccione un tipo</option>
-                  <option value="herramienta de jardín">
-                    Herramienta de jardín
-                  </option>
-                  <option value="mesa">Mesa</option>
-                  <option value="accesorio">accesorio de jardinería</option>
-                  <option value="otro">Otro</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="cantidad">Cantidad disponible:</label><br />
-                <input type="number" id="cantidad" name="cantidad" />
+                <div>
+                    <label>Estado de la herramienta:</label><br>
+                    <input type="radio" id="Estadonuevo" name="estado" value="nueva" >
+                    <label for="Estadonuevo" style="display: inline-block; margin-right: 20px;">Nueva</label>
+                    <input type="radio" id="Estadousado" name="estado" value="usada">
+                    <label for="Estadousado" style="display: inline-block;">Usada</label>
+                </div>
+            
+                <div>
+                    <label for="mantenimiento"><br>
+                        <input type="checkbox" id="mantenimiento" name="mantenimiento" >
+                        Requiere mantenimiento
+                    </label>
+                </div>
               </div>
             </div>
             <div class="form-column">
