@@ -17,7 +17,6 @@ SOF-S-MA-6-1
 
 ## Instalacion
 
-En esta parte se explica como instalar el proyecto
 
 ## Requerimientos de instalacion
 
