@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <link rel="icon" href="/assets/logo-icon.png" type="image/png" />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
     <style>
       * {
         box-sizing: border-box;
@@ -115,16 +115,12 @@
         margin-bottom: 5px;
       }
 
-      .libre::before {
+      .disponible::before {
         content: "Libre";
-        font-size: 0.8rem;
-        color: #4a4a4a;
       }
 
-      .ocupado::before {
+      .no-disponible::before {
         content: "Ocupado";
-        font-size: 0.8rem;
-        color: #4a4a4a;
       }
 
       aside section ul li label.texto:hover {
@@ -222,8 +218,8 @@
         button.boton-mediano {
           margin-top: 10px;
         }
-        .libre::before,
-        .ocupado::before,
+        .disponible::before,
+        .no-disponible::before,
         button.boton-mediano {
           font-size: 1.2rem;
         }
@@ -242,8 +238,8 @@
           font-size: 0.95rem;
         }
 
-        .libre::before,
-        .ocupado::before {
+        .disponible::before,
+        .no-disponible::before {
           font-size: 1rem;
         }
       }
@@ -285,8 +281,8 @@
             style="width: 90%; height: 25px; border-radius: 4px"
           >
             <option value="todos">Todos</option>
-            <option value="ocupado">Ocuapado</option>
-            <option value="libre">No ocupado</option>
+            <option value="ocupado">Ocupado</option>
+            <option value="libre">Libre</option>
           </select>
         </section>
         <section>
@@ -396,7 +392,7 @@
             <tbody>
               <!-- Instalación 1 -->
               <tr>
-                <td><span class="libre"> </span></td>
+                <td><span class="disponible"> </span></td>
                 <td class="imagen">
                   <img
                     src="../../assets/img/instalaciones/salon-comunal.png"
@@ -418,7 +414,7 @@
               </tr>
               <!-- Instalación 2 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
                     src="../../assets/img/instalaciones/area-deportiva.png"
@@ -441,7 +437,7 @@
               </tr>
               <!-- Instalación 3 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
                     src="../../assets/img/instalaciones/gimnasio.png"
@@ -464,7 +460,7 @@
               </tr>
               <!-- Instalación 4 -->
               <tr>
-                <td><span class="libre"> </span></td>
+                <td><span class="disponible"> </span></td>
                 <td>
                   <img
                     src="../../assets/img/instalaciones/piscina.png"
@@ -486,7 +482,7 @@
               </tr>
               <!-- Instalación 5 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
                     src="../../assets/img/instalaciones/biblioteca.png"
@@ -508,7 +504,7 @@
               </tr>
               <!-- Instalación 6 -->
               <tr>
-                <td><span class="ocupado"> </span></td>
+                <td><span class="no-disponible"> </span></td>
                 <td>
                   <img
                     src="../../assets/img/instalaciones/parque-infantil.png"
@@ -530,7 +526,7 @@
               </tr>
               <!-- Instalación 7 -->
               <tr>
-                <td><span class="libre"> </span></td>
+                <td><span class="disponible"> </span></td>
                 <td>
                   <img
                     src="../../assets/img/instalaciones/sala-recreativa.png"
