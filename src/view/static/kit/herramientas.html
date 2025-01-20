@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="autor" content="Quiñonez Castrellón Anthony Joel" />
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
+    <title>Herramientas</title>
+    <style>
+      .herramienta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      em {
+        font-style: normal;
+        font-weight: bold;
+      }
+      .text {
+        max-width: 300px;
+      }
+      .tit {
+        color: #4a4a4a;
+        font-size: 1.6rem;
+        margin: 20px;
+      }
+
+      tr,
+      td,
+      th {
+        padding: 10px;
+        margin: auto;
+        text-align: center;
+      }
+      td:hover {
+        transform: scale(1.1);
+      }
+      p {
+        text-align: justify;
+        font-size: 0.8rem;
+      }
+      .imagen {
+        width: auto;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 6px;
+        justify-content: center;
+      }
+
+      .disponible::before {
+        content: "Disponible";
+      }
+
+      .no-disponible::before {
+        content: "No disponible";
+      }
+      * {
+        outline: none;
+        transition: all 0.2s ease;
+      }
+      .titulo {
+        text-align: center;
+        font-family: Helvetica;
+        font-weight: bold;
+        font-size: 1em;
+        color: #4f3a32;
+        margin: auto;
+      }
+      input[type="text"] {
+        background-color: white;
+        background-image: url("searchicon.png");
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding-right: 40px;
+        display: inline-block;
+        margin: 200px;
+      }
+
+      @media (max-width: 768px) {
+        .tit {
+          font-size: 1.4rem;
+          text-align: center;
+        }
+        table,
+        tbody,
+        tr,
+        td {
+          display: block;
+        }
+        tbody tr {
+          margin-bottom: 20px;
+          border-top: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        td {
+          text-align: center;
+          padding: 8px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .imagen {
+          height: 120px;
+          width: 100%;
+        }
+        .titulo {
+          font-size: 0.9em;
+        }
+        .boton-pequenio {
+          width: 100%;
+        }
+        th {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .tit {
+          font-size: 1.2rem;
+          margin: 10px;
+        }
+        .text {
+          max-width: 100%;
+          font-size: 0.7rem;
+        }
+        p {
+          font-size: 0.75rem;
+        }
+        td {
+          padding: 6px;
+          font-size: 0.8rem;
+          text-align: center;
+        }
+        .imagen {
+          height: 100px;
+          width: 100%;
+        }
+        .boton-pequenio {
+          padding: 8px;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
+        </a>
+        <ul>
+          <li>
+            <a href="../instalations/instalaciones.html">Instalaciones</a>
+          </li>
+          <li>
+            <a href="../kit/herramientas.html" class="activo">Herramientas</a>
+          </li>
+          <li><a href="../record/historial.html">Historial</a></li>
+          <li><a href="../about/nosotros.html">Nosotros</a></li>
+          <li>
+            <a href="#" class="user">
+              <span class="material-symbols-outlined"> account_circle </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="contenido">
+      <div>
+        <button
+          class="boton-mediano"
+          style="float: right; margin: 0px 30px"
+          onclick="location.href='registrar-herramientas.html'"
+          ;
+        >
+          Agregar Nuevas Herramienta
+        </button>
+      </div>
+      <!-- Herramientas -->
+      <h1 class="tit">Herramientas</h1>
+      <section class="herramienta">
+        <table>
+          <thead>
+            <tr>
+              <th>Disponibilidad</th>
+              <th>Nombre</th>
+              <th>Herramienta</th>
+              <th>Descripcion</th>
+              <th>Precio</th>
+              <th>Reserva</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Pala de Jardin</p>
+              </td>
+              <td>
+                <img
+                  src="https://www.megamaxi.com/wp-content/uploads/2021/09/items2Figm2F1000x10002F7501206653180-1-11.jpg"
+                  alt="Pala de Jardin"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Herramienta esencial para <em>cavar</em>, trasplantar y
+                  remover tierra en áreas pequeñas. Hecha de acero inoxidable
+                  con mango ergonómico.
+                </p>
+              </td>
+              <td>
+                <p style="color: #4a4a4a">$15.00</p>
+              </td>
+              <td>
+                <button class="boton-pequenio">Reservar</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="no-disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Rastrillo de hojas</p>
+              </td>
+              <td>
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwQUz5vfx5jdbd5wRh0qFg_-ddAN_Zwxdcew&s"
+                  alt="Rastrillo de hojas"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Utilizado para <em>recoger</em> hojas y pequeños desechos en
+                  el jardín, con púas flexibles para no dañar el césped. Hecho
+                  de plástico duradero o metal.
+                </p>
+              </td>
+              <td>
+                <p style="color: #4a4a4a">$20.00</p>
+              </td>
+              <td>
+                <button class="boton-pequenio">Reservar</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Tijeras de poda</p>
+              </td>
+              <td>
+                <img
+                  src="https://fertisa.com/wp-content/uploads/2020/09/1140467.jpg"
+                  alt="Tijeras de poda"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Tijeras diseñadas para <em>podar</em> arbustos y plantas, con
+                  hoja de acero inoxidable y mango antideslizante.
+                </p>
+              </td>
+              <td>
+                <p style="color: #4a4a4a">$30.00</p>
+              </td>
+              <td>
+                <button class="boton-pequenio">Reservar</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="no-disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Guantes de jardinería</p>
+              </td>
+              <td>
+                <img
+                  src="https://kywiec.vtexassets.com/arquivos/ids/156296-800-auto?v=638380019020200000&width=800&height=auto&aspect=true"
+                  alt="Guantes de jardinería"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Guantes <b>resistentes</b> a cortes y perforaciones, ideales
+                  para proteger las manos durante trabajos de jardinería.
+                </p>
+              </td>
+              <td><p style="color: #4a4a4a">$10.00</p></td>
+              <td><button class="boton-pequenio">Reservar</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="no-disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Regadera de 5 litros</p>
+              </td>
+              <td>
+                <img
+                  src="https://http2.mlstatic.com/D_NQ_NP_985589-MLA54976195290_042023-O.webp"
+                  alt="Regadera de 5 litros"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Recipiente de plástico con capacidad de 5 litros para
+                  <em>regar</em> plantas. Incluye boquilla ajustable para un
+                  riego preciso.
+                </p>
+              </td>
+              <td>
+                <p style="color: #4a4a4a">$12.00</p>
+              </td>
+              <td>
+                <button class="boton-pequenio">Reservar</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td><span class="disponible"> </span></td>
+              <td>
+                <p class="titulo">Manguera de Jardín 100m</p>
+              </td>
+              <td>
+                <img
+                  src="https://eliteecuador.com/wp-content/uploads/2021/09/Manguera-1-300x300.jpg"
+                  alt="Manguera de Jardín 100m"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Manguera de alta resistencia de 100 metros, ideal para
+                  <em>regar</em> áreas grandes del jardín. Fabricada con
+                  material flexible y duradero, resistente a torceduras.
+                </p>
+              </td>
+              <td><p style="color: #4a4a4a">$32.57</p></td>
+              <td><button class="boton-pequenio">Reservar</button></td>
+            </tr>
+
+            <tr>
+              <td><span class="no-disponible"> </span></td>
+              <td>
+                <p class="titulo">Azadón</p>
+              </td>
+              <td>
+                <img
+                  src="https://kywiec.vtexassets.com/arquivos/ids/155838-800-auto?v=638380017965030000&width=800&height=auto&aspect=true"
+                  alt="Azadón"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Herramienta de metal con un extremo en forma de pala plana,
+                  utilizada para <em>remover</em> la tierra, deshierbar o cavar
+                  surcos.
+                </p>
+              </td>
+              <td><p style="color: #4a4a4a">$25.00</p></td>
+              <td><button class="boton-pequenio">Reservar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <h2 class="tit">Mesas de Eventos</h2>
+      <section class="herramienta">
+        <table>
+          <thead>
+            <tr>
+              <th>Disponibilidad</th>
+              <th>Nombre</th>
+              <th>Mesas</th>
+              <th>Descripcion</th>
+              <th>Precio</th>
+              <th>Reserva</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td><span class="no-disponible"> </span></td>
+              <td>
+                <p class="titulo">Mesa plegable rectangular</p>
+              </td>
+              <td>
+                <img
+                  src="https://www.calas.cl/wp-content/uploads/2022/04/Mesa-Eco-Rattan-180-CM-Rectangular-e1606859697498-1.jpg"
+                  alt="Mesa plegable rectangular (180 cm)"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Mesa de plástico resistente y patas de acero,
+                  <b>ideal</b> para reuniones, eventos y fiestas. Capacidad para
+                  6-8 personas.
+                </p>
+              </td>
+              <td><p style="color: #4a4a4a">$70.00</p></td>
+              <td><button class="boton-pequenio">Reservar</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Mesa redonda plegable</p>
+              </td>
+              <td>
+                <img
+                  src="https://http2.mlstatic.com/D_NQ_NP_755352-MEC49160664944_022022-O.webp"
+                  alt="Mesa redonda plegable (120 cm)"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Mesa redonda de plástico, <b>perfectas</b> para eventos
+                  sociales. Capacidad para 4-6 personas, con patas plegables
+                  para fácil transporte.
+                </p>
+              </td>
+              <td><p style="color: #4a4a4a">$80.00</p></td>
+              <td><button class="boton-pequenio">Reservar</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Mesa de catering con ruedas</p>
+              </td>
+              <td>
+                <img
+                  src="https://m.media-amazon.com/images/I/51McxR6xfYL.jpg"
+                  alt="Mesa de catering con ruedas"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Mesa portátil con ruedas, <b>util</b> para servir comida y
+                  bebidas en eventos. Incluye frenos en las ruedas para asegurar
+                  estabilidad.
+                </p>
+              </td>
+              <td><p style="color: #4a4a4a">$100.00</p></td>
+              <td><button class="boton-pequenio">Reservar</button></td>
+            </tr>
+
+            <tr>
+              <td>
+                <span class="no-disponible"> </span>
+              </td>
+              <td>
+                <p class="titulo">Mesa tipo picnic</p>
+              </td>
+              <td>
+                <img
+                  src="https://m.media-amazon.com/images/I/51-dOes73xS._AC_UF894,1000_QL80_.jpg"
+                  alt="Mesa tipo picnic"
+                  class="imagen"
+                />
+              </td>
+              <td class="text">
+                <p style="color: #4a4a4a">
+                  Mesa de madera con bancos integrados a los lados,
+                  <b>perfecta</b> para áreas de picnic o eventos al aire libre.
+                </p>
+              </td>
+              <td><p style="color: #4a4a4a">$150.00</p></td>
+              <td><button class="boton-pequenio">Reservar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <section id="redes-sociales">
+        <ul>
+          <li><a href="">Redes sociales</a></li>
+          <li><a href="">Youtube</a></li>
+          <li><a href="">Facebook</a></li>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Twitter</a></li>
+        </ul>
+      </section>
+
+      <section id="lista-pie">
+        <ul>
+          <li><a href="">Documentacion</a></li>
+          <li><a href="">Politicas de uso</a></li>
+          <li><a href="">Terminos y condiciones</a></li>
+          <li><a href="">Soporte Tecnico</a></li>
+          <li><a href="">Manual de usuario</a></li>
+          <li><a href="">Contactanos</a></li>
+        </ul>
+      </section>
+
+      <section id="copiright">
+        <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
+      </section>
+    </footer>
+
+    <script>
+      const botones = document.querySelectorAll(".boton-pequenio");
+      botones.forEach((boton) => {
+        boton.addEventListener("click", () => {
+          window.location.href = "reserva-herramientas.html";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Autor" content="Roitman Andres Palacios Herdoiza" />
+    <title>Historial de Reservas</title>
+    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../../assets/logo-icon.png" type="image/png" />
+
+    <style>
+      * {
+        transition: all 0.3s ease;
+        outline: none;
+        scroll-behavior: smooth;
+        box-sizing: border-box;
+      }
+
+      .tabla-contenedor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .scroll-container {
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: auto;
+      }
+
+      .tarjeta-imagen {
+        max-width: 100%;
+        height: auto;
+      }
+
+      @media (max-width: 360px) {
+        .tabla-contenedor {
+          max-width: 100%;
+          padding: 5px;
+        }
+
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        td {
+          padding: 6px;
+        }
+
+        td img {
+          width: 100%;
+          height: auto;
+        }
+
+        td[data-label="Imagen"] {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        th {
+          text-align: left;
+        }
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f0f4f8;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+
+      th {
+        background-color: #f0f4f8;
+        font-weight: bold;
+        position: sticky;
+        top: 0;
+      }
+
+      h1::first-letter {
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav id="navbar">
+        <a href="../../index.html">
+          <img class="logo" src="../../assets/logo-icon.png" alt="logo" />
+        </a>
+        <ul>
+          <li>
+            <a href="../instalations/instalaciones.html">Instalaciones</a>
+          </li>
+          <li><a href="../kit/herramientas.html">Herramientas</a></li>
+          <li>
+            <a href="../record/historial.html" class="activo">Historial</a>
+          </li>
+          <li><a href="../about/nosotros.html">Nosotros</a></li>
+          <li>
+            <a href="#" class="user">
+              <span class="material-symbols-outlined"> account_circle </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <h1 class="titulos" style="text-align: center">Historial de Reservas</h1>
+      <label for="buscador-nombre" class="titulos">Buscar:</label>
+      <input type="text" placeholder="Escribe el nombre aquí" />
+      <button>Buscar</button>
+      <h2 class="subtitulos" style="padding-left: 20px">
+        Historial de Reservas Activas
+      </h2>
+      <div class="tabla-contenedor">
+        <div class="scroll-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Costos</th>
+                <th>Fecha Reserva</th>
+                <th>Fecha Retorno</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Imagen">
+                  <img
+                    src="https://cotizador.malldelsol.com.ec/assets/img/home/salones.jpg"
+                    alt="Salón Comunal"
+                    class="tarjeta-imagen"
+                  />
+                  Salón Comunal
+                </td>
+                <td data-label="Nombre">Sofía Ramírez</td>
+                <td data-label="Costos">$90</td>
+                <td data-label="Fecha Reserva">2024-11-10</td>
+                <td data-label="Fecha Retorno">2024-11-12</td>
+                <td data-label="Acciones"><button>Cancelar</button></td>
+              </tr>
+              <tr>
+                <td data-label="Imagen">
+                  <img
+                    src="https://www.inmobiliar.gob.ec/wp-content/uploads/2018/03/BLOQUE-3-CANCHAS-PARQUE-SAMANES.png"
+                    alt="Área deportiva"
+                    class="tarjeta-imagen"
+                  />
+                  <p>Área deportiva <br />(Cancha de fútbol)</p>
+                </td>
+                <td data-label="Nombre">Mateo García</td>
+                <td data-label="Costos">$15</td>
+                <td data-label="Fecha Reserva">2024-11-10</td>
+                <td data-label="Fecha Retorno">2024-11-11</td>
+                <td data-label="Acciones"><button>Cancelar</button></td>
+              </tr>
+              <tr>
+                <td data-label="Imagen">
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ___MSpb3LrTHMN2QgXLFYGJthnh4iwGGYwg&s"
+                    alt="Equipo de jardinería"
+                    class="tarjeta-imagen"
+                  />
+                  Equipo de jardinería
+                </td>
+                <td data-label="Nombre">Valentina Torres</td>
+                <td data-label="Costos">$50</td>
+                <td data-label="Fecha Reserva">2024-11-08</td>
+                <td data-label="Fecha Retorno">2024-11-09</td>
+                <td data-label="Acciones"><button>Cancelar</button></td>
+              </tr>
+              <tr>
+                <td data-label="Imagen">
+                  <img
+                    src="https://eventosecuador.com/wp-content/uploads/2023/02/D-eventos-2.jpeg"
+                    alt="Mesas"
+                    class="tarjeta-imagen"
+                  />
+                  Mesas
+                </td>
+                <td data-label="Nombre">Camila Hernández</td>
+                <td data-label="Costos">$50</td>
+                <td data-label="Fecha Reserva">2024-11-01</td>
+                <td data-label="Fecha Retorno">2024-11-03</td>
+                <td data-label="Acciones"><button>Cancelar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2 class="subtitulos" style="padding-left: 20px">
+        Historial de Reservas Antiguas
+      </h2>
+      <div class="tabla-contenedor">
+        <div class="scroll-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Costos</th>
+                <th>Fecha Reserva</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <img
+                    src="https://cotizador.malldelsol.com.ec/assets/img/home/salones.jpg"
+                    alt="Salon de evemtos"
+                    class="tarjeta-imagen"
+                  />Salon de evento
+                </td>
+                <td>Laura Martínez</td>
+                <td>$90</td>
+                <td>2024-10-17</td>
+                <td><button>Eliminar</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="https://www.inmobiliar.gob.ec/wp-content/uploads/2018/03/BLOQUE-3-CANCHAS-PARQUE-SAMANES.png"
+                    alt="Recurso 2"
+                    class="tarjeta-imagen"
+                  />Área Deportiva <br />
+                  (Canchas de futbol)
+                </td>
+                <td>Victoria Sánchez</td>
+                <td>$15</td>
+                <td>2024-10-16</td>
+                <td><button>Eliminar</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="https://cotizador.malldelsol.com.ec/assets/img/home/salones.jpg"
+                    alt="Salon de evento"
+                    class="tarjeta-imagen"
+                  />Salon de evento
+                </td>
+                <td>Emiliano Fernández</td>
+                <td>$90</td>
+                <td>2024-10-15</td>
+                <td><button>Eliminar</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="https://media.istockphoto.com/id/1128479561/es/foto/varias-herramientas-de-jardinería-en-el-jardín.jpg?s=612x612&w=0&k=20&c=rZwQRPILHsZQB3NacAp53MQr66Y2bJi2q22tBF6C68I="
+                    alt="Equipo de Jardineria"
+                    class="tarjeta-imagen"
+                  />Equipo de Jardineria
+                </td>
+                <td>David Ruiz</td>
+                <td>$30</td>
+                <td>2024-10-14</td>
+                <td><button>Eliminar</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiaFehDQ_g26SEQ-dOAzJ3YgvFYHEkGKFxUQ&s"
+                    alt="Canchas de basquet"
+                    class="tarjeta-imagen"
+                  />Área Deportiva <br />(Canchas de basquet)
+                </td>
+                <td>Andres Lopez</td>
+                <td>$20</td>
+                <td>2024-10-13</td>
+                <td><button>Eliminar</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="https://www.hoysejuega.com/uploads/Modules/ImagenesComplejos/800_600_futbol-plaza-garello.jpg"
+                    alt="Recurso 2"
+                    class="tarjeta-imagen"
+                  />Área Deportiva <br />(Canchas de futbol)
+                </td>
+                <td>Sebastián González</td>
+                <td>$15</td>
+                <td>2024-10-11</td>
+                <td><button>Eliminar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <section id="redes-sociales">
+        <ul>
+          <li><a href="">Redes sociales</a></li>
+          <li><a href="">Youtube</a></li>
+          <li><a href="">Facebook</a></li>
+          <li><a href="">Instagram</a></li>
+          <li><a href="">Twitter</a></li>
+        </ul>
+      </section>
+
+      <section id="lista-pie">
+        <ul>
+          <li><a href="">Documentacion</a></li>
+          <li><a href="">Politicas de uso</a></li>
+          <li><a href="">Terminos y condiciones</a></li>
+          <li><a href="">Soporte Tecnico</a></li>
+          <li><a href="">Manual de usuario</a></li>
+          <li><a href="">Contactanos</a></li>
+        </ul>
+      </section>
+
+      <section id="copiright">
+        <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
+      </section>
+    </footer>
+
+    <script>
+      const inputBusqueda = document.querySelector(
+        'input[placeholder="Escribe el nombre aquí"]'
+      );
+      const botonBuscar = document.querySelector("button");
+      const filasTabla = document.querySelectorAll("tbody tr");
+
+      function normalizarTexto(texto) {
+    return texto
+      .normalize("NFD") 
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase(); 
+  }
+
+      botonBuscar.addEventListener("click", () => {
+        const nombreBuscado = normalizarTexto(inputBusqueda.value.trim());
+        let encontrado = false;
+
+        filasTabla.forEach((fila) => {
+          const nombreCelda =  normalizarTexto(
+      fila.querySelector("td:nth-child(2)").textContent.trim()
+    );
+          if (nombreCelda.includes(nombreBuscado)) {
+            fila.style.display = "";
+            encontrado = true;
+          } else {
+            fila.style.display = "none";
+          }
+        });
+
+        if (!encontrado) {
+          alert("El nombre ingresado no está registrado.");
+        }
+      });
+    </script>
+  </body>
+</html>
