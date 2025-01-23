@@ -27,7 +27,6 @@ CREATE TABLE `Herramienta` (
   `nombre` VARCHAR(150) NOT NULL,
   `descripcion` TEXT,
   `precio` DECIMAL(10,2) NOT NULL,
-  `idTipoFK` INT NOT NULL,
   `imagen` VARCHAR(255),
   `fechaRegistro` DATE NOT NULL,
   `idEstadoFK` INT NOT NULL,
@@ -87,8 +86,6 @@ CREATE TABLE `Contribucion` (
 );
 
 ALTER TABLE `Usuario` ADD FOREIGN KEY (`idRolFK`) REFERENCES `RolUsuario` (`idRol`);
-
-ALTER TABLE `Herramienta` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `Tipo` (`idTipo`);
 
 ALTER TABLE `Herramienta` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
 
