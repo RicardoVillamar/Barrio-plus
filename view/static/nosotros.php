@@ -54,7 +54,7 @@
           <h2 class="titulos">Integrantes</h2>
           <article class="tarjeta col-md-4">
             <img
-              src="../../assets/images/grupo/villamar.png"
+              src="assets/images/grupo/villamar.png"
               alt="villamar"
               class="tarjeta-imagen"
             />
@@ -72,7 +72,7 @@
 
           <article class="tarjeta col-md-4">
             <img
-              src="../../assets/images/grupo/quinionez.png"
+              src="assets/images/grupo/quinionez.png"
               alt="quinionez"
               class="tarjeta-imagen"
             />
@@ -90,7 +90,7 @@
 
           <article class="tarjeta col-md-4">
             <img
-              src="../../assets/images/grupo/palacios.png"
+              src="assets/images/grupo/palacios.png"
               alt="palacios"
               class="tarjeta-imagen"
             />
@@ -110,7 +110,7 @@
         <section class="row">
           <article class="tarjeta col-md-6">
             <img
-              src="../../assets/images/grupo/larrea.png"
+              src="assets/images/grupo/larrea.png"
               alt="larrea"
               class="tarjeta-imagen"
             />
@@ -128,7 +128,7 @@
 
           <article class="tarjeta col-md-6">
             <img
-              src="../../assets/images/grupo/freire.png"
+              src="assets/images/grupo/freire.png"
               alt="freire"
               class="tarjeta-imagen"
             />
