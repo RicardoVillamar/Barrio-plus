@@ -1,0 +1,294 @@
+/*================================ 
+  Estilos nosotros.php
+  ================================*/
+  
+  /**Selector de Clase**/
+  .contenedor-principal {
+    width: 90%;
+    margin: auto;
+  }
+
+  /**Clase Bootstrap**/
+  .container {
+    margin-left: 2px;
+    margin-top: 30px;
+    background-color: #a8d0e6;
+    border: 6px solid white;
+  }
+
+  /**Tarjetas**/
+  .tarjeta {
+    padding: 10px;
+    margin: 15px 30px 25px 35px;
+    max-width: 300px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /**Selector de Pseudoclases**/
+  .tarjeta:hover {
+    transform: scale(1.01);
+    transition: 0.3s ease;
+  }
+
+  /**Selector de Clase**/
+  .tarjeta-imagen {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /**Selector de Clase**/
+  .tarjeta-titulo {
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #4f3a32;
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
+
+  /**Seccion Contacto**/
+  /**Selector de Clase**/
+  #contacto {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #a8d0e6;
+    border: 6px solid white;
+  }
+
+  /**Selector de elemento**/
+  input {
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 300px;
+    padding: 5px;
+  }
+
+  /**Selector de Atributo**/
+  input[placeholder] {
+    font-size: 0.8rem;
+  }
+
+  /**Selector de Agrupación**/
+  .campo-nombre,
+  .campo-apellido,
+  .campo-correo,
+  .campo-asunto,
+  .button-enviar {
+    margin-top: 15px;
+  }
+
+  /**Selector Combinatorio de Descendientes**/
+  .campo-asunto textarea {
+    font-size: 0.8rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 300px;
+    height: 100px;
+    padding: 5px;
+    resize: none;
+  }
+
+  /**Selector de Descendientes**/
+  #acercaDenosotros blockquote {
+    font-size: 0.8em;
+    margin-left: 20px;
+  }
+
+  /**Selector de Descendientes**/
+  #acercaDenosotros figcaption {
+    font-size: 0.8em;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  /**Selector de Pseudoelemento**/
+  .integrante::before {
+    content: "Participante";
+    font-size: 0.5rem;
+    font-weight: bold;
+    color: #4a4a4a;
+    display: inline-block;
+    padding: 4px;
+    margin-bottom: 6px;
+    border-radius: 2px;
+    background-color: #a8d0e6;
+  }
+
+  .enlaceSeccion {
+    text-decoration: underline;
+    font-size: 0.8rem;
+    color: #4074d4;
+  }
+
+  /**Selector de Agrupación**/
+  #acercaDenosotros,
+  #historia,
+  #mision,
+  #valores {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    background-color: #a8d0e6;
+    border: 6px solid white;
+    border-radius: 5px;
+  }
+
+  /**Selector de Pseudoelemento**/
+  #historia::first-line,
+  #mision::first-line,
+  #valores::first-line,
+  #acercaDenosotros::first-line,
+  .container h2::first-line,
+  #contacto::first-line {
+    text-decoration: underline;
+  }
+
+  /**Selector de Pseudoelemento**/
+  #mision p::after {
+    content: " Puedes consultar los siguientes videos para conocer un poco más sobre nuestra misión: ";
+    font-weight: bold;
+  }
+
+  .form_contacto {
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .form_contacto label {
+    font-size: 0.9em;
+  }
+
+  .titulos {
+    margin-top: 15px;
+    margin-left: 20px;
+  }
+
+  /**Selector de hermano adyacente**/
+  .titulos + p {
+    margin-left: 20px;
+  }
+  /**Selector de ID**/
+  #listaValores {
+    margin-left: 5px;
+    margin-right: 40px;
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  #listaValores img {
+    width: 300px;
+    height: 200px;
+  }
+
+  #listaValores img:hover,
+  #acercaDenosotros img:hover {
+    filter: brightness(0.7);
+    transform: scale(1.01);
+    transition: 0.3s ease;
+  }
+
+  .videos iframe {
+    width: 450px;
+    height: 300px;
+    border-radius: 5px;
+    margin: 20px 30px;
+  }
+
+  .boton-pequenio {
+    border: 3px solid white;
+    border-radius: 1px;
+  }
+
+  .infoIntegrante {
+    display: none;
+  }
+
+  .error {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.7rem;
+    color: #c62b09;
+  }
+
+  @media (max-width: 1024px) {
+    .contenedor-principal {
+      width: 90%;
+      margin-left: 5%;
+    }
+
+    #listaValores {
+      align-items: center;
+    }
+
+    .tarjeta {
+      max-width: 25%;
+      margin-left: 40px;
+    }
+
+    .tarjeta-imagen {
+      height: 200px;
+    }
+
+    .videos iframe {
+      width: 370px;
+      height: 250px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contenedor-principal {
+      width: 90%;
+    }
+
+    .tarjeta {
+      max-width: 25%;
+      margin: 25px;
+      padding: 7px;
+    }
+
+    .tarjeta-imagen {
+      height: 200px;
+    }
+
+    .videos iframe {
+      width: 280px;
+      height: 200px;
+      margin: 5px 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contenedor-principal {
+      margin-left: 5%;
+    }
+
+    .container h2 {
+      margin-left: 5px;
+    }
+
+    .tarjeta {
+      max-width: 25%;
+      margin: 20px 10px;
+      padding: 7px;
+    }
+
+    .tarjeta-imagen {
+      height: 90px;
+    }
+
+    .videos iframe {
+      width: 350px;
+      height: 350px;
+    }
+
+    #listaValores {
+      display: block;
+    }
+
+    #listaValores img {
+      margin: 15px 0 20px 15px;
+    }
+  }

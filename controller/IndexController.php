@@ -12,7 +12,7 @@ class IndexController {
         if(!empty($_GET['p'])){
             $page =  limpiar($_GET['p']); // limpiar datos
             // flujo de ventanas
-            require_once 'view/estaticas/'.$page.'.php';
+            require_once 'view/static/'.$page.'.php';
            
         }else{
               // flujo de ventanas
