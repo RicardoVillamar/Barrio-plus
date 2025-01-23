@@ -1,4 +1,19 @@
-<?php require_once HEADER; ?>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/nosotrosStyle.css">
+    <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <title>Nosotros</title>
+  </head>
+  <body>
+    <?php require_once HEADER; ?>
     <main class="contenedor-principal">
       <section id="acercaDenosotros">
         <h1 class="titulos">Acerca de Nosotros</h1>
