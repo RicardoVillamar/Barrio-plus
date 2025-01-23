@@ -28,7 +28,7 @@
 
       <div class="elementos">
         <img
-          src="assets/img/fotos/comunidad.jpg"
+          src="assets/images/fotos/comunidad.jpg"
           alt="Instalacion Reservada"
           id="cancha"
         />
@@ -38,7 +38,7 @@
 
       <div class="elementos">
         <img
-          src="assets/img/fotos/sala.jpeg"
+          src="assets/imgages/fotos/sala.jpeg"
           alt="Instalacion Reservada"
           id="sala"
         />
@@ -55,7 +55,7 @@
 
       <div class="elementos">
         <img
-          src="assets/img/fotos/podadora.jpeg"
+          src="assets/images/fotos/podadora.jpeg"
           alt="Herramienta Reservada"
           id="podadora"
         />
@@ -65,7 +65,7 @@
 
       <div class="elementos">
         <img
-          src="assets/img/fotos/escalera.jpeg"
+          src="assets/images/fotos/escalera.jpeg"
           alt="Herramientas Reservada"
           id="escalera"
         />
@@ -93,7 +93,7 @@
 
     <section class="sobreNosotros">
       <div class="imgNosotros">
-        <img src="assets/img/fotos/nosotros.png" alt="Nosotros" id="imgNos" />
+        <img src="assets/images/fotos/nosotros.png" alt="Nosotros" id="imgNos" />
         <div class="lema" style="display: none">
           "Facilitando el acceso, fortaleciendo la comunidad"
         </div>
@@ -122,7 +122,7 @@
           <div class="user">
             <img
               class="imgUsuario"
-              src="assets/img/fotos/images.jpeg"
+              src="assets/images/fotos/images.jpeg"
               alt="usuario"
             />
             <h5>Pedro Lopez R.</h5>
@@ -140,7 +140,7 @@
           <div style="background-color: #f0f4f8" class="user">
             <img
               class="imgUsuario"
-              src="assets/img/fotos/userimg.png"
+              src="assets/images/fotos/userimg.png"
               alt="usuario"
             />
             <h5>Ana Maria H.</h5>
@@ -157,7 +157,7 @@
           <div class="user">
             <img
               class="imgUsuario"
-              src="assets/img/fotos/images.jpeg"
+              src="assets/images/fotos/images.jpeg"
               alt="usuario"
             />
             <h5>Diego Holan D.</h5>
@@ -172,7 +172,7 @@
           <div style="background-color: #f0f4f8" class="user">
             <img
               class="imgUsuario"
-              src="assets/img/fotos/userimg.png"
+              src="assets/images/fotos/userimg.png"
               alt="usuario"
             />
             <h5>Lourdes De las Mercedes</h5>

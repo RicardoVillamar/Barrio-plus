@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
     />
-    <title>Barrio Plus<title>
+    <title>Barrio Plus</title>
   </head>
   <body>
     <header>
