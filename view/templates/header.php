@@ -14,7 +14,7 @@
   <body>
     <header>
       <nav id="navbar">
-        <a href="/index.html">
+        <a href="index.php">
           <img class="logo" src="assets/images/fotos/logo-icon.png" alt="logo" />
         </a>
         <ul>
