@@ -21,9 +21,9 @@
           <li>
             <a href="index.php?c=index&f=index&p=instalaciones">Instalaciones</a>
           </li>
-          <li><a href="index.php?c=index&f=index&p=herramientas">Herramientas</a></li>
-          <li><a href="index.php?c=index&f=index&p=historial">Historial</a></li>
-          <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
+          <li><a href="index.php?c=index&f=index">Herramientas</a></li>
+          <li><a href="index.php?c=index&f=index">Historial</a></li>
+          <li><a href="index.php?c=index&f=index">Nosotros</a></li>
           <li>
             <a href="#" class="user">
               <span class="material-symbols-outlined"> account_circle </span>
