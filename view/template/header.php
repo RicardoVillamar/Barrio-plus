@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="icon" href="assets/logo-icon.png" type="image/png">
+    <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
@@ -15,7 +15,7 @@
     <header>
       <nav id="navbar">
         <a href="/index.html">
-          <img class="logo" src="assets/images/logo-icon.png" alt="logo" />
+          <img class="logo" src="assets/images/fotos/logo-icon.png" alt="logo" />
         </a>
         <ul>
           <li>
