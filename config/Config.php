@@ -4,9 +4,9 @@ define("CONTROLADOR_PRINCIPAL", "index");
 define("FUNCION_PRINCIPAL", "index");
 
 //ruta de vistas modulo de publicaciones
-define("VCATEGORIAS", "view/publicaciones/publicaciones.");
+define("VPUBLICACIONES", "view/publicaciones/publicaciones.");
 
 //conexion con la bd
-define("DBNAME","mvc");
+define("DBNAME",""); //Agregar el nombre de la base de datos
 define("DBUSER","root");
 define("DBPASSWORD","");
