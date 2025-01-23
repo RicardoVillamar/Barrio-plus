@@ -3,6 +3,10 @@
 define("CONTROLADOR_PRINCIPAL", "index");
 define("FUNCION_PRINCIPAL", "index");
 
+//ruta de templates
+define("HEADER", "view/templates/header.php");
+define("FOOTER", "view/templates/footer.php");
+
 //ruta de vistas modulo de herramientas
 define("VHERRAMIENTAS", "view/herramientas/herramientas.");
 
@@ -10,6 +14,6 @@ define("VHERRAMIENTAS", "view/herramientas/herramientas.");
 define("VPUBLICACIONES", "view/publicaciones/publicaciones.");
 
 //conexion con la bd
-define("DBNAME",""); //Agregar el nombre de la base de datos
+define("DBNAME","barrioplusdb"); 
 define("DBUSER","root");
 define("DBPASSWORD","");
