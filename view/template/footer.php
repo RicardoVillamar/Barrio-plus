@@ -22,3 +22,6 @@
         <p class="texto">&copy; Todos los derechos reservados 2024-2024</p>
     </section>
 </footer>
+
+</body>
+</html>
