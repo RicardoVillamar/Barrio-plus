@@ -1,0 +1,236 @@
+  /*================================ 
+  Estilos home.php
+  ================================*/
+
+  .contenedorBanner {
+    margin: auto;
+    border: 5px;
+    padding: 5px;
+  }
+
+  .banner {
+    height: 550px;
+    background: url(assets/img/fotos/breed.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #textoBanner {
+    color: #4f3a32;
+    text-transform: uppercase;
+    font-size: 3em;
+  }
+
+  .contenedorInstalaciones {
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    font-size: 1.2em;
+  }
+
+  .elementoReservar,
+  .elementos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border: 3px solid #a3b5c8;
+  }
+  .elementoReservar {
+    font-weight: bold;
+    justify-content: right;
+  }
+
+  .elementos img {
+    width: 300px;
+    height: 220px;
+  }
+
+  .contenedorHerramientas {
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    padding-bottom: 70px;
+    font-size: 1.2em;
+  }
+
+  .sobreNosotros {
+    width: 86%;
+    margin: auto;
+    border: 3px solid #a3b5c8;
+    padding: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .imgNosotros,
+  .nosotros {
+    width: 45%;
+  }
+
+  .imgNosotros img {
+    width: 100%;
+    height: auto;
+  }
+
+  .nosotros h4 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .nosotros p {
+    font-size: 1em;
+    text-align: justify;
+  }
+
+  h3,
+  p {
+    color: #4a4a4a;
+  }
+
+  .imgNosotros {
+    /*agg*/
+    position: relative;
+    display: inline-block;
+  }
+
+  .imgNosotros img {
+    /*agg*/
+    width: 100%;
+    height: auto;
+  }
+
+  .imgNosotros .lema {
+    /*agg*/
+    font-weight: bold;
+    position: absolute;
+    color: #4a4a4a;
+    background-color: #a3b5c8;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  #publicacionesRecientes {
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  #contenedorPub {
+    max-height: 450px;
+    overflow-y: auto;
+  }
+
+  .comentarios {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid #4a4a4a;
+    border-radius: 5px;
+    text-align: justify;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1px;
+  }
+
+  .comentarios img {
+    height: 30px;
+    width: 30px;
+    border-radius: 30%;
+  }
+
+  #publicacionesRecientes :nth-child(2n + 1) {
+    background-color: #a3b5c8;
+  }
+
+  #contribucion {
+    padding: 10px;
+    margin-top: 20px;
+  }
+
+  #contenedorCont {
+    flex: 1;
+    max-width: 94%;
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+  }
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .banner {
+      width: 90%;
+      margin: auto;
+    }
+
+    .elementos {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .elementos img {
+      width: 90%;
+      height: auto;
+      margin: auto;
+    }
+
+    .sobreNosotros {
+      flex-direction: column;
+    }
+
+    .imgNosotros,
+    .nosotros {
+      width: 90%;
+    }
+
+    #informacion,
+    #adicional {
+      width: 90%;
+      margin: auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .banner {
+      height: 90%;
+    }
+    #textoBanner {
+      font-size: 1.5em;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .elementoReservar {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .sobreNosotros {
+      padding: 20px;
+    }
+
+    .imgNosotros,
+    .nosotros {
+      width: 100%;
+    }
+
+    #informacion,
+    #adicional {
+      width: 90%;
+      text-align: justify;
+    }
+}
