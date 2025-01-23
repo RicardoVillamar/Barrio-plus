@@ -4,8 +4,8 @@ define("CONTROLADOR_PRINCIPAL", "index");
 define("FUNCION_PRINCIPAL", "index");
 
 //ruta de templates
-define("HEADER", 'view/templates/header.php');
-define("FOOTER", 'view/templates/footer.php');
+define("HEADER", "view/templates/header.php");
+define("FOOTER", "view/templates/footer.php");
 
 //ruta de vistas modulo de herramientas
 define("VHERRAMIENTAS", "view/herramientas/herramientas.");
