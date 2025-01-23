@@ -2,7 +2,7 @@
 <?php
 require_once 'config/Conexion.php';
 
-class PublicacionesDAO{
+class PublicacionDAO{
     private $con;
 
     public function __construct() {
