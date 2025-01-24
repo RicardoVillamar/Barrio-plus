@@ -47,8 +47,8 @@ CREATE TABLE `Instalacion` (
   `tamano` VARCHAR(50),
   `idTipoFK` INT NOT NULL,
   `idEstadoFK` INT NOT NULL,
-  `idContribuidorFK` INT
-  `imagen` VARCHAR(255), 
+  `idContribuidorFK` INT,
+  `imagen` VARCHAR(255)
 );
 
 CREATE TABLE `ReservacionHerramienta` (
@@ -75,14 +75,24 @@ CREATE TABLE `ReservacionInstalacion` (
   `proposito` TEXT
 );
 
-CREATE TABLE `Publicacion` (
+CREATE TABLE TipoPublicacion (
+  `idTipo` INT AUTO_INCREMENT PRIMARY KEY,
+  `descripcion` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Prioridad (
+  `idPrioridad` INT AUTO_INCREMENT PRIMARY KEY,
+  `nivel` VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Publicacion ( 
   `idPubli` INT AUTO_INCREMENT PRIMARY KEY,
   `titulo` VARCHAR(30) NOT NULL,
-  `tipo` ENUM('Reporte de daños', 'Avisos generales', 'Avisos de mantenimiento', 'Solicitudes de recursos', 'Otros') NOT NULL,
+  `idTipoFK` INT NOT NULL,
   `descripcion` VARCHAR(100) NOT NULL,
-  `prioridad` ENUM('Alta', 'Media', 'Baja') NOT NULL,
+  `idPrioridadFK` INT NOT NULL,
   `fechaEvento` DATE NOT NULL,
-  `notificarAdmin` TINYINT(1) NOT NULL,
+  `notificarAdmin` INT(1) NOT NULL,
   `idUsuarioFK` INT NOT NULL
 );
 
@@ -115,6 +125,10 @@ ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idInstalacionFK`) REFEREN
 ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+
+ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `TipoPublicacion` (`idTipo`);
+
+ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idPrioridadFK`) REFERENCES `Prioridad` (`idPrioridad`);
 
 ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 

@@ -1,7 +1,7 @@
 <!-- Autor: Freire Chavez Jose Andres -->
 <?php
 class Publicacion{
-    private $id, $titulo, $tipo, $descripcion, $prioridad, $fechaEvento,
+    private $id, $titulo, $idTipo, $descripcion, $idPrioridad, $fechaEvento,
     $notificarAdmin, $idUsuario;
 
     function __construct() {
@@ -16,16 +16,16 @@ class Publicacion{
         return $this->titulo;
     }
 
-    function getTipo() {
-        return $this->tipo;
+    function getIdTipo() {
+        return $this->idTipo;
     }
 
     function getDescripcion() {
         return $this->descripcion;
     }
 
-    function getPrioridad() {
-        return $this->prioridad;
+    function getIdPrioridad() {
+        return $this->idPrioridad;
     }
     
     function getFechaEvento() {
@@ -48,16 +48,16 @@ class Publicacion{
         $this->titulo = $tit;
     }
 
-    function setTipo($tip){
-        $this->tipo = $tip;
+    function setTipo($idTip){
+        $this->idTipo = $idTip;
     }
 
     function setDescripcion($des) {
         $this->descripcion = $des;
     }
 
-    function setPrioridad($prio) {
-        $this->prioridad = $prio;
+    function setPrioridad($idPrio) {
+        $this->idPrioridad = $idPrio;
     }
 
     function setFechaEvento($fecha){
