@@ -63,6 +63,7 @@ th, td {
 
 #btnEditar{
     display: block;
+    margin-bottom: 30px;
     background-color: #2EA238;
 }
 
