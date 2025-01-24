@@ -24,7 +24,7 @@
         </form>
     </section>
     <br/>
-    <a href="index.php?c=publicacion&f=new" class="btn" id="btnAgregar">
+    <a href="index.php?c=publicacion&f=new" class="btn" id="btnNuevo">
         <span>+ </span>Nuevo
     </a>
     <table id="tablaPublicaciones">
@@ -38,6 +38,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Correo</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
