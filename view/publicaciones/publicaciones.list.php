@@ -31,9 +31,9 @@
                 ?>
                     <tr>
                         <td><?php echo $fila['titulo']?> </td>
-                        <td><?php echo $fila['tipo']?> </td>
                         <td><?php echo $fila['descripcion']?> </td>
-                        <td><?php echo $fila['prioridad']?> </td>
+                        <td><?php echo $fila['descripcion']?> </td>
+                        <td><?php echo $fila['nivel']?> </td>
                         <td><?php echo $fila['fechaEvento']?> </td>
                         <td><?php echo $fila['nombre']?> </td>
                         <td><?php echo $fila['apellido']?> </td>
