@@ -44,6 +44,21 @@ class UsuarioDAO
             return null;
         }
     }
+     
+    public function selectOneByEmail($correo){
+        try{
+            $sql="select * from usuario where correo=:cor";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":cor",$correo, PDO::PARAM_STR);
+            $stmt->execute();
+            $res= $stmt->fetch(PDO::FETCH_ASSOC);
+            return $res;
+        }catch(PDOEXception $er){
+            error_log("Error en selectOneByEmail de UsuarioDAO ". $er->getMessage());
+            return null;
+        }
+    }
+
 
     public function insert($usuario){
         try{
