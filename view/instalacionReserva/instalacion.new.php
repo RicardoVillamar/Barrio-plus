@@ -18,6 +18,7 @@
                 <h3 class="subtitulos">Información personal</h3>
                 <label for="nombre">Nombre completo</label>
                 <input
+                    class="input"
                     type="text"
                     placeholder="Ingrese su nombre"
                     id="nombre"
@@ -27,6 +28,7 @@
                 <label for="telefono">Teléfono</label>
                 <input
                     type="tel"
+                    class="input"
                     placeholder="Ingrese su número teléfono"
                     id="telefono"
                     name="telefono"
@@ -35,18 +37,18 @@
 
                 <label>¿Es un miembro de la comunidad?</label>
                 <div class="radio-grupo">
-                    <div style="display: flex; margin-right: 10px">
+                    <div style="display: flex; align-items: center">
                         <input
-                            style="width: auto; height: auto; margin: 0px 10px"
+                            style="width: auto; margin: 0px 10px"
                             type="radio"
                             id="miembro-si"
                             name="miembro"
                             value="si" />
                         <label for="miembro-si">Sí</label>
                     </div>
-                    <div style="display: flex; margin-left: 10px">
+                    <div style="display: flex; align-items: center">
                         <input
-                            style="width: auto; height: auto; margin: 0px 10px"
+                            style="width: auto; margin: 0px 10px"
                             type="radio"
                             id="miembro-no"
                             name="miembro"
@@ -60,11 +62,11 @@
             <fieldset>
                 <h3 class="subtitulos">Fecha de la reserva</h3>
                 <label for="fecha-desde">Desde</label>
-                <input type="date" id="fecha-desde" name="fecha-desde" />
+                <input class="input" type="date" id="fecha-desde" name="fecha-desde" />
                 <span id="fechaD-error" class="error"></span>
 
                 <label for="fecha-hasta">Hasta</label>
-                <input type="date" id="fecha-hasta" name="fecha-hasta" />
+                <input class="input" type="date" id="fecha-hasta" name="fecha-hasta" />
                 <span id="fechaH-error" class="error"></span>
             </fieldset>
 
@@ -73,6 +75,7 @@
                 <div>
                     <label for="personas">Personas esperadas</label>
                     <input
+                        class="input"
                         type="number"
                         min="2"
                         placeholder="Cantidad de personas"
@@ -81,7 +84,7 @@
                     <span id="personas-error" class="error"></span>
 
                     <label for="proposito">Proposito de la reserva</label>
-                    <select name="proposito" id="proposito" class="propositos">
+                    <select class="input-selected" name="proposito" id="proposito" class="propositos">
                         <option value="">Seleccionar...</option>
                         <option value="evento">Evento</option>
                         <option value="reunion">Reunión</option>
