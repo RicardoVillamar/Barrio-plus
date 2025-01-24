@@ -1,25 +1,16 @@
 <!--Autor:Palacios Herdoiza Roitman Andres-->
-<?php
-session_start();
-require_once '../../model/dao/UsuarioDAO.php';
-
-
-$userId = $_SESSION['user_id'];
-
-
-$usuarioDAO = new UsuarioDAO();
-$usuario = $usuarioDAO->selectOne($userId);
-?>
+<?php require_once HEADER; ?>
 
 <div style="padding: 20px;">
     <h1 class="titulos">Perfil</h1>
 
     <div class="profile-section" style="background-color: #fff; padding: 20px; border-radius: 8px; margin-top: 20px;">
         <!-- Información básica del usuario -->
-        <h2 class="subtitulos"><?php echo $usuario['nombre'] . ' ' . $usuario['apellido']; ?></h2>
-        <p class="texto"><?php echo $usuario['correo']; ?></p>
+         
+        <h2 class="subtitulos"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></h2>
+        <p class="texto"><?php echo htmlspecialchars($usuario['correo']); ?></p>
         <p>Datos del usuario</p>
-        <button class="boton-mediano">Editar información</button>
+        <button onclick="window.location.href='usuario.edit.php'"  class="boton-mediano">Editar información</button>
 
         <!-- Opciones de reservación -->
         <div style="margin: 20px 0;">
@@ -47,7 +38,26 @@ $usuario = $usuarioDAO->selectOne($userId);
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                    foreach ($usuario['reservas'] as $reserva) {
+                    ?>
+                    
+                 
+                    <tr></tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['herramienta']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['fecha_inicio']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['fecha_fin']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['cantidad']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['estado']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">
+                            <button class="boton-mediano">Eliminar</button>
+                            <button>Editar</button>
+                        </td>
+                       
 
+                    <?php 
+                    }
+                    ?>
                 </tbody>
             </table>
 
@@ -65,6 +75,23 @@ $usuario = $usuarioDAO->selectOne($userId);
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                    foreach ($usuario['reservas'] as $reserva) {
+                    ?>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['instalacion']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['fecha_inicio']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['fecha_fin']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['proposito']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;"><?php echo $reserva['estado']; ?></td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">
+                            <button class="boton-mediano">Eliminar</button>
+                            <button>Editar</button>
+                        </td>
+                    </tr>
+                    <?php 
+                    }
+                    ?>
                   
                 </tbody>
             </table>

@@ -25,6 +25,26 @@ class UsuarioController
 
     }
 
+    public function profile()
+    {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header("Location: login.php");
+            exit();
+        }
+
+        $userId = $_SESSION['user_id'];
+        $usuario = $this->model->selectOne($userId);
+
+        if (!$usuario) {
+            header("Location: error.php");
+            exit();
+        }
+
+        $titulo = "Perfil del Usuario";
+        require_once VUSUARIOS . 'perfil.php';
+    }
+
      public function search(){
         $parametro = htmlentities($_POST['b']??"");
         $resultados = $this->model->selectAll($parametro);     
