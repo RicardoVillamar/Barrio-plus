@@ -1,3 +1,4 @@
+<!-- Autor: Freire Chavez Jose Andres -->
 <?php
 require_once 'model/dto/Publicacion.php';
 require_once 'model/dao/PublicacionDAO.php';

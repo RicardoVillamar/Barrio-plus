@@ -1,4 +1,4 @@
-<!-- Freire Chavez Jose Andres -->
+<!-- Autor: Freire Chavez Jose Andres -->
 <?php
 require_once 'config/Conexion.php';
 
