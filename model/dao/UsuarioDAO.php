@@ -1,3 +1,4 @@
+<!--Autor:Palacios Herdoiza Roitman Andres-->
 <?php 
 require_once 'config/Conexion.php';
 

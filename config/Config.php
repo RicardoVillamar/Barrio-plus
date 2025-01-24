@@ -16,6 +16,9 @@ define("VPUBLICACIONES", "view/publicaciones/publicaciones.");
 //ruta de vistas modulo de instalaciones
 define("VINSTALACIONRESERVA", "view/instalacionReserva/instalacion.");
 
+//ruta de vistas modulo de usuarios
+define("VUSUARIOS", "view/usuarios/usuarios.");
+
 //conexion con la bd
 define("DBNAME", "barrioplusdb");
 define("DBUSER", "root");

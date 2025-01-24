@@ -1,4 +1,4 @@
-
+<!--Autor:Palacios Herdoiza Roitman Andres-->
 <?php 
 class Usuario{
     private $id, $nombre, $apellido, $correo, $contrasena, $rol;
