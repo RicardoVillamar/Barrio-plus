@@ -74,15 +74,15 @@ CREATE TABLE `ReservacionInstalacion` (
   `proposito` TEXT
 );
 
-CREATE TABLE 'Publicacion' (
-    'idPubli' INT AUTO_INCREMENT PRIMARY KEY,       
-    'titulo' VARCHAR(30) NOT NULL,             
-    'tipo' ENUM('Reporte de daños', 'Avisos generales', 'Avisos de mantenimiento', 'Solicitudes de recursos', 'Otros') NOT NULL, 
-    'descripcion' VARCHAR(100) NOT NULL,                
-    'prioridad' ENUM('Alta', 'Media', 'Baja') NOT NULL, 
-    'fechaEvento' DATE NOT NULL,                 
-    'notificarAdmin' INT(1) NOT NULL,
-    'idUsuarioFK' INT NOT NULL
+CREATE TABLE `Publicacion` (
+  `idPubli` INT AUTO_INCREMENT PRIMARY KEY,
+  `titulo` VARCHAR(30) NOT NULL,
+  `tipo` ENUM('Reporte de daños', 'Avisos generales', 'Avisos de mantenimiento', 'Solicitudes de recursos', 'Otros') NOT NULL,
+  `descripcion` VARCHAR(100) NOT NULL,
+  `prioridad` ENUM('Alta', 'Media', 'Baja') NOT NULL,
+  `fechaEvento` DATE NOT NULL,
+  `notificarAdmin` TINYINT(1) NOT NULL,
+  `idUsuarioFK` INT NOT NULL
 );
 
 CREATE TABLE `Contribucion` (
@@ -117,3 +117,6 @@ ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (
 
 ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 
+
+
+--INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
