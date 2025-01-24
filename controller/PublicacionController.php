@@ -35,7 +35,7 @@ class PublicacionController
 
     public function search()
     {
-        $parametro = !empty($_POST["b"]) ? limpiar($_POST["b"]) : "";
+        $parametro = !empty($_POST["buscar"]) ? limpiar($_POST["buscar"]) : "";
         $resultados = $this->model->selectAll($parametro);
         $titulo = "Buscar publicaciones";
         require_once VPUBLICACIONES . "list.php";
