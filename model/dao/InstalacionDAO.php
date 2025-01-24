@@ -36,6 +36,21 @@ class InstalacionesDAO
             return [];
         }
     }
+
+    public function selectOne($id)
+    {
+        try {
+            $sql = 'select * from Instalacion where idInstalacion = :id';
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $respuesta = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $respuesta ?: null;
+        } catch (PDOException $error) {
+            error_log('Error en selectOne de InstalacionesDAO: ' . $error->getMessage());
+            return null;
+        }
+    }
 }
 
 

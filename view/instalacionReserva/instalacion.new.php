@@ -1,7 +1,7 @@
 <?php require_once HEADER; ?>
 
 <div class="cabecera-reserva">
-    <a href="instalaciones.html" style="padding: 0px; margin-left: 10px">
+    <a href="index.php?c=instalacion&f=index" style="padding: 0px; margin-left: 10px">
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
     </a>
     <h1 class="titulos" style="padding: 0px 10px">
@@ -11,9 +11,12 @@
 <main>
     <section class="contenedor-formulario">
         <form
+            method="get"
             id="formulario-instalaciones"
             onsubmit="return validarFormulario()">
+            <input type="hidden" name="id" id="id" value="<?php echo $instalacion['idInstalacion'] ?>" />
             <h3 class="subtitulos">Formulario de reservación</h3>
+
             <fieldset>
                 <h3 class="subtitulos">Información personal</h3>
                 <label for="nombre">Nombre completo</label>
@@ -112,7 +115,8 @@
         </form>
     </section>
     <section class="contenedor-informacion">
-        <h3 class="subtitulos nombre-instalacion">Salon comunal</h3>
+
+        <h3 class="subtitulos nombre-instalacion"><?php echo $instalacion['nombre'] ?></h3>
         <img
             id="imagen-instalacion"
             src="../../assets/img/instalaciones/salon-comunal.png"
@@ -133,16 +137,16 @@
           ">
             <div>
                 <p class="texto">Tamaño:</p>
-                <span class="texto tamanio-instalacion">Grande</span>
+                <span class="texto tamanio-instalacion"><?php echo $instalacion['tamano'] ?></span>
             </div>
             <div>
                 <p class="texto">Tipo:</p>
-                <span class="texto tipo-instalacion">Salon</span>
+                <span class="texto tipo-instalacion"><?php echo $instalacion['idTipoFK'] ?></span>
             </div>
             <hr class="linea-divisoria" />
             <div>
                 <p class="texto">Precio de reserva:</p>
-                <span class="texto precio-instalacion">$15.00</span>
+                <span class="texto precio-instalacion"><?php echo $instalacion['precio'] ?></span>
             </div>
         </div>
     </section>

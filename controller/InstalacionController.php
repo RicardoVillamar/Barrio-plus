@@ -29,6 +29,10 @@ class InstalacionController
 
     public function view_reservar()
     {
+        $id = htmlentities($_GET['id']);
+        $instalacion = $this->model->selectOne($id);
+
+        $resultados = $this->model->selectAll();
 
         $titulo = 'Reservar Instalacion';
 
