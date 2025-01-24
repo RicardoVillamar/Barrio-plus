@@ -1,62 +1,82 @@
 <!-- autor: Quiñonez Castrellón Anthony Joel -->
 
+<?php require_once HEADER; ?>
+<link rel="stylesheet" href="assets/css/herramientasReStyle.css" />
 
-<div class="container">
-    <div>
-        <form action="index.php?c=herramientas&f=new" method="POST" name="formHerramienta" id="formHerramienta">
-            
-            <input type="hidden" name="idHerramienta" id="idHerramienta" value="<?php echo $herramienta['idHerramienta']; ?>" />
 
-            <div class="form-row">
-                <!-- Campo Nombre -->
-                <div>
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre de la herramienta" required>
-                </div>
-
-                <!-- Campo Imagen -->
-                <div>
-                    <label for="imagen">Imagen</label>
-                    <input type="file" name="imagen" id="imagen" class="form-control">
-                </div>
-
-                <!-- Campo Descripción -->
-                <div class="Descripcion">
-                    <label for="descripcion">Descripción:</label><br>
-                    <textarea id="descripcion"name="descripcion" placeholder="Descripción de la herramienta" rows="5"
-                    ></textarea>
-                </div>
-
-                <!-- Campo Precio -->
-                <div>
-                    <label for="precio">Precio</label>
-                    <input type="number" step="0.01" name="precio" id="precio" class="form-control" placeholder="Precio de la herramienta" required>
-                </div>
-
-                <!-- Campo Fecha de Registro -->
-                <div>
-                    <label for="fechaRegistro">Fecha de Registro</label>
-                    <input type="date" name="fechaRegistro" id="fechaRegistro" class="form-control" required>
-                </div>
-
-                <!-- Campo Mantenimiento -->
-                <div>
-                    <input type="checkbox" id="mantenimiento" name="mantenimiento">
-                    <label for="mantenimiento">Requiere Mantenimiento</label>
-                </div>
-
-                <!-- Campo Cantidad -->
-                <div>
-                    <label for="cantidad">Cantidad</label>
-                    <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Cantidad disponible" required>
-                </div>
-
-                <!-- Botones -->
-                <div>
-                    <button type="submit" class="btn btn-primary" onclick="if (!confirm('¿Está seguro de modificar la herramienta?')) return false;">Guardar</button>
-                    <a href="index.php?c=herramientas&f=index" class="btn btn-secondary">Cancelar</a>
-                </div>
+<main class="contenedor-formulario">
+    <section>
+        <form action="" id="form-herramienta" style="display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center;">
+                <a href="index.php?c=herramienta&f=index" style="padding: 0px; margin-left: 10px">
+                    <span class="material-symbols-outlined"> arrow_back_ios_new </span>
+                </a>
+                <h3 style="margin-left: 10px;">Editar Herramienta</h3>
             </div>
+
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" placeholder="Nombre" class="input" value="<?= htmlspecialchars($_POST['nombre'] ?? '')?>">
+            </div>
+
+            <div>
+                <label for="imagen">Imagen: </label>
+                <input type="file" name="imagen" id="imagen" class="input" value="<?= htmlspecialchars($_POST['imagen'] ?? '')?>">
+            </div>
+            
+            <div>
+                <label for="descripcion">Descripción:</label><br>
+                <textarea id="descripcion"name="descripcion" placeholder="Descripción de la herramienta" rows="5"
+                value="<?= htmlspecialchars($_POST['descripcion'] ?? '')?>"></textarea>
+            </div>
+
+            <div>
+                <label for="precio">Precio</label>
+                <input type="number" step="0.01" name="precio" id="precio" class="input" placeholder="Precio de la herramienta"
+                value="<?= htmlspecialchars($_POST['precio'] ?? '')?>">
+            </div>
+
+            <div>
+            <label for="fechaRegistro">Fecha de Registro</label>
+            <input type="date" name="fechaRegistro" id="fechaRegistro" class="input"
+            value="<?= htmlspecialchars($_POST['fechaRegistro'] ?? '')?>"required>
+            </div>
+
+            <div>
+                <label for="estado">Estado</label>
+                <select id="estado" name="estado" class="input-selected">
+                    <?php
+                    foreach ($estados as $fila) {
+                    ?>
+                        <option value="<?php echo $fila['idEstado']; ?>"><?php echo $fila['nombre']; ?></option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <div>
+                <label for="cantidad">Cantidad</label>
+                <input type="number" name="cantidad" id="cantidad" class="input" placeholder="Cantidad disponible"
+                value="<?= htmlspecialchars($_POST['cantidad'] ?? '')?>">
+            </div>
+
+            <div>
+                <label for="contribuidor">Contribuidor</label>
+                <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion">
+            </div> 
+
+            <div>
+                <input type="checkbox" id="mantenimiento" name="mantenimiento" <?php echo ($herramienta['mantenimiento']) ? 'checked="checked"' : ''; ?>>
+                <label for="mantenimiento">Requiere Mantenimiento</label>
+            </div>
+            <div>
+                <button type="submit" class="boton-mediano">Agregar</button>
+                <a href="index.php?c=herramienta&f=index" >Cancelar</a>
+            </div>
+
         </form>
     </div>
-</div>
+</main>
+<?php require_once FOOTER; ?>
+

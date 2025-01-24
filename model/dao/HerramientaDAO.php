@@ -2,6 +2,7 @@
 //autor: Quiñonez Castrellón Anthony Joel -->
 require_once 'config/Conexion.php';
 
+
 class HerramientaDAO{
     private $con;
 
@@ -66,10 +67,10 @@ class HerramientaDAO{
             $stmt->bindParam(':descripcion', $herramienta->getDescrip());
             $stmt->bindParam(':precio', $herramienta->getPrecio());
             $stmt->bindParam(':fechaRegistro', $herramienta->getFechaRegis());
-            $stmt->bindParam(':idEstadoFK', $herramienta->getIdEst());
+            $stmt->bindParam(':idEstadoFK', $herramienta->getIdEst(), PDO::PARAM_INT);
             $stmt->bindParam(':mantenimiento', $herramienta->getMant());
             $stmt->bindParam(':cantidad', $herramienta->getCant());
-            $stmt->bindParam(':idContribuidorFK', $herramienta->getIdContri());
+            $stmt->bindParam(':idContribuidorFK', $herramienta->getIdContri(), PDO::PARAM_INT);
             $stmt->execute();
 
             return $this->con->lastInsertId();

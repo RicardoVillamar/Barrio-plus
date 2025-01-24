@@ -19,7 +19,6 @@
                     <button type="submit" class="">Buscar</button>
                 </div>
         </div>
-
     <table>
         <thead>
             <tr>
@@ -28,7 +27,7 @@
                 <th class="tabla-titulos">Imagen</th>
                 <th class="tabla-titulos" >Descripción</th>
                 <th class="tabla-titulos">Precio</th>
-                <th class="tabla-titulos">Fecha Registro</th>
+                <th class="tabla-titulos">Registro</th>
                 <th class="tabla-titulos">Estado</th>
                 <th class="tabla-titulos">Mantenimiento</th>
                 <th class="tabla-titulos">Cantidad</th>
@@ -42,7 +41,7 @@
                         <tr>
                             <td><?php echo $row['idHerramienta']; ?></td>
                             <td><?php echo $row['nombre']; ?></td>
-                            <td><?php echo $row['imagen'];?></td>
+                            <td class="imagen-celda"><?php echo $row['imagen'];?></td>
                             <td><?php echo $row['descripcion']; ?></td>
                             <td><?php echo $row['precio']; ?></td>
                             <td><?php echo $row['fechaRegistro']; ?></td>
@@ -50,7 +49,7 @@
                             <td><?php echo $row['mantenimiento']; ?></td>
                             <td><?php echo $row['cantidad']; ?></td>
                             <td><?php echo $row['idContribuidorFK']; ?></td>
-                            <td>
+                            <td class="acciones">
                                 <a class="edit" href="index.php?c=herramienta&f=view_edit&id=<?php echo $row['idHerramienta']; ?>">Editar</a> | 
                                 <a class="delete" href="index.php?c=herramienta&f=delete&id=<?php echo $row['idHerramienta']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta herramienta?');">Eliminar</a>
                                 </td>
@@ -60,6 +59,7 @@
             ?>
         </tbody>
     </table>
+    </section>
 </div>
 </main>
 
