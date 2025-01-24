@@ -75,15 +75,6 @@ label {
   padding: 10px 0px;
 }
 
-input {
-  width: 100%;
-  display: inline-block;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 .error {
   color: red;
   font-size: 0.8rem;
@@ -111,29 +102,20 @@ textarea {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.radio-grupo {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 10px;
-  padding-left: 10px;
-}
-
-select {
+input.input {
   width: 100%;
-  padding: 10px 100px 10px 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  cursor: pointer;
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
 }
 
-select:focus {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  outline: none;
-}
-
-select:checked {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+select.input-selected {
+  width: 100%;
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
 }
 
 .titulos {

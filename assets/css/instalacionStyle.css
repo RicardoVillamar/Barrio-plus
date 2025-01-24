@@ -149,23 +149,12 @@ aside section ul li label.texto:hover {
 }
 
 input[type="radio"] {
-  appearance: none;
   width: 16px;
   height: 16px;
   border: 2px solid #4a4a4a;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-input[type="radio"]:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-color: #a3b5c8;
-}
-
-input[type="radio"]:checked {
-  background-color: cornflowerblue;
-  border-color: #a3b5c8;
 }
 
 select {
