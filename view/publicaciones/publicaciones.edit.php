@@ -113,7 +113,7 @@
               type="submit"
               class="boton-pequenio"
             >
-              Enviar
+              Guardar cambios
             </button>
 
             <button

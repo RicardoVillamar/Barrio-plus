@@ -12,7 +12,7 @@ class PublicacionDAO{
     public function selectAll($parametro){
         try{
             $sql = "select p.idPubli, p.titulo, p.tipo, p.descripcion, p.prioridad, p.fechaEvento,
-            u.nombres, u.telefono, u.correo from publicaciones p JOIN usuarios u on p.idUsuario = u.idUsuario
+            u.nombre, u.apellido, u.correo from publicacion p JOIN usuario u on p.idUsuarioFK = u.idUsuario
             where p.tipo LIKE :tip or p.prioridad LIKE :pri";
             $stmt = $this->con->prepare($sql);
             $coincidencias = '%'. $parametro .'%';
@@ -22,7 +22,7 @@ class PublicacionDAO{
             $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $res;
         }catch(PDOException $er){
-            error_log("Error en selectAll de PublicacionesDAO " . $er->getMessage());
+            error_log("Error en selectAll de PublicacionDAO " . $er->getMessage());
             return[];
         }
     }
@@ -30,22 +30,22 @@ class PublicacionDAO{
     public function selectOne($id){
         try{
             $sql = "select p.idPubli, p.titulo, p.tipo, p.descripcion, p.prioridad, p.fechaEvento,
-            u.nombres, u.telefono, u.correo from publicaciones p JOIN usuarios u on p.idUsuario = u.idUsuario";
+            u.nombre, u.apellido, u.correo from publicacion p JOIN usuario u on p.idUsuarioFK = u.idUsuario";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
             $res = $stmt->fetch(PDO::FETCH_ASSOC);
             return $res;
         }catch(PDOException $er){
-            error_log("Error en selectOne de PublicacionesDAO " . $er->getMessage());
+            error_log("Error en selectOne de PublicacionDAO " . $er->getMessage());
             return null;
         }
     }
 
     public function insert($publicacion){
         try{
-            $sql = "insert into publicaciones (titulo, tipo, descripcion, prioridad,
-            fechaEvento, notificarAdmin, idUsuario) values(:tit, :tip, :descrip, :pri, :fech, :notif, :idUsu)";
+            $sql = "insert into publicacion (titulo, tipo, descripcion, prioridad,
+            fechaEvento, notificarAdmin, idUsuarioFK) values(:tit, :tip, :descrip, :pri, :fech, :notif, :idUsu)";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":tit", $publicacion->getTitulo(), PDO::PARAM_STR);
             $stmt->bindParam(":tip", $publicacion->getTipo(), PDO::PARAM_STR);
@@ -57,15 +57,15 @@ class PublicacionDAO{
             $res = $stmt->execute(); 
             return $res;
         }catch(PDOException $er){
-            error_log("Error en insert de PublicacionesDAO " . $er->getMessage());
+            error_log("Error en insert de PublicacionDAO " . $er->getMessage());
             return false;
         }
     }
 
     public function update($publicacion){
         try{
-            $sql = "update publicaciones set titulo=:tit, tipo=:tip, descripcion=:descrip, prioridad=:pri,
-            fechaEvento=:fech, notificarAdmin=:notif, idUsuario=:idUsu where idPubli=:id";
+            $sql = "update publicacion set titulo=:tit, tipo=:tip, descripcion=:descrip, prioridad=:pri,
+            fechaEvento=:fech, notificarAdmin=:notif, idUsuarioFK=:idUsu where idPubli=:id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":tit", $publicacion->getTitulo(), PDO::PARAM_STR);
             $stmt->bindParam(":tip", $publicacion->getTipo(), PDO::PARAM_STR);
@@ -78,20 +78,20 @@ class PublicacionDAO{
             $res = $stmt->execute(); 
             return $res;
         }catch(PDOException $er){
-            error_log("Error en update de PublicacionesDAO " . $er->getMessage());
+            error_log("Error en update de PublicacionDAO " . $er->getMessage());
             return false;
         }
     }
 
     public function delete($id){
         try{
-            $sql = "delete from publicaciones where idPubli=:id";
+            $sql = "delete from publicacion where idPubli=:id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":id", $publicacion->getId(), PDO::PARAM_INT);
             $res = $stmt->execute(); 
             return $res;
         }catch(PDOException $er){
-            error_log("Error en update de PublicacionesDAO " . $er->getMessage());
+            error_log("Error en update de PublicacionDAO " . $er->getMessage());
             return false;
         }
     }

@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS barrioplusdb;
+CREATE DATABASE barrioplusdb;
+USE barrioplusdb;
+
 CREATE TABLE `RolUsuario` (
   `idRol` INT PRIMARY KEY AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL
@@ -70,11 +74,15 @@ CREATE TABLE `ReservacionInstalacion` (
   `proposito` TEXT
 );
 
-CREATE TABLE `Publicacion` (
-  `idPublicacion` INT PRIMARY KEY AUTO_INCREMENT,
-  `idUsuarioFK` INT NOT NULL,
-  `contenido` TEXT NOT NULL,
-  `fecha` DATE NOT NULL
+CREATE TABLE 'Publicacion' (
+    'idPubli' INT AUTO_INCREMENT PRIMARY KEY,       
+    'titulo' VARCHAR(30) NOT NULL,             
+    'tipo' ENUM('Reporte de daños', 'Avisos generales', 'Avisos de mantenimiento', 'Solicitudes de recursos', 'Otros') NOT NULL, 
+    'descripcion' VARCHAR(100) NOT NULL,                
+    'prioridad' ENUM('Alta', 'Media', 'Baja') NOT NULL, 
+    'fechaEvento' DATE NOT NULL,                 
+    'notificarAdmin' INT(1) NOT NULL,
+    'idUsuarioFK' INT NOT NULL
 );
 
 CREATE TABLE `Contribucion` (
@@ -108,3 +116,4 @@ ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES 
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 
 ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+
