@@ -16,7 +16,17 @@ class InstalacionesDAO
     public function selectAll()
     {
         try {
-            $sql = 'select * from instalacion';
+            $sql = 'select 
+                        i.idInstalacion, 
+                        i.nombre AS nombre_instalacion, 
+                        i.descripcion, 
+                        i.precio, 
+                        i.tamano,
+                        i.imagen, 
+                        t.nombre AS tipo_nombre,         
+                        e.nombre AS estado_nombre,      
+                        u.nombre AS contribuidor_nombre 
+                        FROM Instalacion i JOIN Tipo t ON i.idTipoFK = t.idTipo JOIN Estado e ON i.idEstadoFK = e.idEstado JOIN Usuario u ON i.idContribuidorFK = u.idUsuario;';
             $stmt = $this->conexion->prepare($sql);
             $stmt->execute();
             $respuesta = $stmt->fetchAll(PDO::FETCH_ASSOC);

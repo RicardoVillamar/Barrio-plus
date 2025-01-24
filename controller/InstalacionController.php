@@ -18,7 +18,7 @@ class InstalacionController
 
     public function index()
     {
-        $resultado = $this->model->selectAll();
+        $resultados = $this->model->selectAll();
 
         $titulo = 'Instalaciones';
 

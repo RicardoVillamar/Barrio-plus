@@ -48,6 +48,7 @@ CREATE TABLE `Instalacion` (
   `idTipoFK` INT NOT NULL,
   `idEstadoFK` INT NOT NULL,
   `idContribuidorFK` INT
+  `imagen` VARCHAR(255), 
 );
 
 CREATE TABLE `ReservacionHerramienta` (
@@ -121,3 +122,4 @@ ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` 
 
 --INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
 --INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
+--INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
