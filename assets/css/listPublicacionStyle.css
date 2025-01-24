@@ -74,6 +74,7 @@ th, td {
 }
 
 #btnBuscar{
+    display: inline-block;
     margin-left: 7px;
     background-color: #EE5635;  
 }
