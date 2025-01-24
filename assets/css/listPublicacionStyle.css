@@ -1,3 +1,8 @@
+* {
+    font-family: Verdana;
+    font-size: 1rem;
+  }
+
 .btn{
     text-decoration: none;
     text-align: center;
@@ -11,7 +16,6 @@
     padding: 10px;
     display: inline-block;
     margin-top: 15px;
-    margin-left: 10px;
     font-size: 15px;
     color: black;
     border-radius: 10px;
@@ -33,7 +37,7 @@ label {
  
 #btnBuscar{
     width: 250px;
-    height: 80px;
+    height: 40px;
     margin-top: 5px;
     margin-bottom: 15px;
     margin-left: 10px;
@@ -42,7 +46,7 @@ label {
 input{
     border: 1px solid black;
     border-radius: 6px;
-    width: 300px;
+    width: 250px;
     padding: 5px;
 }
 
