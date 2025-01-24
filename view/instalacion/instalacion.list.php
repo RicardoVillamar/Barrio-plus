@@ -46,7 +46,7 @@ require_once HEADER
                             <td><?php echo isset($row['imagen']) ? $row['imagen'] : 'No image available'; ?></td>
                             <td>
                                 <a class="boton-mediano reserva" style="margin-bottom: 10px;" href="index.php?c=instalacion&f=view_editar&id=<?php echo $row['idInstalacion'] ?>">Editar</a>
-                                <a class="boton-mediano reserva"
+                                <a class="eliminar"
                                     onclick="if(!confirm('Esta seguro de eliminar el producto?')) return false;" href="index.php?c=instalacion&f=view_eliminar&id=<?php echo $row['idInstalacion'] ?>">Eliminar</a>
                             </td>
                         </tr>

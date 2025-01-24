@@ -63,6 +63,8 @@ class InstalacionController
 
     public function new_instalacion()
     {
+        $estados = $this->modeloEstado->selectEstado();
+        $tipos = $this->modeloTipo->getTipos();
         $titulo = 'Registrar Instalacion';
         require_once VINSTALACION . 'new.php';
     }

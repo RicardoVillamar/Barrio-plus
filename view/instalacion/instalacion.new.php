@@ -3,7 +3,7 @@
 require_once HEADER
 ?>
 
-<main>
+<main style="display: flex; justify-content: center; align-items: center;">
     <section class="contenedor-formulario">
 
         <form action="" id="formulario-instalaciones" style="display: flex; flex-direction: column; gap: 10px;">
@@ -37,18 +37,26 @@ require_once HEADER
             <div>
                 <label for="tipo">Tipo</label>
                 <select id="tipo" name="tipo" class="input-selected">
-                    <option value="1">Cancha</option>
-                    <option value="2">Piscina</option>
-                    <option value="3">Gimnasio</option>
-                    <option value="4">Salon de eventos</option>
+                    <?php
+                    foreach ($tipos as $fila) {
+                    ?>
+                        <option value="<?php echo $fila['idTipo']; ?>"><?php echo $fila['nombre']; ?></option>
+                    <?php
+                    }
+                    ?>
                 </select>
             </div>
 
             <div>
                 <label for="estado">Estado</label>
                 <select id="estado" name="estado" class="input-selected">
-                    <option value="1">Disponible</option>
-                    <option value="2">No disponible</option>
+                    <?php
+                    foreach ($estados as $fila) {
+                    ?>
+                        <option value="<?php echo $fila['idEstado']; ?>"><?php echo $fila['nombre']; ?></option>
+                    <?php
+                    }
+                    ?>
                 </select>
             </div>
 
@@ -62,7 +70,8 @@ require_once HEADER
                 <input type="file" id="imagen" name="imagen" class="input">
             </div>
 
-            <div>
+            <div style="display: flex; justify-content: space-between;">
+                <button type="reset" class="boton-mediano cancelar">Cancelar</button>
                 <button type="submit" class="boton-mediano">Registrar</button>
             </div>
         </form>

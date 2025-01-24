@@ -108,6 +108,26 @@ table thead th {
   content: "Ocupado";
 }
 
+a.eliminar {
+  background-color: white;
+  border: 3px solid #a8d0e6;
+  font-weight: bold;
+  cursor: pointer;
+  color: #4a4a4a;
+  transition: 0.3s ease;
+  padding: 9px 11px;
+  border-radius: 8px;
+  font-size: 1em;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+a.eliminar:hover {
+  color: #f0f4f8;
+  background-color: #a3b5c8;
+}
+
 a.boton-grande,
 a.boton-mediano,
 a.boton-pequenio {
