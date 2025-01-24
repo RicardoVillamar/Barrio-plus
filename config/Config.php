@@ -14,7 +14,7 @@ define("VHERRAMIENTAS", "view/herramientas/herramientas.");
 define("VPUBLICACIONES", "view/publicaciones/publicaciones.");
 
 //ruta de vistas modulo de instalaciones
-define("VINSTALACIONES", "view/instalacion/instalacion.");
+define("VINSTALACIONRESERVA", "view/instalacionReserva/instalacion.");
 
 //conexion con la bd
 define("DBNAME", "barrioplusdb");

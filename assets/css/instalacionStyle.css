@@ -108,6 +108,42 @@ table thead th {
   content: "Ocupado";
 }
 
+a.boton-grande,
+a.boton-mediano,
+a.boton-pequenio {
+  background-color: #a8d0e6;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: #4a4a4a;
+  transition: 0.3s ease;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 1.5em;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+a.boton-mediano {
+  background-color: #a8d0e6;
+  padding: 9px 11px;
+  font-size: 1em;
+}
+
+a.boton-pequenio {
+  background-color: #a8d0e6;
+  padding: 8px 10px;
+  font-size: 0.6em;
+}
+
+a.boton-pequenio:hover,
+a.boton-mediano:hover,
+a.boton-grande:hover {
+  color: #f0f4f8;
+  background-color: #a3b5c8;
+}
+
 aside section ul li label.texto:hover {
   cursor: pointer;
 }
