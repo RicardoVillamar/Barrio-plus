@@ -2,15 +2,6 @@
     font-family: Verdana;
   }
 
-.btn{
-    text-decoration: none;
-    text-align: center;
-    color: black;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
 .titulos{
     padding: 10px;
     display: inline-block;
