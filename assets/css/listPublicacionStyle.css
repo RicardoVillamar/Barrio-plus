@@ -14,7 +14,7 @@
 }
 
 #buscarFormPublicaciones{
-    width: 340px;
+    width: 450px;
     margin-left: 30px;
     padding: 20px;
 }
@@ -24,10 +24,10 @@ label {
     display: block;
 }
 
- 
 #btnBuscar{
     width: 250px;
     height: 40px;
+    margin-left: 30px;
 }
 
 input{
