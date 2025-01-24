@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/newPublicacionStyle.css">
+    <link rel="stylesheet" href="assets/css/listPublicacionStyle.css">
     <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -16,11 +16,11 @@
   </head>
   <body>
     <?php require_once HEADER; ?>
-    <section class="formularios" id="buscarFormPublicaciones">
+    <section id="buscarFormPublicaciones">
     <h4 class="titulos"><?php echo $titulo ?></h4>
         <form action="index.php?c=publicacion&f=search" method="POST">
             <input type="text" name="buscar" id="buscarPublicaciones">
-            <button type="submit" value="Buscar" class="btn" id="btnBuscar">
+            <input type="submit" value="Buscar" class="btn" id="btnBuscar">
         </form>
     </section>
     <br/>
