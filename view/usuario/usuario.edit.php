@@ -1,5 +1,5 @@
 <!--Autor:Palacios Herdoiza Roitman Andres-->
-<?php   require_once HEADER; ?>
+<?php   require_once HEADER ?>
 
 <section>
 <h1 class="titulos">Registro</h1>
@@ -35,4 +35,4 @@
 </form>
 </section>
 
-<?php   require_once FOOTER;   ?>
+<?php   require_once FOOTER   ?>
