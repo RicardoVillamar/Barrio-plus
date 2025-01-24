@@ -1,6 +1,5 @@
-<!-- Autor: Villamar Minuche Ricardo Daniel -->
-
 <?php
+//Autor: Villamar Minuche Ricardo Daniel
 require_once 'config/Conexion.php';
 
 class InstalacionesDAO
@@ -40,7 +39,22 @@ class InstalacionesDAO
     public function selectOne($id)
     {
         try {
-            $sql = 'select * from Instalacion where idInstalacion = :id';
+            $sql = 'select 
+                        i.idInstalacion, 
+                        i.nombre, 
+                        i.descripcion, 
+                        i.precio, 
+                        i.tamano,
+                        i.imagen, 
+                        t.nombre AS tipo_nombre,         
+                        e.nombre AS estado_nombre,      
+                        u.nombre AS contribuidor_nombre 
+                        from Instalacion i
+                        JOIN Tipo t ON i.idTipoFK = t.idTipo
+                        JOIN Estado e ON i.idEstadoFK = e.idEstado
+                        JOIN Usuario u ON i.idContribuidorFK = u.idUsuario
+                        WHERE 
+                        i.idInstalacion = :id';
             $stmt = $this->conexion->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -52,6 +66,3 @@ class InstalacionesDAO
         }
     }
 }
-
-
-?>

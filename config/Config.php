@@ -15,6 +15,7 @@ define("VPUBLICACIONES", "view/publicaciones/publicaciones.");
 
 //ruta de vistas modulo de instalaciones
 define("VINSTALACIONRESERVA", "view/instalacionReserva/instalacion.");
+define("VINSTALACION", "view/instalacion/instalacion.");
 
 //ruta de vistas modulo de usuarios
 define("VUSUARIOS", "view/usuarios/usuarios.");
