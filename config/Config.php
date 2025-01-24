@@ -13,7 +13,10 @@ define("VHERRAMIENTAS", "view/herramientas/herramientas.");
 //ruta de vistas modulo de publicaciones
 define("VPUBLICACIONES", "view/publicaciones/publicaciones.");
 
+//ruta de vistas modulo de instalaciones
+define("VINSTALACIONES", "view/instalacion/instalacion.");
+
 //conexion con la bd
-define("DBNAME","barrioplusdb"); 
-define("DBUSER","root");
-define("DBPASSWORD","");
+define("DBNAME", "barrioplusdb");
+define("DBUSER", "root");
+define("DBPASSWORD", "");

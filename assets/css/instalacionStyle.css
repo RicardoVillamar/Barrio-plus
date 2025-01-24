@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+}
+
+#main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+/*================================ 
+    Contenedores 
+    ================================*/
+.principal {
+  flex: 1;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.filtro {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  float: left;
+  width: 16%;
+  margin: 10px;
+  padding: 10px;
+}
+
+.filtro section {
+  margin-top: 20px;
+}
+.filtro section ul {
+  margin: 10px 0px;
+  list-style: none;
+  padding-left: 10px;
+}
+.cabezera {
+  display: flex;
+
+  padding: 0px 50px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.titulo-buscar,
+.buscar {
+  display: inline-block;
+}
+
+/*================================ 
+    Tablas 
+    ================================*/
+table {
+  border-collapse: collapse;
+  width: 90%;
+  padding: 20px;
+}
+
+tr th {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+tr td {
+  padding: 10px;
+  text-align: center;
+}
+
+tr:hover {
+  border-radius: 8px;
+  transition: ease 0.3s;
+  background-color: #edf2f7;
+}
+
+table thead th {
+  pointer-events: none;
+}
+
+.imagen-tabla {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: ease-in 0.2s;
+}
+
+.imagen-tabla:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: ease-out 0.3s;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-titulos {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.texto {
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+.disponible::before {
+  content: "Libre";
+}
+
+.no-disponible::before {
+  content: "Ocupado";
+}
+
+aside section ul li label.texto:hover {
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #4a4a4a;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+input[type="radio"]:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: #a3b5c8;
+}
+
+input[type="radio"]:checked {
+  background-color: cornflowerblue;
+  border-color: #a3b5c8;
+}
+
+select {
+  padding-left: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+select:focus {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  outline: none;
+}
+
+select:checked {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/*================================ 
+    Media Queries 
+    ================================*/
+
+@media (max-width: 768px) {
+  .buscar,
+  #buscar-barra,
+  button.boton-mediano,
+  table,
+  .filtro {
+    width: 100%;
+  }
+
+  .filtro {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .cabezera {
+    flex-direction: column;
+  }
+
+  table {
+    display: block;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    display: block;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  td {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .imagen-tabla {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  button.boton-mediano {
+    margin-top: 10px;
+  }
+  .disponible::before,
+  .no-disponible::before,
+  button.boton-mediano {
+    font-size: 1.2rem;
+  }
+
+  .texto {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  button.boton-mediano {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+  .texto {
+    font-size: 0.95rem;
+  }
+
+  .disponible::before,
+  .no-disponible::before {
+    font-size: 1rem;
+  }
+}

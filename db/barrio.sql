@@ -120,3 +120,4 @@ ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` 
 
 
 --INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
+--INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
