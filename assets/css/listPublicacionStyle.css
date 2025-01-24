@@ -39,6 +39,7 @@ input{
 }
 
 #tablaPublicaciones{
+    font-size: 0.8em;
     margin-top: 20px;
     margin-left: 30px;
     border-collapse: collapse; 

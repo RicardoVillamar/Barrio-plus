@@ -94,7 +94,7 @@ class PublicacionDAO
         try {
             $sql = "delete from publicacion where idPubli=:id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":id", $publicacion->getId(), PDO::PARAM_INT);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $res = $stmt->execute();
             return $res;
         } catch (PDOException $er) {
