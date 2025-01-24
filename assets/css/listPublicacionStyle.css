@@ -62,14 +62,12 @@ th, td {
 }
 
 #btnEditar{
-    font-size: 0.7em;
-    width: 50px;
+    display: block;
     background-color: #2EA238;
 }
 
 #btnEliminar{
-    font-size: 0.7em;
-    width: 50px;
+    display: block;
     background-color: #E33021;
 }
 
