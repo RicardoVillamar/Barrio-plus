@@ -2,7 +2,7 @@
 <?php
 require_once 'model/dto/Publicacion.php';
 require_once 'model/dao/PublicacionDAO.php';
-require_once 'model/dao/UsuarioDAO.php';
+//require_once 'model/dao/UsuarioDAO.php';
 
 class PublicacionController
 {
@@ -25,7 +25,7 @@ class PublicacionController
     {
         $resultados = $this->model->selectAll("");
         $titulo = "Buscar publicaciones";
-        require_once VPUBLICACIONES . 'list.php';
+        require_once VPUBLICACIONES . "list.php";
         if (count($resultados) > 0) {
             echo "Publicaciones cargadas correctamente";
         } else {
@@ -38,7 +38,7 @@ class PublicacionController
         $parametro = !empty($_POST["b"]) ? limpiar($_POST["b"]) : "";
         $resultados = $this->model->selectAll($parametro);
         $titulo = "Buscar publicaciones";
-        require_once VPUBLICACIONES . 'list.php';
+        require_once VPUBLICACIONES . "list.php";
         if (count($resultados) > 0) {
             echo "Publicaciones cargadas correctamente";
         } else {
