@@ -53,7 +53,7 @@
     resize: none;
   }
 
-  #form_publicaciones {
+  #formPublicNuevo {
     flex: 3;
     padding: 35px;
     width: 50%;
@@ -63,7 +63,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
-  #form_publicaciones h2 {
+  #formPublicNuevo h2 {
     font-size: 1.3rem;
     margin-bottom: 40px;
   }
