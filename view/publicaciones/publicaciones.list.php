@@ -16,7 +16,7 @@
   </head>
   <body>
     <?php require_once HEADER; ?>
-    <section class="formularios" id="buscarFormPublicaciones">
+    <section id="buscarFormPublicaciones">
     <h4 class="titulos"><?php echo $titulo ?></h4>
         <form action="index.php?c=publicacion&f=search" method="POST">
             <input type="text" name="buscar" id="buscarPublicaciones">

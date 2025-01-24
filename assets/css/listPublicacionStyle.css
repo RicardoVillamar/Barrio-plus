@@ -19,6 +19,13 @@
     background-color: white;
 }
 
+#buscarFormPublicaciones{
+    width: 340px;
+    margin-left: 30px;
+    padding: 20px;
+}
+
+
 label {
     display: block;
 }
@@ -37,17 +44,9 @@ input{
     padding: 5px;
 }
 
-.formularios{
-    width: 30%;
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #F7F1B4;
-}
-
 #tablaPublicaciones{
     margin-top: 20px;
+    margin-left: 30px;
     border-collapse: collapse; 
     width: 80%; 
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -57,10 +56,6 @@ th, td {
     border: 1px solid black; 
     padding: 8px;
     text-align: left; 
-}
-
-tbody tr:nth-child(odd){
-    background-color: #CFE5E3;
 }
 
 #btnEditar, #btnEliminar, #btnAgregar, #btnBuscar{
@@ -89,7 +84,3 @@ tbody tr:nth-child(odd){
     background-color: #EE5635;  
 }
 
-#buscarFormPublicaciones{
-    width: 340px;
-    padding: 20px;
-}
