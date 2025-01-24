@@ -33,7 +33,8 @@ class HerramientaController
         $id = htmlentities($_REQUEST['id'] ?? "");
 
         if (empty($id) || !is_numeric($id)) {
-            $this->redirectWithMessage(false, "", "ID no válido o no proporcionado", "index.php?c=herramienta&f=index");
+            $this->redirectWithMessage(false, "", "ID no válido o no proporcionado", 
+            "index.php?c=herramienta&f=index");
             return;
         }
     
@@ -61,16 +62,16 @@ class HerramientaController
     public function new(){
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
             $this->redirectWithMessage(false, "", "Método no permitido", 
-            "index.php?c=herramientas&f=index");
+            "index.php?c=herramienta&f=index");
         }
         
         if (empty($_POST["nombre"]) || empty($_POST["descripcion"])) {
-            $this->redirectWithMessage(false, "", "Datos incompletos", "index.php?c=herramientas&f=index");
+            $this->redirectWithMessage(false, "", "Datos incompletos", "index.php?c=herramienta&f=index");
         }
         $herramienta = $this->populate();
         $exito = $this->model->insert($herramienta);
         $this->redirectWithMessage($exito, "Herramienta insertada exitosamente", 
-        "No se pudo realizar la inserción", "index.php?c=herramientas&f=index");
+        "No se pudo realizar la inserción", "index.php?c=herramienta&f=index");
     }
     
     public function view_edit(){
@@ -78,7 +79,7 @@ class HerramientaController
         $herramienta = $this->model->selectOne($id);
         if ($herramienta == null) {
             $this->redirectWithMessage(false, "", "No se pudo encontrar la herramienta a editar", 
-            "index.php?c=herramientas&f=index");
+            "index.php?c=herramienta&f=index");
         }
         $titulo = "Editar herramienta";
         require_once VHERRAMIENTAS . 'edit.php';
@@ -86,29 +87,29 @@ class HerramientaController
     
     public function edit(){
         if ($_SERVER["REQUEST_METHOD"] != "POST") {
-            $this->redirectWithMessage(false, "", "Método no permitido", "index.php?c=herramientas&f=index");
+            $this->redirectWithMessage(false, "", "Método no permitido", "index.php?c=herramienta&f=index");
         }
         
         if (empty($_POST["nombre"]) || empty($_POST["descripcion"])) {
-            $this->redirectWithMessage(false, "", "Datos incompletos", "index.php?c=herramientas&f=index");
+            $this->redirectWithMessage(false, "", "Datos incompletos", "index.php?c=herramienta&f=index");
         }
         
         $herramienta = $this->populate();
         $exito = $this->model->update($herramienta);
         $this->redirectWithMessage($exito, "Herramienta actualizada exitosamente", 
-        "No se pudo realizar la actualización", "index.php?c=herramientas&f=index");
+        "No se pudo realizar la actualización", "index.php?c=herramienta&f=index");
     }
     
     public function populate(){
         $herramienta = new Herramienta();
         $herramienta->setId(htmlentities($_POST['id'] ?? null));
         $herramienta->setNombre(htmlentities($_POST['nombre']));
-        $herramienta->setImg(htmlentities($_POST['imagen'] ?? ""));
+        $herramienta->setImg($_FILES['imagen']['name'] ?? ""); // Verifica el archivo cargado
         $herramienta->setDescrip(htmlentities($_POST['descripcion']));
         $herramienta->setPrecio(htmlentities($_POST['precio']));
         $herramienta->setFechaRegis(htmlentities($_POST['fechaRegistro'] ?? date("Y-m-d")));
-        $herramienta->setIdEst(htmlentities($_POST['idEstadoFK']));
-        $herramienta->setMant(htmlentities($_POST['mantenimiento'] ?? 0));
+        $herramienta->setIdEst(htmlentities($_POST['estado']));
+        $herramienta->setMant(isset($_POST['mantenimiento']) ? 1 : 0);
         $herramienta->setCant(htmlentities($_POST['cantidad']));
         $herramienta->setIdContri(htmlentities($_POST['idContribuidorFK']));
         return $herramienta;
