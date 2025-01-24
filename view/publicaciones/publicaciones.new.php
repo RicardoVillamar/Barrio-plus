@@ -3,7 +3,7 @@
       <h1 class="titulos">Publicaciones</h1>
       <section class="publicaciones">
         <form 
-            action="index.php?c=productos&f=new" 
+            action="index.php?c=publicacion&f=new" 
             method="POST" 
             name="formPublicNuevo"
             id="formPublicNuevo"
