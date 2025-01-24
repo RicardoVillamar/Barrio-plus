@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/nosotrosStyle.css">
+    <link rel="stylesheet" href="assets/css/newPublicacionStyle.css">
     <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
