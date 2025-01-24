@@ -1,6 +1,5 @@
 * {
     font-family: Verdana;
-    font-size: 1rem;
   }
 
 .btn{
@@ -38,9 +37,6 @@ label {
 #btnBuscar{
     width: 250px;
     height: 40px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    margin-left: 10px;
 }
 
 input{
