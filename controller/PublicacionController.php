@@ -13,14 +13,6 @@ class PublicacionController
         $this->model = new PublicacionDAO();
     }
 
-    function limpiar($dato)
-    {
-        $dato = trim($dato);
-        $dato = stripcslashes($dato);
-        $dato = htmlspecialchars($dato);
-        return $dato;
-    }
-
     public function index()
     {
         $resultados = $this->model->selectAll("");
@@ -35,7 +27,7 @@ class PublicacionController
 
     public function search()
     {
-        $parametro = !empty($_POST["buscar"]) ? limpiar($_POST["buscar"]) : "";
+        $parametro = !empty($_POST["buscar"]) ? htmlentities($_POST["buscar"]) : "";
         $resultados = $this->model->selectAll($parametro);
         $titulo = "Buscar publicaciones";
         require_once VPUBLICACIONES . "list.php";
@@ -48,7 +40,7 @@ class PublicacionController
 
     public function delete()
     {
-        $id = !empty($_REQUEST["id"]) ? limpiar($_REQUEST["id"]) : "";
+        $id = !empty($_REQUEST["id"]) ? htmlentities($_REQUEST["id"]) : "";
         $exito = $this->model->delete($id);
         $this->redirectWithMessage(
             $exito,
