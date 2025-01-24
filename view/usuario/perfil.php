@@ -1,10 +1,22 @@
+<?php
+session_start();
+require_once '../../model/dao/UsuarioDAO.php';
+
+
+$userId = $_SESSION['user_id'];
+
+
+$usuarioDAO = new UsuarioDAO();
+$usuario = $usuarioDAO->selectOne($userId);
+?>
+
 <div style="padding: 20px;">
     <h1 class="titulos">Perfil</h1>
 
     <div class="profile-section" style="background-color: #fff; padding: 20px; border-radius: 8px; margin-top: 20px;">
         <!-- Información básica del usuario -->
-        <h2 class="subtitulos">Nombre del Usuario</h2>
-        <p class="texto">correo@ejemplo.com</p>
+        <h2 class="subtitulos"><?php echo $usuario['nombre'] . ' ' . $usuario['apellido']; ?></h2>
+        <p class="texto"><?php echo $usuario['correo']; ?></p>
         <p>Datos del usuario</p>
         <button class="boton-mediano">Editar información</button>
 
@@ -34,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-   
+
                 </tbody>
             </table>
 
