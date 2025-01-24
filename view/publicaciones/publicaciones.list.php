@@ -1,21 +1,5 @@
 <!-- Autor: Freire Chavez Jose Andres -->
 <?php require_once HEADER; ?>
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/listPublicacionStyle.css">
-    <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-      rel="stylesheet"
-    />
-    <title>Publicaciones</title>
-  </head>
-  <body>
-    <?php require_once HEADER; ?>
     <section id="buscarFormPublicaciones">
     <h4 class="titulos"><?php echo $titulo ?></h4>
         <form action="index.php?c=publicacion&f=search" method="POST">

@@ -29,7 +29,7 @@ class PublicacionController
     {
         $parametro = !empty($_POST["buscar"]) ? htmlentities($_POST["buscar"]) : "";
         $resultados = $this->model->selectAll($parametro);
-        $titulo = "Buscar publicaciones";
+        $titulo = "Buscar publicaciones por tipo o prioridad";
         require_once VPUBLICACIONES . "list.php";
         if (count($resultados) > 0) {
             echo "Publicaciones cargadas correctamente";

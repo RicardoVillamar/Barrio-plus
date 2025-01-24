@@ -1,5 +1,4 @@
 <!-- Autor: Freire Chavez Jose Andres -->
-
 <?php require_once HEADER; ?>
 <h1 class="titulos">Publicaciones</h1>
 <section class="publicaciones">

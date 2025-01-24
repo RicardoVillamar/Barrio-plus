@@ -1,6 +1,5 @@
 * {
     font-family: Verdana;
-    font-size: 1em;
   }
 
 .titulos{
@@ -39,7 +38,7 @@ input{
 }
 
 #tablaPublicaciones{
-    font-size: 0.8em;
+    font-size: 0.5em;
     margin-top: 20px;
     margin-left: 30px;
     border-collapse: collapse; 
