@@ -28,6 +28,7 @@
       <li><a href="index.php?c=herramienta&f=index">Herramientas</a></li>
       <li><a href="index.php?c=historial&f=index">Historial</a></li>
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
+      <li><a href="index.php?c=reservacion&f=listar">Reservaciones</a></li>
       <li>
         <a href="#" class="user">
           <span class="material-symbols-outlined"> account_circle </span>
