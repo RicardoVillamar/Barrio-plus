@@ -32,8 +32,8 @@ label {
 
  
 #btnBuscar{
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 80px;
     margin-top: 5px;
     margin-bottom: 15px;
     margin-left: 10px;
@@ -79,6 +79,7 @@ th, td {
 
 #btnAgregar{
     background-color: #3B79D9;
+    margin-left: 30px;
 }
 
 #btnBuscar{

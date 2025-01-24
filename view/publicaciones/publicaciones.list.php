@@ -20,7 +20,7 @@
     <h4 class="titulos"><?php echo $titulo ?></h4>
         <form action="index.php?c=publicacion&f=search" method="POST">
             <input type="text" name="buscar" id="buscarPublicaciones">
-            <button type="submit" value="Buscar" class="btn" id="btnBuscar">
+            <input type="submit" value="Buscar" class="btn" id="btnBuscar">
         </form>
     </section>
     <br/>
