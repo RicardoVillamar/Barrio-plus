@@ -116,155 +116,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Instalación 1 -->
-                    <tr>
-                        <td><span class="disponible"> </span></td>
-                        <td class="imagen">
-                            <img
-                                src="../../assets/img/instalaciones/salon-comunal.png"
-                                alt="saloncomunal"
-                                class="imagen-tabla" />
-                            <p class="texto nombre-instalacion">Salon comunal</p>
-                        </td>
-                        <td>
-                            <span class="texto tam-instalacion">Grande</span>
-                        </td>
-                        <td>
-                            <span class="texto">Salon</span>
-                        </td>
-                        <td>
-                            <p class="texto">$15.00</p>
-                            <button class="boton-mediano reserva">Reservar</button>
-                        </td>
-                    </tr>
-                    <!-- Instalación 2 -->
-                    <tr>
-                        <td><span class="no-disponible"> </span></td>
-                        <td>
-                            <img
-                                src="../../assets/img/instalaciones/area-deportiva.png"
-                                alt="areadeportiva"
-                                class="imagen-tabla" />
-                            <p class="texto nombre-instalacion">Area deportiva</p>
-                        </td>
+                    <?php
 
-                        <td>
-                            <span class="texto tam-instalacion">Mediano</span>
-                        </td>
-                        <td>
-                            <span class="texto">Aire libre</span>
-                        </td>
-                        <td>
-                            <p class="texto">$15.00</p>
-                            <button class="boton-mediano reserva">Reservar</button>
-                        </td>
-                    </tr>
-                    <!-- Instalación 3 -->
-                    <tr>
-                        <td><span class="no-disponible"> </span></td>
-                        <td>
-                            <img
-                                src="../../assets/img/instalaciones/gimnasio.png"
-                                alt="gimnasio"
-                                class="imagen-tabla" />
-                            <p class="texto nombre-instalacion">Gimnasio comunitario</p>
-                        </td>
+                    foreach ($resultados as $row) {
+                    ?>
+                        <tr>
+                            <td><?php echo $row['estado_nombre'] ?></td>
+                            <!-- <td class="imagen"> -->
+                            <td>
+                                <!-- <img
+                                    src="../../assets/img/instalaciones/salon-comunal.png"
+                                    alt="saloncomunal"
+                                    class="imagen-tabla" /> -->
+                                <!-- <p class="texto nombre-instalacion">Salon comunal</p> -->
+                                <?php echo isset($row['imagen']) ? $row['imagen'] : 'No image available'; ?>
 
-                        <td>
-                            <span class="texto tam-instalacion">Pequeño</span>
-                        </td>
-                        <td>
-                            <span class="texto">Taller</span>
-                        </td>
-                        <td>
-                            <p class="texto">$15.00</p>
-                            <button class="boton-mediano reserva">Reservar</button>
-                        </td>
-                    </tr>
-                    <!-- Instalación 4 -->
-                    <tr>
-                        <td><span class="disponible"> </span></td>
-                        <td>
-                            <img
-                                src="../../assets/img/instalaciones/piscina.png"
-                                alt="piscina"
-                                class="imagen-tabla" />
-                            <p class="texto nombre-instalacion">Piscina comunitaria</p>
-                        </td>
-                        <td>
-                            <span class="texto tam-instalacion">Pequeño</span>
-                        </td>
-                        <td>
-                            <span class="texto">Aire libre</span>
-                        </td>
-                        <td>
-                            <p class="texto">$15.00</p>
-                            <button class="boton-mediano reserva">Reservar</button>
-                        </td>
-                    </tr>
-                    <!-- Instalación 5 -->
-                    <tr>
-                        <td><span class="no-disponible"> </span></td>
-                        <td>
-                            <img
-                                src="../../assets/img/instalaciones/biblioteca.png"
-                                alt="biblioteca"
-                                class="imagen-tabla" />
-                            <p class="texto nombre-instalacion">Biblioteca comunitaria</p>
-                        </td>
-                        <td>
-                            <span class="texto tam-instalacion">Pequeño</span>
-                        </td>
-                        <td>
-                            <span class="texto">Taller</span>
-                        </td>
-                        <td>
-                            <p class="texto">$15.00</p>
-                            <button class="boton-mediano reserva">Reservar</button>
-                        </td>
-                    </tr>
-                    <!-- Instalación 6 -->
-                    <tr>
-                        <td><span class="no-disponible"> </span></td>
-                        <td>
-                            <img
-                                src="../../assets/img/instalaciones/parque-infantil.png"
-                                alt="parque"
-                                class="imagen-tabla" />
-                            <p class="texto nombre-instalacion">Parque infantil</p>
-                        </td>
-                        <td>
-                            <span class="texto tam-instalacion">Grande</span>
-                        </td>
-                        <td>
-                            <p class="texto">Aire libre</p>
-                        </td>
-                        <td>
-                            <p class="texto">$15.00</p>
-                            <button class="boton-mediano reserva">Reservar</button>
-                        </td>
-                    </tr>
-                    <!-- Instalación 7 -->
-                    <tr>
-                        <td><span class="disponible"> </span></td>
-                        <td>
-                            <img
-                                src="../../assets/img/instalaciones/sala-recreativa.png"
-                                alt="salarecreativa"
-                                class="imagen-tabla" />
-                            <p class="texto nombre-instalacion">Sala recreativa</p>
-                        </td>
-                        <td>
-                            <span class="texto tam-instalacion">Mediano</span>
-                        </td>
-                        <td>
-                            <span class="texto">Aula</span>
-                        </td>
-                        <td>
-                            <p class="texto">$15.00</p>
-                            <button class="boton-mediano reserva">Reservar</button>
-                        </td>
-                    </tr>
+                                <p class="texto nombre-instalacion"><?php echo $row['nombre_instalacion'] ?></p>
+                            </td>
+                            <td> <span class="texto tam-instalacion"><?php echo $row['tamano'] ?></span>
+                                <!-- <span class="texto tam-instalacion">Grande</span> -->
+                            </td>
+                            <td><?php echo $row['tipo_nombre'] ?>
+                                <!-- <span class="texto">Salon</span> -->
+                            </td>
+                            <td><?php echo $row['precio'] ?>
+                                <!-- <p class="texto">$15.00</p>
+                                <button class="boton-mediano reserva">Reservar</button> -->
+                            </td>
+                        </tr>
+
+                    <?php
+                    }
+                    ?>
                 </tbody>
             </table>
         </section>
