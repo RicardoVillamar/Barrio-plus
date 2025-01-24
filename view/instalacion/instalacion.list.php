@@ -3,7 +3,14 @@
 require_once HEADER
 ?>
 <main id="main">
+
+
     <div class="principal">
+        <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <a class="boton-mediano reserva"
+                href="index.php?c=instalacion&f=new_instalacion">Regitrar instalacion</a>
+        </div>
 
         <section style="display: flex; justify-content: center; overflow-x: auto">
 

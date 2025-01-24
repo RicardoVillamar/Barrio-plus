@@ -42,7 +42,7 @@ class InstalacionController
         require_once VINSTALACIONRESERVA . 'new.php';
     }
 
-    public function new_instalacion()
+    public function index_instalacion()
     {
         $resultados = $this->model->selectAll();
 
@@ -56,8 +56,14 @@ class InstalacionController
     {
         $resultados = $this->model->selectAll();
 
-        $titulo = 'Nueva Instalacion';
+        $titulo = 'Editar Instalacion';
 
+        require_once VINSTALACION . 'edit.php';
+    }
+
+    public function new_instalacion()
+    {
+        $titulo = 'Registrar Instalacion';
         require_once VINSTALACION . 'new.php';
     }
 }
