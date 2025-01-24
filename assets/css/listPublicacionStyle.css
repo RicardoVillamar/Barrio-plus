@@ -51,7 +51,7 @@ th, td {
     text-align: left; 
 }
 
-#btnEditar, #btnEliminar, #btnAgregar, #btnBuscar{
+#btnEditar, #btnEliminar, #btnNuevo, #btnBuscar{
     width: 70px;
     text-decoration: none;
     color: black;
@@ -68,7 +68,7 @@ th, td {
     background-color: #E33021;
 }
 
-#btnAgregar{
+#btnNuevo{
     background-color: #3B79D9;
     margin-left: 30px;
 }
