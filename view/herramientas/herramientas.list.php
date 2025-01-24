@@ -1,36 +1,39 @@
 <!-- autor: Quiñonez Castrellón Anthony Joel -->
 <?php require_once HEADER; ?>
-<main>
+<link rel="stylesheet" href="assets/css/herramientasStyle.css" />
+
+<main class="containt">
+<h2> <?php echo $titulo?></h2>
 <div class="tabla">
     <div>
         <h2> </h2>
         <div>
-            <div>
-                <form action="index.php?c=herramientas&f=search" method="POST">
-                <input type="text" name="b" id="busqueda"  placeholder="buscar..."/>
-                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i>Buscar</button>
-            </form>       
+            <div class="buscar">
+                <a href="index.php?c=herramienta&f=view_new"> 
+                    <button type="button" class="crear">
+                    Nuevo</button></a>
+
+                <div class="search">
+                    <form action="index.php?c=herramienta&f=search" method="POST">
+                    <input type="text" name="b" id="busqueda"  placeholder="Buscar por nombre"/>
+                    <button type="submit" class="">Buscar</button>
+                </div>
         </div>
-        <div>
-            <a href="view/herramientas/herramientas.new.php"> 
-                <button type="button">
-                    <i ></i> Nuevo</button></a>
-            </div>
-            <div>
-    <table cellspacing="0" cellpadding="5" style="width: 100%; text-align: center;">
+
+    <table>
         <thead>
-            <tr style="background-color: #f2f2f2;">
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Imagen</th>
-                <th>Descripción</th>
-                <th>Precio</th>
-                <th>Fecha Registro</th>
-                <th>Estado</th>
-                <th>Mantenimiento</th>
-                <th>Cantidad</th>
-                <th>Contribuidor</th>
-                <th>Acciones</th>
+            <tr>
+                <th class="tabla-titulos">ID</th>
+                <th class="tabla-titulos">Nombre</th>
+                <th class="tabla-titulos">Imagen</th>
+                <th class="tabla-titulos" >Descripción</th>
+                <th class="tabla-titulos">Precio</th>
+                <th class="tabla-titulos">Fecha Registro</th>
+                <th class="tabla-titulos">Estado</th>
+                <th class="tabla-titulos">Mantenimiento</th>
+                <th class="tabla-titulos">Cantidad</th>
+                <th class="tabla-titulos">Contribuidor</th>
+                <th class="tabla-titulos">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -48,11 +51,9 @@
                             <td><?php echo $row['cantidad']; ?></td>
                             <td><?php echo $row['idContribuidorFK']; ?></td>
                             <td>
-                                <a class="edit" href="index.php?c=herramientas&f=view_edit&id=<?php echo $row['idHerramienta']; ?>" style="color: blue;">Editar</a> | 
-                                <a class="delete" href="index.php?c=herramientas&f=delete&id=<?php echo $row['idHerramienta']; ?>" 
-                                   style="color: red;" 
-                                   onclick="return confirm('¿Está seguro de eliminar esta herramienta?');">Eliminar</a>
-                            </td>
+                                <a class="edit" href="index.php?c=herramienta&f=view_edit&id=<?php echo $row['idHerramienta']; ?>">Editar</a> | 
+                                <a class="delete" href="index.php?c=herramienta&f=delete&id=<?php echo $row['idHerramienta']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta herramienta?');">Eliminar</a>
+                                </td>
                         </tr>
                         <?php
                     }
@@ -61,4 +62,5 @@
     </table>
 </div>
 </main>
+
 <?php require_once FOOTER; ?>
