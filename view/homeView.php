@@ -53,7 +53,7 @@
 
       <div class="elementos">
         <img
-          src="assets/imgages/fotos/sala.jpeg"
+          src="assets/images/fotos/sala.jpeg"
           alt="Instalacion Reservada"
           id="sala"
         />
