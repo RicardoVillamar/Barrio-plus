@@ -49,22 +49,23 @@
     
     <div>
         <label for="nombre">Nombres:</label><br>
-        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" >
     </div>
 
     <div>
         <label for="apellido">Apellidos:</label><br>
-        <input type="text" id="apellido" name="apellido" placeholder="Ingrese sus apellidos" required>
+        <input type="text" id="apellido" name="apellido" placeholder="Ingrese sus apellidos" >
     </div>
+
 
     <div>
         <label for="correo">Correo:</label><br>
-        <input type="email" id="correo" name="correo" placeholder="Ingrese su correo" required>
+        <input type="email" id="correo" name="correo" placeholder="Ingrese su correo" >
     </div>
 
     <div>
         <label for="contrasena">Contraseña:</label><br>
-        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
+        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" >
     </div>
 
  
