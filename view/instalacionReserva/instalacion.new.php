@@ -119,7 +119,7 @@
         <h3 class="subtitulos nombre-instalacion"><?php echo $instalacion['nombre'] ?></h3>
         <img
             id="imagen-instalacion"
-            src="../../assets/img/instalaciones/salon-comunal.png"
+            src=""
             alt="instalaciones"
             style="
             object-fit: cover;
@@ -141,7 +141,7 @@
             </div>
             <div>
                 <p class="texto">Tipo:</p>
-                <span class="texto tipo-instalacion"><?php echo $instalacion['idTipoFK'] ?></span>
+                <span class="texto tipo-instalacion"><?php echo $instalacion['tipo_nombre'] ?></span>
             </div>
             <hr class="linea-divisoria" />
             <div>

@@ -1,6 +1,6 @@
-<!-- Autor: Villamar Minuche Ricardo Daniel -->
-
-<?php require_once HEADER; ?>
+<?php
+//Autor: Villamar Minuche Ricardo Daniel
+require_once HEADER; ?>
 <main id="main">
     <!-- Filtro -->
     <aside class="filtro">
@@ -8,8 +8,8 @@
         <section>
             <p class="texto">Estado</p>
             <select id="estado" style="width: 90%; height: 25px; border-radius: 4px">
+                <option value="todos">Todos</option>
                 <?php
-                // Iterar sobre los estados y mostrarlos en el select
                 foreach ($estados as $fila) {
                 ?>
                     <option value="<?php echo $fila['idEstado']; ?>"><?php echo $fila['nombre']; ?></option>
@@ -18,37 +18,7 @@
                 ?>
             </select>
         </section>
-        <!-- 
-        <section>
-            <p class="texto">Tamaño</p>
-            <ul>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tamanio" value="todos" />
-                        Todos
-                    </label>
-                </li>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tamanio" value="grande" />
-                        Grande
-                    </label>
-                </li>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tamanio" value="mediano" />
-                        Mediano
-                    </label>
-                </li>
 
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tamanio" value="pequeño" />
-                        Pequeño
-                    </label>
-                </li>
-            </ul>
-        </section> -->
         <section>
             <p class="texto">Tipos</p>
             <ul>
@@ -58,30 +28,19 @@
                         Todos
                     </label>
                 </li>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tipos" value="aire" />
-                        Aire libre
-                    </label>
-                </li>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tipos" value="aula" />
-                        Aula
-                    </label>
-                </li>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tipos" value="salon" />
-                        Salón
-                    </label>
-                </li>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tipos" value="taller" />
-                        Taller
-                    </label>
-                </li>
+                <?php
+                foreach ($tipos as $fila) {
+                ?>
+                    <li>
+                        <label class="texto">
+                            <input type="radio" name="tipos" value="<?php echo $fila['idTipo']; ?>" />
+                            <?php echo $fila['nombre']; ?>
+                        </label>
+                    </li>
+
+                <?php
+                }
+                ?>
             </ul>
         </section>
     </aside>
@@ -89,7 +48,10 @@
     <div class="principal">
         <!-- Cabecera -->
         <section class="cabezera">
-            <h2 class="titulo-buscar titulos">Instalaciones</h2>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin: 10px;">
+                <h2 class="titulo-buscar titulos">Instalaciones</h2>
+                <a href="index.php?c=instalacion&f=new_instalacion">Ingresar instalacion</a>
+            </div>
             <div class="buscar">
                 <label for="buscar-barra" class="texto" style="font-weight: bold">Buscar</label>
                 <input
@@ -105,6 +67,7 @@
                 height: 30px;
               " />
             </div>
+
         </section>
         <!-- Tabla -->
         <section
@@ -147,8 +110,7 @@
                                 <p class="texto"><?php echo $row['precio'] ?></p>
 
                                 <a class="boton-mediano reserva" href="index.php?c=instalacion&f=view_reservar&id=<?php echo $row['idInstalacion'] ?>">Reservar</a>
-                                <!--
-                                <button class="boton-mediano reserva">Reservar</button> -->
+
                             </td>
                         </tr>
 
