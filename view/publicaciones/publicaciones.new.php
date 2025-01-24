@@ -19,16 +19,12 @@
     <div class="tipoPublicacion">
       <label for="tipo_publicacion">Tipo de publicación:</label><br>
       <select name="tipo_publicacion" id="tipo_publicacion">
-        <option value="">Seleccione...</option>
-        <option value="reporteDanios">Reporte de daños</option>
-        <option value="avisosGenerales">Avisos generales</option>
-        <option value="avisosMantenimiento">
-          Avisos de mantenimiento
-        </option>
-        <option value="solicitudesRecursos">
-          Solicitudes de recursos
-        </option>
-        <option value="otros">Otros</option>
+        <?php 
+          foreach($tiposPublicaciones as $tipoPubli){
+        ?>
+        <option value="<?php echo $tipoPubli["idTipo"]?>">
+          <?php echo $tipoPubli["descripcion"]?></option>
+        <?php } ?>
       </select>
     </div>
 
@@ -43,12 +39,14 @@
 
     <label>Seleccione la prioridad de la publicación: </label><br>
     <div class="grupoRadio">
-      <input type="radio" id="alta" name="prioridad" value="alta">
-      <label for="alta">Alta</label>
-      <input type="radio" id="media" name="prioridad" value="media">
-      <label for="media">Media</label>
-      <input type="radio" id="baja" name="prioridad" value="baja">
-      <label for="baja">Baja</label>
+        <?php 
+          foreach($prioridades as $prio){
+        ?>
+          <input type="radio" id="<?php echo $prio["nivel"]?>" 
+            name="prioridad" 
+            value="<?php echo $prio["nivel"]?>">
+          <label for="<?php echo $prio["nivel"]?>"><?php echo $prio["nivel"]?></label>
+        <?php } ?>
     </div>
 
     <div class="campoFechaPublicacion">
@@ -66,16 +64,16 @@
         type="text"
         id="nombre"
         name="nombre"
-        placeholder="Ingrese su nombre">
+      >
     </div>
 
-    <div class="campoTelefono">
-      <label for="telefono">Teléfono:</label><br>
+    <div class="campoApellido">
+      <label for="apellido">Apellido:</label><br>
       <input
-        type="tel"
-        id="telefono"
-        name="telefono"
-        placeholder="Ingrese su número telefónico">
+        type="text"
+        id="apellido"
+        name="apellido"
+      >
     </div>
 
     <div class="campoCorreo">
@@ -101,15 +99,14 @@
         style="font-size: 0.8rem"
         type="submit"
         class="boton-pequenio">
-        Enviar
+        Guardar
       </button>
 
-      <button
+      <a href="index.php?c=publicacion&f=index"
         style="font-size: 0.8rem"
-        type="reset"
         class="boton-pequenio">
         Cancelar
-      </button>
+      </a>
     </div>
   </form>
 

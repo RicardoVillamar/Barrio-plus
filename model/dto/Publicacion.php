@@ -48,7 +48,7 @@ class Publicacion{
         $this->titulo = $tit;
     }
 
-    function setTipo($idTip){
+    function setIdTipo($idTip){
         $this->idTipo = $idTip;
     }
 
@@ -56,7 +56,7 @@ class Publicacion{
         $this->descripcion = $des;
     }
 
-    function setPrioridad($idPrio) {
+    function setIdPrioridad($idPrio) {
         $this->idPrioridad = $idPrio;
     }
 

@@ -2,7 +2,9 @@
 <?php
 require_once 'model/dto/Publicacion.php';
 require_once 'model/dao/PublicacionDAO.php';
-//require_once 'model/dao/UsuarioDAO.php';
+require_once 'model/dao/UsuarioDAO.php';
+require_once 'model/dao/TipoPublicacionDAO.php';
+require_once 'model/dao/PrioridadDAO.php';
 
 class PublicacionController
 {
@@ -56,5 +58,48 @@ class PublicacionController
         $_SESSION['mensaje'] = ($exito) ? $exitoMsg : $errMsg;
         $_SESSION['color'] = ($exito) ? 'primary' : 'danger';
         header("Location: $redirectUrl");
+    }
+
+    public function view_new(){
+        $modeloTipoPublicacion = new TipoPublicacionDAO();
+        $modeloPrioridad = new PrioridadDAO();
+        $tiposPublicaciones = $modeloTipoPublicacion->selectAll();
+        $prioridades = $modeloPrioridad->selectAll();
+        $titulo = "Nueva publicación";
+        require_once VPUBLICACIONES . "new.php";
+    }
+
+    public function new(){
+        if($_SERVER["REQUEST_METHOD"]!="POST"){
+            $_SESSION["mensaje"] = "Método no permitido";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+        }
+        //Validar campos del formulario
+        if(empty($_POST["nombre"]) || empty($_POST["tipo_publicacion"]) || empty($_POST["descripcion"]) 
+        || empty($_POST["prioridad"]) || empty($_POST["fecha_publicacion"]) ){
+            $_SESSION["mensaje"] = "Datos incompletos";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+        }
+        $publi = $this->populate();
+        $exito = $this->$model->insert($publi);
+        $this->redirectWithMessage($exito, "Publicación insertada exitosamente", 
+        "No se pudo realizar la inserción", "index.php?c=publicacion&f=index");
+    }
+
+    public function populate(){
+        //Lectura de parametros
+        $publi = new Publicacion();
+        $publi->setId(htmlentities($_POST['id']??null));
+        $publi->setTitulo(htmlentities($_POST['nombre']));
+        $publi->setIdTipo(htmlentities($_POST['tipo_publicacion']));
+        $publi->setDescripcion(htmlentities($_POST['descripcion']));
+        $publi->setIdPrioridad(htmlentities($_POST['prioridad']));
+        $publi->setFechaEvento(htmlentities($_POST['fecha_publicacion']));
+        $notificarAdm = isset($_POST['notificarSoloAdmins'])?1:0; 
+        $publi->setNotificarAdmin($notificarAdm);
+        //$publi->setIdUsuario(htmlentities($_SESSION["usuario"] ));
+        return $publi;
     }
 }
