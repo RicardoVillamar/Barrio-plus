@@ -1,0 +1,95 @@
+.btn{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.titulos{
+    padding: 10px;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 10px;
+    font-size: 15px;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+label {
+    display: block;
+}
+
+ 
+#btnBuscar{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+input{
+    border: 1px solid black;
+    border-radius: 6px;
+    width: 300px;
+    padding: 5px;
+}
+
+.formularios{
+    width: 30%;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #F7F1B4;
+}
+
+#tablaPublicaciones{
+    margin-top: 20px;
+    border-collapse: collapse; 
+    width: 80%; 
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid black; 
+    padding: 8px;
+    text-align: left; 
+}
+
+tbody tr:nth-child(odd){
+    background-color: #CFE5E3;
+}
+
+#btnEditar, #btnEliminar, #btnAgregar, #btnBuscar{
+    width: 70px;
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#btnEditar{
+    background-color: #2EA238;
+}
+
+#btnEliminar{
+    background-color: #E33021;
+}
+
+#btnAgregar{
+    background-color: #3B79D9;
+}
+
+#btnBuscar{
+    margin-left: 7px;
+    background-color: #EE5635;  
+}
+
+#buscarFormPublicaciones{
+    width: 340px;
+    padding: 20px;
+}
