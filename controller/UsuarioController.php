@@ -74,7 +74,7 @@ class UsuarioController
             $nombre = $_POST['nombre'];
             $apellido = $_POST['apellido'];
             $correo = $_POST['email'];
-            $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
+            $contrasena = $_POST['contrasena']; // No se utiliza password_hash
 
 
             $this->model->insert($nombre, $apellido, $correo, $contrasena);
