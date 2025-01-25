@@ -168,6 +168,50 @@ class UsuarioController
             require_once 'view/usuario/login.php';
         }
     }
+
+    public function view_edit()
+    {
+        if(!isset($_SESSION)){session_start();}
+        if (!isset($_SESSION['usuario'])) {
+            require_once 'view/usuario/login.php';
+            exit();
+        }
+
+        $usuario = $_SESSION['usuario'];
+        $userId = $usuario['idUsuario'];
+
+        if (!$usuario) {
+            header("Location: error.php");
+            exit();
+        }
+
+        // Recuperar la información del usuario desde la base de datos
+        $usuario = $this->model->getUserById($userId);
+
+        // Hacer disponible la variable $usuario en la vista
+        $titulo = "Editar Información del Usuario";
+        require_once 'view/usuario/usuario.edit.php';
+    }
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $usuario = [
+                'idUsuario' => $_POST['idUsuario'],
+                'nombre' => $_POST['nombre'],
+                'apellido' => $_POST['apellido'],
+                'correo' => $_POST['correo'],
+                'contrasena' => $_POST['contrasena']
+            ];
+
+            $this->model->update($usuario);
+
+            require_once 'view/usuario/usuario.list.php';
+            exit();
+        } else {
+            $titulo = "Editar Usuario";
+            require_once 'view/usuario/usuario.edit.php';
+        }
+    }
 }
 
 ?>

@@ -39,7 +39,15 @@ class UsuarioDAO
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
+    
+    public function getUserById($userId)
+{
+    $query = "SELECT * FROM usuario WHERE idUsuario = :idUsuario";
+    $stmt = $this->con->prepare($query);
+    $stmt->bindParam(':idUsuario', $userId);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
     public function selectReservasHerramientasByUserId($userId)
     {
         $sql = "SELECT * FROM ReservacionHerramienta WHERE idUsuarioFK = :id";

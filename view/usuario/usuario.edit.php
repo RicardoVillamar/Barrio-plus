@@ -2,37 +2,28 @@
 <?php   require_once HEADER ?>
 
 <section>
-<h1 class="titulos">Registro</h1>
-<form action="index.php?c=usuarios&f=registrar" method="POST">
-    <h2 class="subtitulos">Registro de Usuario</h2>
-    
-    <div>
-        <label for="nombre">Nombres:</label><br>
-        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
-    </div>
 
-    <div>
-        <label for="apellido">Apellidos:</label><br>
-        <input type="text" id="apellido" name="apellido" placeholder="Ingrese sus apellidos" required>
-    </div>
-
-    <div>
-        <label for="correo">Correo:</label><br>
-        <input type="email" id="correo" name="correo" placeholder="Ingrese su correo" required>
-    </div>
-
-    <div>
-        <label for="contrasena">Contraseña:</label><br>
-        <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" required>
-    </div>
-
- 
-
-    <div>
-        <button type="submit">Registrarse</button>
-        <button type="reset">Cancelar</button>
-    </div>
-</form>
+<h1>Editar Información del Usuario</h1>
+    <form action="index.php?c=usuario&f=edit" method="POST">
+        <input type="hidden" name="idUsuario" value="<?php echo htmlspecialchars($usuario['idUsuario']); ?>">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="<?php echo htmlspecialchars($usuario['nombre']); ?>">
+        </div>
+        <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" value="<?php echo htmlspecialchars($usuario['apellido']); ?>">
+        </div>
+        <div>
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" value="<?php echo htmlspecialchars($usuario['correo']); ?>">
+        </div>
+        <div>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" value="<?php echo htmlspecialchars($usuario['contrasena']); ?>">
+        </div>
+        <button type="submit">Guardar Cambios</button>
+    </form>
 </section>
 
 <?php   require_once FOOTER   ?>
