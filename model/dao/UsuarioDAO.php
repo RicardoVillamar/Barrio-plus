@@ -1,36 +1,38 @@
 <!--Autor:Palacios Herdoiza Roitman Andres-->
-<?php 
+<?php
 require_once 'config/Conexion.php';
 
-class UsuarioDAO 
+class UsuarioDAO
 {
-     
+
     private $con;
 
-    public function __construct(){
-        $this->con =Conexion :: getConexion(); 
+    public function __construct()
+    {
+        $this->con = Conexion::getConexion();
     }
 
-    public function selectAll($parametro){
-        try{
-            $sql="select * from usuario where nombre like :b1 or apellido like :b2 or correo like :b3";
+    public function selectAll($parametro)
+    {
+        try {
+            $sql = "select * from usuario where nombre like :b1 or apellido like :b2 or correo like :b3";
             $stmt = $this->con->prepare($sql);
-            $conlike = '%' .$parametro . '%';
-            $stmt->bindParam(":b1",$conlike, PDO::PARAM_STR);
-            $stmt->bindParam(":b2",$conlike, PDO::PARAM_STR);
-            $stmt->bindParam(":b3",$conlike, PDO::PARAM_STR);
+            $conlike = '%' . $parametro . '%';
+            $stmt->bindParam(":b1", $conlike, PDO::PARAM_STR);
+            $stmt->bindParam(":b2", $conlike, PDO::PARAM_STR);
+            $stmt->bindParam(":b3", $conlike, PDO::PARAM_STR);
             $stmt->execute();
-            $res= $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $res;
-        }catch(PDOEXception $er){
-            error_log("Error en selectAll de UsuarioDAO ". $er->getMessage());
-            echo "Error en selectAll de UsuarioDAO ". $er->getMessage();
+        } catch (PDOEXception $er) {
+            error_log("Error en selectAll de UsuarioDAO " . $er->getMessage());
+            echo "Error en selectAll de UsuarioDAO " . $er->getMessage();
             return [];
         }
-
     }
-    
-    public function selectOne($userId) {
+
+    public function selectOne($userId)
+    {
         $sql = "SELECT * FROM usuarios WHERE id = :id";
         $stmt = $this->con->prepare($sql);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
@@ -38,7 +40,8 @@ class UsuarioDAO
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function selectReservasHerramientasByUserId($userId) {
+    public function selectReservasHerramientasByUserId($userId)
+    {
         $sql = "SELECT * FROM ReservacionHerramienta WHERE idUsuarioFK = :id";
         $stmt = $this->con->prepare($sql);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
@@ -46,29 +49,32 @@ class UsuarioDAO
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function selectReservasInstalacionesByUserId($userId) {
+    public function selectReservasInstalacionesByUserId($userId)
+    {
         $sql = "SELECT * FROM ReservacionInstalacion WHERE idUsuarioFK = :id";
         $stmt = $this->con->prepare($sql);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }  
-    public function selectOneByEmail($correo){
-        try{
-            $sql="select * from usuario where correo=:cor";
+    }
+    public function selectOneByEmail($correo)
+    {
+        try {
+            $sql = "select * from usuario where correo=:correo";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":cor",$correo, PDO::PARAM_STR);
+            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
             $stmt->execute();
-            $res= $stmt->fetch(PDO::FETCH_ASSOC);
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
             return $res;
-        }catch(PDOEXception $er){
-            error_log("Error en selectOneByEmail de UsuarioDAO ". $er->getMessage());
+        } catch (PDOEXception $er) {
+            error_log("Error en selectOneByEmail de UsuarioDAO " . $er->getMessage());
             return null;
         }
     }
 
 
-    public function insert($nombre, $apellido, $correo, $contrasena) {
+    public function insert($nombre, $apellido, $correo, $contrasena)
+    {
         try {
             $sql = "INSERT INTO usuario (nombre, apellido, correo, contrasena) VALUES (:nom, :ape, :cor, :con)";
             $stmt = $this->con->prepare($sql);
@@ -84,61 +90,59 @@ class UsuarioDAO
         }
     }
 
-    public function update($usuario){
-        try{
-            $sql="update usuario set nombre=:nom, apellido=:ape, correo=:cor, contrasena=:con where idUsuario=:id";
+    public function update($usuario)
+    {
+        try {
+            $sql = "update usuario set nombre=:nom, apellido=:ape, correo=:cor, contrasena=:con where idUsuario=:id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":nom",$usuario->getNombre(), PDO::PARAM_STR);
-            $stmt->bindParam(":ape",$usuario->getApellido(), PDO::PARAM_STR);
-            $stmt->bindParam(":cor",$usuario->getCorreo(), PDO::PARAM_STR);
-            $stmt->bindParam(":con",$usuario->getContrasena(), PDO::PARAM_STR);
-            $stmt->bindParam(":id",$usuario->getIdUsuario(), PDO::PARAM_INT);
+            $stmt->bindParam(":nom", $usuario->getNombre(), PDO::PARAM_STR);
+            $stmt->bindParam(":ape", $usuario->getApellido(), PDO::PARAM_STR);
+            $stmt->bindParam(":cor", $usuario->getCorreo(), PDO::PARAM_STR);
+            $stmt->bindParam(":con", $usuario->getContrasena(), PDO::PARAM_STR);
+            $stmt->bindParam(":id", $usuario->getIdUsuario(), PDO::PARAM_INT);
             $stmt->execute();
             return true;
-        }catch(PDOEXception $er){
-            error_log("Error en update de UsuarioDAO ". $er->getMessage());
+        } catch (PDOEXception $er) {
+            error_log("Error en update de UsuarioDAO " . $er->getMessage());
             return false;
         }
     }
 
-    public function delete($id){
-        try{
-            $sql="delete from usuario where idUsuario=:id";
+    public function delete($id)
+    {
+        try {
+            $sql = "delete from usuario where idUsuario=:id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":id",$id, PDO::PARAM_INT);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
             $stmt->execute();
             return true;
-        }catch(PDOEXception $er){
-            error_log("Error en delete de UsuarioDAO ". $er->getMessage());
+        } catch (PDOEXception $er) {
+            error_log("Error en delete de UsuarioDAO " . $er->getMessage());
             return false;
         }
     }
 
-    public function login($correo, $contrasena){
-        try{
-            $sql="select * from usuario where correo=:cor";
+    public function login($correo, $contrasena)
+    {
+        try {
+            $sql = "select * from usuario where correo=:cor";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":cor",$correo, PDO::PARAM_STR);
+            $stmt->bindParam(":cor", $correo, PDO::PARAM_STR);
             $stmt->execute();
-            $res= $stmt->fetch(PDO::FETCH_ASSOC);
-            if($res==null){
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($res == null) {
                 return null;
             }
-            if(password_verify($contrasena, $res['contrasena'])){
+            if (password_verify($contrasena, $res['contrasena'])) {
                 return $res;
-            }else{
+            } else {
                 return null;
             }
-        }catch(PDOEXception $er){
-            error_log("Error en login de UsuarioDAO ". $er->getMessage());
+        } catch (PDOEXception $er) {
+            error_log("Error en login de UsuarioDAO " . $er->getMessage());
             return null;
         }
     }
-
-
-
-
-
 }
 
 ?>

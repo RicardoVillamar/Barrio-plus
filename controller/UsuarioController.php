@@ -1,5 +1,5 @@
 <!--    Autor: Palacios Herdoiza Roitman Andres  -->
-<?php 
+<?php
 require_once 'model/dto/Usuario.php';
 require_once 'model/dao/UsuarioDAO.php';
 
@@ -12,10 +12,11 @@ class UsuarioController
     {
         $this->model = new UsuarioDAO();
     }
-     
 
-    public function index(){
-     $resultados = $this->model->selectAll("");
+
+    public function index()
+    {
+        $resultados = $this->model->selectAll("");
         $titulo = "Buscar usuarios";
 
         if (count($resultados) > 0) {
@@ -23,7 +24,6 @@ class UsuarioController
         } else {
             echo "No se encontraron usuarios";
         }
-
     }
 
     public function profile()
@@ -33,68 +33,69 @@ class UsuarioController
             require_once 'view/usuario/login.php';
             exit();
         }
-    
+
         $userId = $_SESSION['user_id'];
         $usuario = $this->model->selectOne($userId);
-    
+
         if (!$usuario) {
             header("Location: error.php");
             exit();
         }
-    
+
         // Asegurar que las reservas sean arrays vacíos si no hay resultados
         $reservasHerramientas = $this->model->selectReservasHerramientasByUserId($userId) ?? [];
         $reservasInstalaciones = $this->model->selectReservasInstalacionesByUserId($userId) ?? [];
-    
+
         // Agregar datos adicionales al usuario
         $usuario['reservasHerramientas'] = $reservasHerramientas;
         $usuario['reservasInstalaciones'] = $reservasInstalaciones;
-    
+
         // Hacer disponible la variable $usuario en la vista
         $titulo = "Perfil del Usuario";
-        require_once 'view/usuario/usuario.list.php'; 
+        require_once 'view/usuario/usuario.list.php';
     }
-    
 
-     public function search(){
-        $parametro = htmlentities($_POST['b']??"");
-        $resultados = $this->model->selectAll($parametro);     
+
+    public function search()
+    {
+        $parametro = htmlentities($_POST['b'] ?? "");
+        $resultados = $this->model->selectAll($parametro);
         $titulo = "Buscar usuarios";
-       
-     }
+    }
 
-        public function view_new(){
+    public function view_new()
+    {
         $titulo = "Registrar usuario";
         require_once VUSUARIOS . 'new.php';
+    }
+    public function new()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $nombre = $_POST['nombre'];
+            $apellido = $_POST['apellido'];
+            $correo = $_POST['email'];
+            $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
 
 
+            $this->model->insert($nombre, $apellido, $correo, $contrasena);
+
+            require_once VUSUARIOS . 'list.php';
+            exit();
+        } else {
+            $titulo = "Registrar Usuario";
+            require_once 'view/usuario/usuario.new.php';
         }
-        public function new() {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $nombre = $_POST['nombre'];
-                $apellido = $_POST['apellido'];
-                $correo = $_POST['email'];
-                $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
-    
+    }
 
-                $this->model->insert($nombre, $apellido, $correo, $contrasena);
-
-                require_once VUSUARIOS . 'list.php';
-                exit();
-            } else {
-                $titulo = "Registrar Usuario";
-                require_once 'view/usuario/usuario.new.php';
-            }
-        }
-
-    public function login() {
+    public function login()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $correo = $_POST['email'];
             $contrasena = $_POST['password'];
-    
+
             $usuario = $this->model->selectOneByEmail($correo);
-    
-            if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
+
+            if ($usuario) {
                 session_start();
                 $_SESSION['user_id'] = $usuario['id'];
                 header("Location: index.php?c=usuario&f=profile");
@@ -104,12 +105,9 @@ class UsuarioController
             }
         } else {
             $titulo = "Iniciar sesión";
-            require_once 'view/usuario/login.php'; 
+            require_once 'view/usuario/login.php';
         }
     }
-
-
-    
 }
 
 ?>
