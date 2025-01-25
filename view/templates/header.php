@@ -27,7 +27,7 @@
 
 <body>
   <nav id="navbar">
-    <a href="index.php?ho=home">
+    <a href="index.php">
       <img class="logo" src="assets/images/fotos/logo-icon.png" alt="logo" />
     </a>
     <ul>

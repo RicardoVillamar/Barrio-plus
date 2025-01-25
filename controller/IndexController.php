@@ -13,7 +13,7 @@ class IndexController {
             $page =  limpiar($_GET['p']); // limpiar datos
             // flujo de ventanas
             require_once 'view/static/'.$page.'.php';
-        }else if(!isset($_SESSION['usuario'])){
+        }else if(!isset($_SESSION)){
             require_once 'view/usuario/Login.php'; 
         }else{
             require_once 'model/dao/PublicacionDAO.php';
