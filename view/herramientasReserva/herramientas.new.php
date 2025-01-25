@@ -12,9 +12,7 @@
 <section class="contenedor-formulario">
         <form action="index.php?c=herramienta&f=reservarHerramienta" method="POST" id="formulario-herramienta" onsubmit="return validarFormulario()">
             <input type="hidden" name="idHerramienta" value="<?php echo $herramienta['idHerramienta']; ?>" />
-            <input type="hidden" name="nombreHerramienta" value="<?php echo $herramienta['nombre']; ?>" />
-            <input type="hidden" name="precioHerramienta" value="<?php echo $herramienta['precio']; ?>" />
-            <input type="hidden" name="imagenHerramienta" value="<?php echo base64_encode($herramienta['imagen']); ?>" />
+
 
             <h3 class="subtitulos">Reservacion</h3>
 
