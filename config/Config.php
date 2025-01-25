@@ -9,6 +9,7 @@ define("FOOTER", "view/templates/footer.php");
 
 //ruta de vistas modulo de herramientas
 define("VHERRAMIENTAS", "view/herramientas/herramientas.");
+define("VHERRAMIENTASRESERVA", "view/herramientasReserva/herramientas.");
 
 //ruta de vistas modulo de publicaciones
 define("VPUBLICACIONES", "view/publicaciones/publicaciones.");
