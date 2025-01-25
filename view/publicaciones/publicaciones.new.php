@@ -57,34 +57,16 @@
         name="fecha_publicacion">
     </div>
 
-    <h2 class="subtitulos">Información del publicante</h2>
-    <div class="campoNombre">
-      <label for="nombre">Nombre:</label><br>
-      <input
-        type="text"
-        id="nombre"
-        name="nombre"
-    >
-    </div>
-
-    <div class="campoApellido">
-      <label for="apellido">Apellido:</label><br>
-      <input
-        type="text"
-        id="apellido"
-        name="apellido"
-      >
-    </div>
-
-    <div class="campoCorreo">
-      <label for="correo">Correo:</label><br>
-      <input
-        type="email"
-        id="correo"
-        name="correo"
-        placeholder="Ingrese su correo">
-    </div>
-
+    <input type="hidden" name="idUsuario" id="idUsu" 
+      value="
+      <?php if(!isset($_SESSION)){session_start();}
+        if(isset($_SESSION['usuario'])){
+          $usuario = $_SESSION['usuario'];
+          echo $idUsu = $usuario['idUsuario'];
+        }
+      ?>
+      "/>
+          
     <div class="campoCheckbox">
       <input
         type="checkbox"
