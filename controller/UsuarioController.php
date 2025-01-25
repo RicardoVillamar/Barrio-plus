@@ -26,6 +26,7 @@ class UsuarioController
         }
     }
 
+    /*
     public function profile()
     {
         session_start();
@@ -36,6 +37,36 @@ class UsuarioController
 
         $userId = $_SESSION['user_id'];
         $usuario = $this->model->selectOne($userId);
+
+        if (!$usuario) {
+            header("Location: error.php");
+            exit();
+        }
+
+        // Asegurar que las reservas sean arrays vacíos si no hay resultados
+        $reservasHerramientas = $this->model->selectReservasHerramientasByUserId($userId) ?? [];
+        $reservasInstalaciones = $this->model->selectReservasInstalacionesByUserId($userId) ?? [];
+
+        // Agregar datos adicionales al usuario
+        $usuario['reservasHerramientas'] = $reservasHerramientas;
+        $usuario['reservasInstalaciones'] = $reservasInstalaciones;
+
+        // Hacer disponible la variable $usuario en la vista
+        $titulo = "Perfil del Usuario";
+        require_once 'view/usuario/usuario.list.php';
+    }
+    */
+
+    public function profile()
+    {
+        session_start();
+        if (!isset($_SESSION['usuario'])) {
+            require_once 'view/usuario/login.php';
+            exit();
+        }
+
+        $usuario = $_SESSION['usuario'];
+        $userId = $usuario['id']; 
 
         if (!$usuario) {
             header("Location: error.php");
@@ -88,6 +119,7 @@ class UsuarioController
         }
     }
 
+    /*
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -99,6 +131,30 @@ class UsuarioController
             if ($usuario) {
                 session_start();
                 $_SESSION['user_id'] = $usuario['id'];
+                header("Location: index.php?c=usuario&f=profile");
+                exit();
+            } else {
+                echo "Correo o contraseña incorrectos";
+            }
+        } else {
+            $titulo = "Iniciar sesión";
+            require_once 'view/usuario/login.php';
+        }
+    }
+    */
+
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $correo = $_POST['email'];
+            $contrasena = $_POST['password'];
+
+            $usuario = $this->model->selectOneByEmail($correo);
+
+            if ($usuario) {
+                session_start();
+                //Guardamos el objeto usuario
+                $_SESSION['usuario'] = $usuario;
                 header("Location: index.php?c=usuario&f=profile");
                 exit();
             } else {
