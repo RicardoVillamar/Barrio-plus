@@ -1,3 +1,6 @@
+<?php
+  if(!isset($_SESSION)){session_start();}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,7 +28,7 @@
     </a>
     <ul>
       <li><a href="index.php?c=instalacion&f=index">Instalaciones</a></li>
-      <li><a href="index.php?c=herramienta&f=index_Reserva"">Herramientas</a></li>
+      <li><a href="index.php?c=herramienta&f=index_Reserva">Herramientas</a></li>
       <li><a href="index.php?c=historial&f=index">Historial</a></li>
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
       <li><a href="index.php?c=reservacion&f=listar">Reservaciones</a></li>

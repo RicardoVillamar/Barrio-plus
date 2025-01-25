@@ -10,3 +10,4 @@
     
     $cont = new  $controlador();
     $cont->$funcion();
+?>

@@ -132,6 +132,9 @@
 
     <section id="publicacionesRecientes">
       <h3 style="background-color: #f0f4f8">Publicaciones Recientes</h3>
+      <?php 
+          foreach($publicaciones as $publ){
+      ?>
       <div id="contenedorPub">
         <div class="comentarios">
           <div class="user">
@@ -140,65 +143,13 @@
               src="assets/images/fotos/images.jpeg"
               alt="usuario"
             />
-            <h5>Pedro Lopez R.</h5>
+            <h5><?php echo $publ['nombre'] . " " .$publ['apellido']?></h5>
           </div>
           <p>
-            Es frustrante que las herramientas de jardinería estén siempre
-            reservadas y no haya un sistema claro para saber cuándo estarán
-            disponibles. Esto dificulta que podamos mantener nuestros espacios
-            comunes en buen estado. Necesitamos una mejor gestión de las
-            reservas.
+            <?php echo $publ['descripcion']?>
           </p>
         </div>
-
-        <div class="comentarios">
-          <div style="background-color: #f0f4f8" class="user">
-            <img
-              class="imgUsuario"
-              src="assets/images/fotos/userimg.png"
-              alt="usuario"
-            />
-            <h5>Ana Maria H.</h5>
-          </div>
-          <p>
-            Quiero agradecer al administrador por la reciente mejora en el
-            sistema de reservas de las instalaciones. Ahora es mucho más fácil
-            acceder a las herramientas y planificar nuestros proyectos
-            comunitarios. ¡Definitivamente estamos viendo un cambio positivo!
-          </p>
-        </div>
-
-        <div class="comentarios">
-          <div class="user">
-            <img
-              class="imgUsuario"
-              src="assets/images/fotos/images.jpeg"
-              alt="usuario"
-            />
-            <h5>Diego Holan D.</h5>
-          </div>
-          <p>
-            Quisiera comunicarme con el administrador de la comunidad, es
-            insensato que aun no tengamos las herramientas disponibles para
-            hacer un mejor mantenimiento a nuestros jardines.
-          </p>
-        </div>
-        <div class="comentarios">
-          <div style="background-color: #f0f4f8" class="user">
-            <img
-              class="imgUsuario"
-              src="assets/images/fotos/userimg.png"
-              alt="usuario"
-            />
-            <h5>Lourdes De las Mercedes</h5>
-          </div>
-          <p>
-            Me parece inaceptable que algunas herramientas estén dañadas y no se
-            hayan reparado aún. Esto está afectando la capacidad de los
-            residentes para realizar tareas importantes en la comunidad. Espero
-            que se tomen medidas pronto para solucionar este problema.
-          </p>
-        </div>
+        <?php } ?>
       </div>
     </section>
 
