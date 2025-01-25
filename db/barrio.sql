@@ -77,7 +77,7 @@ CREATE TABLE `ReservacionInstalacion` (
 
 CREATE TABLE TipoPublicacion (
   `idTipo` INT AUTO_INCREMENT PRIMARY KEY,
-  `descripcion` VARCHAR(50) NOT NULL
+  `nombreTipo` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Prioridad (
@@ -137,3 +137,25 @@ ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` 
 --INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
 --INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
 --INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
+
+--INSERT INTO `Prioridad` (`nivel`) VALUES ('Alta'), ('Media'), ('Baja');
+--INSERT INTO `TipoPublicacion` (`nombreTipo`) VALUES ('Reporte de daños'), ('Avisos generales'), ('Avisos de mantenimiento'), ('Solicitudes de recursos');
+
+/*
+--Inserts de prueba tabla de usuario
+INSERT INTO `Usuario` (`nombre`, `apellido`, `correo`, `contrasena`, `idRolFK`) VALUES
+('Miguel', 'Sanchez', 'miguel.sanchez@hotmail.com', 'migueADM', 1),
+('Luisa', 'Garcia', 'luisa.garcia@outlook.com', 'garciaLuisa', 2), 
+('Domenica', 'Rodriguez', 'domenica.rodriguez@hotmail.com', 'rodriguezDo', 2), 
+('Maria', 'Herrera', 'maria.herrera@hotmail.com', 'herrMaria', 3), 
+('Juan', 'Martinez', 'juan.martinez@gmail.com', 'juADM', 3); 
+
+
+-- Inserciones de prueba tabla Publicacion
+INSERT INTO `Publicacion` (`titulo`, `idTipoFK`, `descripcion`, `idPrioridadFK`, `fechaEvento`, `notificarAdmin`, `idUsuarioFK`) VALUES
+('Reparación de alumbrado', 1, 'Se requiere reparar un poste de luz en la calle principal.', 1, '2025-02-01', 1, 4), 
+('Taller de reciclaje', 4, 'Organización de un taller de reciclaje en el salón comunitario.', 2, '2025-02-10', 0, 3),
+('Aviso de mantenimiento', 3, 'Cierre temporal del parque por mantenimiento.', 3, '2025-01-30', 1, 2), 
+('Fugas de agua', 1, 'Reporte de fuga de agua cerca del aula 2.', 1, '2025-01-29', 1, 4), 
+('Anuncio de reunión', 2, 'Aviso para reunión general de vecinos el próximo viernes.', 2, '2025-02-05', 0, 5); 
+*/

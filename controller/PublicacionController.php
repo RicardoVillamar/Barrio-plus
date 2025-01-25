@@ -62,9 +62,9 @@ class PublicacionController
 
     public function view_new(){
         $modeloTipoPublicacion = new TipoPublicacionDAO();
-        $tiposPublicaciones = $modeloTipoPublicacion->selectAll();
+        $tiposPublicaciones = $modeloTipoPublicacion->selectAll("");
         $modeloPrioridad = new PrioridadDAO();
-        $prioridades = $modeloPrioridad->selectAll();
+        $prioridades = $modeloPrioridad->selectAll("");
         $titulo = "Nueva publicación";
         require_once VPUBLICACIONES . "new.php";
     }
@@ -112,9 +112,9 @@ class PublicacionController
             header("Location: index.php?c=publicacion&f=index");
         }
         $modeloTipoPublicacion = new TipoPublicacionDAO();
-        $tiposPublicaciones = $modeloTipoPublicacion->selectAll();
+        $tiposPublicaciones = $modeloTipoPublicacion->selectAll("");
         $modeloPrioridad = new PrioridadDAO();
-        $prioridades = $modeloPrioridad->selectAll();
+        $prioridades = $modeloPrioridad->selectAll("");
         $titulo = "Editar publicación";
         require_once VPUBLICACIONES . 'edit.php';
     }
