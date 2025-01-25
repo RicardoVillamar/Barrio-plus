@@ -13,9 +13,9 @@ class IndexController {
             $page =  limpiar($_GET['p']); // limpiar datos
             // flujo de ventanas
             require_once 'view/static/'.$page.'.php';
-        }else if(!isset($_SESSION)){
+        }else if(!isset($_SESSION['usuario'])){
             require_once 'view/usuario/Login.php'; 
-        }else{
+        }if(!empty($_GET['h'])){
             require_once 'model/dao/PublicacionDAO.php';
             $modeloPublicaciones = new PublicacionDAO();
             $publicaciones = $modeloPublicaciones->selectAll("");

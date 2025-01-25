@@ -27,7 +27,7 @@
 
 <body>
   <nav id="navbar">
-    <a href="index.php">
+    <a href="index.php?h=home">
       <img class="logo" src="assets/images/fotos/logo-icon.png" alt="logo" />
     </a>
     <ul>
@@ -38,7 +38,7 @@
       <li><a href="index.php?c=reservacion&f=listar">Reservaciones</a></li>
       <li>
         
-        <a href="index.php?c=usuario&f=login" class="user">
+        <a href="index.php?c=usuario&f=profile" class="user">
           <span class="material-symbols-outlined"> account_circle </span>
         </a>
       </li>
