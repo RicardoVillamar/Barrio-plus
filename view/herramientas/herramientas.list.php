@@ -1,7 +1,5 @@
-<?php
-//Autor: Quiñonez Castrellón Anthony Joel
-require_once HEADER
-?>
+<!--Autor: Quiñonez Castrellón Anthony Joel-->
+<?php require_once HEADER ?>
 <div style="display: flex; align-items: center;">
     <a href="index.php?c=herramienta&f=index_Herramienta" style="padding: 0px; margin-left: 10px">
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
