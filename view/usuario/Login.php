@@ -45,14 +45,15 @@
     </style>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
-        <form action="index.php?c=usuarios&f=login" method="POST">
+        <form action="index.php?c=usuario&f=login" method="POST">
 
             <input type="text"  id ="email" name="email" placeholder="Escriba su correo" >
             <input type="password" id ="password" name="password" placeholder="Contraseña" >
             <button  type="submit">Entrar</button>
             <br>
             <p>¿No estas registrado?</p>
-            <button id="registrer" onclick="window.location.href='usuario.new.php'" type="button">Registrarse</button>
+            <button id="registrer" onclick="window.location.href='index.php?c=usuario&f=view_new'" type="button">Registrarse</button>
+            </form>
             
         </form>
     </div>

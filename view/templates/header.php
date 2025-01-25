@@ -29,7 +29,8 @@
       <li><a href="index.php?c=historial&f=index">Historial</a></li>
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
       <li>
-        <a href="#" class="user">
+        
+        <a href="index.php?c=usuario&f=login" class="user">
           <span class="material-symbols-outlined"> account_circle </span>
         </a>
       </li>

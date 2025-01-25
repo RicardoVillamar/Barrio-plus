@@ -12,6 +12,7 @@ class UsuarioController
     {
         $this->model = new UsuarioDAO();
     }
+     
 
     public function index(){
      $resultados = $this->model->selectAll("");
@@ -42,7 +43,7 @@ class UsuarioController
         }
 
         $titulo = "Perfil del Usuario";
-        require_once VUSUARIOS . 'usuario.list.php';
+        require_once VUSUARIOS . 'list.php';
     }
 
      public function search(){
@@ -54,7 +55,7 @@ class UsuarioController
 
         public function view_new(){
         $titulo = "Registrar usuario";
-
+        require_once VUSUARIOS . 'new.php';
 
 
         }
@@ -96,9 +97,31 @@ class UsuarioController
             }
         } else {
             $titulo = "Iniciar sesión";
-            require_once VUSUARIOS . "login.php";
+            require_once 'view/usuario/login.php'; 
         }
     }
+public function validateAndRedirect() {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $correo = $_POST['email'];
+        $contrasena = $_POST['password'];
+
+        $usuario = $this->model->selectOneByEmail($correo);
+
+        if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
+            session_start();
+            $_SESSION['user_id'] = $usuario['id'];
+            header("Location: index.php?c=usuarios&f=profile");
+            exit();
+        } else {
+            echo "Correo o contraseña incorrectos";
+        }
+    } else {
+        $titulo = "Iniciar sesión";
+        require_once 'view/usuario/login.php'; 
+    }
+}
+
+
     
 }
 
