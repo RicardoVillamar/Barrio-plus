@@ -31,11 +31,12 @@ CREATE TABLE `Herramienta` (
   `nombre` VARCHAR(150) NOT NULL,
   `descripcion` TEXT,
   `precio` DECIMAL(10,2) NOT NULL,
-  `imagen` LONGBLOB,
+  `imagen` LONGBLOB
   `fechaRegistro` DATE NOT NULL,
   `idEstadoFK` INT NOT NULL,
-  `mantenimiento` BOOLEAN DEFAULT false,
-  `cantidad` INT NOT NULL
+  `mantenimiento` VARCHAR(150) NOT NULL,
+  `cantidad` INT NOT NULL,
+  `idContribuidorFK` INT
 );
 
 CREATE TABLE `Instalacion` (
@@ -46,16 +47,8 @@ CREATE TABLE `Instalacion` (
   `tamano` VARCHAR(50),
   `idTipoFK` INT NOT NULL,
   `idEstadoFK` INT NOT NULL,
+  `idContribuidorFK` INT,
   `imagen` LONGBLOB
-);
-
-CREATE TABLE `Contribucion` (
-  `idContribucion` INT PRIMARY KEY AUTO_INCREMENT,
-  `estado` VARCHAR(50) NOT NULL,
-  `tipo` VARCHAR(50) NOT NULL,
-  `idHerramientaFK` INT,
-  `idInstalacionFK` INT,
-  `idUsuarioFK` INT NOT NULL
 );
 
 CREATE TABLE `ReservacionHerramienta` (
@@ -82,26 +75,46 @@ CREATE TABLE `ReservacionInstalacion` (
   `proposito` TEXT
 );
 
-CREATE TABLE `Publicacion` (
-  `idPublicacion` INT PRIMARY KEY AUTO_INCREMENT,
-  `idUsuarioFK` INT NOT NULL,
-  `contenido` TEXT NOT NULL,
-  `fecha` DATE NOT NULL
+CREATE TABLE TipoPublicacion (
+  `idTipo` INT AUTO_INCREMENT PRIMARY KEY,
+  `nombreTipo` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Prioridad (
+  `idPrioridad` INT AUTO_INCREMENT PRIMARY KEY,
+  `nivel` VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Publicacion ( 
+  `idPubli` INT AUTO_INCREMENT PRIMARY KEY,
+  `titulo` VARCHAR(30) NOT NULL,
+  `idTipoFK` INT NOT NULL,
+  `descripcion` VARCHAR(100) NOT NULL,
+  `idPrioridadFK` INT NOT NULL,
+  `fechaEvento` DATE NOT NULL,
+  `notificarAdmin` INT(1) NOT NULL,
+  `idUsuarioFK` INT NOT NULL
+);
+
+CREATE TABLE `Contribucion` (
+  `idContribucion` INT PRIMARY KEY AUTO_INCREMENT,
+  `estado` VARCHAR(50) NOT NULL,
+  `tipo` VARCHAR(50) NOT NULL,
+  `idRecursoFK` INT NOT NULL,
+  `idUsuarioFK` INT NOT NULL
 );
 
 ALTER TABLE `Usuario` ADD FOREIGN KEY (`idRolFK`) REFERENCES `RolUsuario` (`idRol`);
 
 ALTER TABLE `Herramienta` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
 
+ALTER TABLE `Herramienta` ADD FOREIGN KEY (`idContribuidorFK`) REFERENCES `Usuario` (`idUsuario`);
+
 ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `Tipo` (`idTipo`);
 
 ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
 
-ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idHerramientaFK`) REFERENCES `Herramienta` (`idHerramienta`);
-
-ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idInstalacionFK`) REFERENCES `Instalacion` (`idInstalacion`);
-
-ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idContribuidorFK`) REFERENCES `Usuario` (`idUsuario`);
 
 ALTER TABLE `ReservacionHerramienta` ADD FOREIGN KEY (`idHerramientaFK`) REFERENCES `Herramienta` (`idHerramienta`);
 
@@ -112,6 +125,13 @@ ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idInstalacionFK`) REFEREN
 ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+
+ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `TipoPublicacion` (`idTipo`);
+
+ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idPrioridadFK`) REFERENCES `Prioridad` (`idPrioridad`);
+
+ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+
 
 
 --INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
