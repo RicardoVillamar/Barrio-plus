@@ -8,6 +8,11 @@
     margin: auto;
   }
 
+  /**Selector Universal**/
+  * {
+    font-family: Verdana;
+  }
+
   /**Clase Bootstrap**/
   .container {
     margin-left: 2px;
