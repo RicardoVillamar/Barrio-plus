@@ -17,6 +17,7 @@ class PublicacionController
 
     public function index()
     {
+        
         $resultados = $this->model->selectAll("");
         $titulo = "Buscar publicaciones";
         require_once VPUBLICACIONES . "list.php";
@@ -104,19 +105,28 @@ class PublicacionController
     }
 
     public function view_edit(){
-        $id = htmlentities($_GET["id"]);
-        $publi = $this->model->selectOne($id);
-        if($publi==null){
-            $_SESSION["mensaje"] = "No se pudo encontrar la publicación a editar";
-            $_SESSION["color"] = "danger";
-            header("Location: index.php?c=publicacion&f=index");
+        if(isset($_SESSION['usuario'])){
+            $usuario = $_SESSION['usuario'];
+            $rol = $usuario['idRolFK']; 
+            if($rol==1){
+                $id = htmlentities($_GET["id"]);
+                $publi = $this->model->selectOne($id);
+                if($publi==null){
+                    $_SESSION["mensaje"] = "No se pudo encontrar la publicación a editar";
+                    $_SESSION["color"] = "danger";
+                    header("Location: index.php?c=publicacion&f=index");
+                }
+                $modeloTipoPublicacion = new TipoPublicacionDAO();
+                $tiposPublicaciones = $modeloTipoPublicacion->selectAll("");
+                $modeloPrioridad = new PrioridadDAO();
+                $prioridades = $modeloPrioridad->selectAll("");
+                $titulo = "Editar publicación";
+                require_once VPUBLICACIONES . 'edit.php';
+            }else{
+                echo "Acción no permitida para tu perfil";
+                header("Location: index.php?c=productos&f=index");
+            }
         }
-        $modeloTipoPublicacion = new TipoPublicacionDAO();
-        $tiposPublicaciones = $modeloTipoPublicacion->selectAll("");
-        $modeloPrioridad = new PrioridadDAO();
-        $prioridades = $modeloPrioridad->selectAll("");
-        $titulo = "Editar publicación";
-        require_once VPUBLICACIONES . 'edit.php';
     }
 
     public function edit(){
