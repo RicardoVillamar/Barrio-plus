@@ -4,7 +4,8 @@
 
 <section>
 <h1 class="titulos">Registro</h1>
-<form action="index.php?c=usuarios&f=registrar" method="POST">
+<form action="index.php?c=usuario&f=new" method="POST">
+    
     <h2 class="subtitulos">Registro de Usuario</h2>
     
     <div>
@@ -20,7 +21,7 @@
 
     <div>
         <label for="correo">Correo:</label><br>
-        <input type="email" id="correo" name="correo" placeholder="Ingrese su correo" >
+        <input type="email" id="correo" name="email" placeholder="Ingrese su correo" >
     </div>
 
     <div>
