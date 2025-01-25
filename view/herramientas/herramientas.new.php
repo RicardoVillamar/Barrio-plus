@@ -1,7 +1,5 @@
-<?php
-//Autor: Quiñonez Castrellón Anthony Joel
-require_once HEADER
-?>
+<!--Autor: Quiñonez Castrellón Anthony Joel-->
+<?php require_once HEADER ?>
 
 <main style="display: flex; justify-content: center; align-items: center;">
     <section class="contenedor-formulario">
