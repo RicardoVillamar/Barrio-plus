@@ -31,7 +31,7 @@ CREATE TABLE `Herramienta` (
   `nombre` VARCHAR(150) NOT NULL,
   `descripcion` TEXT,
   `precio` DECIMAL(10,2) NOT NULL,
-  `imagen` VARCHAR(255),
+  `imagen` LONGBLOB
   `fechaRegistro` DATE NOT NULL,
   `idEstadoFK` INT NOT NULL,
   `mantenimiento` BOOLEAN DEFAULT false,
