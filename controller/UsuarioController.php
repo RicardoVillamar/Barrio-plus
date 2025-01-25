@@ -17,7 +17,7 @@ class UsuarioController
     public function index(){
      $resultados = $this->model->selectAll("");
         $titulo = "Buscar usuarios";
-        require_once VUSUARIOS . "list.php";
+
         if (count($resultados) > 0) {
             echo "Usuarios cargados correctamente";
         } else {
@@ -30,7 +30,7 @@ class UsuarioController
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            header("Location: login.php");
+            require_once 'view/usuario/login.php'; 
             exit();
         }
 
@@ -43,14 +43,14 @@ class UsuarioController
         }
 
         $titulo = "Perfil del Usuario";
-        require_once VUSUARIOS . 'list.php';
+        require_once VUSUARIOS.'list.php'; 
     }
 
      public function search(){
         $parametro = htmlentities($_POST['b']??"");
         $resultados = $this->model->selectAll($parametro);     
         $titulo = "Buscar usuarios";
-        require_once VUSUARIOS . 'list.php';
+       
      }
 
         public function view_new(){
@@ -59,26 +59,23 @@ class UsuarioController
 
 
         }
-    public function new(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $usuario = new Usuario();
-            $usuario->setNombre($_POST['nombre']);
-            $usuario->setApellido($_POST['apellido']);
-            $usuario->setCorreo($_POST['email']);
-            $usuario->setContrasena(password_hash($_POST['password'], PASSWORD_BCRYPT));
+        public function new() {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $nombre = $_POST['nombre'];
+                $apellido = $_POST['apellido'];
+                $correo = $_POST['email'];
+                $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
+    
 
-            $resultado = $this->model->insert($usuario);
+                $this->model->insert($nombre, $apellido, $correo, $contrasena);
 
-            if ($resultado) {
-                echo "Usuario registrado correctamente";
+                header("Location: index.php?c=usuario&f=login");
+                exit();
             } else {
-                echo "Error al registrar el usuario";
+                $titulo = "Registrar Usuario";
+                require_once 'view/usuario/usuario.new.php';
             }
-        } else {
-            $titulo = "Registrar usuario";
-            require_once VUSUARIOS . "register.php";
         }
-    }
 
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -90,7 +87,7 @@ class UsuarioController
             if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
                 session_start();
                 $_SESSION['user_id'] = $usuario['id'];
-                header("Location: index.php?c=usuarios&f=profile");
+                header("Location: index.php?c=usuario&f=profile");
                 exit();
             } else {
                 echo "Correo o contraseña incorrectos";
@@ -100,26 +97,6 @@ class UsuarioController
             require_once 'view/usuario/login.php'; 
         }
     }
-public function validateAndRedirect() {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $correo = $_POST['email'];
-        $contrasena = $_POST['password'];
-
-        $usuario = $this->model->selectOneByEmail($correo);
-
-        if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
-            session_start();
-            $_SESSION['user_id'] = $usuario['id'];
-            header("Location: index.php?c=usuarios&f=profile");
-            exit();
-        } else {
-            echo "Correo o contraseña incorrectos";
-        }
-    } else {
-        $titulo = "Iniciar sesión";
-        require_once 'view/usuario/login.php'; 
-    }
-}
 
 
     

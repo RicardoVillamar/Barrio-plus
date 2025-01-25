@@ -1,14 +1,14 @@
 <!-- Autor: Freire Chavez Jose Andres -->
 <?php require_once HEADER; ?>
-  <h1 class="titulos">Publicaciones</h1>
   <section class="publicaciones">
     <form 
-        action="index.php?c=productos&f=new" 
+        action="index.php?c=publicacion&f=edit" 
         method="POST" 
         name="formPublicNuevo"
         id="formPublicNuevo"
     >
       <h2 class="subtitulos">Información de la publicación</h2>
+      <input type="hidden" name="id" id="id" value="<?php echo $publi["idPubli"]?>"/>
       <div class="tituloPublicacion">
         <label for="titulo_publicacion">Título de la publicación:</label
         ><br>
@@ -16,24 +16,21 @@
           type="text"
           id="titulo_publicacion"
           name="nombre"
+          value="<?php echo $publi["titulo"]?>"
           placeholder="Ingrese un título"
         >
       </div>
 
       <div class="tipoPublicacion">
-        <label for="tipo_publicacion">Tipo de publicación:</label><br>
-        <select name="tipo_publicacion" id="tipo_publicacion">
-          <option value="">Seleccione...</option>
-          <option value="reporteDanios">Reporte de daños</option>
-          <option value="avisosGenerales">Avisos generales</option>
-          <option value="avisosMantenimiento">
-            Avisos de mantenimiento
-          </option>
-          <option value="solicitudesRecursos">
-            Solicitudes de recursos
-          </option>
-          <option value="otros">Otros</option>
-        </select>
+      <label for="tipo_publicacion">Tipo de publicación:</label><br>
+      <select name="tipo_publicacion" id="tipo_publicacion">
+        <?php 
+          foreach($tiposPublicaciones as $tipoPubli){
+        ?>
+        <option value="<?php echo $tipoPubli["idTipo"]?>">
+          <?php echo $tipoPubli["descripcion"]?></option>
+        <?php } ?>
+      </select>
       </div>
 
       <div class="campoDescripcion">
@@ -42,6 +39,7 @@
           id="descripcion"
           class="publicacionDescripcion"
           name="descripcion"
+          value="<?php echo $publi["descripcion"]?>"
           placeholder="Escribe la descripción de la publicación"
         ></textarea>
       </div>
@@ -63,12 +61,13 @@
           type="date"
           id="fecha_publicacion"
           name="fecha_publicacion"
+          value="<?php echo $publi["fechaEvento"]?>"
         >
       </div>
 
       <h2 class="subtitulos">Información del publicante</h2>
       <div class="campoNombre">
-        <label for="nombre">Nombres:</label><br>
+        <label for="nombre">Nombre:</label><br>
         <input
           type="text"
           id="nombre"
@@ -77,16 +76,7 @@
         >
       </div>
 
-      <div class="campoTelefono">
-        <label for="telefono">Teléfono:</label><br>
-        <input
-          type="tel"
-          id="telefono"
-          name="telefono"
-          placeholder="Ingrese su número telefónico"
-        >
-      </div>
-
+    
       <div class="campoCorreo">
         <label for="correo">Correo:</label><br>
         <input
