@@ -59,29 +59,30 @@ class UsuarioController
 
     public function profile()
     {
-        if(!isset($_SESSION)){session_start();}
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
         if (!isset($_SESSION['usuario'])) {
             require_once 'view/usuario/login.php';
             exit();
         }
 
         $usuario = $_SESSION['usuario'];
-        $userId = $usuario['idUsuario']; 
 
-        if (!$usuario) {
+        // Verificar si el usuario tiene un ID válido
+        if (!isset($usuario['idUsuario']) || empty($usuario['idUsuario'])) {
             header("Location: error.php");
             exit();
         }
 
-        // Asegurar que las reservas sean arrays vacíos si no hay resultados
+        $userId = $usuario['idUsuario'];
+
+        // Consultar reservas del usuario
         $reservasHerramientas = $this->model->selectReservasHerramientasByUserId($userId) ?? [];
         $reservasInstalaciones = $this->model->selectReservasInstalacionesByUserId($userId) ?? [];
 
-        // Agregar datos adicionales al usuario
-        $usuario['reservasHerramientas'] = $reservasHerramientas;
-        $usuario['reservasInstalaciones'] = $reservasInstalaciones;
-
-        // Hacer disponible la variable $usuario en la vista
+        // Hacer disponible la variable $usuario, $reservasHerramientas y $reservasInstalaciones en la vista
         $titulo = "Perfil del Usuario";
         require_once 'view/usuario/usuario.list.php';
     }
@@ -211,6 +212,32 @@ class UsuarioController
             $titulo = "Editar Usuario";
             require_once 'view/usuario/usuario.edit.php';
         }
+    }
+
+    public function logout()
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        // Destruir todas las variables de sesión
+        $_SESSION = array();
+
+        // Si se desea destruir la sesión completamente, también se debe borrar la cookie de sesión.
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+
+        // Finalmente, destruir la sesión.
+        session_destroy();
+
+        // Redirigir al usuario a la página de inicio de sesión
+        header("Location: index.php?c=usuario&f=login");
+        exit();
     }
 }
 
