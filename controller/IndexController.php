@@ -15,7 +15,7 @@ class IndexController {
             require_once 'view/static/'.$page.'.php';
         }else if(!isset($_SESSION['usuario'])){
             require_once 'view/usuario/Login.php'; 
-        }if(!empty($_GET['h'])){
+        }else if(!empty($_GET['ho'])){
             require_once 'model/dao/PublicacionDAO.php';
             $modeloPublicaciones = new PublicacionDAO();
             $publicaciones = $modeloPublicaciones->selectAll("");
