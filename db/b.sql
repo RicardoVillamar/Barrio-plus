@@ -31,11 +31,12 @@ CREATE TABLE `Herramienta` (
   `nombre` VARCHAR(150) NOT NULL,
   `descripcion` TEXT,
   `precio` DECIMAL(10,2) NOT NULL,
-  `imagen` LONGBLOB,
+  `imagen` LONGBLOB
   `fechaRegistro` DATE NOT NULL,
   `idEstadoFK` INT NOT NULL,
   `mantenimiento` VARCHAR(150) NOT NULL,
-  `cantidad` INT NOT NULL
+  `cantidad` INT NOT NULL,
+  `idContribuidorFK` INT
 );
 
 CREATE TABLE `Instalacion` (
@@ -46,6 +47,7 @@ CREATE TABLE `Instalacion` (
   `tamano` VARCHAR(50),
   `idTipoFK` INT NOT NULL,
   `idEstadoFK` INT NOT NULL,
+  `idContribuidorFK` INT,
   `imagen` LONGBLOB
 );
 
@@ -97,36 +99,50 @@ CREATE TABLE Publicacion (
 CREATE TABLE `Contribucion` (
   `idContribucion` INT PRIMARY KEY AUTO_INCREMENT,
   `estado` VARCHAR(50) NOT NULL,
-  `idHerramientaFK` INT,
-  `idInstalacionFK` INT,
-  `idUsuarioFK` INT NOT NULL,
-  FOREIGN KEY (`idHerramientaFK`) REFERENCES `Herramienta` (`idHerramienta`),
-  FOREIGN KEY (`idInstalacionFK`) REFERENCES `Instalacion` (`idInstalacion`)
+  `tipo` VARCHAR(50) NOT NULL,
+  `idRecursoFK` INT NOT NULL,
+  `idUsuarioFK` INT NOT NULL
 );
 
 ALTER TABLE `Usuario` ADD FOREIGN KEY (`idRolFK`) REFERENCES `RolUsuario` (`idRol`);
+
 ALTER TABLE `Herramienta` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
+
+ALTER TABLE `Herramienta` ADD FOREIGN KEY (`idContribuidorFK`) REFERENCES `Usuario` (`idUsuario`);
+
 ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `Tipo` (`idTipo`);
+
 ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
+
+ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idContribuidorFK`) REFERENCES `Usuario` (`idUsuario`);
+
 ALTER TABLE `ReservacionHerramienta` ADD FOREIGN KEY (`idHerramientaFK`) REFERENCES `Herramienta` (`idHerramienta`);
+
 ALTER TABLE `ReservacionHerramienta` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+
 ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idInstalacionFK`) REFERENCES `Instalacion` (`idInstalacion`);
+
 ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `TipoPublicacion` (`idTipo`);
+
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idPrioridadFK`) REFERENCES `Prioridad` (`idPrioridad`);
 
-
-INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
-INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
-INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
-
-
-INSERT INTO `Prioridad` (`nivel`) VALUES ('Alta'), ('Media'), ('Baja');
-INSERT INTO `TipoPublicacion` (`nombreTipo`) VALUES ('Reporte de daños'), ('Avisos generales'), ('Avisos de mantenimiento'), ('Solicitudes de recursos');
+ALTER TABLE `Contribucion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 
 
 
+--INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
+--INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
+--INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
+
+--INSERT INTO `Prioridad` (`nivel`) VALUES ('Alta'), ('Media'), ('Baja');
+--INSERT INTO `TipoPublicacion` (`nombreTipo`) VALUES ('Reporte de daños'), ('Avisos generales'), ('Avisos de mantenimiento'), ('Solicitudes de recursos');
+
+/*
+--Inserts de prueba tabla de usuario
 INSERT INTO `Usuario` (`nombre`, `apellido`, `correo`, `contrasena`, `idRolFK`) VALUES
 ('Miguel', 'Sanchez', 'miguel.sanchez@hotmail.com', 'migueADM', 1),
 ('Luisa', 'Garcia', 'luisa.garcia@outlook.com', 'garciaLuisa', 2), 
@@ -135,10 +151,11 @@ INSERT INTO `Usuario` (`nombre`, `apellido`, `correo`, `contrasena`, `idRolFK`) 
 ('Juan', 'Martinez', 'juan.martinez@gmail.com', 'juADM', 3); 
 
 
-
+-- Inserciones de prueba tabla Publicacion
 INSERT INTO `Publicacion` (`titulo`, `idTipoFK`, `descripcion`, `idPrioridadFK`, `fechaEvento`, `notificarAdmin`, `idUsuarioFK`) VALUES
 ('Reparación de alumbrado', 1, 'Se requiere reparar un poste de luz en la calle principal.', 1, '2025-02-01', 1, 4), 
 ('Taller de reciclaje', 4, 'Organización de un taller de reciclaje en el salón comunitario.', 2, '2025-02-10', 0, 3),
 ('Aviso de mantenimiento', 3, 'Cierre temporal del parque por mantenimiento.', 3, '2025-01-30', 1, 2), 
 ('Fugas de agua', 1, 'Reporte de fuga de agua cerca del aula 2.', 1, '2025-01-29', 1, 4), 
 ('Anuncio de reunión', 2, 'Aviso para reunión general de vecinos el próximo viernes.', 2, '2025-02-05', 0, 5); 
+*/
