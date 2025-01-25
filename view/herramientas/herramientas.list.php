@@ -1,24 +1,20 @@
 <!-- autor: Quiñonez Castrellón Anthony Joel -->
 <?php require_once HEADER; ?>
-<link rel="stylesheet" href="assets/css/herramientasStyle.css" />
 
 <main class="containt">
-<h2> <?php echo $titulo?></h2>
 <div class="tabla">
-    <div>
-        <h2> </h2>
-        <div>
             <div class="buscar">
                 <a href="index.php?c=herramienta&f=view_new"> 
                     <button type="button" class="crear">
-                    Nuevo</button></a>
+                    Nuevo</button>
+                </a>
 
                 <div class="search">
                     <form action="index.php?c=herramienta&f=search" method="POST">
                     <input type="text" name="b" id="busqueda"  placeholder="Buscar por nombre"/>
                     <button type="submit" class="">Buscar</button>
                 </div>
-        </div>
+            </div>
     <table>
         <thead>
             <tr>
@@ -41,7 +37,7 @@
                         <tr>
                             <td><?php echo $row['idHerramienta']; ?></td>
                             <td><?php echo $row['nombre']; ?></td>
-                            <td class="imagen-celda"><?php echo $row['imagen'];?></td>
+                            <td ><?php echo $row['imagen'];?></td>
                             <td><?php echo $row['descripcion']; ?></td>
                             <td><?php echo $row['precio']; ?></td>
                             <td><?php echo $row['fechaRegistro']; ?></td>
@@ -52,14 +48,12 @@
                             <td class="acciones">
                                 <a class="edit" href="index.php?c=herramienta&f=view_edit&id=<?php echo $row['idHerramienta']; ?>">Editar</a> | 
                                 <a class="delete" href="index.php?c=herramienta&f=delete&id=<?php echo $row['idHerramienta']; ?>" onclick="return confirm('¿Estás seguro de que deseas eliminar esta herramienta?');">Eliminar</a>
-                                </td>
+                            </td>
                         </tr>
-                        <?php
-                    }
-            ?>
+                <?php
+            }?>
         </tbody>
     </table>
-    </section>
 </div>
 </main>
 
