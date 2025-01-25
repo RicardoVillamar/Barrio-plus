@@ -1,12 +1,10 @@
 <!-- autor: Quiñonez Castrellón Anthony Joel -->
 
 <?php require_once HEADER; ?>
-<link rel="stylesheet" href="assets/css/herramientasReStyle.css" />
-
 
 <main class="contenedor-formulario">
     <section>
-        <form action="index.php?c=herramienta&f=new" method="POST" id="form-herramienta" style="display: flex; flex-direction: column; gap: 10px;">
+        <form action="index.php?c=herramienta&f=insert" method="POST" id="form-herramienta" style="display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; align-items: center;">
                 <a href="index.php?c=herramienta&f=index" style="padding: 0px; margin-left: 10px">
                     <span class="material-symbols-outlined"> arrow_back_ios_new </span>
@@ -16,31 +14,27 @@
             
             <div>
                 <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion"
-                value="<?= htmlspecialchars($_POST['nombre'] ?? '')?>">
+                <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion">
             </div>
 
             <div>
                 <label for="imagen">Imagen</label>
-                <input type="file" name="imagen" id="imagen" class="input" value="<?= htmlspecialchars($_FILES['imagen'] ?? '')?>">
+                <input type="file" id="imagen" name="imagen" accept="image/*" class="input">
             </div>
             
             <div>
                 <label for="descripcion">Descripción:</label><br>
-                <textarea id="descripcion"name="descripcion" placeholder="Descripción de la herramienta" rows="5"
-                value="<?= htmlspecialchars($_POST['descripcion'] ?? '')?>"></textarea>
+                <textarea id="descripcion"name="descripcion" placeholder="Descripción de la herramienta" rows="5"></textarea>
             </div>
 
             <div>
                 <label for="precio">Precio</label>
-                <input type="number" step="0.01" name="precio" id="precio" class="input" placeholder="Precio de la herramienta"
-                value="<?= htmlspecialchars($_POST['precio'] ?? '')?>">
+                <input type="number" step="0.01" name="precio" id="precio" class="input" placeholder="Precio de la herramienta">
             </div>
 
             <div>
             <label for="fechaRegistro">Fecha de Registro</label>
-            <input type="date" name="fechaRegistro" id="fechaRegistro" class="input" 
-            value="<?= htmlspecialchars($_POST['fechaRegistro'] ?? '')?>"required>
+            <input type="date" name="fechaRegistro" id="fechaRegistro" class="input" required>
             </div>
 
             <div>
@@ -58,28 +52,24 @@
 
             <div>
                 <label for="cantidad">Cantidad</label>
-                <input type="number" name="cantidad" id="cantidad" class="input" placeholder="Cantidad disponible"
-                value="<?= htmlspecialchars($_POST['cantidad'] ?? '')?>">
+                <input type="number" name="cantidad" id="cantidad" class="input" placeholder="Cantidad disponible">
             </div>
 
             <div>
-                <label for="contribuidor">Contribuidor</label>
-                <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion">
-            </div> 
+                <label for="contribuidor">Contribuidor:</label>
+                <input type="text" name="contribuidor" id="contribuidor" placeholder="Nombre del contribuidor" class="input">
+            </div>
 
             <div>
-                <input type="checkbox" id="mantenimiento" name="mantenimiento"
-                <?php echo (isset($_POST['mantenimiento']) && $_POST['mantenimiento'] == 'on') ? 'checked="checked"' : ''; ?>>
-                <label for="mantenimiento">Requiere Mantenimiento</label>
+                <label for="mantenimiento">Mantenimiento</label>
+                <input type="number" name="mantenimiento" id="cantidad" class="input" placeholder="Cantidad de mantenimiento">
+
             </div>
-            <div>
+            <div style="text-align: center;">
                 <button type="submit" class="boton-mediano">Registrar</button>
             </div>
 
         </form>
     </section>
 </main>
-
-<!-- en el contribuidor es para que ingreses tu nombre de contribuidor pero saldra como identificador en la tabla -->
-
 <?php require_once FOOTER; ?>

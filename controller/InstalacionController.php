@@ -62,6 +62,8 @@ class InstalacionController
     {
         $id = htmlentities($_GET['id']);
         $instalacion = $this->model->selectOne($id);
+        $tipos = $this->modeloTipo->getTipos();
+        $estados = $this->modeloEstado->selectEstado();
         // $resultados = $this->model->selectAll();
 
         $titulo = 'Editar Instalacion';
@@ -133,13 +135,6 @@ class InstalacionController
             } else {
                 echo "Error al actualizar la instalación";
             }
-        } else {
-            $id = htmlentities($_GET['id']);
-            $instalacion = $this->model->selectOne($id);
-            $estados = $this->modeloEstado->selectEstado();
-            $tipos = $this->modeloTipo->getTipos();
-            $titulo = 'Editar Instalacion';
-            require_once VINSTALACION . 'edit.php';
         }
     }
 }

@@ -38,8 +38,14 @@ require_once HEADER
             <div>
                 <label for="tipo">Tipo</label>
                 <select id="tipo" name="tipo" class="input-selected">
-
-
+                    <?php
+                    foreach ($tipos as $tip) {
+                        $selected = ($tip['nombre'] == $instalacion['tipo_nombre']) ? 'selected' : '';
+                    ?>
+                        <option <?php echo $selected ?> value="<?php echo $tip['nombre'] ?>"><?php echo $tip['nombre'] ?></option>
+                    <?php
+                    }
+                    ?>
                 </select>
 
             </div>
@@ -47,7 +53,12 @@ require_once HEADER
             <div>
                 <label for="estado">Estado</label>
                 <select id="estado" name="estado" class="input-selected">
-
+                    <?php
+                    foreach ($estados as $estado) {
+                        $selected = ($estado['nombre'] == $instalacion['estado_nombre']) ? 'selected' : '';
+                        echo "<option value='{$estado['nombre']}' {$selected}>{$estado['nombre']}</option>";
+                    }
+                    ?>
                 </select>
             </div>
 
