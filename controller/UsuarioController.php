@@ -71,13 +71,14 @@ class UsuarioController
     public function new()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $nombre = $_POST['nombre'];
-            $apellido = $_POST['apellido'];
-            $correo = $_POST['email'];
-            $contrasena = $_POST['contrasena']; // No se utiliza password_hash
+            $usuario = [
+                'nombre' => $_POST['nombre'],
+                'apellido' => $_POST['apellido'],
+                'correo' => $_POST['email'],
+                'contrasena' => $_POST['contrasena'] // No se utiliza password_hash
+            ];
 
-
-            $this->model->insert($nombre, $apellido, $correo, $contrasena);
+            $this->model->insert($usuario);
 
             require_once VUSUARIOS . 'list.php';
             exit();

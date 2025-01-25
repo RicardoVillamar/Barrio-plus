@@ -73,19 +73,19 @@ class UsuarioDAO
     }
 
 
-    public function insert($nombre, $apellido, $correo, $contrasena)
+    public function insert($usuario)
     {
         try {
             $sql = "INSERT INTO usuario (nombre, apellido, correo, contrasena) VALUES (:nom, :ape, :cor, :con)";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":nom", $nombre, PDO::PARAM_STR);
-            $stmt->bindParam(":ape", $apellido, PDO::PARAM_STR);
-            $stmt->bindParam(":cor", $correo, PDO::PARAM_STR);
-            $stmt->bindParam(":con", $contrasena, PDO::PARAM_STR);
+            $stmt->bindParam(":nom", $usuario['nombre'], PDO::PARAM_STR);
+            $stmt->bindParam(":ape", $usuario['apellido'], PDO::PARAM_STR);
+            $stmt->bindParam(":cor", $usuario['correo'], PDO::PARAM_STR);
+            $stmt->bindParam(":con", $usuario['contrasena'], PDO::PARAM_STR);
             $stmt->execute();
             return true;
         } catch (PDOException $er) {
-            error_log("Error en insert de UsuarioDAO: " . $er->getMessage());
+            error_log("Error en insert de UsuarioDAO " . $er->getMessage());
             return false;
         }
     }
