@@ -2,7 +2,7 @@
 <?php
 class TiposPublicaciones
 {
-    private $idTipo, $descripcion;
+    private $idTipo, $nombreTipo;
 
     function __construct() {}
 
@@ -11,18 +11,18 @@ class TiposPublicaciones
         return $this->idTipo;
     }
 
-    function getDescripcion()
+    function getNombreTipo()
     {
-        return $this->descripcion;
+        return $this->nombreTipo;
     }
 
-    function setIdTipo($idTipo)
+    function setIdTipo($idTip)
     {
-        $this->idTipo = $idTipo;
+        $this->idTipo = $idTip;
     }
 
-    function setDescripcion($descrip)
+    function setNombre($nombTip)
     {
-        $this->descripcion = $descrip;
+        $this->nombreTipo = $nombTip;
     }
 }

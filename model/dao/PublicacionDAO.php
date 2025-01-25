@@ -14,12 +14,12 @@ class PublicacionDAO
     public function selectAll($parametro)
     {
         try {
-            $sql = "select p.idPubli, p.titulo, tp.descripcion, p.descripcion, prio.nivel, p.fechaEvento,
+            $sql = "select p.idPubli, p.titulo, tp.nombreTipo, p.descripcion, prio.nivel, p.fechaEvento,
             u.nombre, u.apellido, u.correo from publicacion p 
             JOIN usuario u on p.idUsuarioFK = u.idUsuario
             JOIN tipopublicacion tp on p.idTipoFK = tp.idTipo
             JOIN prioridad prio on p.idPrioridadFK = prio.idPrioridad
-            where tp.descripcion LIKE :tip or prio.nivel LIKE :pri";
+            where tp.nombre LIKE :tip or prio.nivel LIKE :pri";
             $stmt = $this->con->prepare($sql);
             $coincidencias = '%' . $parametro . '%';
             $stmt->bindParam(":tip", $coincidencias, PDO::PARAM_STR);
@@ -36,7 +36,7 @@ class PublicacionDAO
     public function selectOne($id)
     {
         try {
-            $sql = "select p.idPubli, p.titulo, tp.descripcion, p.descripcion, prio.nivel, p.fechaEvento,
+            $sql = "select p.idPubli, p.titulo, tp.nombreTipo, p.descripcion, prio.nivel, p.fechaEvento,
             u.nombre, u.apellido, u.correo from publicacion p 
             JOIN usuario u on p.idUsuarioFK = u.idUsuario
             JOIN tipopublicacion tp on p.idTipoFK = tp.idTipo

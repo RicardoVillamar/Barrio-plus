@@ -59,12 +59,12 @@
 
     <h2 class="subtitulos">Información del publicante</h2>
     <div class="campoNombre">
-      <label for="nombre">Nombres:</label><br>
+      <label for="nombre">Nombre:</label><br>
       <input
         type="text"
         id="nombre"
         name="nombre"
-      >
+    >
     </div>
 
     <div class="campoApellido">
