@@ -26,13 +26,7 @@
           de la colaboración, podemos <strong>facilitar</strong> el acceso a
           recursos comunes, optimizar su uso y promover una cultura de
           <strong>respeto</strong> y
-          <strong>responsabilidad</strong> compartida. Conoce más sobre nuestra
-          <a class="enlaceSeccion" href="#historia">historia</a> y
-          <a class="enlaceSeccion" href="#valores">valores</a>. Si buscas
-          realizar una publicación visita el siguiente
-          <a class="enlaceSeccion" href="form-Publicaciones.html">enlace</a>.
-          Una de las frases que guía nuestros objetivos es del ex presidente
-          Samora Machel:
+          <strong>responsabilidad</strong> compartida. 
         </p>
         <blockquote
           cite="https://psicologiaymente.com/reflexiones/frases-colaboracion"
@@ -67,7 +61,7 @@
       <section class="container">
         <section class="row">
           <h2 class="titulos">Integrantes</h2>
-          <article class="tarjeta col-md-4">
+          <article class="tarjeta col-md-3">
             <img
               src="assets/images/grupo/villamar.png"
               alt="villamar"
@@ -85,7 +79,7 @@
             </div>
           </article>
 
-          <article class="tarjeta col-md-4">
+          <article class="tarjeta col-md-3">
             <img
               src="assets/images/grupo/quinionez.png"
               alt="quinionez"
@@ -103,7 +97,7 @@
             </div>
           </article>
 
-          <article class="tarjeta col-md-4">
+          <article class="tarjeta col-md-3">
             <img
               src="assets/images/grupo/palacios.png"
               alt="palacios"
@@ -123,7 +117,7 @@
         </section>
 
         <section class="row">
-          <article class="tarjeta col-md-6">
+          <article class="tarjeta col-md-3">
             <img
               src="assets/images/grupo/larrea.png"
               alt="larrea"
@@ -141,7 +135,7 @@
             </div>
           </article>
 
-          <article class="tarjeta col-md-6">
+          <article class="tarjeta col-md-3">
             <img
               src="assets/images/grupo/freire.png"
               alt="freire"

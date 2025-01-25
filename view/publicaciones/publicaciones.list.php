@@ -1,4 +1,12 @@
 <!-- Autor: Freire Chavez Jose Andres -->
+<?php
+   if(!isset($_SESSION)){ session_start();}
+   if(isset($_SESSION['usuario'])){
+       $usuario = $_SESSION['usuario'];
+       $rol = $usuario['idRolFK']; 
+   }
+   echo $rol;
+?>
 <?php require_once HEADER; ?>
     <section id="buscarFormPublicaciones">
     <h4 class="titulos"><?php echo $titulo ?></h4>
