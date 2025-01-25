@@ -30,21 +30,29 @@ class UsuarioDAO
 
     }
     
-
-    public function selectOne($id){
-        try{
-            $sql="select * from usuario where idUsuario=:id";
-            $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":id",$id, PDO::PARAM_INT);
-            $stmt->execute();
-            $res= $stmt->fetch(PDO::FETCH_ASSOC);
-            return $res;
-        }catch(PDOEXception $er){
-            error_log("Error en selectOne de UsuarioDAO ". $er->getMessage());
-            return null;
-        }
+    public function selectOne($userId) {
+        $sql = "SELECT * FROM usuarios WHERE id = :id";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-     
+
+    public function selectReservasHerramientasByUserId($userId) {
+        $sql = "SELECT * FROM ReservacionHerramienta WHERE idUsuarioFK = :id";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function selectReservasInstalacionesByUserId($userId) {
+        $sql = "SELECT * FROM ReservacionInstalacion WHERE idUsuarioFK = :id";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }  
     public function selectOneByEmail($correo){
         try{
             $sql="select * from usuario where correo=:cor";

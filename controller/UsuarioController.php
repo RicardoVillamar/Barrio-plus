@@ -42,8 +42,14 @@ class UsuarioController
             exit();
         }
 
+        $reservasHerramientas = $this->model->selectReservasHerramientasByUserId($userId);
+        $reservasInstalaciones = $this->model->selectReservasInstalacionesByUserId($userId);
+
+        $usuario['reservasHerramientas'] = $reservasHerramientas;
+        $usuario['reservasInstalaciones'] = $reservasInstalaciones;
+
         $titulo = "Perfil del Usuario";
-        require_once VUSUARIOS.'list.php'; 
+        require_once 'view/usuario/usuario.list.php'; 
     }
 
      public function search(){
@@ -69,7 +75,7 @@ class UsuarioController
 
                 $this->model->insert($nombre, $apellido, $correo, $contrasena);
 
-                header("Location: index.php?c=usuario&f=login");
+                require_once VUSUARIOS . 'list.php';
                 exit();
             } else {
                 $titulo = "Registrar Usuario";
