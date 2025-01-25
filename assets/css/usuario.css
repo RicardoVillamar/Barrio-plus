@@ -1,0 +1,82 @@
+
+
+/* Estilo general para el contenedor principal */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Estilo para los encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los párrafos */
+p {
+    font-family: 'Arial', sans-serif;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los botones */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para los formularios */
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilo para las tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f8f8f8;
+}
+
+/* Estilo para enlaces */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
