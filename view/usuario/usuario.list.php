@@ -9,7 +9,7 @@
             <h2 class="subtitulos"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></h2>
             <p class="texto"><?php echo htmlspecialchars($usuario['correo']); ?></p>
             <p>Datos del usuario</p>
-            <button onclick="window.location.href='usuario.edit.php'" class="boton-mediano">Editar información</button>
+            <button onclick="window.location.href='index.php?c=usuario&f=view_edit'" >Editar información</button>
 
             <!-- Reservas de Herramientas -->
             <h2 class="subtitulos">Reservas de Herramientas</h2>
@@ -77,6 +77,8 @@
                 <?php } ?>
             </tbody>
             </table>
+             <button>Desea ser Contribuidor</button>
+
         <?php else: ?>
             <p>Error: Información del usuario no disponible.</p>
         <?php endif; ?>

@@ -76,7 +76,7 @@ class UsuarioDAO
     public function insert($usuario)
     {
         try {
-            $sql = "INSERT INTO usuario (nombre, apellido, correo, contrasena) VALUES (:nom, :ape, :cor, :con)";
+            $sql = "insert into usuario (nombre, apellido, correo, contrasena) VALUES (:nom, :ape, :cor, :con)";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":nom", $usuario['nombre'], PDO::PARAM_STR);
             $stmt->bindParam(":ape", $usuario['apellido'], PDO::PARAM_STR);
