@@ -1,17 +1,18 @@
-<!-- autor: Quiñonez Castrellón Anthony Joel -->
+<?php
+//Autor: Quiñonez Castrellón Anthony Joel
+require_once HEADER
+?>
 
-<?php require_once HEADER; ?>
+<main style="display: flex; justify-content: center; align-items: center;">
+    <section class="contenedor-formulario">
 
-<main class="contenedor-formulario">
-    <section>
-        <form action="index.php?c=herramienta&f=edit" method="POST" enctype="multipart/form-data" id="form-herramienta" style="display: flex; flex-direction: column; gap: 10px;">
-            <input type="hidden" name="id" value="<?= htmlspecialchars($herramienta['idHerramienta'] ?? '') ?>">
-            
+        <form action="index.php?c=herramienta&f=edit" method="POST" enctype="multipart/form-data" id="formulario-herramienta" style="display: flex; flex-direction: column; gap: 10px;">
+            <input type="hidden" name="id" value="<?php echo $herramienta['idHerramienta']; ?>">
             <div style="display: flex; align-items: center;">
                 <a href="index.php?c=herramienta&f=index" style="padding: 0px; margin-left: 10px">
                     <span class="material-symbols-outlined"> arrow_back_ios_new </span>
                 </a>
-                <h3 style="margin-left: 10px;">Editar Herramienta</h3>
+                <h3 style="margin-left: 10px;">Editar instalacion</h3>
             </div>
 
             <div>
@@ -46,33 +47,28 @@
                 <label for="estado">Estado</label>
                 <select id="estado" name="estado" class="input-selected">
                     <?php foreach ($estados as $fila): ?>
-                        <option value="<?= $fila['idEstado'] ?>" <?= ($fila['idEstado'] == $herramienta['idEstadoFK']) ? 'selected' : '' ?>>
+                        <option value="<?= $fila['idEstado'] ?>" <?= ($fila['idEstado'] == ($herramienta['idEstadoFK'] ?? '')) ? 'selected' : '' ?>>
                             <?= $fila['nombre'] ?>
                         </option>
-                    <?php endforeach; ?>
-                </select>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            <div>
+                <label for="mantenimiento">Mantenimiento</label>
+                <textarea id="mantenimiento" name="mantenimiento" placeholder="Descripción de los mantenimientos hechos" rows="5"><?= htmlspecialchars($herramienta['mantenimiento'] ?? '') ?></textarea>
             </div>
-
+            
             <div>
                 <label for="cantidad">Cantidad</label>
                 <input type="number" name="cantidad" id="cantidad" class="input" placeholder="Cantidad disponible" value="<?= htmlspecialchars($herramienta['cantidad'] ?? '') ?>">
             </div>
 
-            <div>
-                <label for="contribuidor">Contribuidor</label>
-                <input type="text" id="contribuidor" name="contribuidor" class="input" placeholder="Nombre del contribuidor" value="<?= htmlspecialchars($herramienta['idContribuidorFK'] ?? '') ?>">
-            </div> 
-
-            <div>
-                <label for="mantenimiento">Requiere Mantenimiento</label>
-                <input type="number" name="mantenimiento" id="cantidad" class="input" placeholder="Cantidad de mantenimiento"
-                value="<?= htmlspecialchars($_POST['mantenimiento'] ?? '')?>">
-            </div>
-
-            <div style="text-align: center;">
-                <button type="submit" class="boton-mediano">Actualizar</button>
+            <div style="display: flex; justify-content: space-between;">
+                <button type="reset" class="boton-mediano cancelar" onclick="window.location.href='index.php?c=herramienta&f=index'">Cancelar</button>
+                <button type="submit" class="boton-mediano">Registrar</button>
             </div>
         </form>
     </section>
 </main>
-<?php require_once FOOTER; ?>
+
+<?php require_once FOOTER ?>
