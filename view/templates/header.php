@@ -1,8 +1,9 @@
 <?php
    if(!isset($_SESSION)){ session_start();}
    if(isset($_SESSION['usuario'])){
-       $usuario = $_SESSION['usuario'];
-       $rol = $usuario['idRolFK']; 
+      $usuario = $_SESSION['usuario'];
+      $rol = $usuario['idRolFK']; 
+      $_SESSION['rol'] = $rol;
    }
 ?>
 <!DOCTYPE html>
