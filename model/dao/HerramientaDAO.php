@@ -1,80 +1,31 @@
+<!-- Autor: Freire Chavez Jose Andres -->
 <?php
-//autor: Quiñonez Castrellón Anthony Joel
-class Herramienta{
-    private $id, $nombre, $descrip, $precio, $img, 
-    $fechaRegis, $idEst, $mant, $cant;
-    
-    function __construct() {}
-    
-    function getId() {
-        return $this->id;
-    }
-    function getNombre() {
-        return $this->nombre;
-    }
-    
-    function getDescrip() {
-        return $this->descrip;
-    }
-    function getPrecio() {
-        return $this->precio;
-    }
-    function getImg() {
-        return $this->img;
-    }
-    
-    
-    function getFechaRegis() {
-        return $this->fechaRegis;
-    }
-    
-    function getIdEst() {
-        return $this->idEst;
-    }
-    
-    function getMant() {
-        return $this->mant;
-    }
-    
-    function getCant() {
-        return $this->cant;
-    }
-    
-    function setId($id) {
-        $this->id = $id;
-    }
-    
-    function setNombre($nombre) {
-        $this->nombre = $nombre;
-    }
-    
-    
-    function setDescrip($descrip) {
-        $this->descrip = $descrip;
-    }
-    
-    function setPrecio($precio) {
-        $this->precio = $precio;
-    }
-    
-    function setImg($img) {
-        $this->img = $img;
+require_once 'config/Conexion.php';
+
+class ContribucionDAO
+{
+    private $con;
+
+    public function __construct()
+    {
+        $this->con = Conexion::getConexion();
     }
 
-    function setFechaRegis($fechaRegis) {
-        $this->fechaRegis = $fechaRegis;
+    public function selectUserNames()
+    {
+        try {
+            $sql = '
+            SELECT c.idContribucion, u.nombre AS nombreUsuario
+            FROM Contribucion c
+            INNER JOIN Usuario u ON c.idUsuarioFK = u.idUsuario;
+            ';
+            $stmt = $this->con->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $error) {
+            error_log('Error en obtenerContribuidoresConNombre: ' . $error->getMessage());
+            return [];
+        }
     }
-    
-    function setIdEst($idEst) {
-        $this->idEst = $idEst;
-    }
-    
-    function setMant($mant) {
-        $this->mant = $mant;
-    }
-    
-    function setCant($cant) {
-        $this->cant = $cant;
-    }
+
 }
-?>
