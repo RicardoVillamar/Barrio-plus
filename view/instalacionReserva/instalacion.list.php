@@ -49,7 +49,7 @@ require_once HEADER; ?>
         <!-- Cabecera -->
         <section class="cabezera">
             <div style="display: flex; flex-direction: column; gap: 10px; margin: 10px;">
-                <h2 class="titulo-buscar titulos">Instalaciones</h2>
+                <h1 style="font-size: 1.5rem;">Instalaciones</h1>
                 <a href="index.php?c=instalacion&f=index_instalacion">Ingresar instalacion</a>
             </div>
             <div class="buscar">

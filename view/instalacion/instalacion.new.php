@@ -62,7 +62,7 @@ require_once HEADER
 
             <div>
                 <label for="contribuidor">Contribuidor</label>
-                <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion">
+                <input type="text" id="contribuidor" name="contribuidor" class="input" placeholder="contribuidor de la instalacion">
             </div>
 
             <div>

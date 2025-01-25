@@ -4,7 +4,7 @@
     <a href="index.php?c=instalacion&f=index" style="padding: 0px; margin-left: 10px">
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
     </a>
-    <h1 class="titulos" style="padding: 0px 10px">
+    <h1 style="padding: 0px 10px; font-size: 1.5rem;">
         Reservación de la Instalación
     </h1>
 </div>
@@ -117,16 +117,6 @@
     <section class="contenedor-informacion">
 
         <h3 class="subtitulos nombre-instalacion"><?php echo $instalacion['nombre'] ?></h3>
-        <!-- <img
-            id="imagen-instalacion"
-            src=""
-            alt="instalaciones"
-            style="
-            object-fit: cover;
-            border-radius: 8px;
-            width: 100%;
-            height: 300px;
-          " /> -->
         <img src="data:image/jpeg;base64,<?php echo base64_encode($instalacion['imagen']); ?>" alt="Imagen" id="imagen-instalacion"
             style="
             object-fit: cover;

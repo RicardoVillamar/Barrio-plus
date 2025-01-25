@@ -90,4 +90,29 @@ class InstalacionesDAO
             return false;
         }
     }
+
+    public function update($instalacion)
+    {
+        try {
+
+            $sql = 'update Instalacion set nombre = :nombre, descripcion = :descripcion, precio = :precio, tamano = :tamano, idTipoFK = :idTipoFK, idEstadoFK = :idEstadoFK, idContribuidorFK = :idContribuidorFK, imagen = :imagen where idInstalacion = :id';
+
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindParam(':nombre', $instalacion['nombre'], PDO::PARAM_STR);
+            $stmt->bindParam(':descripcion', $instalacion['descripcion'], PDO::PARAM_STR);
+            $stmt->bindParam(':precio', $instalacion['precio'], PDO::PARAM_INT);
+            $stmt->bindParam(':tamano', $instalacion['tamano'], PDO::PARAM_STR);
+            $stmt->bindParam(':idTipoFK', $instalacion['idTipoFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':idEstadoFK', $instalacion['idEstadoFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':idContribuidorFK', $instalacion['idContribuidorFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':imagen', $instalacion['imagen'], PDO::PARAM_LOB);
+
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $respuesta = $stmt->execute();
+            return $respuesta;
+        } catch (PDOException $error) {
+            error_log("Error en update de InstalacionDAO" . $error->getMessage());
+            return false;
+        }
+    }
 }
