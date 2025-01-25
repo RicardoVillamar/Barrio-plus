@@ -1,77 +1,71 @@
-<?php require_once HEADER; ?>
+<?php require_once HEADER; 
+//Autor: Quiñonez Castrellón Anthony Joel
+?>
 
-<div class="cabecera-reserva">
-    <a href="index.php?c=herramienta&f=index_Reserva" style="padding: 0px; margin-left: 10px">
+<div style="display: flex; align-items: center;">
+    <a href="index.php?c=herramienta&f=index_Herramienta" style="padding: 0px; margin-left: 10px">
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
     </a>
-    <h1 class="titulos" style="padding: 0px 10px">
-        Reservación de Herramienta
-    </h1>
+    <h3 style="margin-left: 10px;">Reserva de Herramientas</h3>
 </div>
 <main>
-    <section class="contenedor-form">
-        <form method="get" id="formulario-herramienta" onsubmit="return validarFormulario()">
-            <input type="hidden" name="id" id="id" value="<?php echo $herramienta['idHerramienta'] ?>" />
+<section class="contenedor-formulario">
+        <form action="index.php?c=herramienta&f=reservarHerramienta" method="POST" id="formulario-herramienta" onsubmit="return validarFormulario()">
+            <input type="hidden" name="idHerramienta" value="<?php echo $herramienta['idHerramienta']; ?>" />
+            <input type="hidden" name="nombreHerramienta" value="<?php echo $herramienta['nombre']; ?>" />
+            <input type="hidden" name="precioHerramienta" value="<?php echo $herramienta['precio']; ?>" />
+            <input type="hidden" name="imagenHerramienta" value="<?php echo base64_encode($herramienta['imagen']); ?>" />
+
             <h3 class="subtitulos">Reservacion</h3>
 
             <fieldset>
                 <h3 class="subtitulos">Información personal</h3>
                 <label for="nombre">Nombre</label>
-                <input class="inp" type="text" placeholder="Ingrese su nombre"
-                id="nombre" name="nombre" />
-                <span id="nombre-error" class="err"></span>
+                <input class="input" type="text" placeholder="Ingrese su nombre" id="nombre" name="nombre" /> 
+                <span id="nombre-error" class="error"></span>
 
-                <label for="telefono">Teléfono</label>
-                <input type="tel" class="input" placeholder="Ingrese su número teléfono"
-                id="telefono" name="telefono" maxlength="10" />
-                <span id="telefono-error" class="err"></span>
+                <label for="cantidad">Cantidad</label>
+                <input class="input" type="number" min="1" placeholder="Cantidad de herramientas" id="cantidad" name="cantidad" />
+                <span id="personas-error" class="error"></span>
             </fieldset>
 
             <fieldset>
-              <label for="personas">Cantidad</label>
-                  <input class="input" type="number" min="2" placeholder="Cantidad"
-                      id="personas" name="personas" />
-                  <span id="personas-error" class="err"></span>
+                <h3 class="subtitulos">Detalles de la reserva</h3>
+                <label for="fechaInicio">Desde</label>
+                <input class="input" type="date" id="fechaInicio" name="fechaInicio" />
+                <span id="fechaD-error" class="error"></span>
 
-                <h3 class="subtitulos">Detalle de la reserva</h3>
-                <label for="fecha-desde">Desde</label>
-                <input class="input" type="date" id="fecha-desde" name="fecha-desde" />
-                <span id="fechaD-error" class="err"></span>
+                <label for="fechaFin">Hasta</label>
+                <input class="input" type="date" id="fechaFin" name="fechaFin" />
+                <span id="fechaH-error" class="error"></span>
 
-                <label for="fecha-hasta">Hasta</label>
-                <input class="input" type="date" id="fecha-hasta" name="fecha-hasta" />
-                <span id="fechaH-error" class="err"></span>
+                <label for="proposito">Propósito de uso</label>
+                <textarea id="proposito" name="proposito" placeholder="Ingrese el propósito de uso de la herramienta"></textarea>
 
-                <label for="notas">Proposito de uso</label>
-                <textarea id="uso"name="uso"
-                    placeholder="Agregue proposito de la herramienta"></textarea>
-                <span id="notas-error" class="err"></span>
+                <div class="check">
+                    <input class="capaci" type="checkbox" name="capacita" value="1"/>
+                    <label> ¿Requiere capacitación para usar la herramienta?</label>
+                </div>
             </fieldset>
-
             <fieldset class="contenedor-botones">
-                <button type="reset" class="boton-mediano cancelar">
-                    Cancelar
-                </button>
-                <button type="submit" class="boton-mediano" id="btn">
-                    Reservar
-                </button>
+                <button type="reset" class="boton-mediano cancelar">Cancelar</button>
+                <button type="submit" class="boton-mediano" id="btn">Reservar</button>
             </fieldset>
-        </form>
-    </section>
-    <section class="contenedor-informacion">
-
-        <h3 class="subtitulos nombre-instalacion"><?php echo $herramienta['nombre'] ?></h3>
-   
-        <img src="" alt="Imagen" id="imagen-instalacion"
-            style="object-fit: cover;border-radius: 8px;width: 100%;height: 300px;">
-        <div class="informacion-extra" style="display: flex;flex-direction: column;gap: 10px;margin-top: 10px;">
-            <hr class="linea-divisoria" />
-            <div>
-                <p class="texto">Precio de reserva:</p>
-                <span class="texto precio-instalacion"><?php echo $herramienta['precio'] ?></span>
+        </section>
+        <section class="contenedor-informacion">
+    
+            <h3 class="subtitulos nombre-instalacion"><?php echo $herramienta['nombre'] ?></h3>
+            <img src="data:image/jpeg;base64,<?php echo base64_encode($herramienta['imagen']); ?>" alt="Imagen" id="imagen-herramienta"
+                style="object-fit: cover; border-radius: 8px; width: 100%;height: 300px;">
+            <div class="informacion-extra" style="display: flex;flex-direction: column;gap: 10px; margin-top: 10px;">
+                <hr class="linea-divisoria" />
+                <div>
+                    <p class="texto">Precio de reserva:</p>
+                    <span class="texto precio-instalacion"><?php echo $herramienta['precio'] ?></span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
 </main>
 
 <?php require_once FOOTER; ?>
