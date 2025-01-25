@@ -172,4 +172,6 @@ class InstalacionController
             }
         }
     }
+
+    public function reservarInstalacion() {}
 }

@@ -11,7 +11,8 @@
 <main>
     <section class="contenedor-formulario">
         <form
-            method="get"
+            action="index.php?c=instalacion&f=reservarInstalacion"
+            method="POST"
             id="formulario-instalaciones"
             onsubmit="return validarFormulario()">
             <input type="hidden" name="id" id="id" value="<?php echo $instalacion['idInstalacion'] ?>" />
