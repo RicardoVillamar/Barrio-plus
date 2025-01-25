@@ -16,7 +16,7 @@ require_once HEADER
 
             <div>
                 <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion">
+                <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la Herramienta">
             </div>
 
             <div>
