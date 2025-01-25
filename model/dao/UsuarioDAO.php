@@ -67,17 +67,11 @@ class UsuarioDAO
     }
     public function selectOneByEmail($correo)
     {
-        try {
-            $sql = "select * from usuario where correo=:correo";
-            $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $stmt->execute();
-            $res = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $res;
-        } catch (PDOEXception $er) {
-            error_log("Error en selectOneByEmail de UsuarioDAO " . $er->getMessage());
-            return null;
-        }
+        $sql = "SELECT * FROM usuario WHERE correo = :correo";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
 
@@ -103,16 +97,16 @@ class UsuarioDAO
     public function update($usuario)
     {
         try {
-            $sql = "update usuario set nombre=:nom, apellido=:ape, correo=:cor, contrasena=:con where idUsuario=:id";
+            $sql = "UPDATE usuario SET nombre=:nom, apellido=:ape, correo=:cor, contrasena=:con WHERE idUsuario=:id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":nom", $usuario->getNombre(), PDO::PARAM_STR);
-            $stmt->bindParam(":ape", $usuario->getApellido(), PDO::PARAM_STR);
-            $stmt->bindParam(":cor", $usuario->getCorreo(), PDO::PARAM_STR);
-            $stmt->bindParam(":con", $usuario->getContrasena(), PDO::PARAM_STR);
-            $stmt->bindParam(":id", $usuario->getIdUsuario(), PDO::PARAM_INT);
+            $stmt->bindParam(":nom", $usuario['nombre'], PDO::PARAM_STR);
+            $stmt->bindParam(":ape", $usuario['apellido'], PDO::PARAM_STR);
+            $stmt->bindParam(":cor", $usuario['correo'], PDO::PARAM_STR);
+            $stmt->bindParam(":con", $usuario['contrasena'], PDO::PARAM_STR);
+            $stmt->bindParam(":id", $usuario['idUsuario'], PDO::PARAM_INT);
             $stmt->execute();
             return true;
-        } catch (PDOEXception $er) {
+        } catch (PDOException $er) {
             error_log("Error en update de UsuarioDAO " . $er->getMessage());
             return false;
         }

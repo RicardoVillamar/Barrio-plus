@@ -154,9 +154,9 @@ class UsuarioController
 
             $usuario = $this->model->selectOneByEmail($correo);
 
-            if ($usuario) {
+            if ($usuario && $usuario['contrasena'] === $contrasena) {
                 session_start();
-                //Guardamos el objeto usuario
+                // Guardamos el objeto usuario
                 $_SESSION['usuario'] = $usuario;
                 header("Location: index.php?c=usuario&f=profile");
                 exit();
@@ -205,7 +205,7 @@ class UsuarioController
 
             $this->model->update($usuario);
 
-            require_once 'view/usuario/usuario.list.php';
+            require_once 'view/usuario/login.php';
             exit();
         } else {
             $titulo = "Editar Usuario";
