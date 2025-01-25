@@ -39,7 +39,6 @@ require_once HEADER
                             <th class="tabla-titulos">Tamaño</th>
                             <th class="tabla-titulos">Tipo</th>
                             <th class="tabla-titulos">Estado</th>
-                            <th class="tabla-titulos">Contribuidor</th>
                             <th class="tabla-titulos">Acciones</th>
                         </tr>
                     </thead>
@@ -63,7 +62,7 @@ require_once HEADER
                                 <td><?php echo $row['tamano'] ?></td>
                                 <td><?php echo $row['tipo_nombre'] ?></td>
                                 <td><?php echo $row['estado_nombre'] ?></td>
-                                <td><?php echo $row['contribuidor_nombre'] ?></td>
+
                                 <td>
                                     <a class="boton-mediano reserva" style="margin-bottom: 10px;" href="index.php?c=instalacion&f=view_editar&id=<?php echo $row['idInstalacion'] ?>">Editar</a>
                                     <a class="eliminar"

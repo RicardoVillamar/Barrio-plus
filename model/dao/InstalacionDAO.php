@@ -16,16 +16,18 @@ class InstalacionesDAO
     {
         try {
             $sql = 'select 
-                        i.idInstalacion, 
-                        i.nombre AS nombre_instalacion, 
-                        i.descripcion, 
-                        i.precio, 
-                        i.tamano,
-                        i.imagen, 
-                        t.nombre AS tipo_nombre,         
-                        e.nombre AS estado_nombre,      
-                        u.nombre AS contribuidor_nombre 
-                        FROM Instalacion i JOIN Tipo t ON i.idTipoFK = t.idTipo JOIN Estado e ON i.idEstadoFK = e.idEstado JOIN Usuario u ON i.idContribuidorFK = u.idUsuario;';
+            i.idInstalacion, 
+            i.nombre AS nombre_instalacion, 
+            i.descripcion, 
+            i.precio, 
+            i.tamano,
+            i.imagen, 
+            t.nombre AS tipo_nombre,         
+            e.nombre AS estado_nombre
+            FROM Instalacion i 
+            JOIN Tipo t ON i.idTipoFK = t.idTipo 
+            JOIN Estado e ON i.idEstadoFK = e.idEstado';
+
             $stmt = $this->conexion->prepare($sql);
             $stmt->execute();
             $respuesta = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -40,21 +42,20 @@ class InstalacionesDAO
     {
         try {
             $sql = 'select 
-                        i.idInstalacion, 
-                        i.nombre, 
-                        i.descripcion, 
-                        i.precio, 
-                        i.tamano,
-                        i.imagen, 
-                        t.nombre AS tipo_nombre,         
-                        e.nombre AS estado_nombre,      
-                        u.nombre AS contribuidor_nombre 
-                        from Instalacion i
-                        JOIN Tipo t ON i.idTipoFK = t.idTipo
-                        JOIN Estado e ON i.idEstadoFK = e.idEstado
-                        JOIN Usuario u ON i.idContribuidorFK = u.idUsuario
-                        WHERE 
-                        i.idInstalacion = :id';
+            i.idInstalacion, 
+            i.nombre, 
+            i.descripcion, 
+            i.precio, 
+            i.tamano,
+            i.imagen, 
+            t.nombre AS tipo_nombre,         
+            e.nombre AS estado_nombre
+            FROM Instalacion i
+            JOIN Tipo t ON i.idTipoFK = t.idTipo
+            JOIN Estado e ON i.idEstadoFK = e.idEstado
+            WHERE 
+            i.idInstalacion = :id';
+
             $stmt = $this->conexion->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -72,7 +73,7 @@ class InstalacionesDAO
     {
         try {
 
-            $sql = 'insert into Instalacion (nombre, descripcion, precio, tamano, idTipoFK, idEstadoFK, idContribuidorFK, imagen) values (:nombre, :descripcion, :precio, :tamano, :idTipoFK, :idEstadoFK, :idContribuidorFK, :imagen)';
+            $sql = 'insert into Instalacion (nombre, descripcion, precio, tamano, idTipoFK, idEstadoFK, imagen) values (:nombre, :descripcion, :precio, :tamano, :idTipoFK, :idEstadoFK, :imagen)';
 
             $stmt = $this->conexion->prepare($sql);
             $stmt->bindParam(':nombre', $instalacion['nombre'], PDO::PARAM_STR);
@@ -81,7 +82,6 @@ class InstalacionesDAO
             $stmt->bindParam(':tamano', $instalacion['tamano'], PDO::PARAM_STR);
             $stmt->bindParam(':idTipoFK', $instalacion['idTipoFK'], PDO::PARAM_INT);
             $stmt->bindParam(':idEstadoFK', $instalacion['idEstadoFK'], PDO::PARAM_INT);
-            $stmt->bindParam(':idContribuidorFK', $instalacion['idContribuidorFK'], PDO::PARAM_INT);
             $stmt->bindParam(':imagen', $instalacion['imagen'], PDO::PARAM_LOB);
             $respuesta = $stmt->execute();
             return $respuesta;
@@ -95,7 +95,7 @@ class InstalacionesDAO
     {
         try {
 
-            $sql = 'update Instalacion set nombre = :nombre, descripcion = :descripcion, precio = :precio, tamano = :tamano, idTipoFK = :idTipoFK, idEstadoFK = :idEstadoFK, idContribuidorFK = :idContribuidorFK, imagen = :imagen where idInstalacion = :id';
+            $sql = 'update Instalacion set nombre = :nombre, descripcion = :descripcion, precio = :precio, tamano = :tamano, idTipoFK = :idTipoFK, idEstadoFK = :idEstadoFK, imagen = :imagen where idInstalacion = :id';
 
             $stmt = $this->conexion->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -105,7 +105,6 @@ class InstalacionesDAO
             $stmt->bindParam(':tamano', $instalacion['tamano'], PDO::PARAM_STR);
             $stmt->bindParam(':idTipoFK', $instalacion['idTipoFK'], PDO::PARAM_INT);
             $stmt->bindParam(':idEstadoFK', $instalacion['idEstadoFK'], PDO::PARAM_INT);
-            $stmt->bindParam(':idContribuidorFK', $instalacion['idContribuidorFK'], PDO::PARAM_INT);
             $stmt->bindParam(':imagen', $instalacion['imagen'], PDO::PARAM_LOB);
 
             $respuesta = $stmt->execute();

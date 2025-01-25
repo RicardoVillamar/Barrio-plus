@@ -1,10 +1,10 @@
-<!-- Autor: Villamar Minuche Ricardo Daniel -->
-
 <?php
+//Autor: Villamar Minuche Ricardo Daniel
+
 
 class Instalaciones
 {
-    private $idInstalacion, $nombre, $descripcion, $precio, $tamano, $idTipoFK, $idEstadoFK, $idContribuidorFK, $imagen;
+    private $idInstalacion, $nombre, $descripcion, $precio, $tamano, $idTipoFK, $idEstadoFK, $imagen;
 
     function __construct() {}
 
@@ -43,10 +43,7 @@ class Instalaciones
         return $this->idEstadoFK;
     }
 
-    function getIdContribuidorFK()
-    {
-        return $this->idContribuidorFK;
-    }
+
 
     function getImagen()
     {
@@ -88,16 +85,10 @@ class Instalaciones
         $this->idEstadoFK = $idEstadoFK;
     }
 
-    function setIdContribuidorFK($idContribuidorFK)
-    {
-        $this->idContribuidorFK = $idContribuidorFK;
-    }
+
 
     function setImagen($imagen)
     {
         $this->imagen = $imagen;
     }
 }
-
-
-?>

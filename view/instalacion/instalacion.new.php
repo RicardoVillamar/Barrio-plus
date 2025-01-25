@@ -60,10 +60,6 @@ require_once HEADER
                 </select>
             </div>
 
-            <div>
-                <label for="contribuidor">Contribuidor</label>
-                <input type="text" id="contribuidor" name="contribuidor" class="input" placeholder="contribuidor de la instalacion">
-            </div>
 
             <div>
                 <label for="imagen">Imagen</label>
