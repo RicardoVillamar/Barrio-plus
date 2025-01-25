@@ -68,6 +68,16 @@
         >
       </div>
 
+      <input type="hidden" name="idUsuario" id="idUsu" 
+      value="
+      <?php if(!isset($_SESSION)){session_start();}
+        if(isset($_SESSION['usuario'])){
+          $usuario = $_SESSION['usuario'];
+          echo $idUsu = $usuario['idUsuario'];
+        }
+      ?>
+      "/>
+
       <div class="campoCheckbox">
         <input
           type="checkbox"
