@@ -4,7 +4,7 @@
 
 class Instalaciones
 {
-    private $idInstalacion, $nombre, $descripcion, $precio, $tamano, $idTipoFK, $idEstadoFK, $idContribuidorFK;
+    private $idInstalacion, $nombre, $descripcion, $precio, $tamano, $idTipoFK, $idEstadoFK, $idContribuidorFK, $imagen;
 
     function __construct() {}
 
@@ -48,6 +48,11 @@ class Instalaciones
         return $this->idContribuidorFK;
     }
 
+    function getImagen()
+    {
+        return $this->imagen;
+    }
+
     function setIdInstalacion($idInstalacion)
     {
         $this->idInstalacion = $idInstalacion;
@@ -86,6 +91,11 @@ class Instalaciones
     function setIdContribuidorFK($idContribuidorFK)
     {
         $this->idContribuidorFK = $idContribuidorFK;
+    }
+
+    function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
     }
 }
 

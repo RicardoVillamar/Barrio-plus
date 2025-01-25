@@ -48,7 +48,7 @@ CREATE TABLE `Instalacion` (
   `idTipoFK` INT NOT NULL,
   `idEstadoFK` INT NOT NULL,
   `idContribuidorFK` INT,
-  `imagen` VARCHAR(255)
+  `imagen` LONGBLOB
 );
 
 CREATE TABLE `ReservacionHerramienta` (
