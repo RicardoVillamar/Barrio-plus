@@ -50,6 +50,13 @@ class InstalacionController
         require_once VINSTALACION . 'list.php';
     }
 
+    public function view_eliminar()
+    {
+        $id = htmlentities($_GET['id']);
+        $instalacion = $this->model->delete($id);
+        $titulo = 'Eliminar Instalacion';
+        header("Location: index.php?c=instalacion&f=index_instalacion");
+    }
 
     public function view_editar()
     {
