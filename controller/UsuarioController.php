@@ -102,11 +102,14 @@ class UsuarioController
     public function new()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $rol = ($_POST['accion'] == 'contribuidor') ? 3 : 2;
+
             $usuario = [
                 'nombre' => $_POST['nombre'],
                 'apellido' => $_POST['apellido'],
                 'correo' => $_POST['email'],
-                'contrasena' => $_POST['contrasena'] // No se utiliza password_hash
+                'contrasena' => $_POST['contrasena'], // No se utiliza password_hash
+                'rol' => $rol // Asignar el rol basado en la acción
             ];
 
             $this->model->insert($usuario);

@@ -29,11 +29,13 @@
         <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" >
     </div>
 
- 
+
 
     <div>
-        <button type="submit">Registrarse</button>
+    <button type="submit" name="accion" value="registrarse">Registrarse</button>
+    <button type="submit" name="accion" value="contribuidor">Desea ser Contribuidor</button>
         <button type="reset">Cancelar</button>
     </div>
 </form>
 </section>
+<?php require_once FOOTER ?>

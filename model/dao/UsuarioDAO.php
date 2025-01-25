@@ -76,12 +76,13 @@ class UsuarioDAO
     public function insert($usuario)
     {
         try {
-            $sql = "insert into usuario (nombre, apellido, correo, contrasena) VALUES (:nom, :ape, :cor, :con)";
+            $sql = "insert into usuario (nombre, apellido, correo, contrasena, idRolFK) VALUES (:nom, :ape, :cor, :con, :rol)";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":nom", $usuario['nombre'], PDO::PARAM_STR);
             $stmt->bindParam(":ape", $usuario['apellido'], PDO::PARAM_STR);
             $stmt->bindParam(":cor", $usuario['correo'], PDO::PARAM_STR);
             $stmt->bindParam(":con", $usuario['contrasena'], PDO::PARAM_STR);
+            $stmt->bindParam(":rol", $usuario['rol'], PDO::PARAM_STR);
             $stmt->execute();
             return true;
         } catch (PDOException $er) {
@@ -89,6 +90,7 @@ class UsuarioDAO
             return false;
         }
     }
+  
 
     public function update($usuario)
     {
