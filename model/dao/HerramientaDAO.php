@@ -12,7 +12,19 @@ class HerramientaDAO{
 
     public function selectAll() {
         try {
-            $sql = 'select * from herramienta';
+            $sql = 'select 
+                        h.idHerramienta, 
+                        h.nombre AS nombre, 
+                        h.descripcion, 
+                        h.precio, 
+                        h.imagen, 
+                        h.fechaRegistro, 
+                        h.mantenimiento, 
+                        h.cantidad, 
+                        e.nombre AS idEstadoFK,      
+                        u.nombre AS idContribuidorFK
+                        FROM herramienta h JOIN Estado e ON h.idEstadoFK = e.idEstado 
+                        JOIN Usuario u ON h.idContribuidorFK = u.idUsuario;';
             $stmt = $this->con->prepare($sql);
             $stmt->execute();
             $respuesta = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -25,7 +37,22 @@ class HerramientaDAO{
 
     public function selectOne($id) {
         try {
-            $sql = "SELECT * FROM herramienta WHERE idHerramienta = :id";
+            $sql = 'select 
+                        h.idHerramienta, 
+                        h.nombre AS nombre, 
+                        h.descripcion, 
+                        h.precio, 
+                        h.imagen, 
+                        h.fechaRegistro, 
+                        h.mantenimiento, 
+                        h.cantidad, 
+                        e.nombre AS idEstadoFK,      
+                        u.nombre AS idContribuidorF
+                        FROM herramienta h
+                        JOIN Estado e ON h.idEstadoFK = e.idEstado
+                        JOIN Usuario u ON h.idContribuidorFK = u.idUsuario
+                        WHERE 
+                        h.idHerramienta = :id';
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
@@ -56,55 +83,6 @@ class HerramientaDAO{
             return [];
         }
     }
-
-    public function insert($herramienta) {
-        try {
-            $query = "INSERT INTO herramienta (nombre, imagen, descripcion, precio, fechaRegistro, idEstadoFK, mantenimiento, cantidad, idContribuidorFK) 
-                      VALUES (:nombre, :imagen, :descripcion, :precio, :fechaRegistro, :idEstadoFK, :mantenimiento, :cantidad, :idContribuidorFK)";
-            $stmt = $this->con->prepare($query);
-            $stmt->bindParam(':nombre', $herramienta->getNombre());
-            $stmt->bindParam(':imagen', $herramienta->getImg());
-            $stmt->bindParam(':descripcion', $herramienta->getDescrip());
-            $stmt->bindParam(':precio', $herramienta->getPrecio());
-            $stmt->bindParam(':fechaRegistro', $herramienta->getFechaRegis());
-            $stmt->bindParam(':idEstadoFK', $herramienta->getIdEst(), PDO::PARAM_INT);
-            $stmt->bindParam(':mantenimiento', $herramienta->getMant());
-            $stmt->bindParam(':cantidad', $herramienta->getCant());
-            $stmt->bindParam(':idContribuidorFK', $herramienta->getIdContri(), PDO::PARAM_INT);
-            $stmt->execute();
-
-            return $this->con->lastInsertId();
-        } catch (Exception $e) {
-            error_log("Error en insert: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    public function update($herramienta) {
-        try {
-            $query = "UPDATE herramienta 
-                      SET nombre = :nombre, imagen = :imagen, descripcion = :descripcion, 
-                          precio = :precio, fechaRegistro = :fechaRegistro, idEstadoFK = :idEstadoFK, 
-                          mantenimiento = :mantenimiento, cantidad = :cantidad, idContribuidorFK = :idContribuidorFK
-                      WHERE idHerramienta = :id";
-            $stmt = $this->con->prepare($query);
-            $stmt->bindParam(':id', $herramienta->getId(), PDO::PARAM_INT);
-            $stmt->bindParam(':nombre', $herramienta->getNombre());
-            $stmt->bindParam(':imagen', $herramienta->getImg());
-            $stmt->bindParam(':descripcion', $herramienta->getDescrip());
-            $stmt->bindParam(':precio', $herramienta->getPrecio());
-            $stmt->bindParam(':fechaRegistro', $herramienta->getFechaRegis());
-            $stmt->bindParam(':idEstadoFK', $herramienta->getIdEst());
-            $stmt->bindParam(':mantenimiento', $herramienta->getMant());
-            $stmt->bindParam(':cantidad', $herramienta->getCant());
-            $stmt->bindParam(':idContribuidorFK', $herramienta->getIdContri());
-            return $stmt->execute();
-        } catch (Exception $e) {
-            error_log("Error en update: " . $e->getMessage());
-            return false;
-        }
-    }
-
         // Eliminar un registro
         public function delete($id) {
             try {
@@ -117,5 +95,30 @@ class HerramientaDAO{
                 return false;
             }
         }
-}
+
+        public function insert($herramienta) {
+            try {
+                $sql = "insert into herramienta (nombre, descripcion, precio, imagen, fechaRegistro, 
+                idEstadoFK, cantidad, mantenimiento,idContribuidorFK) 
+                        values (:nombre, :descripcion, :precio,:imagen, :fechaRegistro, 
+                        :idEstadoFK, :cantidad, :mantenimiento, :idContribuidorFK)";
+                $stmt = $this->con->prepare($sql);
+                $stmt->bindParam(':nombre',$herramienta->getNombre(), PDO::PARAM_STR);
+                $stmt->bindParam(':descripcion',$herramienta->getDescrip(), PDO::PARAM_STR);
+                $stmt->bindParam(':precio', $herramienta->getPrecio(), PDO::PARAM_INT);
+                $stmt->bindParam(':imagen', $herramienta->getImg(), PDO::PARAM_LOB);
+                $stmt->bindParam(':fechaRegistro',$herramienta->getFechaRegis(), PDO::PARAM_STR);
+                $stmt->bindParam(':idEstadoFK', $herramienta->getIdEst(), PDO::PARAM_INT);
+                $stmt->bindParam(':cantidad', $herramienta->getCant(), PDO::PARAM_INT);
+                $stmt->bindParam(':mantenimiento', $herramienta->getMant(), PDO::PARAM_INT);
+                $stmt->bindParam(':idContribuidorFK', $herramienta->getIdContri(), PDO::PARAM_INT);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $error) {
+                error_log("Error en insert de HerramientaDAO: " . $error->getMessage());
+                return false;
+            }
+        }
+
+    }
 ?>
