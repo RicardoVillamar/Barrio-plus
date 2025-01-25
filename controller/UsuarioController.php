@@ -66,7 +66,7 @@ class UsuarioController
         }
 
         $usuario = $_SESSION['usuario'];
-        $userId = $usuario['id']; 
+        $userId = $usuario['idUsuario']; 
 
         if (!$usuario) {
             header("Location: error.php");

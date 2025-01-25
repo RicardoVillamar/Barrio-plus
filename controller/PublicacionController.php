@@ -105,10 +105,11 @@ class PublicacionController
     }
 
     public function view_edit(){
+        if(!isset($_SESSION)){ session_start();}
         if(isset($_SESSION['usuario'])){
             $usuario = $_SESSION['usuario'];
             $rol = $usuario['idRolFK']; 
-            if($rol==1){
+            if ($rol == 1){
                 $id = htmlentities($_GET["id"]);
                 $publi = $this->model->selectOne($id);
                 if($publi==null){
@@ -122,9 +123,9 @@ class PublicacionController
                 $prioridades = $modeloPrioridad->selectAll("");
                 $titulo = "Editar publicación";
                 require_once VPUBLICACIONES . 'edit.php';
-            }else{
+            }else if($rol != 1){
                 echo "Acción no permitida para tu perfil";
-                header("Location: index.php?c=productos&f=index");
+                header("Location: index.php?c=publicacion&f=index");
             }
         }
     }
