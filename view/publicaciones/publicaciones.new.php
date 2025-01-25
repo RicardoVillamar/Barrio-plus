@@ -23,7 +23,7 @@
           foreach($tiposPublicaciones as $tipoPubli){
         ?>
         <option value="<?php echo $tipoPubli["idTipo"]?>">
-          <?php echo $tipoPubli["descripcion"]?></option>
+          <?php echo $tipoPubli["nombreTipo"]?></option>
         <?php } ?>
       </select>
     </div>

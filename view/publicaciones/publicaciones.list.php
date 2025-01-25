@@ -8,7 +8,7 @@
         </form>
     </section>
     <br/>
-    <a href="index.php?c=publicacion&f=new" class="btn" id="btnNuevo">
+    <a href="index.php?c=publicacion&f=view_new" class="btn" id="btnNuevo">
         <span>+ </span>Nuevo
     </a>
     <table id="tablaPublicaciones">
