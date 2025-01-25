@@ -30,27 +30,31 @@ class UsuarioController
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            require_once 'view/usuario/login.php'; 
+            require_once 'view/usuario/login.php';
             exit();
         }
-
+    
         $userId = $_SESSION['user_id'];
         $usuario = $this->model->selectOne($userId);
-
+    
         if (!$usuario) {
             header("Location: error.php");
             exit();
         }
-
-        $reservasHerramientas = $this->model->selectReservasHerramientasByUserId($userId);
-        $reservasInstalaciones = $this->model->selectReservasInstalacionesByUserId($userId);
-
+    
+        // Asegurar que las reservas sean arrays vacíos si no hay resultados
+        $reservasHerramientas = $this->model->selectReservasHerramientasByUserId($userId) ?? [];
+        $reservasInstalaciones = $this->model->selectReservasInstalacionesByUserId($userId) ?? [];
+    
+        // Agregar datos adicionales al usuario
         $usuario['reservasHerramientas'] = $reservasHerramientas;
         $usuario['reservasInstalaciones'] = $reservasInstalaciones;
-
+    
+        // Hacer disponible la variable $usuario en la vista
         $titulo = "Perfil del Usuario";
         require_once 'view/usuario/usuario.list.php'; 
     }
+    
 
      public function search(){
         $parametro = htmlentities($_POST['b']??"");
