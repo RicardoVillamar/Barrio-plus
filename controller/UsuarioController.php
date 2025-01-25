@@ -114,7 +114,7 @@ class UsuarioController
 
             $this->model->insert($usuario);
 
-            require_once VUSUARIOS . 'list.php';
+            require_once 'view/usuario/login.php';
             exit();
         } else {
             $titulo = "Registrar Usuario";
