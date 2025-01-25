@@ -1,17 +1,19 @@
-<!-- autor: Quiñonez Castrellón Anthony Joel -->
+<?php
+//Autor: Quiñonez Castrellón Anthony Joel
+require_once HEADER
+?>
 
-<?php require_once HEADER; ?>
+<main style="display: flex; justify-content: center; align-items: center;">
+    <section class="contenedor-formulario">
 
-<main class="contenedor-formulario">
-    <section>
-        <form action="index.php?c=herramienta&f=insert" method="POST" id="form-herramienta" style="display: flex; flex-direction: column; gap: 10px;">
+        <form action="index.php?c=herramienta&f=insert" method="POST" enctype="multipart/form-data" id="formulario-herramienta" style="display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; align-items: center;">
                 <a href="index.php?c=herramienta&f=index" style="padding: 0px; margin-left: 10px">
                     <span class="material-symbols-outlined"> arrow_back_ios_new </span>
                 </a>
-                <h3 style="margin-left: 10px;">Registro de Herramienta</h3>
+                <h3 style="margin-left: 10px;">Registro de instalacion</h3>
             </div>
-            
+
             <div>
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion">
@@ -51,25 +53,24 @@
             </div>
 
             <div>
+                <label for="mantenimiento">Mantenimiento</label>
+                <textarea id="mantenimiento"name="mantenimiento" placeholder="Descripción de los mantenimientos utilizados" rows="5"></textarea>
+
+            </div>
+
+            <div>
                 <label for="cantidad">Cantidad</label>
                 <input type="number" name="cantidad" id="cantidad" class="input" placeholder="Cantidad disponible">
             </div>
 
-            <div>
-                <label for="contribuidor">Contribuidor:</label>
-                <input type="text" name="contribuidor" id="contribuidor" placeholder="Nombre del contribuidor" class="input">
-            </div>
 
-            <div>
-                <label for="mantenimiento">Mantenimiento</label>
-                <input type="number" name="mantenimiento" id="cantidad" class="input" placeholder="Cantidad de mantenimiento">
-
-            </div>
-            <div style="text-align: center;">
+            <div style="display: flex; justify-content: space-between;">
+                <button type="reset" class="boton-mediano cancelar">Cancelar</button>
                 <button type="submit" class="boton-mediano">Registrar</button>
             </div>
-
         </form>
     </section>
 </main>
-<?php require_once FOOTER; ?>
+
+
+<?php require_once FOOTER ?>
