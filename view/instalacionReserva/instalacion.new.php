@@ -117,7 +117,7 @@
     <section class="contenedor-informacion">
 
         <h3 class="subtitulos nombre-instalacion"><?php echo $instalacion['nombre'] ?></h3>
-        <img
+        <!-- <img
             id="imagen-instalacion"
             src=""
             alt="instalaciones"
@@ -126,7 +126,14 @@
             border-radius: 8px;
             width: 100%;
             height: 300px;
-          " />
+          " /> -->
+        <img src="data:image/jpeg;base64,<?php echo base64_encode($instalacion['imagen']); ?>" alt="Imagen" id="imagen-instalacion"
+            style="
+            object-fit: cover;
+            border-radius: 8px;
+            width: 100%;
+            height: 300px;
+          ">
         <div
             class="informacion-extra"
             style="

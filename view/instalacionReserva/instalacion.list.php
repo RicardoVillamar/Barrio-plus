@@ -91,13 +91,11 @@ require_once HEADER; ?>
                             <td><?php echo $row['estado_nombre'] ?></td>
                             <!-- <td class="imagen"> -->
                             <td>
-                                <!-- <img
-                                    src="../../assets/img/instalaciones/salon-comunal.png"
-                                    alt="saloncomunal"
-                                    class="imagen-tabla" /> -->
-                                <!-- <p class="texto nombre-instalacion">Salon comunal</p> -->
-                                <?php echo isset($row['imagen']) ? $row['imagen'] : 'No image available'; ?>
-
+                                <?php if ($row['imagen']) { ?>
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen']); ?>" alt="Imagen" class="imagen-tabla">
+                                <?php } else { ?>
+                                    <span>No disponible</span>
+                                <?php } ?>
                                 <p class="texto nombre-instalacion"><?php echo $row['nombre_instalacion'] ?></p>
                             </td>
                             <td> <span class="texto tam-instalacion"><?php echo $row['tamano'] ?></span>

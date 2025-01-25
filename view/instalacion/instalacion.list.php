@@ -45,7 +45,7 @@ require_once HEADER
                             <td><?php echo $row['contribuidor_nombre'] ?></td>
                             <td>
                                 <?php if ($row['imagen']) { ?>
-                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen']); ?>" alt="Imagen" style="width: 100px; height: 100px;">
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen']); ?>" alt="Imagen" class="imagen-tabla">
                                 <?php } else { ?>
                                     <span>No disponible</span>
                                 <?php } ?>
