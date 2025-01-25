@@ -62,8 +62,8 @@ class PublicacionController
 
     public function view_new(){
         $modeloTipoPublicacion = new TipoPublicacionDAO();
-        $modeloPrioridad = new PrioridadDAO();
         $tiposPublicaciones = $modeloTipoPublicacion->selectAll();
+        $modeloPrioridad = new PrioridadDAO();
         $prioridades = $modeloPrioridad->selectAll();
         $titulo = "Nueva publicación";
         require_once VPUBLICACIONES . "new.php";
@@ -101,5 +101,40 @@ class PublicacionController
         $publi->setNotificarAdmin($notificarAdm);
         //$publi->setIdUsuario(htmlentities($_SESSION["usuario"] ));
         return $publi;
+    }
+
+    public function view_edit(){
+        $id = htmlentities($_GET["id"]);
+        $publi = $this->model->selectOne($id);
+        if($publi==null){
+            $_SESSION["mensaje"] = "No se pudo encontrar la publicación a editar";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+        }
+        $modeloTipoPublicacion = new TipoPublicacionDAO();
+        $tiposPublicaciones = $modeloTipoPublicacion->selectAll();
+        $modeloPrioridad = new PrioridadDAO();
+        $prioridades = $modeloPrioridad->selectAll();
+        $titulo = "Editar publicación";
+        require_once VPUBLICACIONES . 'edit.php';
+    }
+
+    public function edit(){
+        if($_SERVER["REQUEST_METHOD"]!="POST"){
+            $_SESSION["mensaje"] = "Método no permitido";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+        }
+        //Validar campos del formulario
+        if(empty($_POST["nombre"]) || empty($_POST["tipo_publicacion"]) || empty($_POST["descripcion"]) 
+        || empty($_POST["prioridad"]) || empty($_POST["fecha_publicacion"]) ){
+            $_SESSION["mensaje"] = "Datos incompletos";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+        }
+        $publi = $this->populate();
+        $exito = $this->$model->update($publi);
+        $this->redirectWithMessage($exito, "Publicacion actualizada exitosamente", 
+        "No se pudo realizar la actualización", "index.php?c=publicacion&f=index");
     }
 }
