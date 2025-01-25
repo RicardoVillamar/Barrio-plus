@@ -34,7 +34,7 @@ CREATE TABLE `Herramienta` (
   `imagen` LONGBLOB
   `fechaRegistro` DATE NOT NULL,
   `idEstadoFK` INT NOT NULL,
-  `mantenimiento` BOOLEAN DEFAULT false,
+  `mantenimiento` VARCHAR(150) NOT NULL,
   `cantidad` INT NOT NULL,
   `idContribuidorFK` INT
 );
