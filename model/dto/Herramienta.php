@@ -1,8 +1,8 @@
 <?php
 //autor: Quiñonez Castrellón Anthony Joel
 class Herramienta{
-    private $id, $nombre, $img, $descrip, $precio, 
-    $fechaRegis, $idEst, $mant, $cant, $idContri;
+    private $id, $nombre, $descrip, $precio, $img, 
+    $fechaRegis, $idEst, $mant, $cant;
     
     function __construct() {}
     
@@ -13,16 +13,16 @@ class Herramienta{
         return $this->nombre;
     }
     
-    function getImg() {
-        return $this->img;
-    }
-    
     function getDescrip() {
         return $this->descrip;
     }
     function getPrecio() {
         return $this->precio;
     }
+    function getImg() {
+        return $this->img;
+    }
+    
     
     function getFechaRegis() {
         return $this->fechaRegis;
@@ -39,9 +39,6 @@ class Herramienta{
     function getCant() {
         return $this->cant;
     }
-    function getIdContri() {
-        return $this->idContri;
-    }
     
     function setId($id) {
         $this->id = $id;
@@ -51,9 +48,6 @@ class Herramienta{
         $this->nombre = $nombre;
     }
     
-    function setImg($img) {
-        $this->img = $img;
-    }
     
     function setDescrip($descrip) {
         $this->descrip = $descrip;
@@ -63,6 +57,10 @@ class Herramienta{
         $this->precio = $precio;
     }
     
+    function setImg($img) {
+        $this->img = $img;
+    }
+
     function setFechaRegis($fechaRegis) {
         $this->fechaRegis = $fechaRegis;
     }
@@ -77,10 +75,6 @@ class Herramienta{
     
     function setCant($cant) {
         $this->cant = $cant;
-    }
-    
-    function setIdContri($idContri) {
-        $this->idContri = $idContri;
     }
 }
 ?>
