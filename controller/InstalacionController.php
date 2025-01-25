@@ -35,8 +35,6 @@ class InstalacionController
         $id = htmlentities($_GET['id']);
         $instalacion = $this->model->selectOne($id);
 
-        $resultados = $this->model->selectAll();
-
         $titulo = 'Reservar Instalacion';
 
         require_once VINSTALACIONRESERVA . 'new.php';
@@ -67,5 +65,34 @@ class InstalacionController
         $tipos = $this->modeloTipo->getTipos();
         $titulo = 'Registrar Instalacion';
         require_once VINSTALACION . 'new.php';
+    }
+
+    public function insert()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $instalacion = [
+                'nombre' => $_POST['nombre'],
+                'descripcion' => $_POST['descripcion'],
+                'precio' => $_POST['precio'],
+                'tamano' => $_POST['tamano'],
+                'idTipoFK' => $_POST['tipo'],
+                'idEstadoFK' => $_POST['estado'],
+                'idContribuidorFK' => $_POST['contribuidor'],
+                'imagen' => null,
+            ];
+
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['imagen']['tmp_name'];
+                $instalacion['imagen'] = file_get_contents($file);
+            }
+
+            $resultado = $this->model->insert($instalacion);
+
+            if ($resultado) {
+                header('Location: index.php?c=instalacion&f=index_instalacion');
+            } else {
+                echo "Error al registrar la instalación";
+            }
+        }
     }
 }

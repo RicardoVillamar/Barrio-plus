@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+  }     
+  .contenedorForm {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .contenedorForm h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  .campo {
+    margin-bottom: 15px;
+  }
+
+  .campo label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+
+  #botones {
+    display: flex;
+    justify-content: space-around;        
+    margin-top: 20px;
+  }    
+
+  #mensaje {
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+    font-size: 12px;
+  }      
+  @media (max-width: 768px) {
+    .contenedorForm {
+      max-width: 90%;
+      padding: 15px;
+    }
+
+    nav ul {
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+    }
+
+    #botones {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .boton-mediano {
+      font-size: 12px;
+      padding: 8px 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contenedorForm {
+      padding: 10px;
+    }
+
+    .campo label {
+      font-size: 12px;
+    }
+
+    input[type="text"],
+    select {
+      font-size: 12px;
+      padding: 8px;
+    }        
+  }     

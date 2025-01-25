@@ -6,7 +6,7 @@ require_once HEADER
 <main style="display: flex; justify-content: center; align-items: center;">
     <section class="contenedor-formulario">
 
-        <form action="" id="formulario-instalaciones" style="display: flex; flex-direction: column; gap: 10px;">
+        <form action="index.php?c=instalacion&f=insert" method="POST" enctype="multipart/form-data" id="formulario-instalaciones" style="display: flex; flex-direction: column; gap: 10px;">
             <div style="display: flex; align-items: center;">
                 <a href="index.php?c=instalacion&f=index_instalacion" style="padding: 0px; margin-left: 10px">
                     <span class="material-symbols-outlined"> arrow_back_ios_new </span>
@@ -67,7 +67,7 @@ require_once HEADER
 
             <div>
                 <label for="imagen">Imagen</label>
-                <input type="file" id="imagen" name="imagen" class="input">
+                <input type="file" id="imagen" name="imagen" accept="image/*" class="input">
             </div>
 
             <div style="display: flex; justify-content: space-between;">
