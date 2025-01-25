@@ -18,7 +18,7 @@ define("VINSTALACIONRESERVA", "view/instalacionReserva/instalacion.");
 define("VINSTALACION", "view/instalacion/instalacion.");
 
 //ruta de vistas modulo de usuarios
-define("VUSUARIOS", "view/usuarios/usuarios.");
+define("VUSUARIOS", "view/usuario/usuario.");
 
 //conexion con la bd
 define("DBNAME", "barrioplusdb");

@@ -43,7 +43,13 @@ require_once HEADER
                             <td><?php echo $row['tipo_nombre'] ?></td>
                             <td><?php echo $row['estado_nombre'] ?></td>
                             <td><?php echo $row['contribuidor_nombre'] ?></td>
-                            <td><?php echo isset($row['imagen']) ? $row['imagen'] : 'No image available'; ?></td>
+                            <td>
+                                <?php if ($row['imagen']) { ?>
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen']); ?>" alt="Imagen" class="imagen-tabla">
+                                <?php } else { ?>
+                                    <span>No disponible</span>
+                                <?php } ?>
+                            </td>
                             <td>
                                 <a class="boton-mediano reserva" style="margin-bottom: 10px;" href="index.php?c=instalacion&f=view_editar&id=<?php echo $row['idInstalacion'] ?>">Editar</a>
                                 <a class="eliminar"

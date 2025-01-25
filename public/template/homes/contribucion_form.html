@@ -14,49 +14,102 @@
     <title>Barrio Plus</title>
 
     <style>
-      input{                
-        border-radius: 10px;
-        margin-bottom: 5px;
-      }
-      .contenedorForm{
-        flex: 1;
-        max-width: 45%;
-        background-color: white;
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }     
+      .contenedorForm {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #ffffff;
         border-radius: 12px;
-        padding: 1.5rem;
-        border: 1px solid rgba(0, 0, 0, 0.1);     
-        margin-left: 20px;          
-      }
-      .contenedorForm, #botones{        
-        padding: 15px;
-        margin-top: 20px;
-        height: fit-content;
-        width: fit-content;   
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       }
 
-      #botones{  
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;        
-        height: fit-content;
-        width: fit-content;
-        margin-top: 1px;                  
+      .contenedorForm h2 {
+        text-align: center;
+        color: #333;
+      }
+
+      .campo {
+        margin-bottom: 15px;
+      }
+
+      .campo label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
         padding: 10px;
-        gap: 90px;        
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
       }
 
-      #mensaje, .error{
-            color: red;
-            font-size: 9pt;
-            margin-left: 10px;
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-right: 5px;
       }
 
-      .campo{
-        position: relative;
-        margin-bottom: 10px;    
-        padding: 1px;    
+      #botones {
+        display: flex;
+        justify-content: space-around;        
+        margin-top: 20px;
+      }    
+
+      #mensaje {
+        margin-top: 20px;
+        text-align: center;
+        color: red;
+        font-size: 12px;
+      }      
+      @media (max-width: 768px) {
+        .contenedorForm {
+          max-width: 90%;
+          padding: 15px;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
+        }
+
+        #botones {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .boton-mediano {
+          font-size: 12px;
+          padding: 8px 15px;
+        }
       }
-      
+
+      @media (max-width: 480px) {
+        .contenedorForm {
+          padding: 10px;
+        }
+
+        .campo label {
+          font-size: 12px;
+        }
+
+        input[type="text"],
+        select {
+          font-size: 12px;
+          padding: 8px;
+        }        
+      }      
+
     </style>
   </head>
   <body>
@@ -94,20 +147,25 @@
           <label for="producto2">Herramientas</label>
         </div>  
         <div class="campo">
-          <label for="selecProdu">Seleccione tipo de instalacion o herramientas:</label>        
-          <select name="selecProdu" id="selecProdu" class="selecProductos"> 
-            <option value="">Seleccione instalacion...</option>
+          <label for="selecProdu">Seleccione instalación</label>        
+          <select name="selecProdu" id="selecProdu" class="selecProductos">
+            <option value="">Seleccione instalación...</option>
             <option value="capilla">Capilla</option> 
-            <option value="salon_comunal">Salon Comunal</option>  
+            <option value="salon_comunal">Salón Comunal</option>  
             <option value="cancha_golf">Cancha de Golf</option>       
-            <option value="area_recreativa">Area Recreativa</option>   
-       
-            <select name="selecProdu2" id="selecProdu2" class="selecProductos"> 
-              <option value="">Seleccione herramienta...</option>
-              <option value="llave_maestra">Llave Maestra</option> 
-              <option value="podadora">Podadora</option>  
-              <option value="gata">Gata</option>       
-              <option value="asador">Asador</option> 
+            <option value="area_recreativa">Área Recreativa</option>   
+          </select>
+        </div>
+        
+        <div class="campo">
+          <label for="selecProdu2">Seleccione herramienta:</label>
+          <select name="selecProdu2" id="selecProdu2" class="selecProductos"> 
+            <option value="">Seleccione herramienta...</option>
+            <option value="llave_maestra">Llave Maestra</option> 
+            <option value="podadora">Podadora</option>  
+            <option value="gata">Gata</option>       
+            <option value="asador">Asador</option> 
+          </select>
         </div>
         <div class="campo">
           <label for="">Seleccione metodo de pago:</label>

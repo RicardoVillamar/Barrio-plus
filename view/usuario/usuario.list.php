@@ -1,5 +1,5 @@
 <!--Autor:Palacios Herdoiza Roitman Andres-->
-<?php require_once HEADER; ?>
+<?php require_once HEADER ?>
 
 <div style="padding: 20px;">
     <h1 class="titulos">Perfil</h1>

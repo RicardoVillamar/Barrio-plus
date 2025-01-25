@@ -31,10 +31,10 @@ CREATE TABLE `Herramienta` (
   `nombre` VARCHAR(150) NOT NULL,
   `descripcion` TEXT,
   `precio` DECIMAL(10,2) NOT NULL,
-  `imagen` VARCHAR(255),
+  `imagen` LONGBLOB
   `fechaRegistro` DATE NOT NULL,
   `idEstadoFK` INT NOT NULL,
-  `mantenimiento` BOOLEAN DEFAULT false,
+  `mantenimiento` VARCHAR(150) NOT NULL,
   `cantidad` INT NOT NULL,
   `idContribuidorFK` INT
 );
@@ -48,7 +48,7 @@ CREATE TABLE `Instalacion` (
   `idTipoFK` INT NOT NULL,
   `idEstadoFK` INT NOT NULL,
   `idContribuidorFK` INT,
-  `imagen` VARCHAR(255)
+  `imagen` LONGBLOB
 );
 
 CREATE TABLE `ReservacionHerramienta` (
