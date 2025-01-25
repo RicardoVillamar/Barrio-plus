@@ -32,7 +32,7 @@
             }
         ?>
         <option <?php echo $selected ?> value="<?php echo $tipoPubli["idTipo"]?>">
-          <?php echo $tipoPubli["descripcion"]?></option>
+          <?php echo $tipoPubli["nombreTipo"]?></option>
         <?php } ?>
       </select>
       </div>
@@ -43,9 +43,8 @@
           id="descripcion"
           class="publicacionDescripcion"
           name="descripcion"
-          value="<?php echo $publi["descripcion"]?>"
           placeholder="Escribe la descripción de la publicación"
-        ></textarea>
+        ><?php echo $publi["descripcion"]?></textarea>
       </div>
 
       <label>Seleccione la prioridad de la publicación: </label
