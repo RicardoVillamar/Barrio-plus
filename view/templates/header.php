@@ -38,7 +38,7 @@
       <li><a href="index.php?c=reservacion&f=listar">Reservaciones</a></li>
       <li>
         
-        <a href="index.php?c=usuario&f=login" class="user">
+        <a href="index.php?c=usuario&f=profile" class="user">
           <span class="material-symbols-outlined"> account_circle </span>
         </a>
       </li>
