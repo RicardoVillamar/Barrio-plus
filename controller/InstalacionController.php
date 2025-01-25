@@ -40,6 +40,7 @@ class InstalacionController
         require_once VINSTALACIONRESERVA . 'new.php';
     }
 
+    //instalaciones
     public function index_instalacion()
     {
         $resultados = $this->model->selectAll();
@@ -52,7 +53,9 @@ class InstalacionController
 
     public function view_editar()
     {
-        $resultados = $this->model->selectAll();
+        $id = htmlentities($_GET['id']);
+        $instalacion = $this->model->selectOne($id);
+        // $resultados = $this->model->selectAll();
 
         $titulo = 'Editar Instalacion';
 
@@ -93,6 +96,43 @@ class InstalacionController
             } else {
                 echo "Error al registrar la instalación";
             }
+        }
+    }
+
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $instalacion = [
+                'nombre' => $_POST['nombre'],
+                'descripcion' => $_POST['descripcion'],
+                'precio' => $_POST['precio'],
+                'tamano' => $_POST['tamano'],
+                'idTipoFK' => $_POST['tipo'],
+                'idEstadoFK' => $_POST['estado'],
+                'idContribuidorFK' => $_POST['contribuidor'],
+                'imagen' => null,
+            ];
+
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['imagen']['tmp_name'];
+                $instalacion['imagen'] = file_get_contents($file);
+            }
+
+            $resultado = $this->model->update($id, $instalacion);
+
+            if ($resultado) {
+                header('Location: index.php?c=instalacion&f=index_instalacion');
+            } else {
+                echo "Error al actualizar la instalación";
+            }
+        } else {
+            $id = htmlentities($_GET['id']);
+            $instalacion = $this->model->selectOne($id);
+            $estados = $this->modeloEstado->selectEstado();
+            $tipos = $this->modeloTipo->getTipos();
+            $titulo = 'Editar Instalacion';
+            require_once VINSTALACION . 'edit.php';
         }
     }
 }
