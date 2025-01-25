@@ -59,7 +59,7 @@ class UsuarioController
 
     public function profile()
     {
-        session_start();
+        if(!isset($_SESSION)){session_start();}
         if (!isset($_SESSION['usuario'])) {
             require_once 'view/usuario/login.php';
             exit();

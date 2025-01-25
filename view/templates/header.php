@@ -1,5 +1,9 @@
 <?php
-  if(!isset($_SESSION)){session_start();}
+   if(!isset($_SESSION)){ session_start();}
+   if(isset($_SESSION['usuario'])){
+       $usuario = $_SESSION['usuario'];
+       $rol = $usuario['idRolFK']; 
+   }
 ?>
 <!DOCTYPE html>
 <html lang="es">

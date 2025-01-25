@@ -105,28 +105,23 @@ class PublicacionController
     }
 
     public function view_edit(){
-        if(!isset($_SESSION)){ session_start();}
-        if(isset($_SESSION['usuario'])){
-            $usuario = $_SESSION['usuario'];
-            $rol = $usuario['idRolFK']; 
-            if ($rol == 1){
-                $id = htmlentities($_GET["id"]);
-                $publi = $this->model->selectOne($id);
-                if($publi==null){
-                    $_SESSION["mensaje"] = "No se pudo encontrar la publicación a editar";
-                    $_SESSION["color"] = "danger";
-                    header("Location: index.php?c=publicacion&f=index");
-                }
-                $modeloTipoPublicacion = new TipoPublicacionDAO();
-                $tiposPublicaciones = $modeloTipoPublicacion->selectAll("");
-                $modeloPrioridad = new PrioridadDAO();
-                $prioridades = $modeloPrioridad->selectAll("");
-                $titulo = "Editar publicación";
-                require_once VPUBLICACIONES . 'edit.php';
-            }else if($rol != 1){
-                echo "Acción no permitida para tu perfil";
+        if ($rol == 1){
+            $id = htmlentities($_GET["id"]);
+            $publi = $this->model->selectOne($id);
+            if($publi==null){
+                $_SESSION["mensaje"] = "No se pudo encontrar la publicación a editar";
+                $_SESSION["color"] = "danger";
                 header("Location: index.php?c=publicacion&f=index");
             }
+            $modeloTipoPublicacion = new TipoPublicacionDAO();
+            $tiposPublicaciones = $modeloTipoPublicacion->selectAll("");
+            $modeloPrioridad = new PrioridadDAO();
+            $prioridades = $modeloPrioridad->selectAll("");
+            $titulo = "Editar publicación";
+            require_once VPUBLICACIONES . 'edit.php';
+        }else if($rol != 1){
+            echo "Acción no permitida para tu perfil";
+            header("Location: index.php?c=publicacion&f=index");
         }
     }
 
