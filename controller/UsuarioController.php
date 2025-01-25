@@ -68,6 +68,7 @@ class UsuarioController
         $titulo = "Registrar usuario";
         require_once VUSUARIOS . 'new.php';
     }
+
     public function new()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -137,6 +138,7 @@ class UsuarioController
         $titulo = "Editar Información del Usuario";
         require_once 'view/usuario/usuario.edit.php';
     }
+
     public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
