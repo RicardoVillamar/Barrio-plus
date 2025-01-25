@@ -1,80 +1,172 @@
 <?php
-//autor: Quiñonez Castrellón Anthony Joel -->
+//Autor: Quiñonez Castrellón Anthony Joel
 require_once 'config/Conexion.php';
+class HerramientaDAO
+{
 
+    private $cone;
 
-class HerramientaDAO{
-    private $con;
-
-    public function __construct() {
-        $this->con = Conexion::getConexion();
+    public function __construct()
+    {
+        $this->cone = Conexion::getConexion();
     }
 
-    public function selectAll() {
+    public function selectAll()
+    {
         try {
-            $sql = 'select 
-                        h.idHerramienta, 
-                        h.nombre AS nombre, 
-                        h.descripcion, 
-                        h.precio, 
-                        h.imagen, 
-                        h.fechaRegistro, 
-                        h.mantenimiento, 
-                        h.cantidad, 
-                        e.nombre AS idEstadoFK,      
-                        u.nombre AS idContribuidorFK
-                        FROM herramienta h JOIN Estado e ON h.idEstadoFK = e.idEstado 
-                        JOIN Usuario u ON h.idContribuidorFK = u.idUsuario;';
-            $stmt = $this->con->prepare($sql);
+            $sql = 'SELECT 
+            h.idHerramienta, 
+            h.nombre, 
+            h.descripcion, 
+            h.precio, 
+            h.imagen, 
+            h.fechaRegistro,
+            e.nombre AS estado_nombre,
+            h.mantenimiento,
+            h.cantidad
+            FROM herramienta h 
+            JOIN Estado e ON h.idEstadoFK = e.idEstado';
+
+            $stmt = $this->cone->prepare($sql);
             $stmt->execute();
             $respuesta = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $respuesta;
         } catch (PDOException $error) {
-            error_log('Error al obtener la herramienta' . $error->getMessage());
+            error_log('Error en selectAll de HerramientaDAO ' . $error->getMessage());
             return [];
         }
-    } 
+    }
 
-    public function selectOne($id) {
+    public function selectOne($id)
+    {
         try {
-            $sql = 'select 
-                        h.idHerramienta, 
-                        h.nombre AS nombre, 
-                        h.descripcion, 
-                        h.precio, 
-                        h.imagen, 
-                        h.fechaRegistro, 
-                        h.mantenimiento, 
-                        h.cantidad, 
-                        e.nombre AS idEstadoFK,      
-                        u.nombre AS idContribuidorF
-                        FROM herramienta h
-                        JOIN Estado e ON h.idEstadoFK = e.idEstado
-                        JOIN Usuario u ON h.idContribuidorFK = u.idUsuario
-                        WHERE 
-                        h.idHerramienta = :id';
-            $stmt = $this->con->prepare($sql);
+            $sql = 'SELECT 
+            h.idHerramienta, 
+            h.nombre, 
+            h.descripcion, 
+            h.precio, 
+            h.imagen, 
+            h.fechaRegistro,
+            e.nombre AS estado_nombre,
+            h.mantenimiento,
+            h.cantidad
+            FROM herramienta h 
+            JOIN Estado e ON h.idEstadoFK = e.idEstado
+            WHERE h.idHerramienta = :id';
+
+            $stmt = $this->cone->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
-            $res = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $res;
-        } catch (PDOException $e) {
-            error_log("Error en selectOne de HerramientaDAO: " . $e->getMessage());
+            $respuesta = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $respuesta ?: null;
+        } catch (PDOException $error) {
+            error_log('Error en selectOne de HerramientaDAO: ' . $error->getMessage());
             return null;
         }
     }
 
+    //Insertar Herramienta
+    public function insert($herramienta)
+    {
+        try {
+            $sql = 'insert into herramienta (nombre, descripcion, precio, imagen, fechaRegistro, idEstadoFK, mantenimiento, cantidad) 
+            values (:nombre, :descripcion, :precio, :imagen, :fechaRegistro, :idEstadoFK, :mantenimiento, :cantidad)';
+    
+            $stmt = $this->cone->prepare($sql);
+            $stmt->bindParam(':nombre', $herramienta['nombre'], PDO::PARAM_STR);
+            $stmt->bindParam(':descripcion', $herramienta['descripcion'], PDO::PARAM_STR);
+            $stmt->bindParam(':precio', $herramienta['precio'], PDO::PARAM_INT);
+            $stmt->bindParam(':imagen', $herramienta['imagen'], PDO::PARAM_LOB);
+            $stmt->bindParam(':fechaRegistro', $herramienta['fechaRegistro'], PDO::PARAM_STR);
+            $stmt->bindParam(':idEstadoFK', $herramienta['idEstadoFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':mantenimiento', $herramienta['mantenimiento'], PDO::PARAM_STR);
+            $stmt->bindParam(':cantidad', $herramienta['cantidad'], PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $error) {
+            error_log("Error en insert de HerramientaDAO" . $error->getMessage());
+            return false;
+        }
+    }
+
+    //Editar Herramienta
+    public function update($id, $herramienta)
+    {
+        try {
+
+            $sql = 'update herramienta set nombre = :nombre, descripcion = :descripcion, precio = :precio, imagen = :imagen, 
+            fechaRegistro = :fechaRegistro, idEstadoFK = :idEstadoFK, mantenimiento = :mantenimiento, cantidad = :cantidad 
+            where idHerramienta = :id';
+
+            $stmt = $this->cone->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':nombre', $herramienta['nombre'], PDO::PARAM_STR);
+            $stmt->bindParam(':descripcion', $herramienta['descripcion'], PDO::PARAM_STR);
+            $stmt->bindParam(':precio', $herramienta['precio'], PDO::PARAM_INT);
+            $stmt->bindParam(':imagen', $herramienta['imagen'], PDO::PARAM_LOB);
+            $stmt->bindParam(':fechaRegistro', $herramienta['fechaRegistro'], PDO::PARAM_STR);
+            $stmt->bindParam(':idEstadoFK', $herramienta['idEstadoFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':mantenimiento', $herramienta['mantenimiento'], PDO::PARAM_STR);
+            $stmt->bindParam(':cantidad', $herramienta['cantidad'], PDO::PARAM_INT);
+
+            $respuesta = $stmt->execute();
+            return $respuesta;
+        } catch (PDOException $error) {
+            error_log("Error en update de HerramientaDAO" . $error->getMessage());
+            return false;
+        }
+    }
+
+    //Elimina Herramienta
+    public function delete($id)
+    {
+        try {
+            $sql = 'delete from herramienta where idHerramienta = :id';
+            $stmt = $this->cone->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $respuesta = $stmt->execute();
+            return $respuesta;
+        } catch (PDOException $error) {
+            error_log("Error en delete de HerramientaDAO" . $error->getMessage());
+            return false;
+        }
+    }
+
+    //Buscar Herramienta
     public function buscar($nombre = "") {
         try {
             if (!empty($nombre)) {
-                $sql = 'SELECT * FROM herramienta WHERE nombre LIKE :nombre';
-                $stmt = $this->con->prepare($sql);
-                $nombre = "%" . $nombre . "%"; // Permite buscar coincidencias parciales
+                $sql = 'SELECT 
+                            h.idHerramienta, 
+                            h.nombre, 
+                            h.descripcion, 
+                            h.precio, 
+                            h.imagen, 
+                            h.fechaRegistro,
+                            e.nombre AS estado_nombre,
+                            h.mantenimiento,
+                            h.cantidad
+                        FROM herramienta h 
+                        JOIN Estado e ON h.idEstadoFK = e.idEstado
+                        WHERE h.nombre LIKE :nombre';
+                $stmt = $this->cone->prepare($sql);
+                $nombre = "%" . $nombre . "%";
                 $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
             } else {
-                $sql = 'SELECT * FROM herramienta';
-                $stmt = $this->con->prepare($sql);
+                $sql = 'SELECT 
+                            h.idHerramienta, 
+                            h.nombre, 
+                            h.descripcion, 
+                            h.precio, 
+                            h.imagen, 
+                            h.fechaRegistro,
+                            e.nombre AS estado_nombre,
+                            h.mantenimiento,
+                            h.cantidad
+                        FROM herramienta h 
+                        JOIN Estado e ON h.idEstadoFK = e.idEstado';
+                $stmt = $this->cone->prepare($sql);
             }
+    
             $stmt->execute();
             $respuesta = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $respuesta;
@@ -83,42 +175,30 @@ class HerramientaDAO{
             return [];
         }
     }
-        // Eliminar un registro
-        public function delete($id) {
-            try {
-                $sql = "DELETE FROM herramienta WHERE idHerramienta = :id";
-                $stmt = $this->con->prepare($sql);
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-                return $stmt->execute();
-            } catch (PDOException $e) {
-                error_log("Error al eliminar herramienta: " . $e->getMessage());
-                return false;
-            }
-        }
 
-        public function insert($herramienta) {
-            try {
-                $sql = "insert into herramienta (nombre, descripcion, precio, imagen, fechaRegistro, 
-                idEstadoFK, cantidad, mantenimiento,idContribuidorFK) 
-                        values (:nombre, :descripcion, :precio,:imagen, :fechaRegistro, 
-                        :idEstadoFK, :cantidad, :mantenimiento, :idContribuidorFK)";
-                $stmt = $this->con->prepare($sql);
-                $stmt->bindParam(':nombre',$herramienta->getNombre(), PDO::PARAM_STR);
-                $stmt->bindParam(':descripcion',$herramienta->getDescrip(), PDO::PARAM_STR);
-                $stmt->bindParam(':precio', $herramienta->getPrecio(), PDO::PARAM_INT);
-                $stmt->bindParam(':imagen', $herramienta->getImg(), PDO::PARAM_LOB);
-                $stmt->bindParam(':fechaRegistro',$herramienta->getFechaRegis(), PDO::PARAM_STR);
-                $stmt->bindParam(':idEstadoFK', $herramienta->getIdEst(), PDO::PARAM_INT);
-                $stmt->bindParam(':cantidad', $herramienta->getCant(), PDO::PARAM_INT);
-                $stmt->bindParam(':mantenimiento', $herramienta->getMant(), PDO::PARAM_INT);
-                $stmt->bindParam(':idContribuidorFK', $herramienta->getIdContri(), PDO::PARAM_INT);
-                $stmt->execute();
-                return true;
-            } catch (PDOException $error) {
-                error_log("Error en insert de HerramientaDAO: " . $error->getMessage());
-                return false;
-            }
-        }
+    //Insertar una nueva Reserva
+    public function insert_Reserva($reserva){
+    try {
+        $sql = 'INSERT INTO ReservacionHerramienta 
+                (estado, idHerramientaFK, idUsuarioFK, cantidad, fechaInicio, fechaFin, proposito, capacitacion) 
+                VALUES 
+                (:estado, :idHerramientaFK, :idUsuarioFK, :cantidad, :fechaInicio, :fechaFin, :proposito, :capacitacion)';
 
+        $stmt = $this->cone->prepare($sql);
+        $stmt->bindParam(':estado', $reserva['estado'], PDO::PARAM_STR);
+        $stmt->bindParam(':idHerramientaFK', $reserva['idHerramientaFK'], PDO::PARAM_INT);
+        $stmt->bindParam(':idUsuarioFK', $reserva['idUsuarioFK'], PDO::PARAM_INT);
+        $stmt->bindParam(':cantidad', $reserva['cantidad'], PDO::PARAM_INT);
+        $stmt->bindParam(':fechaInicio', $reserva['fechaInicio'], PDO::PARAM_STR);
+        $stmt->bindParam(':fechaFin', $reserva['fechaFin'], PDO::PARAM_STR);
+        $stmt->bindParam(':proposito', $reserva['proposito'], PDO::PARAM_STR);
+        $stmt->bindParam(':capacitacion', $reserva['capacitacion'], PDO::PARAM_BOOL);
+
+        return $stmt->execute();
+    } catch (PDOException $error) {
+        error_log("Error al insertar la reserva en HerramientaDAO: " . $error->getMessage());
+        return false;
     }
-?>
+}
+  
+}
