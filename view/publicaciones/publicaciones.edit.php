@@ -26,8 +26,12 @@
       <select name="tipo_publicacion" id="tipo_publicacion">
         <?php 
           foreach($tiposPublicaciones as $tipoPubli){
+            $selected = "";
+            if($tipoPubli["idTipo"] == $publi["idTipoFK"]){
+              $selected = 'selected = "selected"';
+            }
         ?>
-        <option value="<?php echo $tipoPubli["idTipo"]?>">
+        <option <?php echo $selected ?> value="<?php echo $tipoPubli["idTipo"]?>">
           <?php echo $tipoPubli["descripcion"]?></option>
         <?php } ?>
       </select>
@@ -65,35 +69,13 @@
         >
       </div>
 
-      <h2 class="subtitulos">Información del publicante</h2>
-      <div class="campoNombre">
-        <label for="nombre">Nombre:</label><br>
-        <input
-          type="text"
-          id="nombre"
-          name="nombre"
-          placeholder="Ingrese su nombre"
-        >
-      </div>
-
-    
-      <div class="campoCorreo">
-        <label for="correo">Correo:</label><br>
-        <input
-          type="email"
-          id="correo"
-          name="correo"
-          placeholder="Ingrese su correo"
-        >
-      </div>
-
       <div class="campoCheckbox">
         <input
           type="checkbox"
           id="soloAdmins"
           name="notificarSoloAdmins"
-          value="Solo administradores"
-        >
+          value="<?php echo $publi["notificarAdmin"]?>"
+          <?php echo ($publi["notificarAdmin"]==1)?'checked = "checked"':""?>>
         <label for="soloAdmins">Notificar solo a los administradores</label>
       </div>
 
@@ -106,13 +88,11 @@
           Guardar cambios
         </button>
 
-        <button
+        <a href="index.php?c=publicacion&f=index"
           style="font-size: 0.8rem"
-          type="reset"
-          class="boton-pequenio"
-        >
+          class="boton-pequenio">
           Cancelar
-        </button>
+        </a>
       </div>
     </form>
 

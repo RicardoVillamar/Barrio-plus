@@ -31,7 +31,7 @@
                 ?>
                     <tr>
                         <td><?php echo $fila['titulo']?> </td>
-                        <td><?php echo $fila['descripcion']?> </td>
+                        <td><?php echo $fila['nombreTipo']?> </td>
                         <td><?php echo $fila['descripcion']?> </td>
                         <td><?php echo $fila['nivel']?> </td>
                         <td><?php echo $fila['fechaEvento']?> </td>
