@@ -268,22 +268,22 @@ class HerramientaController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errores = [];
 
-            $idHerramienta = $this->clearElement($_POST['idHerramienta']);
+            $idHerramienta = $this->($_POST['idHerramienta']);
             if (empty($idHerramienta) || !is_numeric($idHerramienta)) {
                 $errores[] = "La id de Herramienta no es valida.";
             }
 
-            $cantidad = $this->clearElement($_POST['cantidad']);
+            $cantidad = $this->($_POST['cantidad']);
             if (empty($cantidad) || !is_numeric($cantidad) || $cantidad < 1) {
                 $errores[] = "El número de herramienta.";
             }
 
-            $fechaInicio = $this->clearElement($_POST['fechaInicio']);
+            $fechaInicio = $this->($_POST['fechaInicio']);
             if (empty($fechaInicio) || !strtotime($fechaInicio)) {
                 $errores[] = "La fecha de inicio no es válida.";
             }
 
-            $fechaFin = $this->clearElement($_POST['fechaFin']);
+            $fechaFin = $this->($_POST['fechaFin']);
             if (empty($fechaFin) || !strtotime($fechaFin)) {
                 $errores[] = "La fecha de fin no es válida.";
             }
@@ -292,7 +292,7 @@ class HerramientaController
                 $errores[] = "La fecha de fin debe ser posterior a la fecha de inicio.";
             }
 
-            $proposito = $this->clearElement($_POST['proposito']);
+            $proposito = $this->($_POST['proposito']);
             if (empty($proposito)) {
                 $errores[] = "El propósito de uso es obligatorio.";
             }
