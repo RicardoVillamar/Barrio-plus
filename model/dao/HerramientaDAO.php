@@ -179,13 +179,13 @@ class HerramientaDAO
     //Insertar una nueva Reserva
     public function insert_Reserva($reserva){
     try {
-        $sql = 'INSERT INTO ReservacionHerramienta 
-                (idestadoFK, idHerramientaFK, idUsuarioFK, cantidad, fechaInicio, fechaFin, proposito, capacitacion) 
+        $sql = 'INSERT INTO ReservacionHerramienta
+                (idEstadoFK, idHerramientaFK, idUsuarioFK, cantidad, fechaInicio, fechaFin, proposito, capacitacion) 
                 VALUES 
-                (:estado, :idHerramientaFK, :idUsuarioFK, :cantidad, :fechaInicio, :fechaFin, :proposito, :capacitacion)';
+                (:idEstadoFK, :idHerramientaFK, :idUsuarioFK, :cantidad, :fechaInicio, :fechaFin, :proposito, :capacitacion)';
 
         $stmt = $this->cone->prepare($sql);
-        $stmt->bindParam(':idestadoFK', $reserva['idestadofK'], PDO::PARAM_STR);
+        $stmt->bindParam(':idEstadoFK', $reserva['idEstadofK'], PDO::PARAM_STR);
         $stmt->bindParam(':idHerramientaFK', $reserva['idHerramientaFK'], PDO::PARAM_INT);
         $stmt->bindParam(':idUsuarioFK', $reserva['idUsuarioFK'], PDO::PARAM_INT);
         $stmt->bindParam(':cantidad', $reserva['cantidad'], PDO::PARAM_INT);

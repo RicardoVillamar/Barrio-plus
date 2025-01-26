@@ -355,7 +355,7 @@ class InstalacionController
             $resultado = $this->model->insertReservaciones($reservacionInstalacion);
 
             if ($resultado) {
-                header('Location: index.php?c=instalacion&f=index_instalacion');
+                header('Location: index.php?c=instalacion&f=index');
             } else {
                 echo "Error al registrar la reserva de la instalación.";
             }

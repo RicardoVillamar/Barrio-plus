@@ -8,11 +8,11 @@
                 <a href="index.php?c=herramienta&f=index">Ingresar Herramienta</a>
             </div>
             <div class="buscar">
-                <form action="index.php?c=herramienta&f=searchReserva" method="POST">>
+                <form action="index.php?c=herramienta&f=searchReserva" method="POST">
                     <label for="buscar-barra" class="texto" style="font-weight: bold">Buscar</label>
                     <input placeholder="Nombre de la Herramienta" type="text" id="buscar-barra"
                     style=" padding: 0 10px; padding-right: 30px; margin: 10px; border-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.1);
-                    height: 30px;" />
+                    height: 30px;"/>
                 </form>
             </div>
 
@@ -76,23 +76,5 @@
             </table>
         </section>
     </div>
-
-    <aside class="filtro">
-        <h2 class="subtitulos">Filtros</h2>
-    <section>
-        <p class="texto">Estado</p>
-        <select id="estado" name="estado" style="width: 90%; height: 25px; border-radius: 4px">
-            <option value="todos">Todos</option>
-            <?php
-            foreach ($estados as $fila) {
-                ?>
-                <option value="<?php echo $fila['idEstado']; ?>"><?php echo $fila['nombre']; ?></option>
-                <?php
-                }
-                ?>
-        </select>
-        <button type="submit" style="margin-top: 10px; padding: 5px 10px;">Buscar</button>
-    </section>
-    </aside>
 </main>
 <?php require_once FOOTER; ?>
