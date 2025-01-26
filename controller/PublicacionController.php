@@ -19,7 +19,7 @@ class PublicacionController
     {
         
         $resultados = $this->model->selectAll("");
-        $titulo = "Buscar publicaciones";
+        $titulo = "Buscar publicaciones por tipo o prioridad";
         require_once VPUBLICACIONES . "list.php";
         if (count($resultados) > 0) {
             echo "Publicaciones cargadas correctamente";
