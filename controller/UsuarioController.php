@@ -217,6 +217,15 @@ class UsuarioController
             require_once 'view/usuario/usuario.list.php';
         }
     }
+
+    public function obtenerRolUsuario()
+    {
+        session_start();
+        if (isset($_SESSION['usuario'])) {
+            return $_SESSION['usuario']['rol'];
+        }
+        return null;
+    }
 }
 
 ?>
