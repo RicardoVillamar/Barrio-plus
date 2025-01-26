@@ -28,13 +28,15 @@ class PublicacionController
                 $resultados = $this->model->selectPublicacionesById($id); 
             }
         $titulo = "Buscar publicaciones por tipo o prioridad";
-        require_once VPUBLICACIONES . "list.php";
         }
-        if (count($resultados) > 0) {
-            echo "Publicaciones cargadas correctamente";
+        if (!empty($resultados)) {
+            $_SESSION['mensaje'] = "Publicaciones cargadas correctamente";
+            $_SESSION['color'] = 'primary'; 
         } else {
-            echo "No se encontraron publicaciones";
+            $_SESSION['mensaje'] = "No has realizado ninguna publicación";
+            $_SESSION['color'] = 'danger';
         }
+        require_once VPUBLICACIONES . "list.php";
     }
 
     public function search()
@@ -42,12 +44,14 @@ class PublicacionController
         $parametro = !empty($_POST["buscar"]) ? htmlentities($_POST["buscar"]) : "";
         $resultados = $this->model->selectAll($parametro);
         $titulo = "Buscar publicaciones por tipo o prioridad";
-        require_once VPUBLICACIONES . "list.php";
-        if (count($resultados) > 0) {
-            echo "Publicaciones cargadas correctamente";
+        if (!empty($resultados)) {
+            $_SESSION['mensaje'] = "Publicaciones cargadas correctamente";
+            $_SESSION['color'] = 'primary'; 
         } else {
-            echo "No se encontraron publicaciones";
+            $_SESSION['mensaje'] = "No se encontraron publicaciones";
+            $_SESSION['color'] = 'danger';
         }
+        require_once VPUBLICACIONES . "list.php";
     }
 
     public function delete()

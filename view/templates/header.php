@@ -48,3 +48,16 @@ if (isset($_SESSION['usuario'])) {
       </li>
     </ul>
   </nav>
+
+  <?php       
+    if (!empty($_SESSION['mensaje'])) {
+        ?>
+        <div class="mt-2 alert alert-<?php echo $_SESSION['color']; ?>
+        alert-dismissible fade show" role="alert">
+            <?php echo $_SESSION['mensaje']; ?>  
+        </div>
+        <?php
+        unset($_SESSION['mensaje']);
+        unset($_SESSION['color']);
+    }
+  ?>

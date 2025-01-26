@@ -104,6 +104,7 @@
           style="font-size: 0.8rem;  width: 38%; border-radius: 10px;"
           type="submit"
           class="boton-pequenio"
+          onclick="if(!confirm('Esta seguro de modificar la publicación?')) return false;"
         >
           Guardar cambios
         </button>
