@@ -19,7 +19,6 @@ if (isset($_SESSION['usuario'])) {
   <link rel="stylesheet" href="assets/css/instalacionStyle.css">
   <link rel="stylesheet" href="assets/css/instalacion2Style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/usuario.css">
   <link rel="stylesheet" href="assets/css/newContribucionStyle.css">
   <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
   <link
@@ -54,15 +53,15 @@ if (isset($_SESSION['usuario'])) {
     </ul>
   </nav>
 
-  <?php       
-    if (!empty($_SESSION['mensaje'])) {
-        ?>
-        <div class="mt-2 alert alert-<?php echo $_SESSION['color']; ?>
+  <?php
+  if (!empty($_SESSION['mensaje'])) {
+  ?>
+    <div class="mt-2 alert alert-<?php echo $_SESSION['color']; ?>
         alert-dismissible fade show" role="alert">
-            <?php echo $_SESSION['mensaje']; ?>  
-        </div>
-        <?php
-        unset($_SESSION['mensaje']);
-        unset($_SESSION['color']);
-    }
+      <?php echo $_SESSION['mensaje']; ?>
+    </div>
+  <?php
+    unset($_SESSION['mensaje']);
+    unset($_SESSION['color']);
+  }
   ?>
