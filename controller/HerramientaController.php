@@ -264,6 +264,24 @@ class HerramientaController
             exit;
         } */
 
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 2) { 
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        } 
+
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {      
             $reserva = [
