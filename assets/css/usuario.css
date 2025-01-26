@@ -25,7 +25,7 @@ p {
 
 /* Estilo para los botones */
 button {
-    background-color: #007bff;
+    background-color: #a3b5c8;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #a3b5c8;
 }
 
 /* Estilo para los formularios */
@@ -73,7 +73,7 @@ table th {
 
 /* Estilo para enlaces */
 a {
-    color: #007bff;
+    color: #a3b5c8;
     text-decoration: none;
 }
 

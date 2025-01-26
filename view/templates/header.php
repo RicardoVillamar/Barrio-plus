@@ -19,6 +19,7 @@ if (isset($_SESSION['usuario'])) {
   <link rel="stylesheet" href="assets/css/instalacionStyle.css">
   <link rel="stylesheet" href="assets/css/instalacion2Style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/usuario.css">
   <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -40,7 +41,9 @@ if (isset($_SESSION['usuario'])) {
       <li><a href="index.php?c=herramienta&f=index_Herramienta">Herramientas</a></li>
       <li><a href="index.php?c=historial&f=index">Historial</a></li>
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
-      <li><a href="index.php?c=reservacion&f=listar">Reservaciones</a></li>
+      <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 1): ?>
+        <li><a href="index.php?c=reservacion&f=listar">Reservaciones</a></li>
+      <?php endif; ?>
       <li>
         <a href="index.php?c=usuario&f=profile" class="user">
           <span class="material-symbols-outlined">account_circle</span>
