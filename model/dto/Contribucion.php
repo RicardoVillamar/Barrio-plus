@@ -1,7 +1,7 @@
 <!-- Autor: Freire Chavez Jose Andres -->
 <?php
 class Contribucion{
-    private $id, $tipo, $estado, $idRecurso, $idUsuario;
+    private $id, $estado, $idHerramienta, $idInstalacion, $idUsuario;
     
     function __construct(){
         
@@ -11,16 +11,16 @@ class Contribucion{
         return $this->id;
     }
 
-    function getTipo(){
-        return $this->tipo;
-    }
-
     function getEstado(){
         return $this->estado;
     }
 
-    function getIdRecurso(){
-        return $this->idRecurso;
+    function getIdHerramienta(){
+        return $this->idHerramienta;
+    }
+
+    function getIdInstalacion(){
+        return $this->idInstalacion;
     }
 
     function getIdUsuario(){
@@ -31,20 +31,20 @@ class Contribucion{
         $this->id = $id;
     }
 
-    function setTipo($tipo){
-        $this->tipo = $tipo;
-    }
-
     function setEstado($estado){
         $this->estado = $estado;
     }
 
-    function setIdRecurso($idRecurso){
-        $this->idRecurso = $idRecurso;
+    function setIdHerramienta($idHerra){
+        $this->idHerramienta = $idHerra;
     }
 
-    function setIdUsuario($idUsuario){
-        $this->idUsuario = $idUsuario;
+    function setIdInstalacion($idInst){
+        $this->idInstalacion = $idInst;
+    }
+
+    function setIdUsuario($idUsu){
+        $this->idUsuario = $idUsu;
     }
 
     public function __set($atributo, $valor) {
@@ -62,5 +62,4 @@ class Contribucion{
         return null;
     }
 }
-
 ?>
