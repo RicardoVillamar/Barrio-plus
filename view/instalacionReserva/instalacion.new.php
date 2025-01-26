@@ -1,3 +1,4 @@
+<!-- Autor: Villamar Minuche Ricardo Daniel -->
 <?php require_once HEADER; ?>
 
 <div class="cabecera-reserva">

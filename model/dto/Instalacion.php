@@ -1,6 +1,5 @@
+<!-- Autor: Villamar Minuche Ricardo Daniel -->
 <?php
-//Autor: Villamar Minuche Ricardo Daniel
-
 
 class Instalaciones
 {

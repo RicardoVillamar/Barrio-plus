@@ -1,7 +1,5 @@
-<?php
-//Autor: Villamar Minuche Ricardo Daniel
-require_once HEADER
-?>
+<!-- Autor: Villamar Minuche Ricardo Daniel -->
+<?php require_once HEADER ?>
 
 <main style="display: flex; justify-content: center; align-items: center;">
     <section class="contenedor-formulario">

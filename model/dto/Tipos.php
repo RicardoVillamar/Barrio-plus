@@ -1,5 +1,5 @@
+<!-- Autor: Villamar Minuche Ricardo Daniel -->
 <?php
-//autor: Villamar Minuche Ricardo Daniel
 
 class Tipos
 {

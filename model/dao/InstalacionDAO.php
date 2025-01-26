@@ -1,6 +1,5 @@
-<?php
-//Autor: Villamar Minuche Ricardo Daniel
-require_once 'config/Conexion.php';
+<!-- Autor: Villamar Minuche Ricardo Daniel -->
+<?php require_once 'config/Conexion.php';
 
 class InstalacionesDAO
 {

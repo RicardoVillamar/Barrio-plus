@@ -1,5 +1,5 @@
+<!-- Autor: Villamar Minuche Ricardo Daniel -->
 <?php
-//Autor: Villamar Minuche Ricardo Daniel
 require_once HEADER
 ?>
 <div class="cabecera-reserva">
