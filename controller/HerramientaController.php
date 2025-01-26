@@ -19,6 +19,23 @@ class HerramientaController
 
     //Pagina principal de herramienta
     public function index(){
+        /* if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 1) { 
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        } */
 
         $estados = $this->modeloEstado->selectEstado();
         $resultado = $this->model->selectAll();
@@ -40,6 +57,10 @@ class HerramientaController
 
     //Pagina prin de herramienta
     public function index_Herramienta(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
         $resultado = $this->model->selectAll();
 
         $titulo = 'Herramienta registradas';
@@ -49,6 +70,24 @@ class HerramientaController
 
     //Eliminar herramienta
     public function view_eliminar(){
+        /* if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 1) { 
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        } */
+        
         $id = htmlentities($_GET['id']);
         $herramienta = $this->model->delete($id);
         $titulo = 'Eliminar Instalacion';
@@ -57,6 +96,23 @@ class HerramientaController
 
     //Editar herramienta
     public function view_editar(){
+        /* if (!isset($_SESSION)) {
+        session_start();
+        }
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 1) { 
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        } */
+        
         $id = htmlentities($_GET['id']);
         $herramienta = $this->model->selectOne($id);
         
@@ -73,6 +129,24 @@ class HerramientaController
     
     //Registrar Herramienta
     public function new_Herramienta(){
+        /* if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 1) { 
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        } */
+        
         $estados = $this->modeloEstado->selectEstado();
 
         $titulo = 'Registrar Herramienta';
@@ -81,6 +155,7 @@ class HerramientaController
 
     //Insertar Herramientas
     public function insert(){
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             list($exito, $errores) = $this->herra($_POST, $_FILES);
             
@@ -177,6 +252,19 @@ class HerramientaController
 
     //Registro de Reserva de Herramienta
     public function reservarHerramienta(){
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if (!isset($_SESSION['usuario'])) {
+            echo "<script>";
+            echo "alert('Debes iniciar sesión para registrar una reserva.');";
+            echo "window.location.href = 'login.php';";
+            echo "</script>";
+            exit;
+        }
+
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errores = [];
 
@@ -221,7 +309,7 @@ class HerramientaController
             $reserva = [
                 'idEstadoFK' => 2,
                 'idHerramientaFK' => $_POST['idHerramienta'],
-                // 'idUsuarioFK' => $_SESSION['idUsuario'],
+                // 'idUsuarioFK' => $_SESSION['usuario']['idUsuario'],
                 'idUsuarioFK' => 1,
                 'cantidad' => $_POST['cantidad'],
                 'fechaInicio' => $_POST['fechaInicio'],
