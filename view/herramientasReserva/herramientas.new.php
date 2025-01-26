@@ -8,8 +8,8 @@
     <h3 style="margin-left: 10px;">Reserva de Herramientas</h3>
 </div>
 <main>
-<section class="contenedor-formulario">
-        <form action="index.php?c=herramienta&f=reservarHerramienta" method="POST" id="formulario-herramienta" onsubmit="return validarFormulario()">
+    <section class="contenedor-formulario">
+        <form action="index.php?c=herramienta&f=reservarHerramienta&id=<?php echo $herramienta['idHerramienta']; ?>" method="POST" id="formulario-herramienta" onsubmit="return validarFormulario()">
             <input type="hidden" name="idHerramienta" value="<?php echo $herramienta['idHerramienta']; ?>" />
 
 
@@ -36,7 +36,7 @@
                 <span class="error"> <?php echo $errores['proposito'] ?? ''; ?> </span>
 
                 <div class="check">
-                    <input class="capaci" type="checkbox" name="capacita" value="1"/>
+                    <input class="capaci" type="checkbox" name="capacita" value="1" />
                     <label> ¿Requiere capacitación para usar la herramienta?</label>
                 </div>
             </fieldset>
@@ -44,20 +44,20 @@
                 <button type="reset" class="boton-mediano cancelar">Cancelar</button>
                 <button type="submit" class="boton-mediano" id="btn">Reservar</button>
             </fieldset>
-        </section>
-        <section class="contenedor-informacion">
-    
-            <h3 class="subtitulos nombre-instalacion"><?php echo $herramienta['nombre'] ?></h3>
-            <img src="data:image/jpeg;base64,<?php echo base64_encode($herramienta['imagen']); ?>" alt="Imagen" id="imagen-herramienta"
-                style="object-fit: cover; border-radius: 8px; width: 100%;height: 300px;">
-            <div class="informacion-extra" style="display: flex;flex-direction: column;gap: 10px; margin-top: 10px;">
-                <hr class="linea-divisoria" />
-                <div>
-                    <p class="texto">Precio de reserva:</p>
-                    <span class="texto precio-instalacion"><?php echo $herramienta['precio'] ?></span>
-                </div>
+    </section>
+    <section class="contenedor-informacion">
+
+        <h3 class="subtitulos nombre-instalacion"><?php echo $herramienta['nombre'] ?></h3>
+        <img src="data:image/jpeg;base64,<?php echo base64_encode($herramienta['imagen']); ?>" alt="Imagen" id="imagen-herramienta"
+            style="object-fit: cover; border-radius: 8px; width: 100%;height: 300px;">
+        <div class="informacion-extra" style="display: flex;flex-direction: column;gap: 10px; margin-top: 10px;">
+            <hr class="linea-divisoria" />
+            <div>
+                <p class="texto">Precio de reserva:</p>
+                <span class="texto precio-instalacion"><?php echo $herramienta['precio'] ?></span>
             </div>
-        </section>
+        </div>
+    </section>
     </form>
 </main>
 
