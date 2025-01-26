@@ -155,25 +155,36 @@ class UsuarioController
     public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+ 
             $usuario = [
                 'idUsuario' => $_POST['idUsuario'],
                 'nombre' => $_POST['nombre'],
                 'apellido' => $_POST['apellido'],
                 'correo' => $_POST['correo'],
-                'contrasena' => $_POST['contrasena'],
-                'imagen' => null
+                'contrasena' => $_POST['contrasena'], // No se utiliza password_hash
+                'idRolFK' => isset($_POST['contribuidor']) ? 3 : 2, // Asignar el rol basado en la acción
+                
+               // 'imagen' => null
             ];
-            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-                $file = $_FILES['imagen']['tmp_name'];
-                $instalacion['imagen'] = file_get_contents($file);
-            }
-            $this->model->update($usuario);
 
-            require_once 'view/usuario/login.php';
-            exit();
+           /* if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['imagen']['tmp_name'];
+                $usuario['imagen'] = file_get_contents($file);
+            }*/
+
+            $resultado = $this->model->update($usuario);
+
+            if ($resultado) {
+                
+                //header('Location: index.php?c=instalacion&f=index_instalacion');
+                var_dump($resultado);
+            } else {
+                echo "Error al registrar el usuario ";
+                
+            }
         } else {
-            $titulo = "Editar Usuario";
-            require_once 'view/usuario/usuario.edit.php';
+            $titulo = "Registrar Usuario";
+            require_once VUSUARIOS.'.new.php';
         }
     }
 

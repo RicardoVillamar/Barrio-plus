@@ -22,10 +22,12 @@
             <label for="contrasena">Contraseña:</label>
             <input type="password" id="contrasena" name="contrasena" value="<?php echo htmlspecialchars($usuario['contrasena']); ?>">
         </div>
-        <div>
-            <label for="imagen">Imagen:</label>
-            <input type="file" id="imagen" name="imagen">
-        </div>
+
+        
+    <div>
+        <label for="contribuidor">Desea ser Contribuidor:</label>
+        <input type="checkbox" id="contribuidor" name="contribuidor" value="1">
+    </div>
         <button type="submit">Guardar Cambios</button>
     </form>
 </section>
