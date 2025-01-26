@@ -64,6 +64,7 @@
             <!-- Reservas de Herramientas -->
             <section>
                 <h2 class="subtitulos">Reservas de Herramientas</h2>
+
                 <?php if (isset($reservasHerramientas) && is_array($reservasHerramientas) && !empty($reservasHerramientas)): ?>
                     <table>
                         <thead>
@@ -71,18 +72,16 @@
                                 <th>Nombre de la Herramienta</th>
                                 <th>Fecha de Inicio</th>
                                 <th>Fecha de Fin</th>
-                                <th>Estado</th>
                                 <th>Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($reservasHerramientas as $reserva): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($reserva['nombre']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['fechaInicio']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['estado']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['cantidad']); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['Herramienta'] ?? ''); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['FechaInicio'] ?? ''); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['FechaFin'] ?? ''); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
