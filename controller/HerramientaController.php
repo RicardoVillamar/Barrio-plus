@@ -178,6 +178,41 @@ class HerramientaController
     //Registro de Reserva de Herramienta
     public function reservarHerramienta(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errores = [];
+
+            $idHerramienta = $this->clearElement($_POST['id']);
+            if (empty($idHerramienta) || !is_numeric($idHerramienta)) {
+                $errores[] = "La id de Herramienta no es valida.";
+            }
+
+            $cantidad = $this->clearElement($_POST['cantidad']);
+            if (empty($cantidad) || !is_numeric($cantidad) || $cantidad < 1) {
+                $errores[] = "El número de herramienta.";
+            }
+
+            $fechaInicio = $this->clearElement($_POST['fechaInicio']);
+            if (empty($fechaInicio) || !strtotime($fechaInicio)) {
+                $errores[] = "La fecha de inicio no es válida.";
+            }
+
+            $fechaFin = $this->clearElement($_POST['fechaFin']);
+            if (empty($fechaFin) || !strtotime($fechaFin)) {
+                $errores[] = "La fecha de fin no es válida.";
+            }
+
+            if (!empty($fechaInicio) && !empty($fechaFin) && strtotime($fechaFin) <= strtotime($fechaInicio)) {
+                $errores[] = "La fecha de fin debe ser posterior a la fecha de inicio.";
+            }
+
+
+            if (count($errores) > 0) {
+                echo "<script>";
+                echo "alert('" . implode("\\n", $errores) . "');";
+                echo "window.history.back();";
+                echo "</script>";
+                return;
+            }
+            
             $reserva = [
                 'idEstadoFK' => 2,
                 'idHerramientaFK' => $_POST['idHerramienta'],
