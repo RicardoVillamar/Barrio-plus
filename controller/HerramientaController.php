@@ -180,7 +180,7 @@ class HerramientaController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errores = [];
 
-            $idHerramienta = $this->clearElement($_POST['id']);
+            $idHerramienta = $this->clearElement($_POST['idHerramienta']);
             if (empty($idHerramienta) || !is_numeric($idHerramienta)) {
                 $errores[] = "La id de Herramienta no es valida.";
             }
@@ -202,6 +202,11 @@ class HerramientaController
 
             if (!empty($fechaInicio) && !empty($fechaFin) && strtotime($fechaFin) <= strtotime($fechaInicio)) {
                 $errores[] = "La fecha de fin debe ser posterior a la fecha de inicio.";
+            }
+
+            $proposito = $this->clearElement($_POST['proposito']);
+            if (empty($proposito)) {
+                $errores[] = "El propósito de uso es obligatorio.";
             }
 
 
@@ -264,8 +269,8 @@ class HerramientaController
             $errores['imagen'] = "La imagen es obligatoria.";
         }
     
-        if (empty($data['descripcion']) || strlen($data['descripcion']) < 10) {
-            $errores['descripcion'] = "La descripción de la herramienta es obligatorio.";
+        if (empty($data['descripcion'])) {
+            $errores['descripcion'] = "La descripción de la herramienta es obligatorio";
         }
     
         if (!isset($data['precio']) || !is_numeric($data['precio']) || $data['precio'] <= 0) {
@@ -278,10 +283,6 @@ class HerramientaController
     
         if (empty($data['estado']) || !is_numeric($data['estado'])) {
             $errores['estado'] = "El estado seleccionado no es válido.";
-        }
-    
-        if (!empty($data['mantenimiento']) && strlen($data['mantenimiento']) < 10) {
-            $errores['mantenimiento'] = "El mantenimiento hechos de la herramientas es opcional";
         }
     
         if (!isset($data['cantidad']) || !is_numeric($data['cantidad']) || $data['cantidad'] <= 0) {
