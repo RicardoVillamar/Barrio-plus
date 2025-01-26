@@ -1,3 +1,4 @@
+<!-- Autor: Freire Chavez Jose Andres -->
 <?php require_once HEADER; ?>
   <div class="container">
     <h1>Contribuidor</h1>

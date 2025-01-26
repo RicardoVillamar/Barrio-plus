@@ -1,5 +1,5 @@
-<!-- Autor: Freire Chavez Jose Andres -->
 <?php
+//Autor: Freire Chavez Jose Andres
 class Contribucion{
     private $id, $estado, $idHerramienta, $idInstalacion, $idUsuario;
     

@@ -123,7 +123,7 @@ class PublicacionDAO
             $res = $stmt->execute();
             return $res;
         } catch (PDOException $er) {
-            error_log("Error en update de PublicacionDAO " . $er->getMessage());
+            error_log("Error en delete de PublicacionDAO " . $er->getMessage());
             return false;
         }
     }
