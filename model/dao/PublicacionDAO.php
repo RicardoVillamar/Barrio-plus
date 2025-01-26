@@ -47,7 +47,7 @@ class PublicacionDAO
             $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $res;
         } catch (PDOException $er) {
-            error_log("Error en selectOne de PublicacionDAO " . $er->getMessage());
+            error_log("Error en selectPublicacionesById de PublicacionDAO " . $er->getMessage());
             return [];
         }
     }
