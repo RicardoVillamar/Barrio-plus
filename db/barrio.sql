@@ -116,6 +116,9 @@ ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `TipoPublicacion` (`idTipo`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idPrioridadFK`) REFERENCES `Prioridad` (`idPrioridad`);
 
+ALTER TABLE `ReservacionInstalacion` DROP COLUMN `estado`;
+ALTER TABLE `ReservacionInstalacion` ADD COLUMN `idEstadoFK` INT NOT NULL;
+ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
 
 INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
 INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');

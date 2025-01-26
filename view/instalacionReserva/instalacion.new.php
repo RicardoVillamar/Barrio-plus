@@ -12,7 +12,7 @@
     <section class="contenedor-formulario">
         <form
             action="index.php?c=instalacion&f=reservarInstalacion"
-            method="POST"
+            method="post"
             id="formulario-instalaciones"
             onsubmit="return validarFormulario()">
             <input type="hidden" name="id" id="id" value="<?php echo $instalacion['idInstalacion'] ?>" />
@@ -66,11 +66,11 @@
             <fieldset>
                 <h3 class="subtitulos">Fecha de la reserva</h3>
                 <label for="fecha-desde">Desde</label>
-                <input class="input" type="date" id="fecha-desde" name="fecha-desde" />
+                <input class="input" type="date" id="fecha-desde" name="fechaInicio" />
                 <span id="fechaD-error" class="error"></span>
 
                 <label for="fecha-hasta">Hasta</label>
-                <input class="input" type="date" id="fecha-hasta" name="fecha-hasta" />
+                <input class="input" type="date" id="fecha-hasta" name="fechaFin" />
                 <span id="fechaH-error" class="error"></span>
             </fieldset>
 
@@ -83,8 +83,8 @@
                         type="number"
                         min="2"
                         placeholder="Cantidad de personas"
-                        id="personas"
-                        name="personas" />
+                        id="personasEsperadas"
+                        name="personasEsperadas" />
                     <span id="personas-error" class="error"></span>
 
                     <label for="proposito">Proposito de la reserva</label>
@@ -100,8 +100,8 @@
 
                 <label for="notas">Datos adicionales (opcional)</label>
                 <textarea
-                    id="notas"
-                    name="notas"
+                    id="observaciones"
+                    name="observaciones"
                     placeholder="Agregue información adicional (opcional)"></textarea>
                 <span id="notas-error" class="error"></span>
             </fieldset>

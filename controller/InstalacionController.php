@@ -173,5 +173,38 @@ class InstalacionController
         }
     }
 
-    public function reservarInstalacion() {}
+    public function redirectWithMessage($exito, $exitoMsg, $errMsg, $redirectUrl)
+    {
+        if (!isset($_SESSION)) session_start();
+        $_SESSION['mensaje'] = ($exito) ? $exitoMsg : $errMsg;
+        $_SESSION['color'] = ($exito) ? 'primary' : 'danger';
+        header("Location: $redirectUrl");
+    }
+
+    public function reservarInstalacion()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $reservacionInstalacion = [
+                'idInstalacionFK' => $_POST['id'],
+                // 'idUsuarioFK' => $_SESSION['idUsuario'],
+                'idUsuarioFK' => 1,
+                'telefono' => $_POST['telefono'],
+                'miembro' => $_POST['miembro'],
+                'fechaInicio' => $_POST['fechaInicio'],
+                'fechaFin' => $_POST['fechaFin'],
+                'personasEsperadas' => $_POST['personasEsperadas'],
+                'observaciones' => $_POST['observaciones'],
+                'proposito' => $_POST['proposito'],
+                'idEstadoFK' => 2
+            ];
+
+            $resultado = $this->model->insertReservaciones($reservacionInstalacion);
+
+            if ($resultado) {
+                $this->redirectWithMessage(true, 'Reservación exitosa', '', 'index.php?c=instalacion&f=index');
+            } else {
+                $this->redirectWithMessage(false, '', 'Error al reservar la instalación', 'index.php?c=instalacion&f=index');
+            }
+        }
+    }
 }

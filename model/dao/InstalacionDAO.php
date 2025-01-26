@@ -128,4 +128,27 @@ class InstalacionesDAO
             return false;
         }
     }
+
+    public function insertReservaciones($reservacionInstalacion)
+    {
+
+        try {
+            $sql = 'insert into reservacioninstalacion (idInstalacionFK, idUsuarioFK, fechaInicio, fechaFin, personasEsperadas, observaciones, proposito, idEstadoFK) values (:idInstalacionFK, :idUsuarioFK, :fechaInicio, :fechaFin, :personasEsperadas, :observaciones, :proposito, :idEstadoFK)';
+
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindParam(':idInstalacionFK', $reservacionInstalacion['idInstalacionFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':idUsuarioFK', $reservacionInstalacion['idUsuarioFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':fechaInicio', $reservacionInstalacion['fechaInicio'], PDO::PARAM_STR);
+            $stmt->bindParam(':fechaFin', $reservacionInstalacion['fechaFin'], PDO::PARAM_STR);
+            $stmt->bindParam(':personasEsperadas', $reservacionInstalacion['personasEsperadas'], PDO::PARAM_INT);
+            $stmt->bindParam(':observaciones', $reservacionInstalacion['observaciones'], PDO::PARAM_STR);
+            $stmt->bindParam(':proposito', $reservacionInstalacion['proposito'], PDO::PARAM_STR);
+            $stmt->bindParam(':idEstadoFK', $reservacionInstalacion['idEstadoFK'], PDO::PARAM_INT);
+            $respuesta = $stmt->execute();
+            return $respuesta;
+        } catch (PDOException $error) {
+            error_log("Error en inserReservaciones de InstalacionDAO" . $error->getMessage());
+            return false;
+        }
+    }
 }
