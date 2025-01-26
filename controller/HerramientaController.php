@@ -179,7 +179,7 @@ class HerramientaController
     public function reservarHerramienta(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $reserva = [
-                'idestadoFK' => 2,
+                'idEstadoFK' => 2,
                 'idHerramientaFK' => $_POST['idHerramienta'],
                 // 'idUsuarioFK' => $_SESSION['idUsuario'],
                 'idUsuarioFK' => 1,
