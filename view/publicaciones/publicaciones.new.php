@@ -66,7 +66,8 @@
         type="checkbox"
         id="soloAdmins"
         name="notificarSoloAdmins"
-        value="Solo administradores">
+        value="<?php echo $publi["notificarAdmin"]?>"
+        <?php echo ($publi["notificarAdmin"]==1)?'checked = "checked"':""?>>
       <label for="soloAdmins">Notificar solo a los administradores</label>
     </div>
 
