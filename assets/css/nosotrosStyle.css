@@ -134,21 +134,11 @@
   #historia,
   #mision,
   #valores {
-    margin-top: 30px;
+    margin-top: 10px;
     margin-bottom: 15px;
     background-color: #a8d0e6;
     border: 6px solid white;
     border-radius: 5px;
-  }
-
-  /**Selector de Pseudoelemento**/
-  #historia::first-line,
-  #mision::first-line,
-  #valores::first-line,
-  #acercaDenosotros::first-line,
-  .container h2::first-line,
-  #contacto::first-line {
-    text-decoration: underline;
   }
 
   /**Selector de Pseudoelemento**/

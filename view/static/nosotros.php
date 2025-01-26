@@ -15,7 +15,7 @@
   <body>
     <?php require_once HEADER; ?>
     <main class="contenedor-principal">
-      <section id="acercaDenosotros">
+      <section style="margin-top: 10px; border-radius: 15px;" id="acercaDenosotros">
         <h1 class="titulos">Acerca de Nosotros</h1>
         <p class="texto">
           Somos una plataforma dedicada a <strong>fortalecer</strong> el sentido
@@ -58,9 +58,9 @@
         </figure>
       </section>
 
-      <section class="container">
-        <section class="row">
-          <h2 class="titulos">Integrantes</h2>
+      <section style="margin-top: 10px; margin-left: 0px; border-radius: 15px;" class="container">
+      <h2 style="margin-top: 20px; margin-bottom: 20px; display:block; width:130px; text-decoration: none;" class="titulos">Integrantes</h2>  
+      <section class="row">
           <article class="tarjeta col-md-3">
             <img
               src="assets/images/grupo/villamar.png"
@@ -154,7 +154,7 @@
         </section>
       </section>
 
-      <section id="historia">
+      <section style="margin-top: 10px; border-radius: 15px;" id="historia">
         <h2 class="titulos">Historia</h2>
         <p class="texto">
           Este proyecto nació de la necesidad de un grupo de vecinos que querían
@@ -168,7 +168,7 @@
         </p>
       </section>
 
-      <section id="mision">
+      <section style="margin-top: 10px; border-radius: 15px;" id="mision">
         <h2 class="titulos">Misión</h2>
         <p class="texto">
           Nuestra visión es construir una comunidad conectada y solidaria donde
@@ -199,7 +199,7 @@
         </div>
       </section>
 
-      <section id="valores">
+      <section style="margin-top: 10px; height: 380px; border-radius: 15px;" id="valores">
         <h2 class="titulos">Valores</h2>
         <div id="listaValores">
           <ul>
@@ -247,14 +247,14 @@
         </div>
       </section>
 
-      <section id="contacto">
-        <h2 class="titulos">Contáctanos</h2>
+      <section style="margin-top: 10px; border-radius: 15px;" id="contacto">
+        <h2 style="margin-bottom: 0px;" class="titulos">Contáctanos</h2>
         <form
           novalidate
           class="form_contacto"
           onsubmit="return validarFormContacto()"
         >
-          <div class="campo-nombre">
+          <div style="margin-top: 0px;" class="campo-nombre">
             <label for="nombre">Nombres:</label><br />
             <input
               type="text"
@@ -321,10 +321,9 @@
         }
 
         arrUrlsImagenes = [
-          "https://image.isu.pub/180709153603-f9cf09ffc6cae7faafdba9f890bed4a6/jpg/page_1_social.jpg",
           "https://blogs.iadb.org/ciudades-sostenibles/wp-content/uploads/sites/17/2020/05/002_ECOELCE.jpg",
           "https://www.rededuca.net/sites/default/files/2023-08/Dise%C3%B1o%20sin%20t%C3%ADtulo%20%2815%29.jpg",
-          "https://d2k7w3fmrpj0w4.cloudfront.net/advices/photos/000/000/837/medium/38bfa332a8c1be5fd2cfff58f70f6c7e09bc4a7c.webp?1704485576",
+          "https://d2k7w3fmrpj0w4.cloudfront.net/advices/photos/000/000/837/medium/38bfa332a8c1be5fd2cfff58f70f6c7e09bc4a7c.webp?1704485576"
         ];
 
         let indice = 0;
