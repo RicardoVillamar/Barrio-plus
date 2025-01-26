@@ -72,30 +72,24 @@ class ContribucionDAO
         }
     }
 
-    /*
-    public function update($publicacion)
+    public function update($contribucion)
     {
         try {
-            $sql = "update publicacion set titulo=:tit, tipo=:tip, descripcion=:descrip, prioridad=:pri,
-            fechaEvento=:fech, notificarAdmin=:notif, idUsuarioFK=:idUsu where idPubli=:id";
+            $sql = "update contribucion set idEstadoContribucionFK=:idEst, idHerramientaFK=:idHerr, 
+            idInstalacionFK=:idIns, idUsuarioFK=:idUsu where idContribucion=:id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":tit", $publicacion->getTitulo(), PDO::PARAM_STR);
-            $stmt->bindParam(":tip", $publicacion->getTipo(), PDO::PARAM_STR);
-            $stmt->bindParam(":descrip", $publicacion->getDescripcion(), PDO::PARAM_STR);
-            $stmt->bindParam(":pri", $publicacion->getPrioridad(), PDO::PARAM_STR);
-            $stmt->bindParam(":fech", $publicacion->getFechaEvento(), PDO::PARAM_STR);
-            $stmt->bindParam(":notif", $publicacion->getNotificarAdmin(), PDO::PARAM_INT);
-            $stmt->bindParam(":idUsu", $publicacion->getIdUsu(), PDO::PARAM_INT);
-            $stmt->bindParam(":id", $publicacion->getId(), PDO::PARAM_INT);
+            $stmt->bindParam(":idEst", $contribucion->getIdEstado(), PDO::PARAM_INT);
+            $stmt->bindParam(":idHerr", $contribucion->getIdHerramienta(), PDO::PARAM_INT);
+            $stmt->bindParam(":idIns", $contribucion->getIdInstalacion(), PDO::PARAM_INT);
+            $stmt->bindParam(":idUsu", $contribucion->getIdUsuario(), PDO::PARAM_INT);
             $res = $stmt->execute();
             return $res;
         } catch (PDOException $er) {
-            error_log("Error en update de PublicacionDAO " . $er->getMessage());
+            error_log("Error en update de ContribucionDAO " . $er->getMessage());
             return false;
         }
     }
-    */
-
+    
     public function delete($id)
     {
         try {
