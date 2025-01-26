@@ -37,6 +37,10 @@ class ContribucionController
     }
 
     public function view_new(){
+        $modeloInstalaciones = new InstalacionesDAO();
+        $instalaciones = $modeloInstalaciones->selectAll("");
+        $modeloHerramientas = new HerramientaDAO();
+        $herramientas = $modeloHerramientas->selectAll("");
         $titulo = "Nueva contribución";
         require_once VCONTRIBUCIONES . "new.php";
     }
