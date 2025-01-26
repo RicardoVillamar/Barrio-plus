@@ -1,5 +1,5 @@
 <?php
-//Autor: Quiñonez Castrellón Anthony Joel
+//autor: Quiñonez Castrellón Anthony Joel
 class Herramienta{
     private $id, $nombre, $descrip, $precio, $img, 
     $fechaRegis, $idEst, $mant, $cant;
