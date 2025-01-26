@@ -1,7 +1,7 @@
 <!--Autor: Quiñonez Castrellón Anthony Joel-->
 <?php require_once HEADER?>
 <div style="display: flex; align-items: center;">
-    <a href="index.php?c=herramienta&f=index_Herramienta" style="padding: 0px; margin-left: 10px">
+    <a href="index.php?c=herramienta&f=index" style="padding: 0px; margin-left: 10px">
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
     </a>
     <h3 style="margin-left: 10px;">Herramientas</h3>
