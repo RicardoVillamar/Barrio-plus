@@ -64,7 +64,7 @@ class PublicacionDAO
             $stmt->bindParam(":pri", $publicacion->getIdPrioridad(), PDO::PARAM_INT);
             $stmt->bindParam(":fech", $publicacion->getFechaEvento(), PDO::PARAM_STR);
             $stmt->bindParam(":notif", $publicacion->getNotificarAdmin(), PDO::PARAM_INT);
-            $stmt->bindParam(":idUsu", $publicacion->getIdUsu(), PDO::PARAM_INT);
+            $stmt->bindParam(":idUsu", $publicacion->getIdUsuario(), PDO::PARAM_INT);
             $res = $stmt->execute();
             return $res;
         } catch (PDOException $er) {
