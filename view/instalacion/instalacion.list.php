@@ -78,9 +78,15 @@ require_once HEADER
 
                                 <td>
                                     <a class="boton-mediano reserva" style="margin-bottom: 10px;" href="index.php?c=instalacion&f=view_editar&id=<?php echo $row['idInstalacion'] ?>">Editar</a>
-                                    <a class="eliminar"
-                                        onclick="if(!confirm('Esta seguro de eliminar el producto?')) return false;" href="index.php?c=instalacion&f=view_eliminar&id=<?php echo $row['idInstalacion'] ?>">Eliminar</a>
+                                    <?php if ($row['estado_nombre'] == 'Ocupado') { ?>
+                                        <a class="eliminar"
+                                            onclick="if(!confirm('No se puede eliminar esta ocupada')) return false;" href="index.php?c=instalacion&f=index_instalacion">Eliminar</a>
+                                    <?php } else { ?>
+                                        <a class="eliminar"
+                                            onclick="if(!confirm('¿Está seguro de eliminar el producto?')) return false;" href="index.php?c=instalacion&f=view_eliminar&id=<?php echo $row['idInstalacion'] ?>">Eliminar</a>
+                                    <?php } ?>
                                 </td>
+
                             </tr>
 
                         <?php
