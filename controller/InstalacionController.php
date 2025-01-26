@@ -1,5 +1,5 @@
+<!-- Autor: Villamar Minuche Ricardo Daniel -->
 <?php
-//Autor: Villamar Minuche Ricardo Daniel
 require_once 'model/dao/InstalacionDAO.php';
 require_once 'model/dto/Instalacion.php';
 require_once 'model/dao/EstadoDAO.php';
@@ -152,6 +152,7 @@ class InstalacionController
                 foreach ($errores as $error) {
                     echo "<p>$error</p>";
                 }
+                echo '<button onclick="window.history.back()">Volver</button>';
                 return;
             }
 
@@ -246,6 +247,7 @@ class InstalacionController
                 foreach ($errores as $error) {
                     echo "<p>$error</p>";
                 }
+                echo '<button onclick="window.history.back()">Volver</button>';
                 return;
             }
 
@@ -286,26 +288,84 @@ class InstalacionController
     public function reservarInstalacion()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errores = [];
+
+            $idInstalacion = $this->clearElement($_POST['id']);
+            if (empty($idInstalacion) || !is_numeric($idInstalacion)) {
+                $errores[] = "ID de la instalación no válido.";
+            }
+
+            $telefono = $this->clearElement($_POST['telefono']);
+            if (empty($telefono) || !preg_match('/^[0-9]{10}$/', $telefono)) {
+                $errores[] = "El teléfono debe ser un número válido de 10 dígitos.";
+            }
+
+            if (!isset($_POST['miembro'])) {
+                $errores[] = "Debe seleccionar si es miembro o no.";
+            } else {
+                $miembro = $this->clearElement($_POST['miembro']);
+                if (!in_array($miembro, ['si', 'no'])) {
+                    $errores[] = "El campo 'miembro' debe ser 'si' o 'no'.";
+                }
+            }
+
+            $fechaInicio = $this->clearElement($_POST['fechaInicio']);
+            if (empty($fechaInicio) || !strtotime($fechaInicio)) {
+                $errores[] = "La fecha de inicio no es válida.";
+            }
+
+            $fechaFin = $this->clearElement($_POST['fechaFin']);
+            if (empty($fechaFin) || !strtotime($fechaFin)) {
+                $errores[] = "La fecha de fin no es válida.";
+            }
+
+            if (!empty($fechaInicio) && !empty($fechaFin) && strtotime($fechaFin) <= strtotime($fechaInicio)) {
+                $errores[] = "La fecha de fin debe ser posterior a la fecha de inicio.";
+            }
+
+            $personasEsperadas = $this->clearElement($_POST['personasEsperadas']);
+            if (empty($personasEsperadas) || !is_numeric($personasEsperadas) || $personasEsperadas <= 0) {
+                $errores[] = "El número de personas esperadas debe ser un número positivo.";
+            }
+
+            $observaciones = $this->clearElement($_POST['observaciones']);
+            if (!empty($observaciones) && strlen($observaciones) > 255) {
+                $errores[] = "Las observaciones no deben exceder los 255 caracteres.";
+            }
+
+            $proposito = $this->clearElement($_POST['proposito']);
+            if (empty($proposito)) {
+                $errores[] = "El propósito de la reservación es obligatorio.";
+            }
+
+            if (count($errores) > 0) {
+                foreach ($errores as $error) {
+                    echo "<p>$error</p>";
+                }
+                echo '<button onclick="window.history.back()">Volver</button>';
+                return;
+            }
+
             $reservacionInstalacion = [
-                'idInstalacionFK' => $_POST['id'],
+                'idInstalacionFK' => $idInstalacion,
                 // 'idUsuarioFK' => $_SESSION['idUsuario'],
                 'idUsuarioFK' => 1,
-                'telefono' => $_POST['telefono'],
-                'miembro' => $_POST['miembro'],
-                'fechaInicio' => $_POST['fechaInicio'],
-                'fechaFin' => $_POST['fechaFin'],
-                'personasEsperadas' => $_POST['personasEsperadas'],
-                'observaciones' => $_POST['observaciones'],
-                'proposito' => $_POST['proposito'],
-                'idEstadoFK' => 2
+                'telefono' => $telefono,
+                'miembro' => $miembro,
+                'fechaInicio' => $fechaInicio,
+                'fechaFin' => $fechaFin,
+                'personasEsperadas' => $personasEsperadas,
+                'observaciones' => $observaciones,
+                'proposito' => $proposito,
+                'idEstadoFK' => 2,
             ];
 
             $resultado = $this->model->insertReservaciones($reservacionInstalacion);
 
             if ($resultado) {
-                $this->redirectWithMessage(true, 'Reservación exitosa', '', 'index.php?c=instalacion&f=index');
+                header('Location: index.php?c=instalacion&f=index_instalacion');
             } else {
-                $this->redirectWithMessage(false, '', 'Error al reservar la instalación', 'index.php?c=instalacion&f=index');
+                echo "Error al registrar la reserva de la instalación.";
             }
         }
     }
