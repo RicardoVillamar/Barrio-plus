@@ -71,7 +71,7 @@ class HerramientaDAO
         try {
             $sql = 'insert into herramienta (nombre, descripcion, precio, imagen, fechaRegistro, idEstadoFK, mantenimiento, cantidad) 
             values (:nombre, :descripcion, :precio, :imagen, :fechaRegistro, :idEstadoFK, :mantenimiento, :cantidad)';
-    
+
             $stmt = $this->cone->prepare($sql);
             $stmt->bindParam(':nombre', $herramienta['nombre'], PDO::PARAM_STR);
             $stmt->bindParam(':descripcion', $herramienta['descripcion'], PDO::PARAM_STR);
@@ -132,7 +132,8 @@ class HerramientaDAO
     }
 
     //Buscar Herramienta
-    public function buscar($nombre = "") {
+    public function buscar($nombre = "")
+    {
         try {
             if (!empty($nombre)) {
                 $sql = 'SELECT 
@@ -166,7 +167,7 @@ class HerramientaDAO
                         JOIN Estado e ON h.idEstadoFK = e.idEstado';
                 $stmt = $this->cone->prepare($sql);
             }
-    
+
             $stmt->execute();
             $respuesta = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $respuesta;
@@ -177,28 +178,28 @@ class HerramientaDAO
     }
 
     //Insertar una nueva Reserva
-    public function insert_Reserva($reserva){
-    try {
-        $sql = 'INSERT INTO ReservacionHerramienta
+    public function insert_Reserva($reserva)
+    {
+        try {
+            $sql = 'INSERT INTO ReservacionHerramienta
                 (idEstadoFK, idHerramientaFK, idUsuarioFK, cantidad, fechaInicio, fechaFin, proposito, capacitacion) 
                 VALUES 
                 (:idEstadoFK, :idHerramientaFK, :idUsuarioFK, :cantidad, :fechaInicio, :fechaFin, :proposito, :capacitacion)';
 
-        $stmt = $this->cone->prepare($sql);
-        $stmt->bindParam(':idEstadoFK', $reserva['idEstadofK'], PDO::PARAM_STR);
-        $stmt->bindParam(':idHerramientaFK', $reserva['idHerramientaFK'], PDO::PARAM_INT);
-        $stmt->bindParam(':idUsuarioFK', $reserva['idUsuarioFK'], PDO::PARAM_INT);
-        $stmt->bindParam(':cantidad', $reserva['cantidad'], PDO::PARAM_INT);
-        $stmt->bindParam(':fechaInicio', $reserva['fechaInicio'], PDO::PARAM_STR);
-        $stmt->bindParam(':fechaFin', $reserva['fechaFin'], PDO::PARAM_STR);
-        $stmt->bindParam(':proposito', $reserva['proposito'], PDO::PARAM_STR);
-        $stmt->bindParam(':capacitacion', $reserva['capacitacion'], PDO::PARAM_BOOL);
+            $stmt = $this->cone->prepare($sql);
+            $stmt->bindParam(':idEstadoFK', $reserva['idEstadoFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':idHerramientaFK', $reserva['idHerramientaFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':idUsuarioFK', $reserva['idUsuarioFK'], PDO::PARAM_INT);
+            $stmt->bindParam(':cantidad', $reserva['cantidad'], PDO::PARAM_INT);
+            $stmt->bindParam(':fechaInicio', $reserva['fechaInicio'], PDO::PARAM_STR);
+            $stmt->bindParam(':fechaFin', $reserva['fechaFin'], PDO::PARAM_STR);
+            $stmt->bindParam(':proposito', $reserva['proposito'], PDO::PARAM_STR);
+            $stmt->bindParam(':capacitacion', $reserva['capacitacion'], PDO::PARAM_BOOL);
 
-        return $stmt->execute();
-    } catch (PDOException $error) {
-        error_log("Error al insertar la reserva en HerramientaDAO: " . $error->getMessage());
-        return false;
+            return $stmt->execute();
+        } catch (PDOException $error) {
+            error_log("Error al insertar la reserva en HerramientaDAO: " . $error->getMessage());
+            return false;
+        }
     }
-}
-  
 }

@@ -264,13 +264,31 @@ class HerramientaController
             exit;
         } */
 
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 2) { 
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        } 
+
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {      
             $reserva = [
                 'idEstadoFK' => 2,
                 'idHerramientaFK' => $_POST['idHerramienta'],
-                // 'idUsuarioFK' => $_SESSION['usuario']['idUsuario'],
-                'idUsuarioFK' => 1,
+                'idUsuarioFK' => $_SESSION['usuario']['idUsuario'],
+                //'idUsuarioFK' => 1,
                 'cantidad' => $_POST['cantidad'],
                 'fechaInicio' => $_POST['fechaInicio'],
                 'fechaFin' => $_POST['fechaFin'],
@@ -281,9 +299,11 @@ class HerramientaController
             $resultado = $this->model->insert_Reserva($reserva);
 
             if ($resultado) {
-                    header('Location: index.php?c=herramienta&f=index_Herramienta');
+                $this->redirectWithMessage(true, 'Reserva realizada con éxito', '', 
+                'index.php?c=herramienta&f=index_Herramienta');
             } else {
-                echo "Error al realizar la reserva";
+                $this->redirectWithMessage(false, '', 'Error al realizar la reserva', 
+                'index.php?c=herramienta&f=index_Herramienta');
             }
         }
     }
