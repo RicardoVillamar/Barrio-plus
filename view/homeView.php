@@ -132,7 +132,7 @@
 
     <section id="publicacionesRecientes">
       <h3 style="background-color: #f0f4f8">Publicaciones Recientes</h3>
-      <a href="index.php?c=publicacion&f=index">Ver todas las publicaciones</a>
+      <a id="btnVerPubli" href="index.php?c=publicacion&f=index">Ver todas las publicaciones</a>
       <?php 
           foreach($publicaciones as $publ){
       ?>
