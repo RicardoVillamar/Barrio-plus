@@ -73,7 +73,7 @@
                                 <th>Fecha de Inicio</th>
                                 <th>Fecha de Fin</th>
                                 <th>Cantidad</th>
-                                <th>Acciobes</th>
+                                <th>Accion</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,7 +84,7 @@
                                     <td><?php echo htmlspecialchars($reserva['FechaFin'] ?? ''); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
                                     <td>
-                                        <button onclick="window.location.href='index.php?c=usuario&f=cancelarReserva&id=<?php echo $reserva['idReserva'] ?? ''; ?>'">Cancelar</button>
+                                        <button onclick="window.location.href='index.php?c=usuario&f=cancelarReserva&id=<?php echo $reserva['idReserva'] ?? ''; ?>'">Cancelar</button> </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -105,6 +105,7 @@
                                 <th style="border: 1px solid #ddd; padding: 8px;">Fecha Inicio</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Fecha Fin</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Cantidad</th>
+                                <th style="border: 1px solid #ddd; padding: 8px;">Accion</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -114,6 +115,8 @@
                                     <td><?php echo htmlspecialchars($reserva['FechaInicio']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaFin']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['Cantidad']); ?></td>
+                                    <td>
+                                    <button onclick="window.location.href='index.php?c=usuario&f=cancelarReserva&id=<?php echo $reserva['idReserva'] ?? ''; ?>'">Cancelar</button> </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

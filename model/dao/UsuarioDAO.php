@@ -167,25 +167,16 @@ public function selectReservasHerramientasByUserId($userId)
         }
     }
 
-    public function login($correo, $contrasena)
-    {
+    public function deleteReservationHerrById($reservationId) {
         try {
-            $sql = "select * from usuario where correo=:cor";
+            $sql = "DELETE FROM ReservacionHerramienta WHERE idReservacion = :id";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":cor", $correo, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $reservationId, PDO::PARAM_INT);
             $stmt->execute();
-            $res = $stmt->fetch(PDO::FETCH_ASSOC);
-            if ($res == null) {
-                return null;
-            }
-            if (password_verify($contrasena, $res['contrasena'])) {
-                return $res;
-            } else {
-                return null;
-            }
-        } catch (PDOEXception $er) {
-            error_log("Error en login de UsuarioDAO " . $er->getMessage());
-            return null;
+            return true;
+        } catch (PDOException $er) {
+            error_log("Error en deleteReservationById de UsuarioDAO " . $er->getMessage());
+            return false;
         }
     }
 }
