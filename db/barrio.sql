@@ -13,7 +13,8 @@ CREATE TABLE `Usuario` (
   `apellido` VARCHAR(100) NOT NULL,
   `correo` VARCHAR(150) UNIQUE NOT NULL,
   `contrasena` VARCHAR(255) NOT NULL,
-  `idRolFK` INT NOT NULL
+  `idRolFK` INT NOT NULL,
+  `imagen` LONGBLOB
 );
 
 CREATE TABLE `Tipo` (
