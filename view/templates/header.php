@@ -20,6 +20,7 @@ if (isset($_SESSION['usuario'])) {
   <link rel="stylesheet" href="assets/css/instalacion2Style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/usuario.css">
+  <link rel="stylesheet" href="assets/css/newContribucionStyle.css">
   <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
