@@ -94,7 +94,7 @@ class PublicacionController
             header("Location: index.php?c=publicacion&f=index");
         }
         $publi = $this->populate();
-        $exito = $this->$model->insert($publi);
+        $exito = $this->model->insert($publi);
         $this->redirectWithMessage($exito, "Publicación insertada exitosamente", 
         "No se pudo realizar la inserción", "index.php?c=publicacion&f=index");
     }
