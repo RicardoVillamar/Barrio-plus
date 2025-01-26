@@ -1,9 +1,11 @@
 <?php
-   if(!isset($_SESSION)){ session_start();}
-   if(isset($_SESSION['usuario'])){
-      $usuario = $_SESSION['usuario'];
-      $rol = $usuario['idRolFK']; 
-   }
+if (!isset($_SESSION)) {
+  session_start();
+}
+if (isset($_SESSION['usuario'])) {
+  $usuario = $_SESSION['usuario'];
+  $rol = $usuario['idRolFK'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,19 +30,20 @@
 
 <body>
   <nav id="navbar">
-    <a href="index.php">
-      <img class="logo" src="assets/images/fotos/logo-icon.png" alt="logo" />
-    </a>
-    <ul>
+    <div class="navbar-logo">
+      <a href="index.php">
+        <img class="logo" src="assets/images/fotos/logo-icon.png" alt="logo" />
+      </a>
+    </div>
+    <ul class="navbar-menu">
       <li><a href="index.php?c=instalacion&f=index">Instalaciones</a></li>
       <li><a href="index.php?c=herramienta&f=index_Herramienta">Herramientas</a></li>
       <li><a href="index.php?c=historial&f=index">Historial</a></li>
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
       <li><a href="index.php?c=reservacion&f=listar">Reservaciones</a></li>
       <li>
-        
         <a href="index.php?c=usuario&f=profile" class="user">
-          <span class="material-symbols-outlined"> account_circle </span>
+          <span class="material-symbols-outlined">account_circle</span>
         </a>
       </li>
     </ul>
