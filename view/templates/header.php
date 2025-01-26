@@ -39,7 +39,7 @@ if (isset($_SESSION['usuario'])) {
     <ul class="navbar-menu">
       <li><a href="index.php?c=instalacion&f=index">Instalaciones</a></li>
       <li><a href="index.php?c=herramienta&f=index_Herramienta">Herramientas</a></li>
-      <li><a href="index.php?c=historial&f=index">Historial</a></li>
+  
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
       <?php if (isset($rol) && $rol == '1'): ?>
         
