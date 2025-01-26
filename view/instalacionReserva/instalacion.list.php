@@ -108,9 +108,19 @@ require_once HEADER; ?>
                             </td>
                             <td>
                                 <p class="texto"><?php echo $row['precio'] ?></p>
+                                <?php
+                                if ($row['estado_nombre'] === 'Libre') {
+                                ?>
+                                    <a class="boton-mediano reserva" href="index.php?c=instalacion&f=view_reservar&id=<?php echo $row['idInstalacion'] ?>">Reservar</a>
+                                <?php
 
-                                <a class="boton-mediano reserva" href="index.php?c=instalacion&f=view_reservar&id=<?php echo $row['idInstalacion'] ?>">Reservar</a>
+                                } else {
+                                ?>
+                                    <span class="texto">No disponible</span>
+                                <?php
 
+                                }
+                                ?>
                             </td>
                         </tr>
 
