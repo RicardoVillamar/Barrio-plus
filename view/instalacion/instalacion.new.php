@@ -47,7 +47,7 @@ require_once HEADER
                 </select>
             </div>
 
-            <div>
+            <div style="display: none;">
                 <label for="estado">Estado</label>
                 <select id="estado" name="estado" class="input-selected">
                     <?php

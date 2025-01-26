@@ -18,8 +18,19 @@ require_once HEADER
                 style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%">
 
                 <div class="buscar">
-                    <a style="display: flex; justify-content: start;" href="">Buscar</a>
-                    <input type="text" class="input" placeholder="Nombre de la instalación">
+                    <input
+                        placeholder="Nombre de la instalación"
+                        type="text"
+                        id="buscar-barra"
+                        style="
+                padding: 0 10px;
+                padding-right: 30px;
+                margin: 10px;
+                border-radius: 4px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                height: 30px;
+                " />
+                    <a for="buscar-barra" class="boton-mediano" style="font-weight: bold">Buscar</a>
                 </div>
 
                 <a class="boton-mediano reserva"
