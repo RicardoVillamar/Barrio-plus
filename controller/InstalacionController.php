@@ -103,14 +103,63 @@ class InstalacionController
         require_once VINSTALACION . 'new.php';
     }
 
+    function clearElement($element)
+    {
+        $element = trim($element);
+        $element = stripslashes($element);
+        $element = htmlspecialchars($element);
+        return $element;
+    }
+
+
     public function insert()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errores = [];
+
+            $nombre = $this->clearElement($_POST['nombre']);
+            if (empty($nombre)) {
+                $errores[] = "El nombre es obligatorio.";
+            }
+
+            $descripcion = $this->clearElement($_POST['descripcion']);
+            if (empty($descripcion)) {
+                $errores[] = "La descripción es obligatoria.";
+            }
+
+            $precio = $this->clearElement($_POST['precio']);
+            if (empty($precio) || !is_numeric($precio) || $precio <= 0) {
+                $errores[] = "El precio debe ser un número positivo.";
+            }
+
+            $tamano = $this->clearElement($_POST['tamano']);
+            if (empty($tamano)) {
+                $errores[] = "El tamaño es obligatorio.";
+            }
+
+            if (empty($_POST['tipo'])) {
+                $errores[] = "Debe seleccionar un tipo.";
+            }
+
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $fileType = mime_content_type($_FILES['imagen']['tmp_name']);
+                if (!in_array($fileType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                    $errores[] = "Solo se permiten imágenes JPG, PNG y GIF.";
+                }
+            }
+
+            if (count($errores) > 0) {
+                foreach ($errores as $error) {
+                    echo "<p>$error</p>";
+                }
+                return;
+            }
+
             $instalacion = [
-                'nombre' => $_POST['nombre'],
-                'descripcion' => $_POST['descripcion'],
-                'precio' => $_POST['precio'],
-                'tamano' => $_POST['tamano'],
+                'nombre' => $nombre,
+                'descripcion' => $descripcion,
+                'precio' => $precio,
+                'tamano' => $tamano,
                 'idTipoFK' => $_POST['tipo'],
                 'idEstadoFK' => $_POST['estado'],
                 'imagen' => null,
@@ -126,20 +175,41 @@ class InstalacionController
             if ($resultado) {
                 header('Location: index.php?c=instalacion&f=index_instalacion');
             } else {
-                echo "Error al registrar la instalación";
+                echo "Error al registrar la instalación.";
             }
         }
     }
+
 
     public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
 
+            $errores = [];
 
             $tipos = $this->modeloTipo->getTipos();
             $estados = $this->modeloEstado->selectEstado();
 
+            $nombre = $this->clearElement($_POST['nombre']);
+            if (empty($nombre)) {
+                $errores[] = "El nombre es obligatorio.";
+            }
+
+            $descripcion = $this->clearElement($_POST['descripcion']);
+            if (empty($descripcion)) {
+                $errores[] = "La descripción es obligatoria.";
+            }
+
+            $precio = $this->clearElement($_POST['precio']);
+            if (empty($precio) || !is_numeric($precio) || $precio <= 0) {
+                $errores[] = "El precio debe ser un número positivo.";
+            }
+
+            $tamano = $this->clearElement($_POST['tamano']);
+            if (empty($tamano)) {
+                $errores[] = "El tamaño es obligatorio.";
+            }
 
             $idTipo = null;
             foreach ($tipos as $tipo) {
@@ -150,10 +220,8 @@ class InstalacionController
             }
 
             if ($idTipo === null) {
-                echo "Error: Tipo no válido.";
-                return;
+                $errores[] = "Tipo no válido.";
             }
-
 
             $idEstado = null;
             foreach ($estados as $estado) {
@@ -164,37 +232,48 @@ class InstalacionController
             }
 
             if ($idEstado === null) {
-                echo "Error: Estado no válido.";
+                $errores[] = "Estado no válido.";
+            }
+
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $fileType = mime_content_type($_FILES['imagen']['tmp_name']);
+                if (!in_array($fileType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                    $errores[] = "Solo se permiten imágenes JPG, PNG y GIF.";
+                }
+            }
+
+            if (count($errores) > 0) {
+                foreach ($errores as $error) {
+                    echo "<p>$error</p>";
+                }
                 return;
             }
 
-
             $instalacion = [
-                'nombre' => $_POST['nombre'],
-                'descripcion' => $_POST['descripcion'],
-                'precio' => $_POST['precio'],
-                'tamano' => $_POST['tamano'],
+                'nombre' => $nombre,
+                'descripcion' => $descripcion,
+                'precio' => $precio,
+                'tamano' => $tamano,
                 'idTipoFK' => $idTipo,
                 'idEstadoFK' => $idEstado,
                 'imagen' => null,
             ];
-
 
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
                 $file = $_FILES['imagen']['tmp_name'];
                 $instalacion['imagen'] = file_get_contents($file);
             }
 
-
             $resultado = $this->model->update($id, $instalacion);
 
             if ($resultado) {
                 header('Location: index.php?c=instalacion&f=index_instalacion');
             } else {
-                echo "Error al registrar la instalación";
+                echo "Error al actualizar la instalación.";
             }
         }
     }
+
 
     public function redirectWithMessage($exito, $exitoMsg, $errMsg, $redirectUrl)
     {
