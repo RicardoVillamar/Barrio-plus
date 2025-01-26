@@ -108,9 +108,9 @@ class PublicacionController
         $publi->setDescripcion(htmlentities($_POST['descripcion']));
         $publi->setIdPrioridad(htmlentities($_POST['prioridad']));
         $publi->setFechaEvento(htmlentities($_POST['fecha_publicacion']));
+        $publi->setIdUsuario(htmlentities($_POST['idUsuario']));
         $notificarAdm = isset($_POST['notificarSoloAdmins'])?1:0; 
         $publi->setNotificarAdmin($notificarAdm);
-        $publi->setIdUsuario(htmlentities($_POST['idUsuario']));
         return $publi;
     }
 
