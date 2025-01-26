@@ -60,7 +60,6 @@ require_once HEADER
                 </select>
             </div>
 
-
             <div>
                 <label for="imagen">Imagen</label>
                 <input type="file" id="imagen" name="imagen" accept="image/*" class="input">

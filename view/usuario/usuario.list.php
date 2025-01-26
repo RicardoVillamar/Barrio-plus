@@ -8,6 +8,9 @@
         <?php if (isset($usuario) && is_array($usuario)): ?>
             <!-- Información del Usuario -->
             <section>
+                <?php if (!empty($usuario['imagen'])): ?>
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($usuario['imagen']); ?>" alt="Imagen" class="imagen-tabla">
+                <?php endif; ?>
                 <h2 class="subtitulos"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></h2>
                 <p class="texto"><?php echo htmlspecialchars($usuario['correo']); ?></p>
                 <p>Datos del usuario</p>
