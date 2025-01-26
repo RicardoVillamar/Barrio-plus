@@ -51,7 +51,7 @@ CREATE TABLE `Instalacion` (
 
 CREATE TABLE `ReservacionHerramienta` (
   `idReservacion` INT PRIMARY KEY AUTO_INCREMENT,
-  `estado` VARCHAR(50) NOT NULL,
+  `idestadoFK` VARCHAR(50) NOT NULL,
   `idHerramientaFK` INT NOT NULL,
   `idUsuarioFK` INT NOT NULL,
   `cantidad` INT NOT NULL,
