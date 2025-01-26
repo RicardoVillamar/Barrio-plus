@@ -67,17 +67,17 @@
         <h2 class="subtitulos">Filtros</h2>
     <section>
         <p class="texto">Estado</p>
-            <select id="estado" name="estado" style="width: 90%; height: 25px; border-radius: 4px">
-                <option value="todos">Todos</option>
-                <?php
-                foreach ($estados as $fila) {
+        <select id="estado" name="estado" style="width: 90%; height: 25px; border-radius: 4px">
+            <option value="todos">Todos</option>
+            <?php
+            foreach ($estados as $fila) {
                 ?>
-                    <option value="<?php echo $fila['idEstado']; ?>"><?php echo $fila['nombre']; ?></option>
+                <option value="<?php echo $fila['idEstado']; ?>"><?php echo $fila['nombre']; ?></option>
                 <?php
                 }
                 ?>
-            </select>
-            <button type="submit" style="margin-top: 10px; padding: 5px 10px;">Buscar</button>
+        </select>
+        <button type="submit" style="margin-top: 10px; padding: 5px 10px;">Buscar</button>
     </section>
     </aside>
 </main>
