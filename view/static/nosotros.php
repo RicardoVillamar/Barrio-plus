@@ -58,7 +58,7 @@
         </figure>
       </section>
 
-      <section style="margin-top: 10px; margin-left: 0px; border-radius: 15px;" class="container">
+      <section style="margin-top: 0px; margin-left: 0px; border-radius: 15px;" class="container">
       <h2 style="margin-top: 20px; margin-bottom: 20px; display:block; width:130px; text-decoration: none;" class="titulos">Integrantes</h2>  
       <section class="row">
           <article class="tarjeta col-md-3">
@@ -154,7 +154,7 @@
         </section>
       </section>
 
-      <section style="margin-top: 10px; border-radius: 15px;" id="historia">
+      <section style="margin-top: 0px; border-radius: 15px;" id="historia">
         <h2 class="titulos">Historia</h2>
         <p class="texto">
           Este proyecto nació de la necesidad de un grupo de vecinos que querían
@@ -168,7 +168,7 @@
         </p>
       </section>
 
-      <section style="margin-top: 10px; border-radius: 15px;" id="mision">
+      <section style="margin-top: 0px; border-radius: 15px;" id="mision">
         <h2 class="titulos">Misión</h2>
         <p class="texto">
           Nuestra visión es construir una comunidad conectada y solidaria donde
@@ -199,7 +199,7 @@
         </div>
       </section>
 
-      <section style="margin-top: 10px; height: 380px; border-radius: 15px;" id="valores">
+      <section style="margin-top: 0px; height: 380px; border-radius: 15px;" id="valores">
         <h2 class="titulos">Valores</h2>
         <div id="listaValores">
           <ul>
@@ -247,7 +247,7 @@
         </div>
       </section>
 
-      <section style="margin-top: 10px; border-radius: 15px;" id="contacto">
+      <section style="margin-top: 0px; border-radius: 15px;" id="contacto">
         <h2 style="margin-bottom: 0px;" class="titulos">Contáctanos</h2>
         <form
           novalidate

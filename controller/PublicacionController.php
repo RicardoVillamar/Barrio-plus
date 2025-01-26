@@ -17,10 +17,19 @@ class PublicacionController
 
     public function index()
     {
-        
-        $resultados = $this->model->selectAll("");
+        if(!isset($_SESSION)){session_start();}
+        if(isset($_SESSION['usuario'])){
+            $usuario = $_SESSION['usuario'];
+            $rol = $usuario['idRolFK']; 
+            $id = $usuario['idUsuario']; 
+            if($rol == 1){
+                $resultados = $this->model->selectAll("");
+            }else if($rol != 1){
+                $resultados = $this->model->selectPublicacionesById($id); 
+            }
         $titulo = "Buscar publicaciones por tipo o prioridad";
         require_once VPUBLICACIONES . "list.php";
+        }
         if (count($resultados) > 0) {
             echo "Publicaciones cargadas correctamente";
         } else {
