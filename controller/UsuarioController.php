@@ -73,14 +73,15 @@ class UsuarioController
     public function new()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $rol = ($_POST['accion'] == 'contribuidor') ? 3 : 2;
+  
 
             $usuario = [
                 'nombre' => $_POST['nombre'],
                 'apellido' => $_POST['apellido'],
                 'correo' => $_POST['email'],
                 'contrasena' => $_POST['contrasena'], // No se utiliza password_hash
-                'rol' => $rol, // Asignar el rol basado en la acción
+                'idRolFK' => isset($_POST['contribuidor']) ? 3 : 2, // Asignar el rol basado en la acción
+                
                 'imagen' => null
             ];
 
@@ -92,10 +93,11 @@ class UsuarioController
             $resultado = $this->model->insert($usuario);
 
             if ($resultado) {
-                require_once 'view/usuario/login.php';
-                exit();
+                
+                header('Location: index.php?c=instalacion&f=index_instalacion');
             } else {
-                echo "Error al registrar el usuario";
+                echo "Error al registrar el usuario ";
+                
             }
         } else {
             $titulo = "Registrar Usuario";
