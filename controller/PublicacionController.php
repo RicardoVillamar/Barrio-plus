@@ -137,7 +137,6 @@ class PublicacionController
             if ($rol == 1){
                 $id = htmlentities($_GET["id"]);
                 $publi = $this->model->selectOne($id);
-                
                 if($publi==null){
                     $_SESSION["mensaje"] = "No se pudo encontrar la publicación a editar";
                     $_SESSION["color"] = "danger";

@@ -33,6 +33,25 @@ class PublicacionDAO
         }
     }
 
+    public function selectOne($id)
+    {
+        try {
+            $sql = "select * from publicacion p 
+            JOIN usuario u on p.idUsuarioFK = u.idUsuario
+            JOIN tipopublicacion tp on p.idTipoFK = tp.idTipo
+            JOIN prioridad prio on p.idPrioridadFK = prio.idPrioridad
+            where p.idPubli=:id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $res;
+        } catch (PDOException $er) {
+            error_log("Error en selectOne de PublicacionDAO " . $er->getMessage());
+            return null;
+        }
+    } 
+
     public function selectPublicacionesById($id)
     {
         try {
