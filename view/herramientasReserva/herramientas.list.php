@@ -8,11 +8,14 @@
                 <a href="index.php?c=herramienta&f=index">Ingresar Herramienta</a>
             </div>
             <div class="buscar">
-                <label for="buscar-barra" class="texto" style="font-weight: bold">Buscar</label>
-                <input placeholder="Nombre de la Herramienta" type="text" id="buscar-barra"
+                <form action="index.php?c=herramienta&f=searchReserva" method="POST">>
+                    <label for="buscar-barra" class="texto" style="font-weight: bold">Buscar</label>
+                    <input placeholder="Nombre de la Herramienta" type="text" id="buscar-barra"
                     style=" padding: 0 10px; padding-right: 30px; margin: 10px; border-radius: 4px; border: 1px solid rgba(0, 0, 0, 0.1);
                     height: 30px;" />
+                </form>
             </div>
+
 
         </section>
         <section

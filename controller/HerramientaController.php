@@ -168,6 +168,13 @@ class HerramientaController
         require_once VHERRAMIENTAS . 'list.php';
     }
 
+    public function searchReserva(){
+        $parametro = htmlentities($_POST['b'] ?? "");
+        $resultado = $this->model->buscar($parametro);
+        $titulo = "Buscar herramientas";
+        require_once VHERRAMIENTASRESERVA . 'list.php';
+    }
+
     //Registro de Reserva de Herramienta
     public function reservarHerramienta(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
