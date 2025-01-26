@@ -149,10 +149,10 @@ class InstalacionController
             }
 
             if (count($errores) > 0) {
-                foreach ($errores as $error) {
-                    echo "<p>$error</p>";
-                }
-                echo '<button onclick="window.history.back()">Volver</button>';
+                echo "<script>";
+                echo "alert('" . implode("\\n", $errores) . "');";
+                echo "window.history.back();";
+                echo "</script>";
                 return;
             }
 
@@ -180,6 +180,7 @@ class InstalacionController
             }
         }
     }
+
 
 
     public function edit()
@@ -244,10 +245,10 @@ class InstalacionController
             }
 
             if (count($errores) > 0) {
-                foreach ($errores as $error) {
-                    echo "<p>$error</p>";
-                }
-                echo '<button onclick="window.history.back()">Volver</button>';
+                echo "<script>";
+                echo "alert('" . implode("\\n", $errores) . "');";
+                echo "window.history.back();";
+                echo "</script>";
                 return;
             }
 
@@ -274,15 +275,6 @@ class InstalacionController
                 echo "Error al actualizar la instalación.";
             }
         }
-    }
-
-
-    public function redirectWithMessage($exito, $exitoMsg, $errMsg, $redirectUrl)
-    {
-        if (!isset($_SESSION)) session_start();
-        $_SESSION['mensaje'] = ($exito) ? $exitoMsg : $errMsg;
-        $_SESSION['color'] = ($exito) ? 'primary' : 'danger';
-        header("Location: $redirectUrl");
     }
 
     public function reservarInstalacion()
@@ -339,10 +331,10 @@ class InstalacionController
             }
 
             if (count($errores) > 0) {
-                foreach ($errores as $error) {
-                    echo "<p>$error</p>";
-                }
-                echo '<button onclick="window.history.back()">Volver</button>';
+                echo "<script>";
+                echo "alert('" . implode("\\n", $errores) . "');";
+                echo "window.history.back();";
+                echo "</script>";
                 return;
             }
 
