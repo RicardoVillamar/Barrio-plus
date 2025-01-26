@@ -279,13 +279,11 @@ class HerramientaController
             ];
     
             $resultado = $this->model->insert_Reserva($reserva);
-    
+
             if ($resultado) {
-                $this->redirectWithMessage(true, 'Reserva realizada con éxito', '', 
-                'index.php?c=herramienta&f=index_Herramienta');
+                    header('Location: index.php?c=herramienta&f=index_Herramienta');
             } else {
-                $this->redirectWithMessage(false, '', 'Error al realizar la reserva', 
-                'index.php?c=herramienta&f=index_Herramienta');
+                echo "Error al realizar la reserva";
             }
         }
     }
