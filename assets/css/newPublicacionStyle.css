@@ -31,11 +31,6 @@
     margin-top: 20px;
   }
 
-  label[for="soloAdmins"] {
-    display: inline-block;
-    font-size: 0.8rem;
-  }
-
   .publicaciones {
     display: flex;
     justify-content: space-between;

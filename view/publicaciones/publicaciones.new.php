@@ -60,13 +60,13 @@
 
     <input type="hidden" name="idUsuario" id="idUsu" 
       value="<?php echo $idUsu = $usuario['idUsuario']; ?>"/>
-          
+    
     <div class="campoCheckbox">
       <input
         type="checkbox"
         id="soloAdmins"
         name="notificarSoloAdmins"
-        value="Solo administradores">
+      >
       <label for="soloAdmins">Notificar solo a los administradores</label>
     </div>
 
