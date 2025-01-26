@@ -50,12 +50,19 @@
       <label>Seleccione la prioridad de la publicación: </label
       ><br>
       <div class="grupoRadio">
-        <?php foreach ($prioridades as $prio) { ?>
+        <?php foreach ($prioridades as $prio) { 
+          $checked = "";
+          if($prio["idPrioridad"] == $publi["idPrioridadFK"]){
+            $checked = 'checked = "checked"';
+          }  
+        ?>
           <input 
             type="radio" 
             id="prioridad_<?php echo $prio["idPrioridad"]?>" 
             name="prioridad" 
-            value="<?php echo $prio["idPrioridad"]?>">
+            value="<?php echo $prio["idPrioridad"]?>"
+            <?php echo $checked ?>
+            >
           <label for="prioridad_<?php echo $prio["idPrioridad"]?>"><?php echo $prio["nivel"]?></label>
         <?php } ?>
       </div>
