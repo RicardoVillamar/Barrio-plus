@@ -132,7 +132,15 @@
 
     <section id="publicacionesRecientes">
       <h3 style="background-color: #f0f4f8">Publicaciones Recientes</h3>
-      <a style="margin-bottom: 18px;" class="boton-mediano" href="index.php?c=publicacion&f=index">Ver todas las publicaciones</a>
+      <a style="margin-bottom: 18px;" class="boton-mediano" href="
+      <?php
+        if (!isset($_SESSION['usuario'])) {
+          echo "index.php?c=usuario&f=login";
+        }else{
+          echo "index.php?c=publicacion&f=index";
+        }
+      ?>
+      ">Ver todas las publicaciones</a>
       <?php 
           foreach($publicaciones as $publ){
       ?>

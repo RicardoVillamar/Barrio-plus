@@ -80,12 +80,12 @@ class PublicacionDAO
             fechaEvento=:fech, notificarAdmin=:notif, idUsuarioFK=:idUsu where idPubli=:id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":tit", $publicacion->getTitulo(), PDO::PARAM_STR);
-            $stmt->bindParam(":tip", $publicacion->getTipo(), PDO::PARAM_INT);
+            $stmt->bindParam(":tip", $publicacion->getIdTipo(), PDO::PARAM_INT);
             $stmt->bindParam(":descrip", $publicacion->getDescripcion(), PDO::PARAM_STR);
-            $stmt->bindParam(":pri", $publicacion->getPrioridad(), PDO::PARAM_INT);
+            $stmt->bindParam(":pri", $publicacion->getIdPrioridad(), PDO::PARAM_INT);
             $stmt->bindParam(":fech", $publicacion->getFechaEvento(), PDO::PARAM_STR);
             $stmt->bindParam(":notif", $publicacion->getNotificarAdmin(), PDO::PARAM_INT);
-            $stmt->bindParam(":idUsu", $publicacion->getIdUsu(), PDO::PARAM_INT);
+            $stmt->bindParam(":idUsu", $publicacion->getIdUsuario(), PDO::PARAM_INT);
             $stmt->bindParam(":id", $publicacion->getId(), PDO::PARAM_INT);
             $res = $stmt->execute();
             return $res;

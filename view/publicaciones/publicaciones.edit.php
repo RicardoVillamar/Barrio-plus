@@ -50,12 +50,14 @@
       <label>Seleccione la prioridad de la publicación: </label
       ><br>
       <div class="grupoRadio">
-        <input type="radio" id="alta" name="prioridad" value="alta">
-        <label for="alta">Alta</label>
-        <input type="radio" id="media" name="prioridad" value="media">
-        <label for="media">Media</label>
-        <input type="radio" id="baja" name="prioridad" value="baja">
-        <label for="baja">Baja</label>
+        <?php foreach ($prioridades as $prio) { ?>
+          <input 
+            type="radio" 
+            id="prioridad_<?php echo $prio["idPrioridad"]?>" 
+            name="prioridad" 
+            value="<?php echo $prio["idPrioridad"]?>">
+          <label for="prioridad_<?php echo $prio["idPrioridad"]?>"><?php echo $prio["nivel"]?></label>
+        <?php } ?>
       </div>
 
       <div class="campoFechaPublicacion">

@@ -158,7 +158,7 @@ class PublicacionController
             header("Location: index.php?c=publicacion&f=index");
         }
         $publi = $this->populate();
-        $exito = $this->$model->update($publi);
+        $exito = $this->model->update($publi);
         $this->redirectWithMessage($exito, "Publicacion actualizada exitosamente", 
         "No se pudo realizar la actualización", "index.php?c=publicacion&f=index");
     }
