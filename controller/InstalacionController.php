@@ -41,10 +41,33 @@ class InstalacionController
         require_once VINSTALACIONRESERVA . 'new.php';
     }
 
+
+    public function searchReservas()
+    {
+        $nombre = htmlentities($_POST['buscar'] ?? "");
+        $resultados = $this->model->searchNombre($nombre);
+        $tipos = $this->modeloTipo->getTipos();
+        $estados = $this->modeloEstado->selectEstado();
+
+        $titulo = 'Instalaciones registradas';
+
+        require_once VINSTALACIONRESERVA . 'list.php';
+    }
+
     //instalaciones
     public function index_instalacion()
     {
         $resultados = $this->model->selectAll();
+
+        $titulo = 'Instalaciones registradas';
+
+        require_once VINSTALACION . 'list.php';
+    }
+
+    public function search()
+    {
+        $nombre = htmlentities($_POST['buscar'] ?? "");
+        $resultados = $this->model->searchNombre($nombre);
 
         $titulo = 'Instalaciones registradas';
 

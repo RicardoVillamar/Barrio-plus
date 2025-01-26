@@ -18,19 +18,21 @@ require_once HEADER
                 style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%">
 
                 <div class="buscar">
-                    <input
-                        placeholder="Nombre de la instalación"
-                        type="text"
-                        id="buscar-barra"
-                        style="
-                padding: 0 10px;
-                padding-right: 30px;
-                margin: 10px;
-                border-radius: 4px;
-                border: 1px solid rgba(0, 0, 0, 0.1);
-                height: 30px;
-                " />
-                    <a for="buscar-barra" class="boton-mediano" style="font-weight: bold">Buscar</a>
+                    <form action="index.php?c=instalacion&f=search" method="post" style="display: flex; align-items: center;">
+
+                        <input
+                            name="buscar"
+                            placeholder="Nombre de la instalación"
+                            type="text"
+                            style="padding: 20px 20px;
+                                    padding-right: 30px;
+                                    margin: 10px;
+                                    border-radius: 8px;
+                                    border: 1px solid rgba(0, 0, 0, 0.1);
+                                    height: 30px;"
+                            id="buscar-barra" />
+                        <button type="submit" for="buscar-barra" class="boton-mediano" style="font-weight: bold;">Buscar</button>
+                    </form>
                 </div>
 
                 <a class="boton-mediano reserva"

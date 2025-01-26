@@ -67,7 +67,33 @@ class InstalacionesDAO
         }
     }
 
+    public function searchNombre($nombre = '')
+    {
+        try {
+            $sql = 'select 
+            i.idInstalacion, 
+            i.nombre AS nombre_instalacion, 
+            i.descripcion, 
+            i.precio, 
+            i.tamano,
+            i.imagen, 
+            t.nombre AS tipo_nombre,         
+            e.nombre AS estado_nombre
+            FROM Instalacion i 
+            JOIN Tipo t ON i.idTipoFK = t.idTipo 
+            JOIN Estado e ON i.idEstadoFK = e.idEstado
+            WHERE i.nombre LIKE :nombre';
 
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindValue(':nombre', '%' . $nombre . '%', PDO::PARAM_STR);
+            $stmt->execute();
+            $respuesta = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $respuesta;
+        } catch (PDOException $error) {
+            error_log('Error en searchNombre de InstalacionesDAO ' . $error->getMessage());
+            return [];
+        }
+    }
 
     public function insert($instalacion)
     {
