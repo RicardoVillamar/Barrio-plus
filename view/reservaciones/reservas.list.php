@@ -1,4 +1,3 @@
-
 <!-- Autor: Larrea Rosales Alejandro Sebastian -->
 <?php
 $titulo = "Administrar Reservaciones";

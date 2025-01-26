@@ -52,7 +52,7 @@ CREATE TABLE `Instalacion` (
 
 CREATE TABLE `ReservacionHerramienta` (
   `idReservacion` INT PRIMARY KEY AUTO_INCREMENT,
-  `idestadoFK` VARCHAR(50) NOT NULL,
+  `idEstadoFK` INT NOT NULL,
   `idHerramientaFK` INT NOT NULL,
   `idUsuarioFK` INT NOT NULL,
   `cantidad` INT NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `ReservacionHerramienta` (
 
 CREATE TABLE `ReservacionInstalacion` (
   `idReservacion` INT PRIMARY KEY AUTO_INCREMENT,
-  `estado` VARCHAR(50) NOT NULL,
+  `idEstadoFK` INT NOT NULL,
   `idInstalacionFK` INT NOT NULL,
   `idUsuarioFK` INT NOT NULL,
   `fechaInicio` DATE NOT NULL,
@@ -111,15 +111,61 @@ ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `Tipo` (`idTip
 ALTER TABLE `Instalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
 ALTER TABLE `ReservacionHerramienta` ADD FOREIGN KEY (`idHerramientaFK`) REFERENCES `Herramienta` (`idHerramienta`);
 ALTER TABLE `ReservacionHerramienta` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+ALTER TABLE `ReservacionHerramienta` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
 ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idInstalacionFK`) REFERENCES `Instalacion` (`idInstalacion`);
 ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
+ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `TipoPublicacion` (`idTipo`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idPrioridadFK`) REFERENCES `Prioridad` (`idPrioridad`);
 
-ALTER TABLE `ReservacionInstalacion` DROP COLUMN `estado`;
-ALTER TABLE `ReservacionInstalacion` ADD COLUMN `idEstadoFK` INT NOT NULL;
-ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `Estado` (`idEstado`);
+
+DELIMITER $$
+
+CREATE TRIGGER `before_insert_reservacioninstalacion`
+AFTER INSERT ON `ReservacionInstalacion`
+FOR EACH ROW
+BEGIN
+    UPDATE `Instalacion`
+    SET `idEstadoFK` = (SELECT `idEstado` FROM `Estado` WHERE `nombre` = 'Ocupado')
+    WHERE `idInstalacion` = NEW.`idInstalacionFK`;
+END$$
+
+CREATE TRIGGER `after_delete_reservacioninstalacion`
+AFTER DELETE ON `ReservacionInstalacion`
+FOR EACH ROW
+BEGIN
+    UPDATE `Instalacion`
+    SET `idEstadoFK` = (SELECT `idEstado` FROM `Estado` WHERE `nombre` = 'Libre')
+    WHERE `idInstalacion` = OLD.`idInstalacionFK`;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER `before_insert_reservacionherramienta`
+AFTER INSERT ON `ReservacionHerramienta`
+FOR EACH ROW
+BEGIN
+    UPDATE `Herramienta`
+    SET `idEstadoFK` = (SELECT `idEstado` FROM `Estado` WHERE `nombre` = 'Ocupado')
+    WHERE `idHerramienta` = NEW.`idHerramientaFK`;
+END$$
+
+CREATE TRIGGER `after_delete_reservacionherramienta`
+AFTER DELETE ON `ReservacionHerramienta`
+FOR EACH ROW
+BEGIN
+    UPDATE `Herramienta`
+    SET `idEstadoFK` = (SELECT `idEstado` FROM `Estado` WHERE `nombre` = 'Libre')
+    WHERE `idHerramienta` = OLD.`idHerramientaFK`;
+END$$
+
+DELIMITER ;
+
+
 
 INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
 INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
