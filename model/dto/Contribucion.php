@@ -1,7 +1,7 @@
 <?php
 //Autor: Freire Chavez Jose Andres
 class Contribucion{
-    private $id, $estado, $idHerramienta, $idInstalacion, $idUsuario;
+    private $id, $idEstado, $idHerramienta, $idInstalacion, $idUsuario;
     
     function __construct(){
         
@@ -11,8 +11,8 @@ class Contribucion{
         return $this->id;
     }
 
-    function getEstado(){
-        return $this->estado;
+    function getIdEstado(){
+        return $this->idEstado;
     }
 
     function getIdHerramienta(){
@@ -31,8 +31,8 @@ class Contribucion{
         $this->id = $id;
     }
 
-    function setEstado($estado){
-        $this->estado = $estado;
+    function setIdEstado($idEst){
+        $this->idEstado = $idEst;
     }
 
     function setIdHerramienta($idHerra){

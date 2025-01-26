@@ -16,6 +16,7 @@ class ContribucionDAO
         try {
             $sql = "select * from contribucion c
             JOIN usuario u on c.idUsuarioFK = u.idUsuario
+            JOIN estadocontribucion ec on c.idEstadoContribucionFK = ec.idEstadoContribucion
             LEFT JOIN herramienta h on c.idHerramientaFK = h.idHerramienta
             LEFT JOIN instalacion i on c.idInstalacionFK = i.idInstalacion
             where h.nombre LIKE :nombH or i.nombre LIKE :nombI";
@@ -37,6 +38,7 @@ class ContribucionDAO
         try {
             $sql = "select * from contribucion c
             JOIN usuario u on c.idUsuarioFK = u.idUsuario
+            JOIN estadocontribucion ec on c.idEstadoContribucionFK = ec.idEstadoContribucions
             LEFT JOIN herramienta h on c.idHerramientaFK = h.idHerramienta
             LEFT JOIN instalacion i on c.idInstalacionFK = i.idInstalacion
             where c.idContribucion=:id";
@@ -55,10 +57,10 @@ class ContribucionDAO
     public function insert($contribucion)
     {
         try {
-            $sql = "insert into contribucion (estado, idHerramientaFK, idInstalacionFK, idUsuarioFK)
-            values(:est, :idHerr, :idIns, :idUsu)";
+            $sql = "insert into contribucion (idEstadoContribucionFK, idHerramientaFK, 
+            idInstalacionFK, idUsuarioFK) values(:idEst, :idHerr, :idIns, :idUsu)";
             $stmt = $this->con->prepare($sql);
-            $stmt->bindParam(":est", $contribucion->getEstado(), PDO::PARAM_INT);
+            $stmt->bindParam(":idEst", $contribucion->getIdEstado(), PDO::PARAM_INT);
             $stmt->bindParam(":idHerr", $contribucion->getIdHerramienta(), PDO::PARAM_INT);
             $stmt->bindParam(":idIns", $contribucion->getIdInstalacion(), PDO::PARAM_INT);
             $stmt->bindParam(":idUsu", $contribucion->getIdUsuario(), PDO::PARAM_INT);

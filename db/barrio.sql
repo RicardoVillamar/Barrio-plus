@@ -95,12 +95,18 @@ CREATE TABLE Publicacion (
   `idUsuarioFK` INT NOT NULL
 );
 
+CREATE TABLE `EstadoContribucion` (
+  `idEstadoContribucion` INT PRIMARY KEY AUTO_INCREMENT,
+  `nombreEstado` VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE `Contribucion` (
   `idContribucion` INT PRIMARY KEY AUTO_INCREMENT,
-  `estado` VARCHAR(50) NOT NULL,
+  `idEstadoContribucionFK` INT NOT NULL,
   `idHerramientaFK` INT,
   `idInstalacionFK` INT,
   `idUsuarioFK` INT NOT NULL,
+  FOREIGN KEY (`idEstadoContribucionFK`) REFERENCES `EstadoContribucion` (`idEstadoContribucion`),
   FOREIGN KEY (`idHerramientaFK`) REFERENCES `Herramienta` (`idHerramienta`),
   FOREIGN KEY (`idInstalacionFK`) REFERENCES `Instalacion` (`idInstalacion`)
 );
@@ -118,7 +124,6 @@ ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `TipoPublicacion` (`idTipo`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idPrioridadFK`) REFERENCES `Prioridad` (`idPrioridad`);
-
 
 DELIMITER $$
 
@@ -170,6 +175,7 @@ DELIMITER ;
 INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
 INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
 INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
+INSERT INTO `EstadoContribucion` (`nombreEstado`) VALUES ('En espera'), ('Aprobado');
 
 
 INSERT INTO `Prioridad` (`nivel`) VALUES ('Alta'), ('Media'), ('Baja');

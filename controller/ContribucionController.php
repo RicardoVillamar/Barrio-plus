@@ -4,6 +4,7 @@ require_once 'model/dto/Contribucion.php';
 require_once 'model/dao/ContribucionDAO.php';
 require_once 'model/dao/HerramientaDAO.php';
 require_once 'model/dao/InstalacionDAO.php';
+require_once 'model/dao/EstadoContribucionDAO.php';
 
 class ContribucionController
 {
@@ -41,6 +42,8 @@ class ContribucionController
         $instalaciones = $modeloInstalaciones->selectAll("");
         $modeloHerramientas = new HerramientaDAO();
         $herramientas = $modeloHerramientas->selectAll("");
+        $modeloEstadoContri = new EstadoContribucionDAO();
+        $estadosContrib = $modeloEstadoContri->selectEstadoContribucion("");
         $titulo = "Nueva contribución";
         require_once VCONTRIBUCIONES . "new.php";
     }
