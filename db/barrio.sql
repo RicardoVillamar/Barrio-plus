@@ -205,7 +205,7 @@ VALUES
 ('Aula de capacitación', 'Aula equipada para talleres educativos', 100.00, '20x15 metros', 2, 1, NULL),
 ('Salón de eventos', 'Espacio para reuniones y eventos sociales', 300.00, '50x30 metros', 3, 2, NULL),
 ('Taller de carpintería', 'Espacio con herramientas para trabajos en madera', 150.00, '25x20 metros', 4, 1, NULL),
-('Cancha de tenis', 'Cancha adecuada para practicar tenis', 180.00, '20x40 metros', 1, 2, NULL);
+('Cancha de tenis', 'Cancha adecuada para practicar tenis', 180.00, '20x40 metros', 1, 1, NULL);
 
 INSERT INTO `Herramienta` (`nombre`, `descripcion`, `precio`, `imagen`, `fechaRegistro`, `idEstadoFK`, `mantenimiento`, `cantidad`) 
 VALUES 
