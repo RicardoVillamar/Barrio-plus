@@ -43,6 +43,7 @@
             cursor: pointer;
         }
     </style>
+    <? require_once HEADER; ?>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
         <form action="index.php?c=usuario&f=login" method="POST">
@@ -57,3 +58,4 @@
             
         </form>
     </div>
+<? require_once FOOTER; ?>

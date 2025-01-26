@@ -144,7 +144,13 @@ public function selectReservasHerramientasByUserId($userId)
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
+    public function getRoleById($userId) {
+        $query = "SELECT idRolFK FROM usuario WHERE id = :userId";
+        $stmt = $this->con->prepare($query);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 
     public function delete($id)
     {

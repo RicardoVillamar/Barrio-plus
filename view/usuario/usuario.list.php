@@ -73,6 +73,7 @@
                                 <th>Fecha de Inicio</th>
                                 <th>Fecha de Fin</th>
                                 <th>Cantidad</th>
+                                <th>Acciobes</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,6 +83,8 @@
                                     <td><?php echo htmlspecialchars($reserva['FechaInicio'] ?? ''); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaFin'] ?? ''); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
+                                    <td>
+                                        <button onclick="window.location.href='index.php?c=usuario&f=cancelarReserva&id=<?php echo $reserva['idReserva'] ?? ''; ?>'">Cancelar</button>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
