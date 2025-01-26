@@ -114,13 +114,14 @@ public function selectReservasHerramientasByUserId($userId)
     public function update($usuario)
     {
         try {
-            $sql = "UPDATE usuario SET nombre=:nom, apellido=:ape, correo=:cor, contrasena=:con,imagen=imagen WHERE idUsuario=:id";
+            $sql = "UPDATE usuario SET nombre=:nom, apellido=:ape, correo=:cor, contrasena=:con, idRolFK=:rol WHERE idUsuario=:id";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(":nom", $usuario['nombre'], PDO::PARAM_STR);
             $stmt->bindParam(":ape", $usuario['apellido'], PDO::PARAM_STR);
             $stmt->bindParam(":cor", $usuario['correo'], PDO::PARAM_STR);
             $stmt->bindParam(":con", $usuario['contrasena'], PDO::PARAM_STR);
-            $stmt->bindParam(':imagen', $usuario['imagen'], PDO::PARAM_LOB);
+            $stmt->bindParam(":rol", $usuario['idRolFK'], PDO::PARAM_INT);
+         //   $stmt->bindParam(':imagen', $usuario['imagen'], PDO::PARAM_LOB);
             $stmt->bindParam(":id", $usuario['idUsuario'], PDO::PARAM_INT);
             $stmt->execute();
             return true;
