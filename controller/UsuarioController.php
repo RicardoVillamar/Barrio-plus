@@ -186,6 +186,21 @@ class UsuarioController
         header("Location: index.php?c=usuario&f=login");
         exit();
     }
+
+    public function buscarReservasPorHerramienta() {
+        if (isset($_GET['query'])) {
+            if (!isset($_SESSION)) session_start();
+            $usuario = $_SESSION['usuario'];
+            $idUsuario = $usuario['idUsuario'];
+            $query = $_GET['query'];
+            $resultados = $this->model->buscarReservasPorHerramienta($idUsuario, $query);
+            require_once 'view/usuario/usuario.list.php';
+        } else {
+            // Manejar el caso donde no hay query
+            $resultados = [];
+            require_once 'view/usuario/usuario.list.php';
+        }
+    }
 }
 
 ?>

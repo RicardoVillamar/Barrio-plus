@@ -127,6 +127,22 @@ public function selectReservasHerramientasByUserId($userId)
             return false;
         }
     }
+    
+    public function buscarReservasPorHerramienta($idUsuario, $nombreHerramienta) {
+        $sql = "SELECT rh.*, h.nombre 
+                FROM ReservacionHerramienta rh
+                JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
+                WHERE rh.idUsuarioFK = :idUsuario 
+                AND h.nombre LIKE :nombreHerramienta";
+    
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
+        $stmt->bindValue(':nombreHerramienta', '%' . $nombreHerramienta . '%', PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 
     public function delete($id)
     {
