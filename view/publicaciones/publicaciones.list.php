@@ -5,7 +5,6 @@
        $usuario = $_SESSION['usuario'];
        $rol = $usuario['idRolFK']; 
    }
-   echo $rol;
 ?>
 <?php require_once HEADER; ?>
     <section id="buscarFormPublicaciones">
