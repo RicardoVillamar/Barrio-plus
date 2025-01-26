@@ -174,6 +174,7 @@ class HerramientaController
             $reserva = [
                 'idestadoFK' => 2,
                 'idHerramientaFK' => $_POST['idHerramienta'],
+                // 'idUsuarioFK' => $_SESSION['idUsuario'],
                 'idUsuarioFK' => 1,
                 'cantidad' => $_POST['cantidad'],
                 'fechaInicio' => $_POST['fechaInicio'],
