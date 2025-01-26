@@ -1,7 +1,7 @@
 <!--Autor:Palacios Herdoiza Roitman Andres-->
 <?php 
 class Usuario{
-    private $id, $nombre, $apellido, $correo, $contrasena, $rol;
+    private $id, $nombre, $apellido, $correo, $contrasena, $rol, $imagen;
 
     function __construct() {
         
@@ -31,6 +31,9 @@ class Usuario{
     function getrol() {
         return $this->rol;
     }
+    function getImagen() {
+        return $this->imagen;
+    }
     //  setter
    function setId($id) {
         $this->id = $id;
@@ -54,6 +57,9 @@ class Usuario{
      
     function setRol($rol) {
         $this->rol = $rol;
+    }
+    function setImagen($imagen) {
+        $this->imagen = $imagen;
     }
   
     public function __set($atributo, $valor) {

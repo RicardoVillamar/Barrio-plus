@@ -80,16 +80,26 @@ class UsuarioController
                 'apellido' => $_POST['apellido'],
                 'correo' => $_POST['email'],
                 'contrasena' => $_POST['contrasena'], // No se utiliza password_hash
-                'rol' => $rol // Asignar el rol basado en la acción
+                'rol' => $rol, // Asignar el rol basado en la acción
+                'imagen' => null
             ];
 
-            $this->model->insert($usuario);
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['imagen']['tmp_name'];
+                $usuario['imagen'] = file_get_contents($file);
+            }
 
-            require_once 'view/usuario/login.php';
-            exit();
+            $resultado = $this->model->insert($usuario);
+
+            if ($resultado) {
+                require_once 'view/usuario/login.php';
+                exit();
+            } else {
+                echo "Error al registrar el usuario";
+            }
         } else {
             $titulo = "Registrar Usuario";
-            require_once 'view/usuario/usuario.new.php';
+            require_once VUSUARIOS.'.new.php';
         }
     }
 
@@ -148,9 +158,13 @@ class UsuarioController
                 'nombre' => $_POST['nombre'],
                 'apellido' => $_POST['apellido'],
                 'correo' => $_POST['correo'],
-                'contrasena' => $_POST['contrasena']
+                'contrasena' => $_POST['contrasena'],
+                'imagen' => null
             ];
-
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['imagen']['tmp_name'];
+                $instalacion['imagen'] = file_get_contents($file);
+            }
             $this->model->update($usuario);
 
             require_once 'view/usuario/login.php';
