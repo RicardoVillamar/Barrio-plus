@@ -265,6 +265,7 @@ class HerramientaController
     {
         $parametro = htmlentities($_POST['b'] ?? "");
         $resultado = $this->model->buscar($parametro);
+        $estados = $this->modeloEstado->selectEstado();
         $titulo = "Buscar herramientas";
         require_once VHERRAMIENTASRESERVA . 'list.php';
     }
