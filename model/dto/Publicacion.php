@@ -1,5 +1,5 @@
-<!-- Autor: Freire Chavez Jose Andres -->
 <?php
+//Autor: Freire Chavez Jose Andres
 class Publicacion{
     private $id, $titulo, $idTipo, $descripcion, $idPrioridad, $fechaEvento,
     $notificarAdmin, $idUsuario;

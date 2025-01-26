@@ -1,5 +1,5 @@
-<!-- Autor: Freire Chavez Jose Andres -->
 <?php
+//Autor: Freire Chavez Jose Andres
 require_once 'config/Conexion.php';
 
 class PublicacionDAO
