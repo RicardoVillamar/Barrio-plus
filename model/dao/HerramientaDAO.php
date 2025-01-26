@@ -179,7 +179,7 @@ class HerramientaDAO
     //Insertar una nueva Reserva
     public function insert_Reserva($reserva){
     try {
-        $sql = 'INSERT INTO ReservacionHerramienta 
+        $sql = 'INSERT INTO ReservacionHerramienta
                 (idEstadoFK, idHerramientaFK, idUsuarioFK, cantidad, fechaInicio, fechaFin, proposito, capacitacion) 
                 VALUES 
                 (:idEstadoFK, :idHerramientaFK, :idUsuarioFK, :cantidad, :fechaInicio, :fechaFin, :proposito, :capacitacion)';
