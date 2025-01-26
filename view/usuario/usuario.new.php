@@ -24,13 +24,14 @@
         <input type="email" id="correo" name="email" placeholder="Ingrese su correo" >
     </div>
     <div>
-        <label for="imagen">Imagen de perfil:</label>
-        <input type="file" name="imagen" id="imagen">
-    </div>
-    <div>
         <label for="contrasena">Contraseña:</label><br>
         <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" >
     </div>
+    <div>
+        <label for="imagen">Imagen de perfil:</label>
+        <input type="file" name="imagen" id="imagen">
+    </div>
+
 
     <div>
         <label for="contribuidor">Desea ser Contribuidor:</label>

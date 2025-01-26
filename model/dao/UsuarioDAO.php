@@ -94,13 +94,13 @@ public function selectReservasHerramientasByUserId($userId)
     public function insert($usuario)
     {
         try {
-            $sql = "INSERT INTO usuarios (nombre, apellido, correo, contrasena, idRolFK, imagen) VALUES (:nombre, :apellido, :correo, :contrasena, :rol, :imagen)";
+            $sql = "INSERT INTO usuario (nombre, apellido, correo, contrasena, idRolFK, imagen) VALUES (:nombre, :apellido, :correo, :contrasena, :idRolFK, :imagen)";
             $stmt = $this->con->prepare($sql);
             $stmt->bindParam(':nombre', $usuario['nombre'], PDO::PARAM_STR);
             $stmt->bindParam(':apellido', $usuario['apellido'], PDO::PARAM_STR);
             $stmt->bindParam(':correo', $usuario['correo'], PDO::PARAM_STR);
             $stmt->bindParam(':contrasena', $usuario['contrasena'], PDO::PARAM_STR);
-            $stmt->bindParam(':rol', $usuario['rol'], PDO::PARAM_INT);
+            $stmt->bindParam(':idRolFK', $usuario['idRolFK'], PDO::PARAM_INT);
             $stmt->bindParam(':imagen', $usuario['imagen'], PDO::PARAM_LOB);
             $stmt->execute();
             return true;
