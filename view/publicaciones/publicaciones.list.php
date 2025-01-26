@@ -7,8 +7,8 @@
    }
 ?>
 <?php require_once HEADER; ?>
-    <section id="buscarFormPublicaciones">
-    <h4 class="titulos"><?php echo $titulo ?></h4>
+    <section style="height: 130px;" id="buscarFormPublicaciones">
+    <h4 style="margin-left: 0px;" class="titulos"><?php echo $titulo ?></h4>
         <form action="index.php?c=publicacion&f=search" method="POST">
             <input type="text" name="buscar" id="buscarPublicaciones">
             <input type="submit" value="Buscar" class="btn" id="btnBuscar">

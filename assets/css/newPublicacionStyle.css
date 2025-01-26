@@ -46,7 +46,7 @@
   }
 
   .campoDescripcion textarea {
-    width: 80%;
+    width: 84%;
     height: 100px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -82,7 +82,7 @@
   .campoNombre input,
   .campoTelefono input,
   .campoCorreo input {
-    width: 80%;
+    width: 84%;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -103,7 +103,7 @@
   }
 
   .campoFechaPublicacion input {
-    width: 80%;
+    width: 84%;
     padding: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -132,7 +132,7 @@
   .grupoBotonesPubli {
     display: flex;
     flex-direction: row;
-    gap: 0px 50px;
+    gap: 40px;
   }
 
   .grupoRadioPriori {
@@ -151,11 +151,6 @@
     font-size: 16px; 
   }
   
-  .grupoBotones button {
-    width: 30%;
-    margin-top: 20px;
-  }
-
   .error {
     display: block;
     margin-top: 3px;

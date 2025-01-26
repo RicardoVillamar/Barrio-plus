@@ -9,7 +9,7 @@
     style="margin-top: 30px;"
     >
     
-    <h2 class="subtitulos">Información de la publicación</h2>
+    <h2 style="margin-bottom: 10px;" class="subtitulos">Información de la publicación</h2>
     <div class="tituloPublicacion">
       <label for="titulo_publicacion">Título de la publicación:</label><br>
       <input
@@ -63,7 +63,7 @@
     <input type="hidden" name="idUsuario" id="idUsu" 
       value="<?php echo $idUsu = $usuario['idUsuario']; ?>"/>
     
-    <div class="campoCheckbox">
+    <div style="margin-bottom:20px;" class="campoCheckbox">
       <input
         style="margin-left:0px; width: 30px;"
         type="checkbox"
@@ -73,16 +73,16 @@
       <label style="margin-left:10px;" for="soloAdmins">Notificar solo a los administradores</label>
     </div>
 
-    <div style="width:70%;"class="grupoBotonesPubli">
+    <div class="grupoBotonesPubli">
       <button
-        style="font-size: 0.8rem"
+        style="font-size: 0.8rem;  width: 38%; border-radius: 10px;"
         type="submit"
         class="boton-pequenio">
         Guardar
       </button>
 
       <a href="index.php?c=publicacion&f=index"
-        style="font-size: 0.8rem;"
+        style="font-size: 0.8rem;  width: 38%; border-radius: 10px;"
         class="boton-pequenio">
         Cancelar
       </a>
