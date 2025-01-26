@@ -129,21 +129,30 @@
     margin-bottom: 10px;
   }
 
-  .grupoBotones {
+  .grupoBotonesPubli {
     display: flex;
     flex-direction: row;
-    gap: 0px 40px;
+    gap: 0px 50px;
   }
 
-  .grupoRadio {
-    display: flex;
-    flex-direction: row;
-    gap: 0px 25px;
-    margin-bottom: 15px;
+  .grupoRadioPriori {
+    display: flex; 
+    gap: 20px; 
+    align-items: center; 
   }
-
+  
+  .grupoRadioPriori input[type="radio"] {
+    margin: 0; 
+    vertical-align: middle; 
+  }
+  
+  .grupoRadioPriori label {
+    margin-left: 5px; 
+    font-size: 16px; 
+  }
+  
   .grupoBotones button {
-    width: 38%;
+    width: 30%;
     margin-top: 20px;
   }
 

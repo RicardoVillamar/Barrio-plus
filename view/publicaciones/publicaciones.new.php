@@ -5,7 +5,9 @@
     action="index.php?c=publicacion&f=new"
     method="POST"
     name="formPublicNuevo"
-    id="formPublicNuevo">
+    id="formPublicNuevo"
+    style="margin-top: 30px;"
+    >
     
     <h2 class="subtitulos">Información de la publicación</h2>
     <div class="tituloPublicacion">
@@ -39,10 +41,10 @@
     </div>
 
     <label>Seleccione la prioridad de la publicación: </label><br>
-    <div class="grupoRadio">
+    <div class="grupoRadioPriori">
       <?php foreach ($prioridades as $prio) { ?>
         <input 
-          type="radio" 
+          type="radio"
           id="prioridad_<?php echo $prio["idPrioridad"]?>" 
           name="prioridad" 
           value="<?php echo $prio["idPrioridad"]?>">
@@ -63,14 +65,15 @@
     
     <div class="campoCheckbox">
       <input
+        style="margin-left:0px; width: 30px;"
         type="checkbox"
         id="soloAdmins"
         name="notificarSoloAdmins"
       >
-      <label for="soloAdmins">Notificar solo a los administradores</label>
+      <label style="margin-left:10px;" for="soloAdmins">Notificar solo a los administradores</label>
     </div>
 
-    <div class="grupoBotones">
+    <div style="width:70%;"class="grupoBotonesPubli">
       <button
         style="font-size: 0.8rem"
         type="submit"
@@ -79,7 +82,7 @@
       </button>
 
       <a href="index.php?c=publicacion&f=index"
-        style="font-size: 0.8rem"
+        style="font-size: 0.8rem;"
         class="boton-pequenio">
         Cancelar
       </a>
@@ -89,7 +92,9 @@
   <div class="imagenComunidad">
     <img
       src="https://img.freepik.com/free-vector/online-community_24877-50878.jpg?t=st=1732315953~exp=1732319553~hmac=759028a5b586a885341d0d7b5459d46da54da2a602fece2edd57652ea53d4d07&w=740"
-      alt="imagen-comunidad">
+      alt="imagen-comunidad"
+      style="margin-top: 30px;"
+      >
   </div>
 </section>
 <?php require_once FOOTER; ?>
