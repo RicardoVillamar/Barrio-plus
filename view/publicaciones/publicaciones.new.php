@@ -6,6 +6,7 @@
     method="POST"
     name="formPublicNuevo"
     id="formPublicNuevo">
+    
     <h2 class="subtitulos">Información de la publicación</h2>
     <div class="tituloPublicacion">
       <label for="titulo_publicacion">Título de la publicación:</label><br>

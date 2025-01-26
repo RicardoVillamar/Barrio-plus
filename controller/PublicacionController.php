@@ -110,7 +110,7 @@ class PublicacionController
         $publi->setFechaEvento(htmlentities($_POST['fecha_publicacion']));
         $notificarAdm = isset($_POST['notificarSoloAdmins'])?1:0; 
         $publi->setNotificarAdmin($notificarAdm);
-        //$publi->setIdUsuario(htmlentities($_SESSION["usuario"] ));
+        $publi->setIdUsuario(htmlentities($_POST['idUsuario']));
         return $publi;
     }
 
