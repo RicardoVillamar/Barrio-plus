@@ -49,11 +49,10 @@ require_once HEADER; ?>
         <!-- Cabecera -->
         <section class="cabezera">
             <div style="display: flex; flex-direction: column; gap: 10px; margin: 10px;">
-                <h1 style="font-size: 1.5rem;">Instalaciones</h1>
-                <a href="index.php?c=instalacion&f=index_instalacion">Ingresar instalacion</a>
+                <h1>Instalaciones</h1>
+                <a href=" index.php?c=instalacion&f=index_instalacion">Ingresar instalacion</a>
             </div>
             <div class="buscar">
-                <label for="buscar-barra" class="texto" style="font-weight: bold">Buscar</label>
                 <input
                     placeholder="Nombre de la instalación"
                     type="text"
@@ -65,7 +64,8 @@ require_once HEADER; ?>
                 border-radius: 4px;
                 border: 1px solid rgba(0, 0, 0, 0.1);
                 height: 30px;
-              " />
+                " />
+                <a for="buscar-barra" class="boton-mediano" style="font-weight: bold">Buscar</a>
             </div>
 
         </section>
