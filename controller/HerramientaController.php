@@ -46,7 +46,7 @@ class HerramientaController
     }
 
     //Pagina de reserva de herramienta
-    public function view_reservar(){
+    public function view_reservar($errores = [], $datos = []){
         $id = htmlentities($_GET['id']);
         $herramienta = $this->model->selectOne($id);
 
@@ -257,18 +257,6 @@ class HerramientaController
         }
         
         if (!isset($_SESSION['usuario'])) {
-            echo "<script>";
-            echo "alert('Debes iniciar sesión para registrar una reserva.');";
-            echo "window.location.href = 'login.php';";
-            echo "</script>";
-            exit;
-        } */
-
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        
-        if (!isset($_SESSION['usuario'])) {
             header('Location: login.php');
             exit;
         }
@@ -280,7 +268,44 @@ class HerramientaController
             echo "window.location.href = 'index.php';";
             echo "</script>";
             exit;
-        } 
+        } */
+        
+        $errores = [];
+        $datos = $_POST;
+        
+        $idHerramienta = $this->clearElement($_POST['idHerramienta'] ?? '');
+        if (empty($idHerramienta) || !is_numeric($idHerramienta)) {
+            $errores['idHerramienta'] = "La ID de la herramienta no es válida.";
+        }
+        
+        $cantidad = $this->clearElement($_POST['cantidad'] ?? '');
+        if (empty($cantidad) || !is_numeric($cantidad) || $cantidad < 1) {
+            $errores['cantidad'] = "La cantidad debe ser un número mayor a 0.";
+        }
+        
+        $fechaInicio = $this->clearElement($_POST['fechaInicio'] ?? '');
+        if (empty($fechaInicio) || !strtotime($fechaInicio)) {
+            $errores['fechaInicio'] = "La fecha de inicio no es válida.";
+        }
+        
+        $fechaFin = $this->clearElement($_POST['fechaFin'] ?? '');
+        if (empty($fechaFin) || !strtotime($fechaFin)) {
+            $errores['fechaFin'] = "La fecha de fin no es válida.";
+        }
+        
+        if (!empty($fechaInicio) && !empty($fechaFin) && strtotime($fechaFin) <= strtotime($fechaInicio)) {
+            $errores['fechas'] = "La fecha de fin debe ser posterior a la fecha de inicio.";
+        }
+        
+        $proposito = $this->clearElement($_POST['proposito'] ?? '');
+        if (empty($proposito)) {
+            $errores['proposito'] = "El propósito de uso es obligatorio.";
+        }
+        
+        if (!empty($errores)) {
+            $this->view_reservar($errores, $datos);
+            return;
+        }
 
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {      
