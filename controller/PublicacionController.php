@@ -85,6 +85,7 @@ class PublicacionController
             $_SESSION["mensaje"] = "Método no permitido";
             $_SESSION["color"] = "danger";
             header("Location: index.php?c=publicacion&f=index");
+            exit;
         }
         //Validar campos del formulario
         if(empty($_POST["nombre"]) || empty($_POST["tipo_publicacion"]) || empty($_POST["descripcion"]) 
@@ -92,6 +93,7 @@ class PublicacionController
             $_SESSION["mensaje"] = "Datos incompletos";
             $_SESSION["color"] = "danger";
             header("Location: index.php?c=publicacion&f=index");
+            exit;
         }
         $publi = $this->populate();
         $exito = $this->model->insert($publi);
