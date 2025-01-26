@@ -4,7 +4,7 @@
 
 <section>
 <h1 class="titulos">Registro</h1>
-<form action="index.php?c=usuario&f=new" method="POST" >
+<form action="index.php?c=usuario&f=new" method="POST" enctype="multipart/form-data" >
     
     <h2 class="subtitulos">Registro de Usuario</h2>
     
