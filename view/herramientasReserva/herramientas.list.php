@@ -1,6 +1,5 @@
-<?php
-//Autor: Quiñonez Castrellón Anthony Joel
-require_once HEADER; ?>
+<!--Autor: Quiñonez Castrellón Anthony Joel-->
+<?php require_once HEADER; ?>
 <main id="main">
     <div class="principal">
         <section class="cabezera">

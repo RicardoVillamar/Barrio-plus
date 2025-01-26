@@ -22,7 +22,7 @@ require_once HEADER
 
             <div>
                 <label for="descripcion">Descripcion</label>
-                <textarea id="descripcion" name="descripcion" placeholder="<?php echo $instalacion['descripcion']; ?>"></textarea>
+                <textarea id="descripcion" name="descripcion" placeholder=""><?php echo $instalacion['descripcion']; ?></textarea>
             </div>
 
             <div>
@@ -66,7 +66,10 @@ require_once HEADER
 
             <div>
                 <label for="imagen">Imagen</label>
-                <input type="file" id="imagen" name="imagen" accept="image/*" class="input">
+                <input type="file" id="imagen" name="imagen" accept="image/*" class="input" value="">
+                <?php if (!empty($instalacion['imagen'])): ?>
+                    <img src="data:image/jpeg;base64,<?= base64_encode($instalacion['imagen']) ?>" alt="Imagen de la inst$instalacion" style="max-width: 150px; margin-top: 10px;">
+                <?php endif; ?>
             </div>
 
             <div style="display: flex; justify-content: space-between;">
