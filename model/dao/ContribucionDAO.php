@@ -11,28 +11,28 @@ class ContribucionDAO
         $this->con = Conexion::getConexion();
     }
 
-
-    /*
     public function selectAll($parametro)
     {
         try {
             $sql = "select * from contribucion c
             JOIN usuario u on c.idUsuarioFK = u.idUsuario
-            LEFT JOIN herramienta h on c.idRecursoFK = h.idHerramienta
-            LEFT JOIN instalacion i on c.idRecursoFK = i.idInstalacion";
+            LEFT JOIN herramienta h on c.idHerramientaFK = h.idHerramienta
+            LEFT JOIN instalacion i on c.idInstalacionFK = i.idInstalacion
+            where h.nombre :nombH or i.nombre LIKE :nombI";
             $stmt = $this->con->prepare($sql);
             $coincidencias = '%' . $parametro . '%';
-            $stmt->bindParam(":tip", $coincidencias, PDO::PARAM_STR);
-            $stmt->bindParam(":pri", $coincidencias, PDO::PARAM_STR);
+            $stmt->bindParam(":nombH", $coincidencias, PDO::PARAM_STR);
+            $stmt->bindParam(":nombI", $coincidencias, PDO::PARAM_STR);
             $stmt->execute();
             $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $res;
         } catch (PDOException $er) {
-            error_log("Error en selectAll de PublicacionDAO " . $er->getMessage());
+            error_log("Error en selectAll de ContribucionDAO " . $er->getMessage());
             return [];
         }
     }
 
+    /*
     public function selectOne($id)
     {
         try {

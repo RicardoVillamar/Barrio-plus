@@ -21,6 +21,9 @@ define("VINSTALACION", "view/instalacion/instalacion.");
 //ruta de vistas modulo de usuarios
 define("VUSUARIOS", "view/usuario/usuario.");
 
+//ruta de vistas modulo de contribuciones
+define("VCONTRIBUCIONES", "view/contribuciones/contribuciones.");
+
 //conexion con la bd
 define("DBNAME", "barrioplusdb");
 define("DBUSER", "root");
