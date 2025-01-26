@@ -252,7 +252,7 @@ class HerramientaController
 
     //Registro de Reserva de Herramienta
     public function reservarHerramienta(){
-        if (!isset($_SESSION)) {
+        /* if (!isset($_SESSION)) {
             session_start();
         }
         
@@ -262,18 +262,18 @@ class HerramientaController
             echo "window.location.href = 'login.php';";
             echo "</script>";
             exit;
-        }
+        } */
 
         
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errores = [];
 
-            $idHerramienta = $this->($_POST['idHerramienta']);
+            /* $idHerramienta = $this->clearElement($_POST['idHerramienta']);
             if (empty($idHerramienta) || !is_numeric($idHerramienta)) {
                 $errores[] = "La id de Herramienta no es valida.";
             }
 
-            $cantidad = $this->($_POST['cantidad']);
+            $cantidad = $this->clearElement($_POST['cantidad']);
             if (empty($cantidad) || !is_numeric($cantidad) || $cantidad < 1) {
                 $errores[] = "El número de herramienta.";
             }
@@ -304,7 +304,7 @@ class HerramientaController
                 echo "window.history.back();";
                 echo "</script>";
                 return;
-            }
+            } */
             
             $reserva = [
                 'idEstadoFK' => 2,
