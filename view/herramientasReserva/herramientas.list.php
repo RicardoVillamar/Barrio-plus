@@ -52,9 +52,20 @@
                             </td>
                             <td>
                                 <p class="texto"><?php echo $row['precio'] ?></p>
+                                <?php
+                                if ($row['estado_nombre'] === 'Libre') {
+                                ?>
 
                                 <a class="boton-mediano reserva" href="index.php?c=herramienta&f=view_reservar&id=<?php echo $row['idHerramienta'] ?>">Reservar</a>
 
+                                <?php
+                                } else {
+                                ?>
+                                    <span class="texto">No disponible</span>
+                                <?php
+                                }
+                                ?>
+                        
                             </td>
                         </tr>
 
