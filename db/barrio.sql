@@ -214,3 +214,11 @@ VALUES
 ('Destornillador', 'Conjunto de destornilladores de varias puntas', 25.00, NULL, '2025-01-10', 1, 'Limpieza semestral', 20),
 ('Llave inglesa', 'Llave ajustable para apretar o aflojar tuercas', 18.75, NULL, '2025-01-15', 2, 'Engrasar regularmente', 8),
 ('Sierra manual', 'Sierra para cortes en madera o plástico', 22.30, NULL, '2025-01-20', 1, 'Reemplazo de hoja según uso', 15);
+
+INSERT INTO `Contribucion` (`idEstadoContribucionFK`, `idHerramientaFK`, `idInstalacionFK`, `idUsuarioFK`) 
+VALUES 
+(1, 1, NULL, 4), 
+(2, NULL, 1, 3), 
+(1, 3, NULL, 5), 
+(2, NULL, 4, 2), 
+(1, 2, NULL, 4); 

@@ -1,7 +1,7 @@
 <!-- Autor: Freire Chavez Jose Andres -->
 <?php require_once HEADER; ?>
-  <div class="container">
-    <h1>Contribuidor</h1>
+  <div class="contenedorContri">
+    <h1>Contribuciones</h1>
     <div class="search-bar">
       <input type="text" placeholder="Buscar Contribuciones">
       <a href="index.php?c=contribucion&f=view_new" class="btn" id="btnNuevo">
@@ -12,8 +12,8 @@
         <thead>
             <tr>
                 <th>idContribucion</th>
-                <th>idHerramienta</th>
-                <th>idInstalacion</th>
+                <th>Herramienta</th>
+                <th>Instalacion</th>
                 <th>idUsuario</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
@@ -27,16 +27,15 @@
                 ?>
                     <tr>
                         <td><?php echo $fila['idContribucion']?> </td>
-                        <td><?php echo $fila['idHerramienta']?> </td>
-                        <td><?php echo $fila['idInstalacion']?> </td>
+                        <td><?php echo $fila['nombreHerramienta']?> </td>
+                        <td><?php echo $fila['nombreInstalacion']?> </td>
                         <td><?php echo $fila['idUsuario']?> </td>
-                        <td><?php echo $fila['fechaEvento']?> </td>
-                        <td><?php echo $fila['nombre']?> </td>
-                        <td><?php echo $fila['apellido']?> </td>
-                        <td><?php echo $fila['correo']?> </td>
+                        <td><?php echo $fila['nombreUsuario']?> </td>
+                        <td><?php echo $fila['apellidoUsuario']?> </td>
+                        <td><?php echo $fila['correoUsuario']?> </td>
                         <td>
                             <a class="btn" id="btnEditar" href="index.php?c=contribucion&f=view_edit&id=<?php echo $fila['idContribucion'];?>">Editar</a>
-                            <a onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;"
+                            <a onclick="if(!confirm('Esta seguro de eliminar la contribucion?'))return false;"
                             class="btn" id="btnEliminar" href="index.php?c=contribucion&f=delete&id=<?php echo $fila['idContribucion'];?>">Eliminar</a>
                         </td>
                     </tr>

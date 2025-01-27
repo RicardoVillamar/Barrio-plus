@@ -14,7 +14,17 @@ class ContribucionDAO
     public function selectAll($parametro)
     {
         try {
-            $sql = "select * from contribucion c
+            $sql = "select
+            c.idContribucion,
+            h.idHerramienta,
+            h.nombre as nombreHerramienta,
+            i.idInstalacion,
+            i.nombre as nombreInstalacion,
+            u.idUsuario,
+            u.nombre as nombreUsuario,
+            u.apellido as apellidoUsuario,
+            u.correo as correoUsuario
+            from contribucion c
             JOIN usuario u on c.idUsuarioFK = u.idUsuario
             JOIN estadocontribucion ec on c.idEstadoContribucionFK = ec.idEstadoContribucion
             LEFT JOIN herramienta h on c.idHerramientaFK = h.idHerramienta
