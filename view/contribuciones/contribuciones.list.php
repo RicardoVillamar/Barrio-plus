@@ -8,21 +8,42 @@
         <span>+ </span>Nuevo
       </a>
     </div>
-    <div class="contributions">
-      <div class="contribution">
-        <span>Herramienta nueva</span>
-        <div>
-          <button>Editar</button>
-          <button>Eliminar</button>
-        </div>
-      </div>
-      <div class="contribution">
-        <span>Instalación nueva</span>
-        <div>
-          <button>Editar</button>
-          <button>Eliminar</button>
-        </div>
-      </div>
+    <table id="tablaContribuciones">
+        <thead>
+            <tr>
+                <th>idContribucion</th>
+                <th>idHerramienta</th>
+                <th>idInstalacion</th>
+                <th>idUsuario</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+                <?php
+                    foreach($resultados as $fila){
+                ?>
+                    <tr>
+                        <td><?php echo $fila['idContribucion']?> </td>
+                        <td><?php echo $fila['idHerramienta']?> </td>
+                        <td><?php echo $fila['idInstalacion']?> </td>
+                        <td><?php echo $fila['idUsuario']?> </td>
+                        <td><?php echo $fila['fechaEvento']?> </td>
+                        <td><?php echo $fila['nombre']?> </td>
+                        <td><?php echo $fila['apellido']?> </td>
+                        <td><?php echo $fila['correo']?> </td>
+                        <td>
+                            <a class="btn" id="btnEditar" href="index.php?c=contribucion&f=view_edit&id=<?php echo $fila['idContribucion'];?>">Editar</a>
+                            <a onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;"
+                            class="btn" id="btnEliminar" href="index.php?c=contribucion&f=delete&id=<?php echo $fila['idContribucion'];?>">Eliminar</a>
+                        </td>
+                    </tr>
+                <?php 
+                    }
+                ?>
+            </tbody>
+        </table>
     </div>
-  </div>
 <?php require_once FOOTER; ?>
