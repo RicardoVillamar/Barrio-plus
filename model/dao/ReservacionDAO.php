@@ -1,73 +1,76 @@
 <!-- Autor: Larrea Rosales Alejandro Sebastian -->
 <?php
 require_once 'config/Conexion.php';
+require_once 'model/dto/Reservacion.php';
 
 class ReservacionDAO
 {
     private $conexion;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->conexion = Conexion::getConexion();
     }
 
-    public function listarReservaciones()
-    {
-        $sql = "SELECT 
-                r.idReservacion, 
-                CASE 
-                    WHEN r.idHerramientaFK IS NOT NULL THEN h.nombre 
-                    WHEN r.idInstalacionFK IS NOT NULL THEN i.nombre 
-                    ELSE 'Desconocido' 
-                END AS recurso, 
-                CONCAT(u.nombre, ' ', u.apellido) AS usuario,
-                CASE 
-                    WHEN r.idHerramientaFK IS NOT NULL THEN 'Herramienta'
-                    WHEN r.idInstalacionFK IS NOT NULL THEN 'Instalación'
-                END AS tipo,
-                CASE 
-                    WHEN r.idHerramientaFK IS NOT NULL THEN CONCAT(r.cantidad, ' unidades')
-                    WHEN r.idInstalacionFK IS NOT NULL THEN CONCAT(r.personasEsperadas, ' personas')
-                END AS detalle,
-                r.fechaInicio, 
-                r.fechaFin, 
-                e.nombre AS estado
-            FROM (
-                SELECT idReservacion, idHerramientaFK, idUsuarioFK, cantidad, NULL AS idInstalacionFK, NULL AS personasEsperadas, fechaInicio, fechaFin, idEstadoFK 
-                FROM ReservacionHerramienta
-                UNION ALL
-                SELECT idReservacion, NULL AS idHerramientaFK, idUsuarioFK, NULL AS cantidad, idInstalacionFK, personasEsperadas, fechaInicio, fechaFin, idEstadoFK
-                FROM ReservacionInstalacion
-            ) r
-            LEFT JOIN Herramienta h ON r.idHerramientaFK = h.idHerramienta
-            LEFT JOIN Instalacion i ON r.idInstalacionFK = i.idInstalacion
-            JOIN Usuario u ON r.idUsuarioFK = u.idUsuario
-            LEFT JOIN Estado e ON r.idEstadoFK = e.idEstado";  // Aquí agregamos el LEFT JOIN con Estado
-
-        $stmt = $this->conexion->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    public function obtenerReservaciones() {
+        try {
+            $sql = "SELECT r.idReservacion, r.idEstadoFK, r.idHerramientaFK AS idElementoFK, 'Herramienta' AS tipoElemento, 
+               r.idUsuarioFK, r.cantidad, r.fechaInicio, r.fechaFin, r.proposito, r.capacitacion, 
+               NULL AS personasEsperadas, NULL AS observaciones,
+               h.nombre AS nombreElemento, CONCAT(u.nombre, ' ', u.apellido) AS nombreUsuario
+        FROM ReservacionHerramienta r
+        JOIN Herramienta h ON r.idHerramientaFK = h.idHerramienta
+        JOIN Usuario u ON r.idUsuarioFK = u.idUsuario
+        UNION
+        SELECT r.idReservacion, r.idEstadoFK, r.idInstalacionFK AS idElementoFK, 'Instalación' AS tipoElemento, 
+               r.idUsuarioFK, NULL AS cantidad, r.fechaInicio, r.fechaFin, r.proposito, NULL AS capacitacion, 
+               r.personasEsperadas, r.observaciones,
+               i.nombre AS nombreElemento, CONCAT(u.nombre, ' ', u.apellido) AS nombreUsuario
+        FROM ReservacionInstalacion r
+        JOIN Instalacion i ON r.idInstalacionFK = i.idInstalacion
+        JOIN Usuario u ON r.idUsuarioFK = u.idUsuario"; // your existing SQL statement
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            $reservaciones = [];
+        foreach ($result as $row) {
+            $reservacion = new Reservacion(
+                $row['idReservacion'],
+                $row['idEstadoFK'],
+                $row['idElementoFK'],
+                $row['tipoElemento'],
+                $row['idUsuarioFK'],
+                $row['cantidad'],
+                $row['fechaInicio'],
+                $row['fechaFin'],
+                $row['proposito'],
+                $row['capacitacion'],
+                $row['personasEsperadas'],
+                $row['observaciones']
+            );
+            $reservacion->setNombreElemento($row['nombreElemento']); 
+            $reservacion->setNombreUsuario($row['nombreUsuario']); 
+            $reservaciones[] = $reservacion;
+        }
+        return $reservaciones;
+        } catch(PDOException $e) {            
+            error_log("Error al obtener reservaciones: " . $e->getMessage());
+            return []; 
+        }
     }
 
-
-
-
-    public function actualizarEstado($idReservacion, $nuevoEstado)
-    {
-        $sqlHerramienta = "UPDATE ReservacionHerramienta SET estado = :estado WHERE idReservacion = :id";
-        $sqlInstalacion = "UPDATE ReservacionInstalacion SET estado = :estado WHERE idReservacion = :id";
-
-        $stmtHerramienta = $this->conexion->prepare($sqlHerramienta);
-        $stmtInstalacion = $this->conexion->prepare($sqlInstalacion);
-
-        $stmtHerramienta->bindParam(':estado', $nuevoEstado);
-        $stmtHerramienta->bindParam(':id', $idReservacion);
-
-        $stmtInstalacion->bindParam(':estado', $nuevoEstado);
-        $stmtInstalacion->bindParam(':id', $idReservacion);
-
-        $stmtHerramienta->execute();
-        $stmtInstalacion->execute();
+    public function actualizarEstado($idReservacion, $nuevoEstado, $tipoElemento) {
+        try {
+            $tabla = ($tipoElemento === 'Herramienta') ? 'ReservacionHerramienta' : 'ReservacionInstalacion';
+            $sql = "UPDATE $tabla SET idEstadoFK = :nuevoEstado WHERE idReservacion = :idReservacion";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bindParam(':nuevoEstado', $nuevoEstado);
+            $stmt->bindParam(':idReservacion', $idReservacion);
+            return $stmt->execute();
+        } catch(PDOException $e) {
+            error_log("Error al actualizar estado de reservación: " . $e->getMessage());
+            return false;
+        }
     }
 }
 ?>
