@@ -41,7 +41,7 @@ class PublicacionController
 
     public function search()
     {
-        $parametro = !empty($_POST["buscar"]) ? htmlentities($_POST["buscar"]) : "";
+        $parametro = !empty($_POST["buscar"]) ? $this->limpiar($_POST["buscar"]) : "";
         $resultados = $this->model->selectAll($parametro);
         $titulo = "Buscar publicaciones por tipo o prioridad";
         if (!empty($resultados)) {
@@ -61,7 +61,7 @@ class PublicacionController
             $usuario = $_SESSION['usuario'];
             $rol = $usuario['idRolFK']; 
             if ($rol == 1){
-                $id = !empty($_REQUEST["id"]) ? htmlentities($_REQUEST["id"]) : "";
+                $id = !empty($_REQUEST["id"]) ? $this->limpiar($_REQUEST["id"]) : "";
                 $exito = $this->model->delete($id);
                 $this->redirectWithMessage(
                     $exito,
@@ -117,13 +117,13 @@ class PublicacionController
     public function populate(){
         //Lectura de parametros
         $publi = new Publicacion();
-        $publi->setId(htmlentities($_POST['id']??null));
-        $publi->setTitulo(htmlentities($_POST['nombre']));
-        $publi->setIdTipo(htmlentities($_POST['tipo_publicacion']));
-        $publi->setDescripcion(htmlentities($_POST['descripcion']));
-        $publi->setIdPrioridad(htmlentities($_POST['prioridad']));
-        $publi->setFechaEvento(htmlentities($_POST['fecha_publicacion']));
-        $publi->setIdUsuario(htmlentities($_POST['idUsuario']));
+        $publi->setId($this->limpiar($_POST['id']??null));
+        $publi->setTitulo($this->limpiar($_POST['nombre']));
+        $publi->setIdTipo($this->limpiar($_POST['tipo_publicacion']));
+        $publi->setDescripcion($this->limpiar($_POST['descripcion']));
+        $publi->setIdPrioridad($this->limpiar($_POST['prioridad']));
+        $publi->setFechaEvento($this->limpiar($_POST['fecha_publicacion']));
+        $publi->setIdUsuario($this->limpiar($_POST['idUsuario']));
         $notificarAdm = isset($_POST['notificarSoloAdmins'])?1:0; 
         $publi->setNotificarAdmin($notificarAdm);
         return $publi;
@@ -135,7 +135,7 @@ class PublicacionController
             $usuario = $_SESSION['usuario'];
             $rol = $usuario['idRolFK']; 
             if ($rol == 1){
-                $id = htmlentities($_GET["id"]);
+                $id = $this->limpiar($_GET["id"]);
                 $publi = $this->model->selectOne($id);
                 if($publi==null){
                     $_SESSION["mensaje"] = "No se pudo encontrar la publicación a editar";
@@ -173,5 +173,12 @@ class PublicacionController
         $exito = $this->model->update($publi);
         $this->redirectWithMessage($exito, "Publicacion actualizada exitosamente", 
         "No se pudo realizar la actualización", "index.php?c=publicacion&f=index");
+    }
+
+    public function limpiar($dato){
+    $dato = trim($dato);
+    $dato = stripcslashes($dato);
+    $dato = htmlspecialchars($dato);
+    return $dato;
     }
 }
