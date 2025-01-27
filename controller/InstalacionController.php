@@ -27,10 +27,9 @@ class InstalacionController
         header("Location: $redirectUrl");
     }
 
-
+    // Listado de instalaciones para reservar
     public function index()
     {
-
         $estados = $this->modeloEstado->selectEstado();
         $tipos = $this->modeloTipo->getTipos();
         $resultados = $this->model->selectAll();
@@ -42,26 +41,26 @@ class InstalacionController
 
     public function view_reservar($errores = [], $datos = [])
     {
-        $id = htmlentities($_GET['id']);
-        $instalacion = $this->model->selectOne($id);
 
         if (!isset($_SESSION)) {
             session_start();
         }
 
         if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
+            header('Location: index.php?c=usuario&f=login');
             exit;
         }
 
         $usuario = $_SESSION['usuario'];
         if ($usuario['idRolFK'] != 2) {
             echo "<script>";
-            echo "alert('No tienes permiso para acceder a esta página.');";
-            echo "window.location.href = 'index.php';";
+            echo "alert('No puedes reservar ninguna instalacion porque no estas logeado.');";
+            echo "window.location.href = 'index.php?c=usuario&f=login';";
             echo "</script>";
             exit;
         }
+        $id = htmlentities($_GET['id']);
+        $instalacion = $this->model->selectOne($id);
 
         $titulo = 'Reservar Instalacion';
 
@@ -81,9 +80,27 @@ class InstalacionController
         require_once VINSTALACIONRESERVA . 'list.php';
     }
 
-    //instalaciones
+    //Registro de instalaciones
     public function index_instalacion()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php?c=instalacion&f=index');
+            exit;
+        }
+
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
+            echo "<script>";
+            echo "alert('No puedes ingresar porque no eres admin.');";
+            echo "window.location.href = 'index.php?c=instalacion&f=index';";
+            echo "</script>";
+            exit;
+        }
+
         $resultados = $this->model->selectAll();
 
         $titulo = 'Instalaciones registradas';
@@ -103,27 +120,88 @@ class InstalacionController
 
     public function view_eliminar()
     {
-        $id = htmlentities($_GET['id']);
-        $instalacion = $this->model->delete($id);
-        $titulo = 'Eliminar Instalacion';
-        header("Location: index.php?c=instalacion&f=index_instalacion");
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php?c=instalacion&f=index_instalacion');
+            exit;
+        }
+
+        if ($_SESSION['usuario']['idRolFK'] == 1 || $_SESSION['usuario']['idRolFK'] == 3) {
+            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            $instalacion  = $this->model->selectOne($id);
+
+            if (!$instalacion) {
+                echo "<script>alert('La instalacion no existe.');</script>";
+                echo "<script>window.location.href = 'index.php?c=instalacion&f=index_instalacion';</script>";
+                exit;
+            }
+            $instalacion = $this->model->delete($id);
+            header("Location: index.php?c=instalacion&f=index_instalacion");
+            exit;
+        }
+        echo "<script>";
+        echo "alert('No tienes permiso para realizar esta acción.');";
+        echo "window.location.href = 'index.php?c=instalacion&f=index_instalacion';";
+        echo "</script>";
+        exit;
     }
 
     public function view_editar()
     {
-        $id = htmlentities($_GET['id']);
-        $instalacion = $this->model->selectOne($id);
-        $tipos = $this->modeloTipo->getTipos();
-        $estados = $this->modeloEstado->selectEstado();
 
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php?c=instalacion&f=index_instalacion');
+            exit;
+        }
+        if ($_SESSION['usuario']['idRolFK'] == 1 || $_SESSION['usuario']['idRolFK'] == 3) {
+            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            $instalacion = $this->model->selectOne($id);
 
-        $titulo = 'Editar Instalacion';
+            if (!$instalacion) {
+                echo "<script>alert('La instalacion no existe.');</script>";
+                echo "<script>window.location.href = 'index.php?c=instalacion&f=index_instalacion';</script>";
+                exit;
+            }
+            $tipos = $this->modeloTipo->getTipos();
+            $estados = $this->modeloEstado->selectEstado();
+            $titulo = 'Editar Instalacion';
+            require_once VINSTALACION . 'edit.php';
+            exit;
+        }
 
-        require_once VINSTALACION . 'edit.php';
+        echo "<script>";
+        echo "alert('No tienes permiso para realizar esta acción.');";
+        echo "window.location.href = 'index.php?c=instalacion&f=index_instalacion';";
+        echo "</script>";
+        exit;
     }
 
     public function new_instalacion($errores = [], $datos = [])
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
+            echo "<script>";
+            echo "alert('No puedes registrar una instalacion porque no estas logeado');";
+            echo "window.location.href = 'login.php';";
+            echo "</script>";
+            exit;
+        }
+
         $estados = $this->modeloEstado->selectEstado();
         $tipos = $this->modeloTipo->getTipos();
         $titulo = 'Registrar Instalacion';
@@ -302,6 +380,26 @@ class InstalacionController
 
     public function reservarInstalacion()
     {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: index.php?c=usuario&f=login');
+            exit;
+        }
+
+
+        $usuario = $_SESSION['usuario'];
+        if ($usuario['idRolFK'] != 2) {
+            echo "<script>";
+            echo "alert('No puedes reservar porque no estas logeado.');";
+            echo "window.location.href = 'index.php?c=usuario&f=login';";
+            echo "</script>";
+            exit;
+        }
+
+
         $id = htmlentities($_GET['id']);
         $estados = $this->modeloEstado->selectEstado();
         $tipos = $this->modeloTipo->getTipos();
