@@ -128,7 +128,6 @@ class HerramientaController
     $id = htmlentities($_GET['id']);
     $herramienta = $this->model->selectOne($id);
 
-    // Verificar si el usuario tiene rol 1 (admin) o si es un contribuidor que tiene la propiedad de la herramienta
     if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
         $estados = $this->modeloEstado->selectEstado();
         $herramienta = $this->model->selectOne($id);
