@@ -131,21 +131,20 @@ class UsuarioDAO
         }
     }
 
-    public function buscarReservasPorHerramienta($idUsuario, $nombreHerramienta)
-    {
-        $sql = "SELECT rh.idReservacion, rh.FechaInicio, rh.FechaFin, rh.Cantidad, h.nombre AS Herramienta 
-        FROM ReservacionHerramienta rh
-        JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
-        WHERE rh.idUsuarioFK = :idUsuario 
-        AND h.nombre LIKE :nombreHerramienta";
-
-
+    public function buscarReservasPorHerramienta($idUsuario, $query) {
+        $sql = "SELECT rh.*, h.nombre 
+                FROM ReservacionHerramienta rh
+                JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
+                WHERE rh.idUsuarioFK = :idUsuario 
+                AND h.nombre LIKE :nombreHerramienta";
+    
         $stmt = $this->con->prepare($sql);
-        $stmt->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
-        $stmt->bindValue(':nombreHerramienta', '%' . $nombreHerramienta . '%', PDO::PARAM_STR);
+        $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
+        $stmt->bindParam(':nombreHerramienta', $query, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 
     public function buscarReservasPorInstalacion($idUsuario, $nombreInstalacion)
     {
