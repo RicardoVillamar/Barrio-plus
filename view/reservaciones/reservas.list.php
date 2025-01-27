@@ -36,8 +36,47 @@ require_once HEADER;
         background-color: #e6e6e6;
     }
     
+    form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 70%;
+        max-width: 400px;
+    }
+  
+    input[type="submit"] {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #a8d0e6;
+        color: white;
+        border: none;
+        border-radius: 8;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #a3b5c8;
+    }
+   
+    input[type="hidden"] {
+        display: none;
+    }
+
 </style>
 
+<form action="index.php?c=reservacion&f=index" method="get">
+    <input type="hidden" name="c" value="reservacion">
+    <input type="hidden" name="f" value="index">
+    <input type="text" name="search" placeholder="Buscar reservaciones...">
+    <input type="submit" value="Buscar">
+</form>
 
 <table align="center" border="1" cellpadding="5" cellspacing="0">
 <thead>

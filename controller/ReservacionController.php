@@ -12,23 +12,11 @@ class ReservacionController
         }
     
         public function index() {
-            $reservaciones = $this->reservacionDAO->obtenerReservaciones();
+            $searchTerm = isset($_GET['search']) ? htmlentities($_GET['search']) : '';
+            $reservaciones = $this->reservacionDAO->buscarReservaciones($searchTerm);
             require_once 'view/reservaciones/reservas.list.php';
-        }
-    
-        public function aprobar() {
-            $idReservacion = $_GET['id'];
-            $tipoElemento = $_GET['tipo'];
-            $this->reservacionDAO->actualizarEstado($idReservacion, 2, $tipoElemento); // 2 = Aprobado
-            header('Location: index.php?c=reservacion&f=gestionar');
-        }
-    
-        public function cancelar() {
-            $idReservacion = $_GET['id'];
-            $tipoElemento = $_GET['tipo'];
-            $this->reservacionDAO->actualizarEstado($idReservacion, 3, $tipoElemento); // 3 = Cancelado
-            header('Location: index.php?c=reservacion&f=gestionar');
-        }
+        }   
+        
 
         public function gestionar() {
             if (isset($_GET['id'], $_GET['tipo'], $_GET['accion'])) {
@@ -55,6 +43,14 @@ class ReservacionController
                 }
             } else {
                 echo "Parámetros de gestión faltantes.";
+            }
+        }
+
+        private function buscarReservaciones($searchTerm) {
+            if (empty($searchTerm)) {
+                return $this->reservacionDAO->obtenerReservaciones();
+            } else {
+                return $this->reservacionDAO->buscarReservaciones($searchTerm);
             }
         }
 }
