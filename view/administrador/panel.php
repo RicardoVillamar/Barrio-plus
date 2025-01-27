@@ -1,4 +1,5 @@
 <!-- Autor: Larrea Rosales Alejandro Sebastian -->
+
 <style>
     .dashboard {            
             background: #ffffff;
@@ -16,7 +17,10 @@
         }
        
 </style>
-<?php require_once HEADER; ?>
+<?php 
+$titulo = "Panel Administrador";
+require_once HEADER; ?>
+
 <h1 class="titulos">Panel de Administración</h1>
 <div class="dashboard">
         

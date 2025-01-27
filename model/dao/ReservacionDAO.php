@@ -72,5 +72,54 @@ class ReservacionDAO
             return false;
         }
     }
+
+    public function buscarReservaciones($searchTerm) {
+        $sql = "
+        SELECT r.idReservacion, r.idEstadoFK, r.idHerramientaFK AS idElementoFK, 'Herramienta' AS tipoElemento, 
+               r.idUsuarioFK, r.cantidad, r.fechaInicio, r.fechaFin, r.proposito, r.capacitacion, 
+               NULL AS personasEsperadas, NULL AS observaciones,
+               h.nombre AS nombreElemento, CONCAT(u.nombre, ' ', u.apellido) AS nombreUsuario
+        FROM ReservacionHerramienta r
+        JOIN Herramienta h ON r.idHerramientaFK = h.idHerramienta
+        JOIN Usuario u ON r.idUsuarioFK = u.idUsuario
+        WHERE h.nombre LIKE :searchTerm OR CONCAT(u.nombre, ' ', u.apellido) LIKE :searchTerm
+        UNION
+        SELECT r.idReservacion, r.idEstadoFK, r.idInstalacionFK AS idElementoFK, 'Instalación' AS tipoElemento, 
+               r.idUsuarioFK, NULL AS cantidad, r.fechaInicio, r.fechaFin, r.proposito, NULL AS capacitacion, 
+               r.personasEsperadas, r.observaciones,
+               i.nombre AS nombreElemento, CONCAT(u.nombre, ' ', u.apellido) AS nombreUsuario
+        FROM ReservacionInstalacion r
+        JOIN Instalacion i ON r.idInstalacionFK = i.idInstalacion
+        JOIN Usuario u ON r.idUsuarioFK = u.idUsuario
+        WHERE i.nombre LIKE :searchTerm OR CONCAT(u.nombre, ' ', u.apellido) LIKE :searchTerm";
+
+        $stmt = $this->conexion->prepare($sql);
+        $searchTerm = "%" . $searchTerm . "%";
+        $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $reservaciones = [];
+        foreach ($result as $row) {
+            $reservaciones[] = new Reservacion(
+                $row['idReservacion'],
+                $row['idEstadoFK'],
+                $row['idElementoFK'],
+                $row['tipoElemento'],
+                $row['idUsuarioFK'],
+                $row['cantidad'],
+                $row['fechaInicio'],
+                $row['fechaFin'],
+                $row['proposito'],
+                $row['capacitacion'],
+                $row['personasEsperadas'],
+                $row['observaciones']
+            );
+            // Assuming these setters exist in your DTO
+            $reservaciones[count($reservaciones) - 1]->setNombreElemento($row['nombreElemento']);
+            $reservaciones[count($reservaciones) - 1]->setNombreUsuario($row['nombreUsuario']);
+        }
+        return $reservaciones;
+    }
 }
 ?>
