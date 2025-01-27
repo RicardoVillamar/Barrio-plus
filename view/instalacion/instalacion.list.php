@@ -3,7 +3,9 @@
 require_once HEADER
 ?>
 <div class="cabecera-reserva">
-
+    <a href="index.php?c=instalacion&f=index_instalacion" style="padding: 0px; margin-left: 10px">
+        <span class="material-symbols-outlined"> arrow_back_ios_new </span>
+    </a>
     <h1 style="padding: 0px 10px; font-size: 1.5rem;">
         Instalaciones
     </h1>
