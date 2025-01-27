@@ -15,6 +15,7 @@ class HerramientaController
     {
         $this->model = new HerramientaDAO();
         $this->modeloEstado = new EstadoDAO();
+        //dadsad
     }
 
     //Pagina principal de herramienta

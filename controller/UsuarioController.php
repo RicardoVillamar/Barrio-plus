@@ -281,7 +281,7 @@ class UsuarioController
         if ($id) {
             $result = $this->model->deleteReservationHerrById($id);
             if ($result) {
-                header("Location: index.php?c=usuario&f=view_reservas");
+                header("Location: index.php?c=usuario&f=view_new");
                 exit;
             } else {
                 echo "Error al cancelar la reserva.";

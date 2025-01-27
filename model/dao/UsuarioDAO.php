@@ -70,10 +70,11 @@ class UsuarioDAO
     public function selectReservasInstalacionesByUserId($userId)
     {
         $sql = "SELECT 
+                    ri.idReservacion AS IdReservacion, 
                     i.nombre AS Instalacion, 
                     ri.fechaInicio AS FechaInicio, 
                     ri.fechaFin AS FechaFin, 
-                    ri.personasEsperadas AS personasEsperadas
+                    ri.personasEsperadas AS PersonasEsperadas
                 FROM ReservacionInstalacion ri
                 JOIN Instalacion i ON ri.idInstalacionFK = i.idInstalacion
                 WHERE ri.idUsuarioFK = :id";
@@ -82,6 +83,7 @@ class UsuarioDAO
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 
     public function selectOneByEmail($correo)
     {

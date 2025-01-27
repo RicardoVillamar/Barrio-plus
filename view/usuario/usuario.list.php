@@ -139,7 +139,13 @@
 
                                     <td><?php echo htmlspecialchars($reserva['PersonasEsperadas']); ?></td>
                                     <td>
-                                    <button >>Cancelar</button> </td>
+    <form method="GET" action="index.php">
+        <input type="hidden" name="c" value="usuario">
+        <input type="hidden" name="f" value="cancelarReservaHerramienta">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
+        <button type="submit">Cancelar</button>
+    </form>
+</td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
