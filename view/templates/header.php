@@ -41,8 +41,7 @@ if (isset($_SESSION['usuario'])) {
       <li><a href="index.php?c=herramienta&f=index_Herramienta">Herramientas</a></li>
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
       <?php if (isset($rol) && $rol == '1'): ?>
-        <p>Rol: <?php echo htmlspecialchars($rol); ?></p>        
-        <li><a href="index.php?c=dashboard">Panel de Administración</a></li>    
+        <li><a href="index.php?c=dashboard">Panel de Administración</a></li>
       <?php endif; ?>
       <li>
         <a href="index.php?c=usuario&f=profile" class="user">
