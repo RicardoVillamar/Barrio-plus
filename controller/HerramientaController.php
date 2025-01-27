@@ -26,7 +26,7 @@ class HerramientaController
         }
 
         if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
+            header('Location: index.php?c=herramienta&f=index');
             exit;
         }
 
@@ -34,7 +34,7 @@ class HerramientaController
         if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
             echo "<script>";
             echo "alert('No puedes ingresar porque no estas logeado.');";
-            echo "window.location.href = 'index.php?c=usuario&f=login';";
+            echo "window.location.href = 'index.php?c=herramienta&f=index';";
             echo "</script>";
             exit;
         }
@@ -55,7 +55,7 @@ class HerramientaController
         }
 
         if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
+            header('Location: index.php?c=usuario&f=login');
             exit;
         }
 
@@ -93,7 +93,7 @@ class HerramientaController
         }
         
         if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
+            header('Location: index.php?c=herramienta&f=index');
             exit;
         }
         
@@ -103,7 +103,7 @@ class HerramientaController
 
         if (!$herramienta) {
             echo "<script>alert('La herramienta no existe.');</script>";
-            echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
+            echo "<script>window.location.href = 'index.php?c=herramienta&f=index';</script>";
             exit;
         }
         $this->model->delete($id);
@@ -112,7 +112,7 @@ class HerramientaController
     }
         echo "<script>";
         echo "alert('No tienes permiso para realizar esta acción.');";
-        echo "window.location.href = '?c=herramienta&f=index';";
+        echo "window.location.href = 'index.php?c=herramienta&f=index';";
         echo "</script>";
         exit;
     }
@@ -124,7 +124,7 @@ class HerramientaController
             session_start();
         }
         if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
+            header('Location: index.php?c=herramienta&f=index');
             exit;
         }
         if ($_SESSION['usuario']['idRolFK'] == 1 || $_SESSION['usuario']['idRolFK'] == 3) {
@@ -133,17 +133,18 @@ class HerramientaController
 
         if (!$herramienta) {
             echo "<script>alert('La herramienta no existe.');</script>";
-            echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
+            echo "<script>window.location.href = 'index.php?c=herramienta&f=index';</script>";
             exit;
         }
         $estados = $this->modeloEstado->selectEstado();
         $titulo = 'Editar Herramienta';
         require_once VHERRAMIENTAS . 'edit.php';
         exit;
-    }
+        }
+        
         echo "<script>";
         echo "alert('No tienes permiso para realizar esta acción.');";
-        echo "window.location.href = '?c=herramienta&f=index';";
+        echo "window.location.href = 'index.php?c=herramienta&f=index';";
         echo "</script>";
         exit;
     }
@@ -156,7 +157,7 @@ class HerramientaController
         }
 
         if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
+            header('Location: index.php?c=herramienta&f=index');
             exit;
         }
 
@@ -164,7 +165,7 @@ class HerramientaController
         if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
             echo "<script>";
             echo "alert('No puedes registrar una herramienta porque no estas logeado');";
-            echo "window.location.href = 'login.php';";
+            echo "window.location.href = 'index.php?c=herramienta&f=index';";
             echo "</script>";
             exit;
         }
