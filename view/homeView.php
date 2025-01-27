@@ -173,7 +173,19 @@
           clic en el boton de abajo.
         </p>
         <button class="boton-mediano">
-          <a href="pages/homes/contribucion_form.html">Contribuir</a>
+          <a href="
+           <?php
+            if (!isset($_SESSION['usuario'])) {
+              echo "index.php?c=usuario&f=login";
+            }else{
+                $usuario = $_SESSION['usuario'];
+                $rol = $usuario['idRolFK'];
+                if($rol == 1 || $rol == 3){
+                  echo "index.php?c=contribucion&f=index";
+                }
+            }
+          ?>
+          ">Contribuir</a>
         </button>
       </div>
     </section>

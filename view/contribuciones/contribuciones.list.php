@@ -17,9 +17,6 @@
                 <th>idContribucion</th>
                 <th>Herramienta</th>
                 <th>Instalacion</th>
-                <th>idUsuario</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
                 <th>Correo</th>
                 <th>Estado</th>
                 <th>Acciones</th>
@@ -33,9 +30,6 @@
                         <td><?php echo $fila['idContribucion']?> </td>
                         <td><?php echo $fila['nombreHerramienta']?> </td>
                         <td><?php echo $fila['nombreInstalacion']?> </td>
-                        <td><?php echo $fila['idUsuario']?> </td>
-                        <td><?php echo $fila['nombreUsuario']?> </td>
-                        <td><?php echo $fila['apellidoUsuario']?> </td>
                         <td><?php echo $fila['correoUsuario']?> </td>
                         <td><?php echo $fila['estado']?> </td>
                         <td>

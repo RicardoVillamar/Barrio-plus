@@ -1,7 +1,7 @@
 <!-- Autor: Larrea Rosales Alejandro Sebastian -->
 <?php require_once HEADER; ?>
 <div class="contenedorForm">
-      <form action="" id="formulario">
+      <form method="POST" action="index.php?c=contribucion&f=new" id="formContribuciones">
         <div>
           <h2><?php echo $titulo ?></h2>                   
         </div>
@@ -38,12 +38,29 @@
           </select>
         </div>
 
+        <div class="campo" id="campoEstado" style="display: none;">
+        <label for="campoEstadoContr">Estado contribución: </label>
+        <select name="campoEstadoContr" id="selectInstalaciones" class="selecProductos" disabled>
+          <?php 
+          foreach ($estadosContrib as $est) {
+            $selected = ($est["idEstadoContribucion"] == 1) ? "selected" : ""; 
+          ?>
+          <option value="<?php echo $est["idEstadoContribucion"] ?>" <?php echo $selected; ?>>
+            <?php echo $est["nombreEstado"] ?>
+          </option>
+          <?php } ?>
+        </select>
+      </div>
+
         <input type="hidden" name="idUsuario" id="idUsu" 
         value="<?php echo $idUsu = $usuario['idUsuario']; ?>"/>
 
         <div id="botones">        
-          <button class="boton-mediano" type="submit">Guardar</button>
-          <button class="boton-mediano" type="reset">Cancelar</button> 
+          <button type="submit" class="boton-mediano" type="submit">Guardar</button>
+          <a href="index.php?c=contribucion&f=index"
+            class="boton-mediano">
+            Cancelar
+          </a>
       </div>    
       </form>
 </div>

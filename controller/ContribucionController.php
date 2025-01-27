@@ -90,16 +90,20 @@ class ContribucionController
         "No se pudo realizar la inserción", "index.php?c=contribucion&f=index");
     }
 
-    public function populate(){
-        //Lectura de parametros
+    public function populate() {
         $contribu = new Contribucion();
-        $contribu->setId(htmlentities($_POST['id']??null));
-        $contribu->setIdEstado(htmlentities($_POST['estadoContri']??1));
-        $contribu->setIdHerramienta(htmlentities($_POST['recurso']));
-        $contribu->setIdInstalacion(htmlentities($_POST['recurso']));
-        $contribu->setIdUsuario(htmlentities($_POST['idUsuario']));
+        $contribu->setId(htmlentities($_POST['id'] ?? null));
+        $contribu->setIdEstado(htmlentities($_POST['campoEstadoContr'])); 
+        $contribu->setIdUsuario(htmlentities($_POST['idUsuario'])); 
+        $recurso = htmlentities($_POST['recurso'] ?? null);
+        if ($recurso === 'instalaciones') {
+            $contribu->setIdInstalacion(htmlentities($_POST['selectInstalaciones']));
+        } elseif ($recurso === 'herramientas') {
+            $contribu->setIdHerramienta(htmlentities($_POST['selectHerramientas']));
+        }
         return $contribu;
     }
+    
 
     public function redirectWithMessage($exito, $exitoMsg, $errMsg, $redirectUrl)
     {
