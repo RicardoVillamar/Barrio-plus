@@ -27,7 +27,7 @@ class ReservacionDAO
                i.nombre AS nombreElemento, CONCAT(u.nombre, ' ', u.apellido) AS nombreUsuario
         FROM ReservacionInstalacion r
         JOIN Instalacion i ON r.idInstalacionFK = i.idInstalacion
-        JOIN Usuario u ON r.idUsuarioFK = u.idUsuario"; // your existing SQL statement
+        JOIN Usuario u ON r.idUsuarioFK = u.idUsuario"; 
             $stmt = $this->conexion->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
