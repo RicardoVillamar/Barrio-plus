@@ -96,10 +96,17 @@ class HerramientaController
         exit;
     }
 
-    $usuario = $_SESSION['usuario'];
-    $id = htmlentities($_GET['id']);
-    $herramienta = $this->model->selectOne($id);
+    $usuario = $_SESSION['usuario']; // Usuario logueado
+    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT); // Sanitize ID
+    $herramienta = $this->model->selectOne($id); // Obtener herramienta
 
+    if (!$herramienta) {
+        echo "<script>alert('La herramienta no existe.');</script>";
+        echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
+        exit;
+    }
+
+    // Verificar permisos
     if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
         $this->model->delete($id);
         header("Location: index.php?c=herramienta&f=index");
@@ -112,9 +119,9 @@ class HerramientaController
     echo "</script>";
     exit;
     }
+    
     //Edita Herramienta
-    public function view_editar()
-    {
+    public function view_editar(){
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -124,22 +131,29 @@ class HerramientaController
         exit;
     }
 
-    $usuario = $_SESSION['usuario'];
-    $id = htmlentities($_GET['id']);
-    $herramienta = $this->model->selectOne($id);
+    $usuario = $_SESSION['usuario']; // Usuario logueado
+    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT); // Sanitize ID
+    $herramienta = $this->model->selectOne($id); // Obtener herramienta
 
-    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
-        $estados = $this->modeloEstado->selectEstado();
-        $herramienta = $this->model->selectOne($id);
-        $titulo = 'Editar Herramienta';
-        require_once VHERRAMIENTAS . 'edit.php';
-    } else {
-        echo "<script>";
-        echo "alert('No tienes permiso para editar esta herramienta.');";
-        echo "window.location.href = '?c=herramienta&f=index';";
-        echo "</script>";
+    if (!$herramienta) {
+        echo "<script>alert('La herramienta no existe.');</script>";
+        echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
         exit;
     }
+
+    // Verificar permisos
+    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
+        $estados = $this->modeloEstado->selectEstado();
+        $titulo = 'Editar Herramienta';
+        require_once VHERRAMIENTAS . 'edit.php';
+        exit;
+    }
+
+    echo "<script>";
+    echo "alert('No tienes permiso para editar esta herramienta.');";
+    echo "window.location.href = '?c=herramienta&f=index';";
+    echo "</script>";
+    exit;
     }
 
     //Registrar Herramienta
