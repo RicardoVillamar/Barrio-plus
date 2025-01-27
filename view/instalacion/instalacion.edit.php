@@ -18,11 +18,14 @@ require_once HEADER
             <div>
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion" value="<?php echo $instalacion['nombre']; ?>">
+                <span class="error"><?php echo $errores['nombre'] ?? ''; ?></span>
             </div>
 
             <div>
                 <label for="descripcion">Descripcion</label>
                 <textarea id="descripcion" name="descripcion" placeholder=""><?php echo $instalacion['descripcion']; ?></textarea>
+                <span class="error"><?php echo $errores['descripcion'] ?? ''; ?></span>
+
             </div>
 
             <div>

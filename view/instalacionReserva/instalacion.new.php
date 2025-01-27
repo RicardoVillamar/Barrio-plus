@@ -12,11 +12,11 @@
 <main>
     <section class="contenedor-formulario">
         <form
-            action="index.php?c=instalacion&f=reservarInstalacion"
+            action="index.php?c=instalacion&f=reservarInstalacion&id=<?php echo $instalacion['idInstalacion']; ?>"
             method="post"
             id="formulario-instalaciones"
             onsubmit="return validarFormulario()">
-            <input type="hidden" name="id" id="id" value="<?php echo $instalacion['idInstalacion'] ?>" />
+            <input type="hidden" name="id" id="id" value="<?php echo $instalacion['idInstalacion']; ?>" />
             <h3 class="subtitulos">Formulario de reservación</h3>
 
             <fieldset>
@@ -28,7 +28,9 @@
                     placeholder="Ingrese su nombre"
                     id="nombre"
                     name="nombre" />
-                <span id="nombre-error" class="error"></span>
+                <span class="error">
+                    <?php echo $errores['nombre'] ?? ''; ?>
+                </span>
 
                 <label for="telefono">Teléfono</label>
                 <input
@@ -38,7 +40,9 @@
                     id="telefono"
                     name="telefono"
                     maxlength="10" />
-                <span id="telefono-error" class="error"></span>
+                <span class="error">
+                    <?php echo $errores['telefono'] ?? ''; ?>
+                </span>
 
                 <label>¿Es un miembro de la comunidad?</label>
                 <div class="radio-grupo">
@@ -61,18 +65,24 @@
                         <label for="miembro-no">No</label>
                     </div>
                 </div>
-                <span id="miembro-error" class="error"></span>
+                <span class="error">
+                    <?php echo $errores['miembro'] ?? ''; ?>
+                </span>
             </fieldset>
 
             <fieldset>
                 <h3 class="subtitulos">Fecha de la reserva</h3>
                 <label for="fecha-desde">Desde</label>
                 <input class="input" type="date" id="fecha-desde" name="fechaInicio" />
-                <span id="fechaD-error" class="error"></span>
+                <span class="error">
+                    <?php echo $errores['fechaInicio'] ?? ''; ?>
+                </span>
 
                 <label for="fecha-hasta">Hasta</label>
                 <input class="input" type="date" id="fecha-hasta" name="fechaFin" />
-                <span id="fechaH-error" class="error"></span>
+                <span class="error">
+                    <?php echo $errores['fechaFin'] ?? ''; ?>
+                </span>
             </fieldset>
 
             <fieldset>
@@ -86,7 +96,9 @@
                         placeholder="Cantidad de personas"
                         id="personasEsperadas"
                         name="personasEsperadas" />
-                    <span id="personas-error" class="error"></span>
+                    <span id="personas-error" class="error">
+                        <?php echo $errores['personasEsperadas'] ?? ''; ?>
+                    </span>
 
                     <label for="proposito">Proposito de la reserva</label>
                     <select class="input-selected" name="proposito" id="proposito" class="propositos">
@@ -96,7 +108,9 @@
                         <option value="conferencia">Conferencia</option>
                         <option value="otro">Otro</option>
                     </select>
-                    <span id="proposito-error" class="error"></span>
+                    <span class="error">
+                        <?php echo $errores['propositos'] ?? ''; ?>
+                    </span>
                 </div>
 
                 <label for="notas">Datos adicionales (opcional)</label>
@@ -104,7 +118,9 @@
                     id="observaciones"
                     name="observaciones"
                     placeholder="Agregue información adicional (opcional)"></textarea>
-                <span id="notas-error" class="error"></span>
+                <span class="error">
+                    <?php echo $errores['observaciones'] ?? ''; ?>
+                </span>
             </fieldset>
             <fieldset class="contenedor-botones">
                 <button type="reset" class="boton-mediano cancelar">
