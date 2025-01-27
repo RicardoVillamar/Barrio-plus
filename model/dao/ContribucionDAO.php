@@ -23,7 +23,8 @@ class ContribucionDAO
             u.idUsuario,
             u.nombre as nombreUsuario,
             u.apellido as apellidoUsuario,
-            u.correo as correoUsuario
+            u.correo as correoUsuario,
+            ec.nombreEstado as estado
             from contribucion c
             JOIN usuario u on c.idUsuarioFK = u.idUsuario
             JOIN estadocontribucion ec on c.idEstadoContribucionFK = ec.idEstadoContribucion

@@ -21,6 +21,7 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Correo</th>
+                <th>Estado</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                         <td><?php echo $fila['nombreUsuario']?> </td>
                         <td><?php echo $fila['apellidoUsuario']?> </td>
                         <td><?php echo $fila['correoUsuario']?> </td>
+                        <td><?php echo $fila['estado']?> </td>
                         <td>
                             <a class="btn" id="btnEditar" href="index.php?c=contribucion&f=view_edit&id=<?php echo $fila['idContribucion'];?>">Editar</a>
                             <a onclick="if(!confirm('Esta seguro de eliminar la contribucion?'))return false;"
