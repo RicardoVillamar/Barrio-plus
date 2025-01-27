@@ -5,7 +5,9 @@
         <section class="cabezera">
             <div style="display: flex; flex-direction: column; gap: 10px; margin: 10px;">
                 <h1 style="font-size: 1.5rem;">Herramienta</h1>
+                <?php if (isset($rol) && $rol == '1'): ?>
                 <a href="index.php?c=herramienta&f=index">Ingresar Herramienta</a>
+                <?php endif; ?>
             </div>
             <div class="buscar">
                 <form action="index.php?c=herramienta&f=searchReserva" method="post" style="display: flex; align-items: center;">
