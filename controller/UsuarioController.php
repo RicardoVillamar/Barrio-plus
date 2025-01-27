@@ -260,7 +260,8 @@ class UsuarioController
 
     public function cancelarReserva() {
 
-}
+    }
+
 
     public function obtenerRolUsuario()
     {
