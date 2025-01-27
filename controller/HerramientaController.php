@@ -86,65 +86,61 @@ class HerramientaController
     }
 
     //Eliminar herramienta
-    public function view_eliminar()
+    public function view_eliminar(){
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+
+    if (!isset($_SESSION['usuario'])) {
+        header('Location: login.php');
+        exit;
+    }
+
+    $usuario = $_SESSION['usuario'];
+    $id = htmlentities($_GET['id']);
+    $herramienta = $this->model->selectOne($id);
+
+    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
+        $this->model->delete($id);
+        header("Location: index.php?c=herramienta&f=index");
+        exit;
+    }
+
+    echo "<script>";
+    echo "alert('No tienes permiso para eliminar esta herramienta.');";
+    echo "window.location.href = '?c=herramienta&f=index';";
+    echo "</script>";
+    exit;
+    }
+    //Edita Herramienta
+    public function view_editar()
     {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
-        if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
-            exit;
-        }
+    if (!isset($_SESSION['usuario'])) {
+        header('Location: login.php');
+        exit;
+    }
 
-        $usuario = $_SESSION['usuario'];
-        $id = htmlentities($_GET['id']);
+    $usuario = $_SESSION['usuario'];
+    $id = htmlentities($_GET['id']);
+    $herramienta = $this->model->selectOne($id);
+
+    // Verificar si el usuario tiene rol 1 (admin) o si es un contribuidor que tiene la propiedad de la herramienta
+    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
+        $estados = $this->modeloEstado->selectEstado();
         $herramienta = $this->model->selectOne($id);
-
-        if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
-            $this->model->delete($id);
-            header("Location: index.php?c=herramienta&f=index");
-            exit;
-        }
-
+        $titulo = 'Editar Herramienta';
+        require_once VHERRAMIENTAS . 'edit.php';
+    } else {
         echo "<script>";
-        echo "alert('No tienes permiso para eliminar esta herramienta.');";
+        echo "alert('No tienes permiso para editar esta herramienta.');";
         echo "window.location.href = '?c=herramienta&f=index';";
         echo "</script>";
         exit;
-
-        $this->model->delete($id);
-        header("Location: index.php?c=herramienta&f=index");
     }
-
-
-    //Editar herramienta
-    public function view_editar()
-    {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-
-        if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
-            exit;
-        }
-
-        $usuario = $_SESSION['usuario'];
-        $id = htmlentities($_GET['id']);
-        $herramienta = $this->model->selectOne($id);
-
-        if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
-            $estados = $this->modeloEstado->selectEstado();
-            $titulo = 'Editar Herramienta';
-            require_once VHERRAMIENTAS . 'edit.php';
-        } else {
-            echo "<script>";
-            echo "alert('No tienes permiso para editar esta herramienta.');";
-            echo "window.location.href = '?c=herramienta&f=index';";
-            echo "</script>";
-            exit;
-        }
     }
 
     //Registrar Herramienta
