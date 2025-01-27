@@ -24,7 +24,7 @@
                 <h2 class="subtitulos">Buscar Reservas por Herramienta</h2>
                 <form method="GET" action="index.php">
                     <input type="hidden" name="c" value="usuario">
-                    <input type="hidden" name="f" value="buscarReservasPorHerramienta">
+                    <input type="hidden" name="f" value="buscarReservasPorHerramientas">
                     <input type="text" name="query" placeholder="Buscar por nombre de herramienta...">
                     <button type="submit">Buscar</button>
                 </form>
@@ -40,8 +40,8 @@
                                 <th>Nombre de la Herramienta</th>
                                 <th>Fecha de Inicio</th>
                                 <th>Fecha de Fin</th>
-                                <th>Estado</th>
                                 <th>Cantidad</th>
+                                <th>Accion</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,8 +50,10 @@
                                     <td><?php echo htmlspecialchars($reserva['nombre']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['fechaInicio']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['estado']); ?></td>
+
                                     <td><?php echo htmlspecialchars($reserva['cantidad']); ?></td>
+                                    <td>
+                                    <button <?php echo $reserva['idReserva'] ?? ''; ?>>Cancelar</button> </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
