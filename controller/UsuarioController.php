@@ -291,6 +291,23 @@ class UsuarioController
         }
     }
     
+    
+    public function cancelarReservaInstalaciones()
+    {
+        $id = $_GET['id'] ?? null;
+    
+        if ($id) {
+            $result = $this->model->deleteReservationInstById($id);
+            if ($result) {
+                header("Location: index.php?c=usuario&f=profile");
+                exit;
+            } else {
+                echo "Error al cancelar la reserva.";
+            }
+        } else {
+            echo "ID de reserva no válido.";
+        }
+    }
         
 
  

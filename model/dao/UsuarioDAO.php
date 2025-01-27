@@ -201,6 +201,21 @@ class UsuarioDAO
             return false;
         }
     }
+
+    public function deleteReservationInstById($reservationId)
+{
+    try {
+        $sql = "DELETE FROM ReservacionInstalacion WHERE idReservacion = :id";
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindParam(':id', $reservationId, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $er) {
+        error_log("Error en deleteReservationInstById de UsuarioDAO: " . $er->getMessage());
+        return false;
+    }
+}
+
 }
 
 ?>

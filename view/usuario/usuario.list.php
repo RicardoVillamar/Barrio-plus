@@ -138,14 +138,14 @@
                                     <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
 
                                     <td><?php echo htmlspecialchars($reserva['PersonasEsperadas']); ?></td>
-                                    <td>
-    <form method="GET" action="index.php">
-        <input type="hidden" name="c" value="usuario">
-        <input type="hidden" name="f" value="cancelarReservaHerramienta">
-        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
-        <button type="submit">Cancelar</button>
-    </form>
-</td>
+                                                                    <td>
+                                    <form method="GET" action="index.php">
+                                        <input type="hidden" name="c" value="usuario">
+                                        <input type="hidden" name="f" value="cancelarReservaInstalaciones">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
+                                        <button type="submit">Cancelar</button>
+                                    </form>
+                                </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -177,11 +177,15 @@
                                     <td><?php echo htmlspecialchars($reserva['Instalacion']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaInicio']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaFin']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['personasEsperadas']); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['PersonasEsperadas']); ?></td>
                                     <td>
-                                        <button>Cancelar</button>
-                                        </form>
-                                    </td>
+                                    <form method="GET" action="index.php">
+                                        <input type="hidden" name="c" value="usuario">
+                                        <input type="hidden" name="f" value="cancelarReservaInstalaciones">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
+                                        <button type="submit">Cancelar</button>
+                                    </form>
+                                </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
