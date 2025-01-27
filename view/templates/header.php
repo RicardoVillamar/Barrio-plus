@@ -49,8 +49,12 @@ if (isset($_SESSION['usuario'])) {
         <li><a href="index.php?c=dashboard">Panel de Contribuidor</a></li>
       <?php endif; ?>
       <li>
-        <a href="index.php?c=usuario&f=profile" class="user">
-          <span class="material-symbols-outlined">account_circle</span>
+        <a href="index.php?c=usuario&f=profile" class="user no-hover">
+          <?php if (!empty($usuario['imagen'])): ?>
+            <img src="data:image/jpeg;base64,<?php echo base64_encode($usuario['imagen']); ?>" alt="Imagen de usuario" class="user-img" style="width: 40px; height: 40px; border-radius: 50%;object-fit: cover;" />
+          <?php else: ?>
+            <span class="material-symbols-outlined">account_circle</span>
+          <?php endif; ?>
         </a>
       </li>
     </ul>
