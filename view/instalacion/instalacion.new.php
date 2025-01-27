@@ -15,21 +15,25 @@
             <div>
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" class="input" placeholder="Nombre de la instalacion">
+                <span class="error"><?php echo $errores['nombre'] ?? ''; ?></span>
             </div>
 
             <div>
                 <label for="descripcion">Descripcion</label>
                 <textarea id="descripcion" name="descripcion" placeholder="Descripcion de la instalacion"></textarea>
+                <span class="error"><?php echo $errores['descripcion'] ?? ''; ?></span>
             </div>
 
             <div>
                 <label for="precio">Precio</label>
                 <input type="number" id="precio" name="precio" class="input" placeholder="Precio de la instalacion">
+                <span class="error"><?php echo $errores['precio'] ?? ''; ?></span>
             </div>
 
             <div>
                 <label for="tamano">Tamaño</label>
                 <input type="text" id="tamano" name="tamano" class="input" placeholder="Tamaño de la instalacion">
+                <span class="error"><?php echo $errores['tamano'] ?? ''; ?></span>
             </div>
 
             <div>
@@ -43,6 +47,7 @@
                     }
                     ?>
                 </select>
+                <span class="error"><?php echo $errores['tipo'] ?? ''; ?></span>
             </div>
 
             <div style="display: none;">
@@ -56,11 +61,13 @@
                     }
                     ?>
                 </select>
+                <span class="error"><?php echo $errores['estado'] ?? ''; ?></span>
             </div>
 
             <div>
                 <label for="imagen">Imagen</label>
                 <input type="file" id="imagen" name="imagen" accept="image/*" class="input">
+                <span class="error"><?php echo $errores['imagen'] ?? ''; ?></span>
             </div>
 
             <div style="display: flex; justify-content: space-between;">

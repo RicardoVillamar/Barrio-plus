@@ -243,7 +243,7 @@ class UsuarioController
         exit();
     }
 
-    public function buscarReservasPorHerramienta() {
+    public function buscarReservasPorHerramientas() {
         if (isset($_GET['query'])) {
             if (!isset($_SESSION)) session_start();
             $usuario = $_SESSION['usuario'];
@@ -257,6 +257,10 @@ class UsuarioController
             require_once 'view/usuario/usuario.list.php';
         }
     }
+
+    public function cancelarReserva() {
+
+}
 
     public function obtenerRolUsuario()
     {
