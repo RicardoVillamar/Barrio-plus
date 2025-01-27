@@ -15,7 +15,6 @@ class HerramientaController
     {
         $this->model = new HerramientaDAO();
         $this->modeloEstado = new EstadoDAO();
-        //dadsad
     }
 
     //Pagina principal de herramienta
@@ -33,7 +32,7 @@ class HerramientaController
         $usuario = $_SESSION['usuario'];
         if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
             echo "<script>";
-            echo "alert('No puedes ingresar porque no estas logeado.');";
+            echo "alert('No puedes ingresar porque no eres admin.');";
             echo "window.location.href = 'index.php?c=herramienta&f=index';";
             echo "</script>";
             exit;
@@ -164,7 +163,7 @@ class HerramientaController
         $usuario = $_SESSION['usuario'];
         if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
             echo "<script>";
-            echo "alert('No puedes registrar una herramienta porque no estas logeado');";
+            echo "alert('No puedes registrar una herramienta porque no eres admin');";
             echo "window.location.href = 'index.php?c=herramienta&f=index';";
             echo "</script>";
             exit;
@@ -294,7 +293,7 @@ class HerramientaController
         }
 
         if (!isset($_SESSION['usuario'])) {
-            header('Location: login.php');
+            header('Location: index.php?c=usuario&f=login');
             exit;
         }
 
@@ -356,7 +355,6 @@ class HerramientaController
                 'idEstadoFK' => 2,
                 'idHerramientaFK' => $_POST['idHerramienta'],
                 'idUsuarioFK' => $_SESSION['usuario']['idUsuario'],
-                //'idUsuarioFK' => 1,
                 'cantidad' => $_POST['cantidad'],
                 'fechaInicio' => $_POST['fechaInicio'],
                 'fechaFin' => $_POST['fechaFin'],
