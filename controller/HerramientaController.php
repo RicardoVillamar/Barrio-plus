@@ -101,18 +101,17 @@ class HerramientaController
     $id = htmlentities($_GET['id']);
     $herramienta = $this->model->selectOne($id);
 
-    if ($usuario['idRolFK'] == 1) {
+    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
         $this->model->delete($id);
         header("Location: index.php?c=herramienta&f=index");
         exit;
     }
 
-    if (!$herramienta || $herramienta['idUsuarioFK'] != $usuario['idUsuario']) {
-        echo "<script>";
-        echo "alert('No puedes eliminar esta herramienta porque no la ingresaste.');";
-        echo "window.location.href = '?c=herramienta&f=index';;";
-        echo "</script>";
-        exit;
+    echo "<script>";
+    echo "alert('No tienes permiso para eliminar esta herramienta.');";
+    echo "window.location.href = '?c=herramienta&f=index';";
+    echo "</script>";
+    exit;
     }
 
     $this->model->delete($id);
@@ -120,7 +119,8 @@ class HerramientaController
     }
 
     //Editar herramienta
-    public function view_editar(){
+    public function view_editar()
+    {
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -134,26 +134,21 @@ class HerramientaController
     $id = htmlentities($_GET['id']);
     $herramienta = $this->model->selectOne($id);
 
-    if ($usuario['idRolFK'] == 1) {
+    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
         $estados = $this->modeloEstado->selectEstado();
         $titulo = 'Editar Herramienta';
         require_once VHERRAMIENTAS . 'edit.php';
         exit;
     }
 
-    if (!$herramienta || $herramienta['idUsuarioFK'] != $usuario['idUsuario']) {
-        echo "<script>";
-        echo "alert('No tienes permiso para editar esta herramienta.');";
-        echo "window.location.href = '?c=herramienta&f=index';";
-        echo "</script>";
-        exit;
+    echo "<script>";
+    echo "alert('No tienes permiso para editar esta herramienta.');";
+    echo "window.location.href = '?c=herramienta&f=index';";
+    echo "</script>";
+    exit;
     }
 
-    $estados = $this->modeloEstado->selectEstado();
-    $titulo = 'Editar Herramienta';
-    require_once VHERRAMIENTAS . 'edit.php';
-    }
-
+    //Registrar Herramienta
     public function new_Herramienta()
     {
         if (!isset($_SESSION)) {
