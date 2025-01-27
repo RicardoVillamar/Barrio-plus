@@ -145,6 +145,19 @@ public function selectReservasHerramientasByUserId($userId)
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+    public function buscarReservasPorInstalacion($idUsuario, $nombreInstalacion) {
+        $sql = "SELECT ri.*, i.nombre 
+                FROM ReservacionInstalacion ri
+                JOIN Instalacion i ON ri.idInstalacionFK = i.idInstalacion
+                WHERE ri.idUsuarioFK = :idUsuario 
+                AND i.nombre LIKE :nombreInstalacion";
+    
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
+        $stmt->bindValue(':nombreInstalacion', '%' . $nombreInstalacion . '%', PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function getRoleById($userId) {
         $query = "SELECT idRolFK FROM usuario WHERE id = :userId";

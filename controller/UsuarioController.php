@@ -14,7 +14,7 @@ class UsuarioController
     }
 
 
-    public function index()
+   /* public function index()
     {
         $resultados = $this->model->selectAll("");
         $titulo = "Buscar usuarios";
@@ -24,7 +24,7 @@ class UsuarioController
         } else {
             echo "No se encontraron usuarios";
         }
-    }
+    }*/
 
     public function profile()
     {
@@ -57,12 +57,12 @@ class UsuarioController
     }
 
 
-    public function search()
+    /*public function search()
     {
         $parametro = htmlentities($_POST['b'] ?? "");
         $resultados = $this->model->selectAll($parametro);
         $titulo = "Buscar usuarios";
-    }
+    }*/
 
     public function view_new()
     {
@@ -285,6 +285,21 @@ class UsuarioController
             }
         }
         
+
+        public function buscarReservasPorInstalaciones() {
+            if (isset($_GET['query'])) {
+                if (!isset($_SESSION)) session_start();
+                $usuario = $_SESSION['usuario'];
+                $idUsuario = $usuario['idUsuario'];
+                $query = $_GET['query'];
+                $resultados = $this->model->buscarReservasPorInstalacion($idUsuario, $query);
+                require_once 'view/usuario/usuario.list.instalaciones.php';
+            } else {
+                // Manejar el caso donde no hay query
+                $resultados = [];
+                require_once 'view/usuario/usuario.list.instalaciones.php';
+            }
+        }
     
 
 
