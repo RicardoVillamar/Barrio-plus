@@ -26,7 +26,7 @@ require_once HEADER; ?>
         
         <div class="contenedor">
             <a href="index.php?c=herramienta&f=index" class="boton-grande">Gestionar Herramientas</a>
-            <a href="" class="boton-grande">Gestionar Contribuciones</a>
+            <a href="index.php?c=contribucion&f=index" class="boton-grande">Gestionar Contribuciones</a>
             <a href="index.php?c=instalacion&f=index_instalacion" class="boton-grande">Gestionar Instalaciones</a>
             <a href="index.php?c=reservacion&f=index" class="boton-grande">Gestionar Reservaciones</a>
         </div>
