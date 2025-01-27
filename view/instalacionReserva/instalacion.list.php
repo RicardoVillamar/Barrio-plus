@@ -50,7 +50,9 @@ require_once HEADER; ?>
         <section class="cabezera">
             <div style="display: flex; flex-direction: column; gap: 10px; margin: 10px;">
                 <h1>Instalaciones</h1>
-                <a href=" index.php?c=instalacion&f=index_instalacion">Ingresar instalacion</a>
+                <?php if (isset($rol) && $rol == '1'): ?>
+                    <a href=" index.php?c=instalacion&f=index_instalacion">Ingresar instalacion</a>
+                <?php endif; ?>
             </div>
             <div class="buscar">
                 <form action="index.php?c=instalacion&f=searchReservas" method="post" style="display: flex; align-items: center;">
