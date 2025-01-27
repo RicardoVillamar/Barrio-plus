@@ -107,7 +107,7 @@ class HerramientaController
     }
 
     // Verificar permisos
-    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
+    if ($usuario['idRolFK'] == 3 || ($usuario['idRolFK'] == 1 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
         $this->model->delete($id);
         header("Location: index.php?c=herramienta&f=index");
         exit;
@@ -142,7 +142,7 @@ class HerramientaController
     }
 
     // Verificar permisos
-    if ($usuario['idRolFK'] == 1 || ($usuario['idRolFK'] == 3 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
+    if ($usuario['idRolFK'] == 3 || ($usuario['idRolFK'] == 1 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
         $estados = $this->modeloEstado->selectEstado();
         $titulo = 'Editar Herramienta';
         require_once VHERRAMIENTAS . 'edit.php';
