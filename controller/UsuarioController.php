@@ -258,17 +258,32 @@ class UsuarioController
         }
     }
 
+    public function buscarReservasPorInstalaciones() {
+        if (isset($_GET['query'])) {
+            if (!isset($_SESSION)) session_start();
+            $usuario = $_SESSION['usuario'];
+            $idUsuario = $usuario['idUsuario'];
+            $query = $_GET['query'];
+            $resultados = $this->model->buscarReservasPorInstalacion($idUsuario, $query);
+            require_once VUSUARIOS.'list.php';
+        } else {
+            // Manejar el caso donde no hay query
+            $resultados = [];
+            require_once VUSUARIOS.'list.php';
+        }
+    }
+
    
         public function cancelarReservaHerramienta() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idReservacion'])) {
                 // Obtiene el ID de la reservación desde el formulario
                 $reservationId = intval($_POST['idReservacion']);
         
-                // Instancia del DAO
-                $usuarioDAO = new UsuarioDAO();
+              
         
                 // Llamada al método para eliminar la reserva
-                $resultado = $usuarioDAO->deleteReservationHerrById($reservationId);
+                $resultado =$this->model->deleteReservationHerrById($reservationId);
+                
         
                 if ($resultado) {
                     // Redirige al perfil con un mensaje de éxito
@@ -286,20 +301,7 @@ class UsuarioController
         }
         
 
-        public function buscarReservasPorInstalaciones() {
-            if (isset($_GET['query'])) {
-                if (!isset($_SESSION)) session_start();
-                $usuario = $_SESSION['usuario'];
-                $idUsuario = $usuario['idUsuario'];
-                $query = $_GET['query'];
-                $resultados = $this->model->buscarReservasPorInstalacion($idUsuario, $query);
-                require_once 'view/usuario/usuario.list.instalaciones.php';
-            } else {
-                // Manejar el caso donde no hay query
-                $resultados = [];
-                require_once 'view/usuario/usuario.list.instalaciones.php';
-            }
-        }
+ 
     
 
 

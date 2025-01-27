@@ -109,7 +109,7 @@
                                 <th style="border: 1px solid #ddd; padding: 8px;">Instalación</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Fecha Inicio</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Fecha Fin</th>
-                                <th style="border: 1px solid #ddd; padding: 8px;">Cantidad</th>
+                                <th style="border: 1px solid #ddd; padding: 8px;">Personas PersonasEsperadas</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Accion</th>
                             </tr>
                         </thead>
@@ -119,7 +119,7 @@
                                     <td><?php echo htmlspecialchars($reserva['Instalacion']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaInicio']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaFin']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['Cantidad']); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['personasEsperadas']); ?></td>
                                     <td>
                                     
                         <button>Cancelar</button>
