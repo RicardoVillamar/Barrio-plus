@@ -51,7 +51,7 @@
                                     <td><?php echo htmlspecialchars($reserva['fechaInicio']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
 
-                                    <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['cantidad'] ?? ''); ?></td>
                                     <td>
     <form method="GET" action="index.php">
         <input type="hidden" name="c" value="usuario">
@@ -136,18 +136,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($resultadosI as $reserva): ?>
+                            <?php foreach ($resultadosI as $reservaI): ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($reserva['Instalacion']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['FechaInicio']); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
+                                    <td><?php echo htmlspecialchars($reservaI['nombre']); ?></td>
+                                    <td><?php echo htmlspecialchars($reservaI['fechaInicio']); ?></td>
+                                    <td><?php echo htmlspecialchars($reservaI['fechaFin']); ?></td>
 
-                                    <td><?php echo htmlspecialchars($reserva['PersonasEsperadas']); ?></td>
+                                    <td><?php echo htmlspecialchars($reservaI['personasEsperadas']); ?></td>
                                                                     <td>
                                     <form method="GET" action="index.php">
                                         <input type="hidden" name="c" value="usuario">
                                         <input type="hidden" name="f" value="cancelarReservaInstalaciones">
-                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
+                                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reservaI['idReservacion'] ?? ''); ?>">
                                         <button type="submit">Cancelar</button>
                                     </form>
                                 </td>

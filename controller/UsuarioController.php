@@ -264,7 +264,7 @@ class UsuarioController
             $usuario = $_SESSION['usuario'];
             $idUsuario = $usuario['idUsuario'];
             $query = $_GET['query_instalaciones'];
-            $resultados = $this->model->buscarReservasPorInstalacion($idUsuario, $query);
+            $resultadosI = $this->model->buscarReservasPorInstalacion($idUsuario, $query);
             require_once VUSUARIOS.'list.php';
         } else {
             // Manejar el caso donde no hay query
