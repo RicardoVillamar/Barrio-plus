@@ -9,7 +9,7 @@
             </div>
             <div class="buscar">
                 <form action="index.php?c=herramienta&f=searchReserva" method="post" style="display: flex; align-items: center;">
-                    <input name="buscar" placeholder="Nombre de la Herramietna" type="text"
+                    <input name="b" placeholder="Nombre de la Herramietna" type="text"
                         style="padding: 20px 20px; padding-right: 30px; margin: 10px; border-radius: 8px; border: 1px solid rgba(0, 0, 0, 0.1);height: 30px;"
                         id="buscar" />
                     <button type="submit" for="buscar-barra" class="boton-mediano" style="font-weight: bold;">Buscar</button>
@@ -38,7 +38,7 @@
                         <tr>
                             <td><?php echo $row['estado_nombre'] ?></td>
                             <td>
-                            <p class="texto nombre-herramienta"><?php echo $row['nombre'] ?></p>
+                                <p class="texto nombre-herramienta"><?php echo $row['nombre'] ?></p>
                                 <?php if ($row['imagen']) { ?>
                                     <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen']); ?>" alt="Imagen" class="imagen-tabla">
                                 <?php } else { ?>
@@ -56,7 +56,7 @@
                                 if ($row['estado_nombre'] === 'Libre') {
                                 ?>
 
-                                <a class="boton-mediano reserva" href="index.php?c=herramienta&f=view_reservar&id=<?php echo $row['idHerramienta'] ?>">Reservar</a>
+                                    <a class="boton-mediano reserva" href="index.php?c=herramienta&f=view_reservar&id=<?php echo $row['idHerramienta'] ?>">Reservar</a>
 
                                 <?php
                                 } else {
@@ -65,7 +65,7 @@
                                 <?php
                                 }
                                 ?>
-                        
+
                             </td>
                         </tr>
 
