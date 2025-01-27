@@ -101,6 +101,50 @@
                 <?php endif; ?>
             </section>
 
+            <section>
+                <h2 class="subtitulos">Buscar Reservas por Instalaciones</h2>
+                <form method="GET" action="index.php">
+                    <input type="hidden" name="c" value="usuario">
+                    <input type="hidden" name="f" value="buscarReservasPorInstalaciones">
+                    <input type="text" name="query" placeholder="Buscar por nombre de herramienta...">
+                    <button type="submit">Buscar</button>
+                </form>
+            </section>
+
+            <section>
+                <h2 class="subtitulos">Resultados de la Búsqueda</h2>
+                <?php if (!empty($resultados)): ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre de la Herramienta</th>
+                                <th>Fecha de Inicio</th>
+                                <th>Fecha de Fin</th>
+                                <th>Cantidad</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($resultados as $reserva): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($reserva['Instalacion']); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['FechaInicio']); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
+
+                                    <td><?php echo htmlspecialchars($reserva['PersonasEsperadas']); ?></td>
+                                    <td>
+                                    <button >>Cancelar</button> </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>No se encontraron reservas.</p>
+                <?php endif; ?>
+            </section>
+
+            <section></section>
+
             <!-- Reservas de Instalaciones -->
             <section>
                 <h2 class="subtitulos">Reservas de Instalaciones</h2>
