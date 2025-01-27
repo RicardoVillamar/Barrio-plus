@@ -51,10 +51,15 @@
                                     <td><?php echo htmlspecialchars($reserva['fechaInicio']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
 
-                                    <td><?php echo htmlspecialchars($reserva['idReservacion']); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
                                     <td>
-                                        <button>>Cancelar</button>
-                                    </td>
+    <form method="GET" action="index.php">
+        <input type="hidden" name="c" value="usuario">
+        <input type="hidden" name="f" value="cancelarReservaHerramienta">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
+        <button type="submit">Cancelar</button>
+    </form>
+</td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -112,14 +117,14 @@
                 <form method="GET" action="index.php">
                     <input type="hidden" name="c" value="usuario">
                     <input type="hidden" name="f" value="buscarReservasPorInstalaciones">
-                    <input type="text" name="query" placeholder="Buscar por nombre de herramienta...">
+                    <input type="text" name="query_instalaciones" placeholder="Buscar por nombre de instalacion...">
                     <button type="submit">Buscar</button>
                 </form>
             </section>
 
             <section>
                 <h2 class="subtitulos">Resultados de la Búsqueda</h2>
-                <?php if (!empty($resultados)): ?>
+                <?php if (!empty($resultadosI)): ?>
                     <table>
                         <thead>
                             <tr>
@@ -131,7 +136,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($resultados as $reserva): ?>
+                            <?php foreach ($resultadosI as $reserva): ?>
                                 <tr>
                                     <td><?php echo htmlspecialchars($reserva['Instalacion']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaInicio']); ?></td>

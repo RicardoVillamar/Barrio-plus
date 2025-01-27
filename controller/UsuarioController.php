@@ -259,11 +259,11 @@ class UsuarioController
     }
 
     public function buscarReservasPorInstalaciones() {
-        if (isset($_GET['query'])) {
+        if (isset($_GET['query_instalaciones'])) {
             if (!isset($_SESSION)) session_start();
             $usuario = $_SESSION['usuario'];
             $idUsuario = $usuario['idUsuario'];
-            $query = $_GET['query'];
+            $query = $_GET['query_instalaciones'];
             $resultados = $this->model->buscarReservasPorInstalacion($idUsuario, $query);
             require_once VUSUARIOS.'list.php';
         } else {
