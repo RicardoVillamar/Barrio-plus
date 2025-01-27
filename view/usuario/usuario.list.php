@@ -14,8 +14,8 @@
                 <h2 class="subtitulos"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></h2>
                 <p class="texto"><?php echo htmlspecialchars($usuario['correo']); ?></p>
                 <p>Datos del usuario</p>
-                <button onclick="window.location.href='index.php?c=usuario&f=view_edit'" >Editar información</button>
-                <button onclick="window.location.href='index.php?c=usuario&f=logout'" >Cerrar sesión</button>
+                <button onclick="window.location.href='index.php?c=usuario&f=view_edit'">Editar información</button>
+                <button onclick="window.location.href='index.php?c=usuario&f=logout'">Cerrar sesión</button>
                 <br>
             </section>
 
@@ -53,7 +53,8 @@
 
                                     <td><?php echo htmlspecialchars($reserva['cantidad']); ?></td>
                                     <td>
-                                    <button >>Cancelar</button> </td>
+                                        <button>>Cancelar</button>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -86,10 +87,11 @@
                                     <td><?php echo htmlspecialchars($reserva['FechaFin'] ?? ''); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
                                     <td>
-                                    <form method="POST" action="index.php?c=usuario&f=cancelarReservaHerramienta">
-        <input type="hidden" name="idReservacion" value="<?php echo htmlspecialchars($reserva['idReservacion']?? ''); ?>">
-        <button type="submit">Cancelar</button>
-    </form> </td>
+                                        <form method="POST" action="index.php?c=usuario&f=cancelarReservaHerramienta">
+                                            <input type="hidden" name="idReservacion" value="<?php echo htmlspecialchars($reserva['idReservacion'] ?? ''); ?>">
+                                            <button type="submit">Cancelar</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -109,7 +111,7 @@
                                 <th style="border: 1px solid #ddd; padding: 8px;">Instalación</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Fecha Inicio</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Fecha Fin</th>
-                                <th style="border: 1px solid #ddd; padding: 8px;">Personas PersonasEsperadas</th>
+                                <th style="border: 1px solid #ddd; padding: 8px;">Personas Esperadas</th>
                                 <th style="border: 1px solid #ddd; padding: 8px;">Accion</th>
                             </tr>
                         </thead>
@@ -121,9 +123,9 @@
                                     <td><?php echo htmlspecialchars($reserva['FechaFin']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['personasEsperadas']); ?></td>
                                     <td>
-                                    
-                        <button>Cancelar</button>
-                    </form> </td>
+                                        <button>Cancelar</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

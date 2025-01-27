@@ -39,18 +39,18 @@ class UsuarioDAO
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
+
     public function getUserById($userId)
-{
-    $query = "SELECT * FROM usuario WHERE idUsuario = :idUsuario";
-    $stmt = $this->con->prepare($query);
-    $stmt->bindParam(':idUsuario', $userId);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-public function selectReservasHerramientasByUserId($userId)
-{
-    $sql = "SELECT 
+    {
+        $query = "SELECT * FROM usuario WHERE idUsuario = :idUsuario";
+        $stmt = $this->con->prepare($query);
+        $stmt->bindParam(':idUsuario', $userId);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function selectReservasHerramientasByUserId($userId)
+    {
+        $sql = "SELECT 
                 h.nombre AS Herramienta, 
                 rh.fechaInicio AS FechaInicio, 
                 rh.fechaFin AS FechaFin, 
@@ -58,11 +58,11 @@ public function selectReservasHerramientasByUserId($userId)
             FROM ReservacionHerramienta rh
             JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
             WHERE rh.idUsuarioFK = :id";
-    $stmt = $this->con->prepare($sql);
-    $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+        $stmt = $this->con->prepare($sql);
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 
     public function selectReservasInstalacionesByUserId($userId)
@@ -71,7 +71,7 @@ public function selectReservasHerramientasByUserId($userId)
                     i.nombre AS Instalacion, 
                     ri.fechaInicio AS FechaInicio, 
                     ri.fechaFin AS FechaFin, 
-                    ri.personasEsperadas AS PersonasEsperadas
+                    ri.personasEsperadas AS personasEsperadas
                 FROM ReservacionInstalacion ri
                 JOIN Instalacion i ON ri.idInstalacionFK = i.idInstalacion
                 WHERE ri.idUsuarioFK = :id";
@@ -80,7 +80,7 @@ public function selectReservasHerramientasByUserId($userId)
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
     public function selectOneByEmail($correo)
     {
         $sql = "SELECT * FROM usuario WHERE correo = :correo";
@@ -109,7 +109,7 @@ public function selectReservasHerramientasByUserId($userId)
             return false;
         }
     }
-  
+
 
     public function update($usuario)
     {
@@ -121,7 +121,7 @@ public function selectReservasHerramientasByUserId($userId)
             $stmt->bindParam(":cor", $usuario['correo'], PDO::PARAM_STR);
             $stmt->bindParam(":con", $usuario['contrasena'], PDO::PARAM_STR);
             $stmt->bindParam(":rol", $usuario['idRolFK'], PDO::PARAM_INT);
-         //   $stmt->bindParam(':imagen', $usuario['imagen'], PDO::PARAM_LOB);
+            //   $stmt->bindParam(':imagen', $usuario['imagen'], PDO::PARAM_LOB);
             $stmt->bindParam(":id", $usuario['idUsuario'], PDO::PARAM_INT);
             $stmt->execute();
             return true;
@@ -130,28 +130,30 @@ public function selectReservasHerramientasByUserId($userId)
             return false;
         }
     }
-    
-    public function buscarReservasPorHerramienta($idUsuario, $nombreHerramienta) {
+
+    public function buscarReservasPorHerramienta($idUsuario, $nombreHerramienta)
+    {
         $sql = "SELECT rh.*, h.nombre 
                 FROM ReservacionHerramienta rh
                 JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
                 WHERE rh.idUsuarioFK = :idUsuario 
                 AND h.nombre LIKE :nombreHerramienta";
-    
+
         $stmt = $this->con->prepare($sql);
         $stmt->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $stmt->bindValue(':nombreHerramienta', '%' . $nombreHerramienta . '%', PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    public function buscarReservasPorInstalacion($idUsuario, $nombreInstalacion) {
+
+    public function buscarReservasPorInstalacion($idUsuario, $nombreInstalacion)
+    {
         $sql = "SELECT ri.*, i.nombre 
                 FROM ReservacionInstalacion ri
                 JOIN Instalacion i ON ri.idInstalacionFK = i.idInstalacion
                 WHERE ri.idUsuarioFK = :idUsuario 
                 AND i.nombre LIKE :nombreInstalacion";
-    
+
         $stmt = $this->con->prepare($sql);
         $stmt->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $stmt->bindValue(':nombreInstalacion', '%' . $nombreInstalacion . '%', PDO::PARAM_STR);
@@ -159,7 +161,8 @@ public function selectReservasHerramientasByUserId($userId)
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getRoleById($userId) {
+    public function getRoleById($userId)
+    {
         $query = "SELECT idRolFK FROM usuario WHERE id = :userId";
         $stmt = $this->con->prepare($query);
         $stmt->bindParam(':userId', $userId);
@@ -181,7 +184,8 @@ public function selectReservasHerramientasByUserId($userId)
         }
     }
 
-    public function deleteReservationHerrById($reservationId) {
+    public function deleteReservationHerrById($reservationId)
+    {
         try {
             $sql = "DELETE FROM ReservacionHerramienta WHERE idReservacion = :id";
             $stmt = $this->con->prepare($sql);
