@@ -258,9 +258,34 @@ class UsuarioController
         }
     }
 
-    public function cancelarReserva() {
-
-    }
+   
+        public function cancelarReservaHerramienta() {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['idReservacion'])) {
+                // Obtiene el ID de la reservación desde el formulario
+                $reservationId = intval($_POST['idReservacion']);
+        
+                // Instancia del DAO
+                $usuarioDAO = new UsuarioDAO();
+        
+                // Llamada al método para eliminar la reserva
+                $resultado = $usuarioDAO->deleteReservationHerrById($reservationId);
+        
+                if ($resultado) {
+                    // Redirige al perfil con un mensaje de éxito
+                    header("Location: index.php?c=usuario&f=view_profile&mensaje=Reserva cancelada exitosamente");
+                } else {
+                    // Redirige al perfil con un mensaje de error
+                    header("Location: index.php?c=usuario&f=view_profile&mensaje=Error al cancelar la reserva");
+                }
+                exit();
+            } else {
+                // Si no es una solicitud válida, redirige al perfil
+                header("Location: index.php?c=usuario&f=view_profile&mensaje=Solicitud inválida");
+                exit();
+            }
+        }
+        
+    
 
 
     public function obtenerRolUsuario()
