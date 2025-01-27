@@ -39,22 +39,22 @@ class HerramientaController
         } */
 
         if (!isset($_SESSION)) {
-        session_start();
+            session_start();
         }
-        
+
         if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
-        exit;
+            header('Location: login.php');
+            exit;
         }
-        
+
         $usuario = $_SESSION['usuario'];
-        Verificar si el usuario tiene uno de los dos roles permitidos
-        if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) { 
-        echo "<script>";
-        echo "alert('No tienes permiso para acceder a esta página.');";
-        echo "window.location.href = 'index.php';";
-        echo "</script>";
-        exit;
+
+        if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
         }
 
         $estados = $this->modeloEstado->selectEstado();
@@ -71,21 +71,21 @@ class HerramientaController
         if (!isset($_SESSION)) {
             session_start();
         }
-        
+
         if (!isset($_SESSION['usuario'])) {
             header('Location: login.php');
             exit;
         }
-        
+
         $usuario = $_SESSION['usuario'];
-        if ($usuario['idRolFK'] != 2) { 
+        if ($usuario['idRolFK'] != 2) {
             echo "<script>";
             echo "alert('No tienes permiso para acceder a esta página.');";
             echo "window.location.href = 'index.php';";
             echo "</script>";
             exit;
         }
-        
+
         $id = htmlentities($_GET['id']);
         $herramienta = $this->model->selectOne($id);
 
@@ -100,14 +100,14 @@ class HerramientaController
         if (!isset($_SESSION)) {
             session_start();
         }
-        
+
         if (!isset($_SESSION['usuario'])) {
             header('Location: login.php');
             exit;
         }
-        
+
         $usuario = $_SESSION['usuario'];
-        if ($usuario['idRolFK'] != 2) { 
+        if ($usuario['idRolFK'] != 2) {
             echo "<script>";
             echo "alert('No tienes permiso para acceder a esta página.');";
             echo "window.location.href = 'index.php';";
@@ -128,81 +128,81 @@ class HerramientaController
     //Eliminar herramienta
     public function view_eliminar()
     {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
-    if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
-        exit;
-    }
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
 
-    $usuario = $_SESSION['usuario'];
-    $id = htmlentities($_GET['id']);
-    $herramienta = $this->model->selectOne($id);
+        $usuario = $_SESSION['usuario'];
+        $id = htmlentities($_GET['id']);
+        $herramienta = $this->model->selectOne($id);
 
-    if (!$herramienta || $herramienta['idUsuarioFK'] != $usuario['idUsuario']) {
-        echo "<script>";
-        echo "alert('No tienes permiso para eliminar esta herramienta.');";
-        echo "window.location.href = 'index.php';";
-        echo "</script>";
-        exit;
-    }
+        if (!$herramienta || $herramienta['idUsuarioFK'] != $usuario['idUsuario']) {
+            echo "<script>";
+            echo "alert('No tienes permiso para eliminar esta herramienta.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        }
 
-    $this->model->delete($id);
-    $titulo = 'Eliminar Instalacion';
-    header("Location: index.php?c=herramienta&f=index");
+        $this->model->delete($id);
+        $titulo = 'Eliminar Instalacion';
+        header("Location: index.php?c=herramienta&f=index");
     }
 
     //Editar herramienta
     public function view_editar()
     {
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+        if (!isset($_SESSION)) {
+            session_start();
+        }
 
-    if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
-        exit;
-    }
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
 
-    $usuario = $_SESSION['usuario'];
-    $id = htmlentities($_GET['id']);
-    $herramienta = $this->model->selectOne($id);
+        $usuario = $_SESSION['usuario'];
+        $id = htmlentities($_GET['id']);
+        $herramienta = $this->model->selectOne($id);
 
-    if (!$herramienta || $herramienta['idUsuarioFK'] != $usuario['idUsuario']) {
-        echo "<script>";
-        echo "alert('No tienes permiso para editar esta herramienta.');";
-        echo "window.location.href = 'index.php';";
-        echo "</script>";
-        exit;
-    }
+        if (!$herramienta || $herramienta['idUsuarioFK'] != $usuario['idUsuario']) {
+            echo "<script>";
+            echo "alert('No tienes permiso para editar esta herramienta.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
+        }
 
-    $estados = $this->modeloEstado->selectEstado();
+        $estados = $this->modeloEstado->selectEstado();
 
-    $titulo = 'Editar Instalacion';
-    require_once VHERRAMIENTAS . 'edit.php';
+        $titulo = 'Editar Instalacion';
+        require_once VHERRAMIENTAS . 'edit.php';
     }
 
     public function new_Herramienta()
     {
         if (!isset($_SESSION)) {
-        session_start();
+            session_start();
         }
-        
+
         if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
-        exit;
+            header('Location: login.php');
+            exit;
         }
-        
+
         $usuario = $_SESSION['usuario'];
-        Verificar si el usuario tiene uno de los dos roles permitidos
-        if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) { 
-        echo "<script>";
-        echo "alert('No tienes permiso para acceder a esta página.');";
-        echo "window.location.href = 'index.php';";
-        echo "</script>";
-        exit;
+
+        if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
+            echo "<script>";
+            echo "alert('No tienes permiso para acceder a esta página.');";
+            echo "window.location.href = 'index.php';";
+            echo "</script>";
+            exit;
         }
 
         $estados = $this->modeloEstado->selectEstado();

@@ -37,11 +37,16 @@ if (isset($_SESSION['usuario'])) {
       </a>
     </div>
     <ul class="navbar-menu">
-      <li><a href="index.php?c=instalacion&f=index">Instalaciones</a></li>
-      <li><a href="index.php?c=herramienta&f=index_Herramienta">Herramientas</a></li>
-      <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
+      <?php if (!(isset($rol) && ($rol == '1' || $rol == '3'))): ?>
+        <li><a href="index.php?c=instalacion&f=index">Instalaciones</a></li>
+        <li><a href="index.php?c=herramienta&f=index_Herramienta">Herramientas</a></li>
+        <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
+      <?php endif; ?>
       <?php if (isset($rol) && $rol == '1'): ?>
         <li><a href="index.php?c=dashboard">Panel de Administración</a></li>
+      <?php endif; ?>
+      <?php if (isset($rol) && $rol == '3'): ?>
+        <li><a href="index.php?c=dashboard">Panel de Contribuidor</a></li>
       <?php endif; ?>
       <li>
         <a href="index.php?c=usuario&f=profile" class="user">
