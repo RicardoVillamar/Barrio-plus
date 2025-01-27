@@ -87,7 +87,7 @@
                                     <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
                                     <td>
                                     <form method="POST" action="index.php?c=usuario&f=cancelarReservaHerramienta">
-        <input type="hidden" name="idReservacion" value="<?php echo htmlspecialchars($reserva['idReservacion']); ?>">
+        <input type="hidden" name="idReservacion" value="<?php echo htmlspecialchars($reserva['idReservacion']?? ''); ?>">
         <button type="submit">Cancelar</button>
     </form> </td>
                                 </tr>
