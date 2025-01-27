@@ -93,7 +93,10 @@ class UsuarioController
                 if (!in_array($fileType, ['image/jpeg', 'image/png', 'image/gif'])) {
                     $errores[] = "Solo se permiten imágenes JPG, PNG y GIF.";
                 }
+            }else{
+                $errores['imagen'] = "La imagen es obligatoria.";
             }
+
             if (count($errores) > 0) {
                 echo "<script>";
                 echo "alert('" . implode("\\n", $errores) . "');";
@@ -117,7 +120,6 @@ class UsuarioController
                 $file = $_FILES['imagen']['tmp_name'];
                 $usuario['imagen'] = file_get_contents($file);
             }
-
             $resultado = $this->model->insert($usuario);
 
             if ($resultado) {
