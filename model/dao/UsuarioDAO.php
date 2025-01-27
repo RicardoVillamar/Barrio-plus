@@ -133,11 +133,12 @@ class UsuarioDAO
 
     public function buscarReservasPorHerramienta($idUsuario, $nombreHerramienta)
     {
-        $sql = "SELECT rh.*, h.nombre 
-                FROM ReservacionHerramienta rh
-                JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
-                WHERE rh.idUsuarioFK = :idUsuario 
-                AND h.nombre LIKE :nombreHerramienta";
+        $sql = "SELECT rh.idReservacion, rh.FechaInicio, rh.FechaFin, rh.Cantidad, h.nombre AS Herramienta 
+        FROM ReservacionHerramienta rh
+        JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
+        WHERE rh.idUsuarioFK = :idUsuario 
+        AND h.nombre LIKE :nombreHerramienta";
+
 
         $stmt = $this->con->prepare($sql);
         $stmt->bindValue(':idUsuario', $idUsuario, PDO::PARAM_INT);
