@@ -40,10 +40,13 @@
 
         <div class="campo" id="campoEstado" style="display: none;">
         <label for="campoEstadoContr">Estado contribución: </label>
-        <select name="campoEstadoContr" id="selectInstalaciones" class="selecProductos" disabled>
+        <select name="campoEstadoContr" id="selectInstalaciones" class="selecProductos">
           <?php 
           foreach ($estadosContrib as $est) {
-            $selected = ($est["idEstadoContribucion"] == 1) ? "selected" : ""; 
+            $selected = "";
+            if($est["idEstadoContribucion"] == 1){
+              $selected = 'selected = "selected"';
+            }
           ?>
           <option value="<?php echo $est["idEstadoContribucion"] ?>" <?php echo $selected; ?>>
             <?php echo $est["nombreEstado"] ?>
