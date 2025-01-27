@@ -115,7 +115,7 @@ class ReservacionDAO
                 $row['personasEsperadas'],
                 $row['observaciones']
             );
-            // Assuming these setters exist in your DTO
+            
             $reservaciones[count($reservaciones) - 1]->setNombreElemento($row['nombreElemento']);
             $reservaciones[count($reservaciones) - 1]->setNombreUsuario($row['nombreUsuario']);
         }
