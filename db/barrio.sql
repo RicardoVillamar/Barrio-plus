@@ -95,12 +95,18 @@ CREATE TABLE Publicacion (
   `idUsuarioFK` INT NOT NULL
 );
 
+CREATE TABLE `EstadoContribucion` (
+  `idEstadoContribucion` INT PRIMARY KEY AUTO_INCREMENT,
+  `nombreEstado` VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE `Contribucion` (
   `idContribucion` INT PRIMARY KEY AUTO_INCREMENT,
-  `estado` VARCHAR(50) NOT NULL,
+  `idEstadoContribucionFK` INT NOT NULL,
   `idHerramientaFK` INT,
   `idInstalacionFK` INT,
   `idUsuarioFK` INT NOT NULL,
+  FOREIGN KEY (`idEstadoContribucionFK`) REFERENCES `EstadoContribucion` (`idEstadoContribucion`),
   FOREIGN KEY (`idHerramientaFK`) REFERENCES `Herramienta` (`idHerramienta`),
   FOREIGN KEY (`idInstalacionFK`) REFERENCES `Instalacion` (`idInstalacion`)
 );
@@ -118,7 +124,6 @@ ALTER TABLE `ReservacionInstalacion` ADD FOREIGN KEY (`idEstadoFK`) REFERENCES `
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idUsuarioFK`) REFERENCES `Usuario` (`idUsuario`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idTipoFK`) REFERENCES `TipoPublicacion` (`idTipo`);
 ALTER TABLE `Publicacion` ADD FOREIGN KEY (`idPrioridadFK`) REFERENCES `Prioridad` (`idPrioridad`);
-
 
 DELIMITER $$
 
@@ -170,6 +175,7 @@ DELIMITER ;
 INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
 INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
 INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
+INSERT INTO `EstadoContribucion` (`nombreEstado`) VALUES ('En espera'), ('Aprobado');
 
 
 INSERT INTO `Prioridad` (`nivel`) VALUES ('Alta'), ('Media'), ('Baja');
@@ -192,3 +198,19 @@ INSERT INTO `Publicacion` (`titulo`, `idTipoFK`, `descripcion`, `idPrioridadFK`,
 ('Aviso de mantenimiento', 3, 'Cierre temporal del parque por mantenimiento.', 3, '2025-01-30', 1, 2), 
 ('Fugas de agua', 1, 'Reporte de fuga de agua cerca del aula 2.', 1, '2025-01-29', 1, 4), 
 ('Anuncio de reunión', 2, 'Aviso para reunión general de vecinos el próximo viernes.', 2, '2025-02-05', 0, 5); 
+
+INSERT INTO `Instalacion` (`nombre`, `descripcion`, `precio`, `tamano`, `idTipoFK`, `idEstadoFK`, `imagen`) 
+VALUES 
+('Cancha de fútbol', 'Cancha al aire libre para jugar fútbol', 200.00, '30x50 metros', 1, 1, NULL),
+('Aula de capacitación', 'Aula equipada para talleres educativos', 100.00, '20x15 metros', 2, 1, NULL),
+('Salón de eventos', 'Espacio para reuniones y eventos sociales', 300.00, '50x30 metros', 3, 2, NULL),
+('Taller de carpintería', 'Espacio con herramientas para trabajos en madera', 150.00, '25x20 metros', 4, 1, NULL),
+('Cancha de tenis', 'Cancha adecuada para practicar tenis', 180.00, '20x40 metros', 1, 1, NULL);
+
+INSERT INTO `Herramienta` (`nombre`, `descripcion`, `precio`, `imagen`, `fechaRegistro`, `idEstadoFK`, `mantenimiento`, `cantidad`) 
+VALUES 
+('Martillo', 'Herramienta básica para golpear objetos', 15.50, NULL, '2025-01-01', 1, 'Revisión anual', 10),
+('Taladro', 'Taladro eléctrico para perforar superficies', 120.00, NULL, '2025-01-05', 1, 'Lubricar mensualmente', 5),
+('Destornillador', 'Conjunto de destornilladores de varias puntas', 25.00, NULL, '2025-01-10', 1, 'Limpieza semestral', 20),
+('Llave inglesa', 'Llave ajustable para apretar o aflojar tuercas', 18.75, NULL, '2025-01-15', 2, 'Engrasar regularmente', 8),
+('Sierra manual', 'Sierra para cortes en madera o plástico', 22.30, NULL, '2025-01-20', 1, 'Reemplazo de hoja según uso', 15);

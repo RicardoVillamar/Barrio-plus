@@ -19,7 +19,7 @@ if (isset($_SESSION['usuario'])) {
   <link rel="stylesheet" href="assets/css/instalacionStyle.css">
   <link rel="stylesheet" href="assets/css/instalacion2Style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/usuario.css">
+  <link rel="stylesheet" href="assets/css/newContribucionStyle.css">
   <link rel="icon" href="assets/images/fotos/logo-icon.png" type="image/png">
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
@@ -39,11 +39,10 @@ if (isset($_SESSION['usuario'])) {
     <ul class="navbar-menu">
       <li><a href="index.php?c=instalacion&f=index">Instalaciones</a></li>
       <li><a href="index.php?c=herramienta&f=index_Herramienta">Herramientas</a></li>
-      <li><a href="index.php?c=historial&f=index">Historial</a></li>
       <li><a href="index.php?c=index&f=index&p=nosotros">Nosotros</a></li>
       <?php if (isset($rol) && $rol == '1'): ?>
         <p>Rol: <?php echo htmlspecialchars($rol); ?></p>        
-        <li><a href="index.php?c=dashboard">Panel de Administración</a></li>
+        <li><a href="index.php?c=dashboard">Panel de Administración</a></li>    
       <?php endif; ?>
       <li>
         <a href="index.php?c=usuario&f=profile" class="user">
@@ -53,15 +52,15 @@ if (isset($_SESSION['usuario'])) {
     </ul>
   </nav>
 
-  <?php       
-    if (!empty($_SESSION['mensaje'])) {
-        ?>
-        <div class="mt-2 alert alert-<?php echo $_SESSION['color']; ?>
+  <?php
+  if (!empty($_SESSION['mensaje'])) {
+  ?>
+    <div class="mt-2 alert alert-<?php echo $_SESSION['color']; ?>
         alert-dismissible fade show" role="alert">
-            <?php echo $_SESSION['mensaje']; ?>  
-        </div>
-        <?php
-        unset($_SESSION['mensaje']);
-        unset($_SESSION['color']);
-    }
+      <?php echo $_SESSION['mensaje']; ?>
+    </div>
+  <?php
+    unset($_SESSION['mensaje']);
+    unset($_SESSION['color']);
+  }
   ?>

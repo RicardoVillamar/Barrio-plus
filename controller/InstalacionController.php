@@ -19,6 +19,15 @@ class InstalacionController
         $this->modeloTipo = new TiposDAO();
     }
 
+    public function redirectWithMessage($exito, $exitoMsg, $errMsg, $redirectUrl)
+    {
+        if (!isset($_SESSION)) session_start();
+        $_SESSION['mensaje'] = ($exito) ? $exitoMsg : $errMsg;
+        $_SESSION['color'] = ($exito) ? 'primary' : 'danger';
+        header("Location: $redirectUrl");
+    }
+
+
     public function index()
     {
 
@@ -174,9 +183,9 @@ class InstalacionController
             $resultado = $this->model->insert($instalacion);
 
             if ($resultado) {
-                header('Location: index.php?c=instalacion&f=index_instalacion');
+                $this->redirectWithMessage(true, 'Instalación registrada correctamente.', '', 'index.php?c=instalacion&f=index_instalacion');
             } else {
-                echo "Error al registrar la instalación.";
+                $this->redirectWithMessage(false, '', 'Error al registrar la instalación.', 'index.php?c=instalacion&f=index_instalacion');
             }
         }
     }
@@ -270,9 +279,9 @@ class InstalacionController
             $resultado = $this->model->update($id, $instalacion);
 
             if ($resultado) {
-                header('Location: index.php?c=instalacion&f=index_instalacion');
+                $this->redirectWithMessage(true, 'Instalación editada correctamente.', '', 'index.php?c=instalacion&f=index_instalacion');
             } else {
-                echo "Error al actualizar la instalación.";
+                $this->redirectWithMessage(false, '', 'Error al actualizar la instalación.', 'index.php?c=instalacion&f=index_instalacion');
             }
         }
     }
@@ -355,9 +364,9 @@ class InstalacionController
             $resultado = $this->model->insertReservaciones($reservacionInstalacion);
 
             if ($resultado) {
-                header('Location: index.php?c=instalacion&f=index_instalacion');
+                $this->redirectWithMessage(true, 'Reserva registrada correctamente.', '', 'index.php?c=instalacion&f=index');
             } else {
-                echo "Error al registrar la reserva de la instalación.";
+                $this->redirectWithMessage(false, '', 'Error al registrar la instalación.', 'index.php?c=instalacion&f=index');
             }
         }
     }

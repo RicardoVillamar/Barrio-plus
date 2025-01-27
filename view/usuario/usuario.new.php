@@ -28,7 +28,7 @@
         <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese su contraseña" >
     </div>
     <div>
-        <label for="imagen">Imagen de perfil:</label>
+        <label for="imagen">Imagen de perfil:</label><br>
         <input type="file" name="imagen" id="imagen">
     </div>
 

@@ -74,6 +74,34 @@ class UsuarioController
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
+            $errores=[];
+            if (empty($_POST['nombre'])) {
+                $errores[] = "El nombre es requerido";
+            }
+            if (empty($_POST['apellido'])) {
+                $errores[] = "El apellido es requerido";
+            }
+
+            if (empty($_POST['email'])) {
+                $errores[] = "El correo es requerido";
+            }
+            if(empty($_POST['contrasena'])){
+                $errores[] = "La contraseña es requerida";
+            }
+            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $fileType = mime_content_type($_FILES['imagen']['tmp_name']);
+                if (!in_array($fileType, ['image/jpeg', 'image/png', 'image/gif'])) {
+                    $errores[] = "Solo se permiten imágenes JPG, PNG y GIF.";
+                }
+            }
+            if (count($errores) > 0) {
+                echo "<script>";
+                echo "alert('" . implode("\\n", $errores) . "');";
+                echo "window.history.back();";
+                echo "</script>";
+                return;
+            }
+
 
             $usuario = [
                 'nombre' => $_POST['nombre'],
@@ -94,7 +122,8 @@ class UsuarioController
 
             if ($resultado) {
                 
-                header('Location: index.php?c=instalacion&f=index_instalacion');
+               // header('Location: index.php?c=instalacion&f=index_instalacion');
+                header("Location: index.php?c=usuario&f=profile");
             } else {
                 echo "Error al registrar el usuario ";
                 
@@ -155,25 +184,36 @@ class UsuarioController
     public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+ 
             $usuario = [
                 'idUsuario' => $_POST['idUsuario'],
                 'nombre' => $_POST['nombre'],
                 'apellido' => $_POST['apellido'],
                 'correo' => $_POST['correo'],
-                'contrasena' => $_POST['contrasena'],
-                'imagen' => null
+                'contrasena' => $_POST['contrasena'], // No se utiliza password_hash
+                'idRolFK' => isset($_POST['contribuidor']) ? 3 : 2, // Asignar el rol basado en la acción
+                
+               // 'imagen' => null
             ];
-            if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
-                $file = $_FILES['imagen']['tmp_name'];
-                $instalacion['imagen'] = file_get_contents($file);
-            }
-            $this->model->update($usuario);
 
-            require_once 'view/usuario/login.php';
-            exit();
+           /* if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+                $file = $_FILES['imagen']['tmp_name'];
+                $usuario['imagen'] = file_get_contents($file);
+            }*/
+
+            $resultado = $this->model->update($usuario);
+
+            if ($resultado) {
+                
+                //header('Location: index.php?c=instalacion&f=index_instalacion');
+                var_dump($resultado);
+            } else {
+                echo "Error al registrar el usuario ";
+                
+            }
         } else {
-            $titulo = "Editar Usuario";
-            require_once 'view/usuario/usuario.edit.php';
+            $titulo = "Registrar Usuario";
+            require_once VUSUARIOS.'.new.php';
         }
     }
 
