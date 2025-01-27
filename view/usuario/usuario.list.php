@@ -88,9 +88,15 @@
                                     <td><?php echo htmlspecialchars($reserva['FechaFin'] ?? ''); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
                                     <td>
-                                        <form method="POST"action="index.php?c=usuario&f=cancelarReservaHerramienta"value="  <?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>"></form>
-                                      <button>Cancelar</button>
-                                    </td>
+    <form method="GET" action="index.php">
+        <input type="hidden" name="c" value="usuario">
+        <input type="hidden" name="f" value="cancelarReservaHerramienta">
+        <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
+        <button type="submit">Cancelar</button>
+    </form>
+</td>
+
+
 
                                 </tr>
                             <?php endforeach; ?>
