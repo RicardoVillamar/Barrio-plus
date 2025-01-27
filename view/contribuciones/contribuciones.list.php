@@ -1,10 +1,13 @@
 <!-- Autor: Freire Chavez Jose Andres -->
 <?php require_once HEADER; ?>
   <div class="contenedorContri">
-    <h1>Contribuciones</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Buscar Contribuciones">
-      <a href="index.php?c=contribucion&f=view_new" class="btn" id="btnNuevo">
+    <h1 style="margin-left:5px;">Contribuciones</h1>
+    <div style="margin-right:30px;" class="search-bar">
+      <form action="index.php?c=contribucion&f=search" method="POST">
+        <input type="text" name="buscar" placeholder="Buscar Contribuciones">
+        <input type="submit" value="Buscar" class="btn" id="btnBuscar">
+      </form>
+      <a style="width:100px; height:40px;" href="index.php?c=contribucion&f=view_new" class="btn" id="btnNuevo">
         <span>+ </span>Nuevo
       </a>
     </div>
