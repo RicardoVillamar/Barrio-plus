@@ -33,7 +33,7 @@ class HerramientaController
         if ($usuario['idRolFK'] != 1 && $usuario['idRolFK'] != 3) {
             echo "<script>";
             echo "alert('No puedes ingresar porque no estas logeado.');";
-            echo "window.location.href = 'login.php';";
+            echo "window.location.href = 'index.php?c=usuario&f=login';";
             echo "</script>";
             exit;
         }
@@ -62,7 +62,7 @@ class HerramientaController
         if ($usuario['idRolFK'] != 2) {
             echo "<script>";
             echo "alert('No puedes reservar ninguna herramienta porque no estas logeado.');";
-            echo "window.location.href = 'login.php';";
+            echo "window.location.href = 'index.php?c=usuario&f=login';";
             echo "</script>";
             exit;
         }
@@ -87,73 +87,64 @@ class HerramientaController
 
     //Eliminar herramienta
     public function view_eliminar(){
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        
+        if ($_SESSION['usuario']['idRolFK'] == 1 || $_SESSION['usuario']['idRolFK'] == 3) {
+            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            $herramienta = $this->model->selectOne($id);
 
-    if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
-        exit;
-    }
-
-    $usuario = $_SESSION['usuario']; // Usuario logueado
-    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT); // Sanitize ID
-    $herramienta = $this->model->selectOne($id); // Obtener herramienta
-
-    if (!$herramienta) {
-        echo "<script>alert('La herramienta no existe.');</script>";
-        echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
-        exit;
-    }
-
-    // Verificar permisos
-    if ($usuario['idRolFK'] == 3 || ($usuario['idRolFK'] == 1 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
+        if (!$herramienta) {
+            echo "<script>alert('La herramienta no existe.');</script>";
+            echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
+            exit;
+        }
         $this->model->delete($id);
         header("Location: index.php?c=herramienta&f=index");
         exit;
     }
-
-    echo "<script>";
-    echo "alert('No tienes permiso para eliminar esta herramienta.');";
-    echo "window.location.href = '?c=herramienta&f=index';";
-    echo "</script>";
-    exit;
+        echo "<script>";
+        echo "alert('No tienes permiso para realizar esta acción.');";
+        echo "window.location.href = '?c=herramienta&f=index';";
+        echo "</script>";
+        exit;
     }
+    
     
     //Edita Herramienta
     public function view_editar(){
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: login.php');
+            exit;
+        }
+        if ($_SESSION['usuario']['idRolFK'] == 1 || $_SESSION['usuario']['idRolFK'] == 3) {
+            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+            $herramienta = $this->model->selectOne($id);
 
-    if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
-        exit;
-    }
-
-    $usuario = $_SESSION['usuario']; // Usuario logueado
-    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT); // Sanitize ID
-    $herramienta = $this->model->selectOne($id); // Obtener herramienta
-
-    if (!$herramienta) {
-        echo "<script>alert('La herramienta no existe.');</script>";
-        echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
-        exit;
-    }
-
-    // Verificar permisos
-    if ($usuario['idRolFK'] == 3 || ($usuario['idRolFK'] == 1 && $herramienta['idUsuarioFK'] == $usuario['idUsuario'])) {
+        if (!$herramienta) {
+            echo "<script>alert('La herramienta no existe.');</script>";
+            echo "<script>window.location.href = '?c=herramienta&f=index';</script>";
+            exit;
+        }
         $estados = $this->modeloEstado->selectEstado();
         $titulo = 'Editar Herramienta';
         require_once VHERRAMIENTAS . 'edit.php';
         exit;
     }
-
-    echo "<script>";
-    echo "alert('No tienes permiso para editar esta herramienta.');";
-    echo "window.location.href = '?c=herramienta&f=index';";
-    echo "</script>";
-    exit;
+        echo "<script>";
+        echo "alert('No tienes permiso para realizar esta acción.');";
+        echo "window.location.href = '?c=herramienta&f=index';";
+        echo "</script>";
+        exit;
     }
 
     //Registrar Herramienta
@@ -310,7 +301,7 @@ class HerramientaController
         if ($usuario['idRolFK'] != 2) {
             echo "<script>";
             echo "alert('No puedes reservar porque no estas logeado.');";
-            echo "window.location.href = 'login.php';";
+            echo "window.location.href = 'index.php?c=usuario&f=login';";
             echo "</script>";
             exit;
         }

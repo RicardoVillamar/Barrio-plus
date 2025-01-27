@@ -3,7 +3,7 @@
 require_once HEADER
 ?>
 <div class="cabecera-reserva">
-    <a href="index.php?c=instalacion&f=index_instalacion" style="padding: 0px; margin-left: 10px">
+    <a href="index.php?c=dashboard" style="padding: 0px; margin-left: 10px">
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
     </a>
     <h1 style="padding: 0px 10px; font-size: 1.5rem;">
@@ -83,7 +83,7 @@ require_once HEADER
                                             onclick="if(!confirm('No se puede eliminar esta ocupada')) return false;" href="index.php?c=instalacion&f=index_instalacion">Eliminar</a>
                                     <?php } else { ?>
                                         <a class="eliminar"
-                                            onclick="if(!confirm('¿Está seguro de eliminar el producto?')) return false;" href="index.php?c=instalacion&f=view_eliminar&id=<?php echo $row['idInstalacion'] ?>">Eliminar</a>
+                                            onclick="if(!confirm('¿Está seguro de eliminar la instalacion?')) return false;" href="index.php?c=instalacion&f=view_eliminar&id=<?php echo $row['idInstalacion'] ?>">Eliminar</a>
                                     <?php } ?>
                                 </td>
 

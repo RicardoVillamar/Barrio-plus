@@ -1,7 +1,7 @@
 <!--Autor: Quiñonez Castrellón Anthony Joel-->
-<?php require_once HEADER?>
+<?php require_once HEADER ?>
 <div style="display: flex; align-items: center;">
-    <a href="index.php?c=herramienta&f=index" style="padding: 0px; margin-left: 10px">
+    <a href="index.php?c=dashboard" style="padding: 0px; margin-left: 10px">
         <span class="material-symbols-outlined"> arrow_back_ios_new </span>
     </a>
     <h3 style="margin-left: 10px;">Herramientas</h3>
@@ -66,7 +66,7 @@
                                 <td>
                                     <a class="boton-mediano reserva" style="margin-bottom: 10px;" href="index.php?c=herramienta&f=view_editar&id=<?php echo $row['idHerramienta'] ?>">Editar</a>
                                     <a class="eliminar"
-                                        onclick="if(!confirm('Esta seguro de eliminar el producto?')) return false;" href="index.php?c=herramienta&f=view_eliminar&id=<?php echo $row['idHerramienta'] ?>">Eliminar</a>
+                                        onclick="if(!confirm('Esta seguro de eliminar la herramienta?')) return false;" href="index.php?c=herramienta&f=view_eliminar&id=<?php echo $row['idHerramienta'] ?>">Eliminar</a>
                                 </td>
                             </tr>
 
