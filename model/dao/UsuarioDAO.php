@@ -51,18 +51,20 @@ class UsuarioDAO
     public function selectReservasHerramientasByUserId($userId)
     {
         $sql = "SELECT 
-                h.nombre AS Herramienta, 
-                rh.fechaInicio AS FechaInicio, 
-                rh.fechaFin AS FechaFin, 
-                rh.cantidad AS Cantidad
-            FROM ReservacionHerramienta rh
-            JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
-            WHERE rh.idUsuarioFK = :id";
+                    rh.idReservacion AS IdReservacion, 
+                    h.nombre AS Herramienta, 
+                    rh.fechaInicio AS FechaInicio, 
+                    rh.fechaFin AS FechaFin, 
+                    rh.cantidad AS Cantidad
+                FROM ReservacionHerramienta rh
+                JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
+                WHERE rh.idUsuarioFK = :id";
         $stmt = $this->con->prepare($sql);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
 
 
     public function selectReservasInstalacionesByUserId($userId)

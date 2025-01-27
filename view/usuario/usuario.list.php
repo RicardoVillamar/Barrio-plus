@@ -51,7 +51,7 @@
                                     <td><?php echo htmlspecialchars($reserva['fechaInicio']); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
 
-                                    <td><?php echo htmlspecialchars($reserva['cantidad']); ?></td>
+                                    <td><?php echo htmlspecialchars($reserva['idReservacion']); ?></td>
                                     <td>
                                         <button>>Cancelar</button>
                                     </td>
@@ -87,7 +87,10 @@
                                     <td><?php echo htmlspecialchars($reserva['FechaInicio'] ?? ''); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['FechaFin'] ?? ''); ?></td>
                                     <td><?php echo htmlspecialchars($reserva['Cantidad'] ?? ''); ?></td>
-                                    <td><?php echo htmlspecialchars($reserva['idReservacion'] ?? ''); ?></td>
+                                    <td>
+                                        <form method="POST"action="index.php?c=usuario&f=cancelarReservaHerramienta"value="  <?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>"></form>
+                                      <button>Cancelar</button>
+                                    </td>
 
                                 </tr>
                             <?php endforeach; ?>
