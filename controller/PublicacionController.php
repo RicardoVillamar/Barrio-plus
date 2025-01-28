@@ -101,7 +101,7 @@ class PublicacionController
             exit;
         }
 
-        //Validar campos del formulario
+        //Validar campos vacios del formulario
         if(empty($_POST["nombre"]) || empty($_POST["tipo_publicacion"]) || empty($_POST["descripcion"]) 
         || empty($_POST["prioridad"]) || empty($_POST["fecha_publicacion"]) ){
             $_SESSION["mensaje"] = "Datos incompletos";
@@ -207,9 +207,9 @@ class PublicacionController
     }
 
     public function limpiar($dato){
-    $dato = trim($dato);
-    $dato = stripcslashes($dato);
-    $dato = htmlspecialchars($dato);
-    return $dato;
+        $dato = trim($dato);
+        $dato = stripcslashes($dato);
+        $dato = htmlspecialchars($dato);
+        return $dato;
     }
 }
