@@ -7,15 +7,20 @@
     <div class="profile-section" style="background-color: #fff; padding: 20px; border-radius: 8px; margin-top: 20px;">
         <?php if (isset($usuario) && is_array($usuario)): ?>
             <!-- Información del Usuario -->
-            <section>
-                <?php if (!empty($usuario['imagen'])): ?>
-                    <img src="data:image/jpeg;base64,<?php echo base64_encode($usuario['imagen']); ?>" alt="Imagen" class="imagen-tabla">
-                <?php endif; ?>
-                <h2 class="subtitulos"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></h2>
+            <section style="display: flex; flex-direction: column; align-items: center; gap: 10px">
+                <div>
+                    <?php if (!empty($usuario['imagen'])): ?>
+                        <img src="data:image/jpeg;base64,<?php echo base64_encode($usuario['imagen']); ?>" alt="Imagen" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <h2 class="subtitulos"><?php echo htmlspecialchars($usuario['nombre'] . ' ' . $usuario['apellido']); ?></h2>
+                </div>
                 <p class="texto"><?php echo htmlspecialchars($usuario['correo']); ?></p>
-                <p>Datos del usuario</p>
-                <button onclick="window.location.href='index.php?c=usuario&f=view_edit'">Editar información</button>
-                <button onclick="window.location.href='index.php?c=usuario&f=logout'">Cerrar sesión</button>
+                <div style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 300px;">
+                    <button onclick="window.location.href='index.php?c=usuario&f=view_edit'" class="boton-mediano">Editar información</button>
+                    <button onclick="window.location.href='index.php?c=usuario&f=logout'" class="boton-mediano">Cerrar sesión</button>
+                </div>
                 <br>
             </section>
 
@@ -201,7 +206,7 @@
                     <?php endif; ?>
                 </section>
             <?php else: ?>
-                <p>No se encontraron datos del usuario.</p>
+                <p style="display: none;">No se encontraron datos del usuario.</p>
             <?php endif; ?>
     </div>
 </div>
