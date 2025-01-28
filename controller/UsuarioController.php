@@ -178,8 +178,14 @@ class UsuarioController
             $resultado = $this->model->update($usuario);
 
             if ($resultado) {
+               
+                
 
-                header('Location: index.php?c=usuario&f=profile');
+                echo "<script>";
+            echo "alert('Se actualizado correctamente');";
+            echo "window.location.href = 'index.php?c=usuario&f=logout';";
+            echo "</script>";
+           
             } else {
                 echo "Error al registrar el usuario ";
             }
