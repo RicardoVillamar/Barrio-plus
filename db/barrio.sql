@@ -172,7 +172,7 @@ DELIMITER ;
 
 
 
-INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
+INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado'), ('Aprobado'), ('Cancelado');
 INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
 INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
 INSERT INTO `EstadoContribucion` (`nombreEstado`) VALUES ('En espera'), ('Aprobado');
