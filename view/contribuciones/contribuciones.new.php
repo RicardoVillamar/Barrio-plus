@@ -1,5 +1,55 @@
 <!-- Autor: Larrea Rosales Alejandro Sebastian -->
 <?php require_once HEADER; ?>
+
+<style>
+   .contenedorForm {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.contenedorForm h2 {
+    font-size: x-large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: inline-block; 
+    margin-right: 10px; 
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 0; 
+}
+
+.campo input[type="radio"] {
+    vertical-align: middle; 
+    margin-right: 5px; 
+}
+
+.selecProductos {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#botones {
+    text-align: center;
+}
+</style>
+
 <div class="contenedorForm">
       <form method="POST" action="index.php?c=contribucion&f=new" id="formContribuciones">
         <div>
