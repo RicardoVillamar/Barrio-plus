@@ -70,6 +70,16 @@ body {
   width: 60px;
 }
 
+.div-editar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
 .user {
   display: flex;
   align-items: center;
