@@ -115,10 +115,10 @@ class UsuarioController
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $correo = $_POST['email'];
+            $nombre = $_POST['nombre'];
             $contrasena = $_POST['password'];
 
-            $usuario = $this->model->selectOneByEmail($correo);
+            $usuario = $this->model->selectOneByNombre($nombre);
 
             if ($usuario && $usuario['contrasena'] === $contrasena) {
                 session_start();
@@ -127,7 +127,7 @@ class UsuarioController
                 exit();
             } else {
                 echo "<script>";
-                echo "alert('Correo o contraseña incorrectos.');";
+                echo "alert('Nombre o contraseña incorrectos.');";
                 echo "window.location.href = 'index.php?c=usuario&f=profile';";
                 echo "</script>";
             }
@@ -151,7 +151,6 @@ class UsuarioController
         $userId = $usuario['idUsuario'];
 
         if (!$usuario) {
-            header("Location: error.php");
             exit();
         }
 
