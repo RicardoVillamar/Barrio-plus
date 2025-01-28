@@ -35,9 +35,9 @@
                 <textarea id="proposito" name="proposito" placeholder="Ingrese el propósito de uso de la herramienta"></textarea>
                 <span class="error"> <?php echo $errores['proposito'] ?? ''; ?> </span>
 
-                <div class="check">
-                    <input class="capaci" type="checkbox" name="capacita" value="1" />
-                    <label> ¿Requiere capacitación para usar la herramienta?</label>
+                <div style="display: flex; align-items: center;">
+                    <input style="width: 30px;" type="checkbox" name="capacita" value="1" />
+                    <label style="margin-left: 10px;"> ¿Requiere capacitación para usar la herramienta?</label>
                 </div>
             </fieldset>
             <fieldset class="contenedor-botones">
