@@ -23,6 +23,6 @@ class EstadoContribucion
 
     function setNombreEstado($nombEst)
     {
-        $this->nombreTipo = $nombEst;
+        $this->nombreEstado = $nombEst;
     }
 }

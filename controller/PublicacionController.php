@@ -100,6 +100,7 @@ class PublicacionController
             header("Location: index.php?c=publicacion&f=index");
             exit;
         }
+
         //Validar campos del formulario
         if(empty($_POST["nombre"]) || empty($_POST["tipo_publicacion"]) || empty($_POST["descripcion"]) 
         || empty($_POST["prioridad"]) || empty($_POST["fecha_publicacion"]) ){
@@ -115,14 +116,44 @@ class PublicacionController
     }
 
     public function populate(){
-        //Lectura de parametros
+        if (empty($_POST["nombre"]) || empty($_POST["tipo_publicacion"]) || empty($_POST["descripcion"]) 
+        || empty($_POST["prioridad"]) || empty($_POST["fecha_publicacion"])) {
+            $_SESSION["mensaje"] = "Datos incompletos";
+            $_SESSION["color"] = "danger";
+        header("Location: index.php?c=publicacion&f=index");
+        exit;
+        }
+
         $publi = new Publicacion();
         $publi->setId($this->limpiar($_POST['id']??null));
         $publi->setTitulo($this->limpiar($_POST['nombre']));
+
+        if (!is_numeric($_POST["tipo_publicacion"])) {
+            $_SESSION["mensaje"] = "El id del tipo de publicación no es válido.";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+            exit;
+        }
+
         $publi->setIdTipo($this->limpiar($_POST['tipo_publicacion']));
         $publi->setDescripcion($this->limpiar($_POST['descripcion']));
+
+        if (!is_numeric($_POST["prioridad"])) {
+            $_SESSION["mensaje"] = "El id de la prioridad no es válida.";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+            exit;
+        }
+        
         $publi->setIdPrioridad($this->limpiar($_POST['prioridad']));
         $publi->setFechaEvento($this->limpiar($_POST['fecha_publicacion']));
+
+        if (!is_numeric($_POST["idUsuario"])) {
+            $_SESSION["mensaje"] = "El id del usuario no es válido.";
+            $_SESSION["color"] = "danger";
+            header("Location: index.php?c=publicacion&f=index");
+            exit;
+        }
         $publi->setIdUsuario($this->limpiar($_POST['idUsuario']));
         $notificarAdm = $this->limpiar(isset($_POST['notificarSoloAdmins'])?1:0); 
         $publi->setNotificarAdmin($notificarAdm);
