@@ -179,13 +179,13 @@ class UsuarioController
 
             if ($resultado) {
 
-                //header('Location: index.php?c=instalacion&f=index_instalacion');
+                header('Location: index.php?c=usuario&f=profile');
             } else {
                 echo "Error al registrar el usuario ";
             }
         } else {
             $titulo = "Registrar Usuario";
-            require_once VUSUARIOS . '.new.php';
+            require_once VUSUARIOS . 'new.php';
         }
     }
 
