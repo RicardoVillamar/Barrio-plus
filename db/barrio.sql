@@ -172,7 +172,7 @@ DELIMITER ;
 
 
 
-INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado');
+INSERT INTO `Estado` (`nombre`) VALUES ('Libre'), ('Ocupado'), ('Aprobado'), ('Cancelado');
 INSERT INTO `Tipo` (`nombre`) VALUES ('Aire libre'), ('Aula'), ('Salon'), ('Taller');
 INSERT INTO `rolusuario` (`nombre`) VALUES ('Admin'), ('Vecino'), ('Contribuidor');
 INSERT INTO `EstadoContribucion` (`nombreEstado`) VALUES ('En espera'), ('Aprobado');
@@ -184,6 +184,7 @@ INSERT INTO `TipoPublicacion` (`nombreTipo`) VALUES ('Reporte de daños'), ('Avi
 
 
 INSERT INTO `Usuario` (`nombre`, `apellido`, `correo`, `contrasena`, `idRolFK`) VALUES
+('Admin', 'Admin', 'Admin.Admin@hotmail.com', '123', 1),
 ('Miguel', 'Sanchez', 'miguel.sanchez@hotmail.com', 'migueADM', 1),
 ('Luisa', 'Garcia', 'luisa.garcia@outlook.com', 'garciaLuisa', 2), 
 ('Domenica', 'Rodriguez', 'domenica.rodriguez@hotmail.com', 'rodriguezDo', 2), 
