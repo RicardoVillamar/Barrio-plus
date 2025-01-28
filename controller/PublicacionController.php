@@ -124,7 +124,7 @@ class PublicacionController
         $publi->setIdPrioridad($this->limpiar($_POST['prioridad']));
         $publi->setFechaEvento($this->limpiar($_POST['fecha_publicacion']));
         $publi->setIdUsuario($this->limpiar($_POST['idUsuario']));
-        $notificarAdm = isset($_POST['notificarSoloAdmins'])?1:0; 
+        $notificarAdm = $this->limpiar(isset($_POST['notificarSoloAdmins'])?1:0); 
         $publi->setNotificarAdmin($notificarAdm);
         return $publi;
     }

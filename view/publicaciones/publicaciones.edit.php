@@ -9,7 +9,7 @@
         style="margin-top: 30px;"
     >
       <h2 style="margin-bottom: 10px;" class="subtitulos">Información de la publicación</h2>
-      <input type="hidden" name="id" id="id" value="<?php echo $publi["idPubli"]?>"/>
+      <input type="hidden" name="id" id="id" value="<?php echo htmlentities($publi["idPubli"]);?>"/>
       <div class="tituloPublicacion">
         <label for="titulo_publicacion">Título de la publicación:</label
         ><br>

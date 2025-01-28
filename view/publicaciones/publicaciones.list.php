@@ -46,9 +46,9 @@
                         <td><?php echo $fila['apellido']?> </td>
                         <td><?php echo $fila['correo']?> </td>
                         <td>
-                            <a class="btn" id="btnEditar" href="index.php?c=publicacion&f=view_edit&id=<?php echo $fila['idPubli'];?>">Editar</a>
+                            <a class="btn" id="btnEditar" href="index.php?c=publicacion&f=view_edit&id=<?php echo htmlentities($fila['idPubli']);?>">Editar</a>
                             <a onclick="if(!confirm('Esta seguro de eliminar el producto?'))return false;"
-                            class="btn" id="btnEliminar" href="index.php?c=publicacion&f=delete&id=<?php echo $fila['idPubli'];?>">Eliminar</a>
+                            class="btn" id="btnEliminar" href="index.php?c=publicacion&f=delete&id=<?php echo htmlentities($fila['idPubli']);?>">Eliminar</a>
                         </td>
                     </tr>
 
