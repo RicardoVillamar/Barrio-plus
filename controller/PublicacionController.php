@@ -100,7 +100,7 @@ class PublicacionController
             header("Location: index.php?c=publicacion&f=index");
             exit;
         }
-        
+
         //Validar campos del formulario
         if(empty($_POST["nombre"]) || empty($_POST["tipo_publicacion"]) || empty($_POST["descripcion"]) 
         || empty($_POST["prioridad"]) || empty($_POST["fecha_publicacion"]) ){
@@ -129,7 +129,7 @@ class PublicacionController
         $publi->setTitulo($this->limpiar($_POST['nombre']));
 
         if (!is_numeric($_POST["tipo_publicacion"])) {
-            $_SESSION["mensaje"] = "El tipo de publicación no es válido.";
+            $_SESSION["mensaje"] = "El id del tipo de publicación no es válido.";
             $_SESSION["color"] = "danger";
             header("Location: index.php?c=publicacion&f=index");
             exit;
@@ -139,7 +139,7 @@ class PublicacionController
         $publi->setDescripcion($this->limpiar($_POST['descripcion']));
 
         if (!is_numeric($_POST["prioridad"])) {
-            $_SESSION["mensaje"] = "La prioridad no es válida.";
+            $_SESSION["mensaje"] = "El id de la prioridad no es válida.";
             $_SESSION["color"] = "danger";
             header("Location: index.php?c=publicacion&f=index");
             exit;
