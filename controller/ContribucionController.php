@@ -118,7 +118,7 @@ class ContribucionController
         if(isset($_SESSION['usuario'])){
             $usuario = $_SESSION['usuario'];
             $rol = $usuario['idRolFK']; 
-            if ($rol == 1){
+            if ($rol == 1 || $rol == 3){
                 $id = htmlentities($_GET["id"]);
                 $contribu= $this->model->selectOne($id);
                 if($contribu == null){
