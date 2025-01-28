@@ -54,7 +54,7 @@
                                         <th>Fecha de Inicio</th>
                                         <th>Fecha de Fin</th>
                                         <th>Cantidad</th>
-                                        <th>Accion</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -65,14 +65,7 @@
                                             <td><?php echo htmlspecialchars($reserva['fechaFin']); ?></td>
 
                                             <td><?php echo htmlspecialchars($reserva['cantidad'] ?? ''); ?></td>
-                                            <td>
-                                                <form method="GET" action="index.php">
-                                                    <input type="hidden" name="c" value="usuario">
-                                                    <input type="hidden" name="f" value="cancelarReservaHerramienta">
-                                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($reserva['IdReservacion'] ?? ''); ?>">
-                                                    <button type="submit" class="boton-mediano">Cancelar</button>
-                                                </form>
-                                            </td>
+
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -99,7 +92,7 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($reservasHerramientas as $reserva): ?>
-                                        <?php var_dump($reserva); ?>
+
                                         <tr>
                                             <td><?php echo htmlspecialchars($reserva['Herramienta'] ?? ''); ?></td>
                                             <td><?php echo htmlspecialchars($reserva['FechaInicio'] ?? ''); ?></td>
@@ -149,7 +142,7 @@
                                         <th>Fecha de Inicio</th>
                                         <th>Fecha de Fin</th>
                                         <th>Cantidad</th>
-                                        <th>Accion</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -160,14 +153,7 @@
                                             <td><?php echo htmlspecialchars($reservaI['fechaFin']); ?></td>
 
                                             <td><?php echo htmlspecialchars($reservaI['personasEsperadas']); ?></td>
-                                            <td>
-                                                <form method="GET" action="index.php">
-                                                    <input type="hidden" name="c" value="usuario">
-                                                    <input type="hidden" name="f" value="cancelarReservaInstalaciones">
-                                                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($reservaI['idReservacion'] ?? ''); ?>">
-                                                    <button type="submit" class="boton-mediano">Cancelar</button>
-                                                </form>
-                                            </td>
+
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
