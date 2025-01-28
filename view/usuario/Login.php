@@ -1,8 +1,11 @@
 <!--Autor:Palacios Herdoiza Roitman Andres-->
 
 <style>
+    * {
+        font-family: Verdana;
+    }
+
     body {
-        font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -30,21 +33,16 @@
     button {
         width: 100%;
         padding: 10px;
-        background-color: #a3b5c8;
-        color: white;
+        background-color: #a8d0e6;
+        color: #4a4a4a;
         border: none;
         border-radius: 4px;
         cursor: pointer;
     }
 
-    #registrer {
-        width: 100%;
-        padding: 10px;
-        background-color: rgb(149, 188, 211);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+    button:hover {
+        color: #f0f4f8;
+        background-color: #a3b5c8;
     }
 </style>
 <? require_once HEADER; ?>
