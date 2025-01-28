@@ -93,6 +93,7 @@ class ContribucionDAO
             $stmt->bindParam(":idHerr", $contribucion->getIdHerramienta(), PDO::PARAM_INT);
             $stmt->bindParam(":idIns", $contribucion->getIdInstalacion(), PDO::PARAM_INT);
             $stmt->bindParam(":idUsu", $contribucion->getIdUsuario(), PDO::PARAM_INT);
+            $stmt->bindParam(":id", $contribucion->getId(), PDO::PARAM_INT);
             $res = $stmt->execute();
             return $res;
         } catch (PDOException $er) {

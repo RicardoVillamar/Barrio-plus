@@ -6,7 +6,7 @@
             <h2><?php echo $titulo; ?></h2>
         </div>
 
-        <input type="hidden" name="idContribucion" value="<?php echo htmlentities($contribu['idContribucion']); ?>">
+        <input type="hidden" name="id" value="<?php echo htmlentities($contribu['idContribucion']); ?>">
 
         <div class="campo">
             <label>Contribuir a: </label><br>
@@ -61,6 +61,9 @@
                 <?php } ?>
             </select>
         </div>
+
+        <input type="hidden" name="idUsuario" id="idUsu" 
+        value="<?php echo $contribu["idUsuarioFK"]?>"/>
 
         <div id="botones">        
             <button type="submit" class="boton-mediano">Guardar Cambios</button>
