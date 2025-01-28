@@ -185,11 +185,12 @@ INSERT INTO `TipoPublicacion` (`nombreTipo`) VALUES ('Reporte de daños'), ('Avi
 
 INSERT INTO `Usuario` (`nombre`, `apellido`, `correo`, `contrasena`, `idRolFK`) VALUES
 ('Admin', 'Admin', 'Admin.Admin@hotmail.com', '123', 1),
-('Miguel', 'Sanchez', 'miguel.sanchez@hotmail.com', 'migueADM', 1),
-('Luisa', 'Garcia', 'luisa.garcia@outlook.com', 'garciaLuisa', 2), 
-('Domenica', 'Rodriguez', 'domenica.rodriguez@hotmail.com', 'rodriguezDo', 2), 
-('Maria', 'Herrera', 'maria.herrera@hotmail.com', 'herrMaria', 3), 
-('Juan', 'Martinez', 'juan.martinez@gmail.com', 'juADM', 3); 
+('Miguel', 'Sanchez', 'miguel.sanchez@hotmail.com', '123', 1),
+('Luisa', 'Garcia', 'luisa.garcia@outlook.com', '123', 2), 
+('Vecino', 'Vecino', 'Vecino.Vecino@outlook.com', '123', 2), 
+('Domenica', 'Rodriguez', 'domenica.rodriguez@hotmail.com', '123', 2), 
+('Maria', 'Herrera', 'maria.herrera@hotmail.com', '123', 3), 
+('Juan', 'Martinez', 'juan.martinez@gmail.com', '123', 3); 
 
 
 

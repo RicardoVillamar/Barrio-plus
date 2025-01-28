@@ -98,7 +98,7 @@ require_once HEADER; ?>
                                 <?php if ($row['imagen']) { ?>
                                     <img src="data:image/jpeg;base64,<?php echo base64_encode($row['imagen']); ?>" alt="Imagen" class="imagen-tabla">
                                 <?php } else { ?>
-                                    <span>No disponible</span>
+                                    <span>Imagen No disponible</span>
                                 <?php } ?>
                                 <p class="texto nombre-instalacion"><?php echo $row['nombre_instalacion'] ?></p>
                             </td>
