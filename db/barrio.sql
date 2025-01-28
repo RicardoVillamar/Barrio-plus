@@ -184,6 +184,7 @@ INSERT INTO `TipoPublicacion` (`nombreTipo`) VALUES ('Reporte de daños'), ('Avi
 
 
 INSERT INTO `Usuario` (`nombre`, `apellido`, `correo`, `contrasena`, `idRolFK`) VALUES
+('Admin', 'Admin', 'Admin.Admin@hotmail.com', '123', 1),
 ('Miguel', 'Sanchez', 'miguel.sanchez@hotmail.com', 'migueADM', 1),
 ('Luisa', 'Garcia', 'luisa.garcia@outlook.com', 'garciaLuisa', 2), 
 ('Domenica', 'Rodriguez', 'domenica.rodriguez@hotmail.com', 'rodriguezDo', 2), 
