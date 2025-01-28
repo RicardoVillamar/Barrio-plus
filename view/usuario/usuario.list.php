@@ -27,7 +27,7 @@
 
             <!-- Formulario de Búsqueda -->
             <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; padding: 20px; ">
-                <?php if (isset($rol) && $rol == '1'): ?>
+          
                     <div style="height: 10px;">
                         <hr>
                     </div>
@@ -216,7 +216,7 @@
                     </section>
                 <?php else: ?>
                     <p style="display: none;">No se encontraron datos del usuario.</p>
-                <?php endif; ?>
+       
             </div>
     </div>
 </div>
