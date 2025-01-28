@@ -14,7 +14,7 @@ class UsuarioController
     }
 
 
-   /* public function index()
+    /* public function index()
     {
         $resultados = $this->model->selectAll("");
         $titulo = "Buscar usuarios";
@@ -73,8 +73,8 @@ class UsuarioController
     public function new()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  
-            $errores=[];
+
+            $errores = [];
             if (empty($_POST['nombre'])) {
                 $errores[] = "El nombre es requerido";
             }
@@ -85,7 +85,7 @@ class UsuarioController
             if (empty($_POST['email'])) {
                 $errores[] = "El correo es requerido";
             }
-            if(empty($_POST['contrasena'])){
+            if (empty($_POST['contrasena'])) {
                 $errores[] = "La contraseña es requerida";
             }
             if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
@@ -93,7 +93,7 @@ class UsuarioController
                 if (!in_array($fileType, ['image/jpeg', 'image/png', 'image/gif'])) {
                     $errores[] = "Solo se permiten imágenes JPG, PNG y GIF.";
                 }
-            }else{
+            } else {
                 $errores['imagen'] = "La imagen es obligatoria.";
             }
 
@@ -112,7 +112,7 @@ class UsuarioController
                 'correo' => $_POST['email'],
                 'contrasena' => $_POST['contrasena'], // No se utiliza password_hash
                 'idRolFK' => isset($_POST['contribuidor']) ? 3 : 2, // Asignar el rol basado en la acción
-                
+
                 'imagen' => null
             ];
 
@@ -123,16 +123,15 @@ class UsuarioController
             $resultado = $this->model->insert($usuario);
 
             if ($resultado) {
-                
-               // header('Location: index.php?c=instalacion&f=index_instalacion');
+
+                // header('Location: index.php?c=instalacion&f=index_instalacion');
                 header("Location: index.php?c=usuario&f=profile");
             } else {
                 echo "Error al registrar el usuario ";
-                
             }
         } else {
             $titulo = "Registrar Usuario";
-            require_once VUSUARIOS.'.new.php';
+            require_once VUSUARIOS . '.new.php';
         }
     }
 
@@ -151,7 +150,10 @@ class UsuarioController
                 header("Location: index.php?c=usuario&f=profile");
                 exit();
             } else {
-                echo "Correo o contraseña incorrectos";
+                echo "<script>";
+                echo "alert('Correo o contraseña incorrectos.');";
+                echo "window.location.href = 'index.php?c=usuario&f=profile';";
+                echo "</script>";
             }
         } else {
             $titulo = "Iniciar sesión";
@@ -161,7 +163,9 @@ class UsuarioController
 
     public function view_edit()
     {
-        if(!isset($_SESSION)){session_start();}
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (!isset($_SESSION['usuario'])) {
             require_once 'view/usuario/login.php';
             exit();
@@ -186,7 +190,7 @@ class UsuarioController
     public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
- 
+
             $usuario = [
                 'idUsuario' => $_POST['idUsuario'],
                 'nombre' => $_POST['nombre'],
@@ -194,11 +198,11 @@ class UsuarioController
                 'correo' => $_POST['correo'],
                 'contrasena' => $_POST['contrasena'], // No se utiliza password_hash
                 'idRolFK' => isset($_POST['contribuidor']) ? 3 : 2, // Asignar el rol basado en la acción
-                
-               // 'imagen' => null
+
+                // 'imagen' => null
             ];
 
-           /* if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+            /* if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
                 $file = $_FILES['imagen']['tmp_name'];
                 $usuario['imagen'] = file_get_contents($file);
             }*/
@@ -206,16 +210,15 @@ class UsuarioController
             $resultado = $this->model->update($usuario);
 
             if ($resultado) {
-                
+
                 //header('Location: index.php?c=instalacion&f=index_instalacion');
                 var_dump($resultado);
             } else {
                 echo "Error al registrar el usuario ";
-                
             }
         } else {
             $titulo = "Registrar Usuario";
-            require_once VUSUARIOS.'.new.php';
+            require_once VUSUARIOS . '.new.php';
         }
     }
 
@@ -231,9 +234,14 @@ class UsuarioController
         // Si se desea destruir la sesión completamente, también se debe borrar la cookie de sesión.
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
-            setcookie(session_name(), '', time() - 42000,
-                $params["path"], $params["domain"],
-                $params["secure"], $params["httponly"]
+            setcookie(
+                session_name(),
+                '',
+                time() - 42000,
+                $params["path"],
+                $params["domain"],
+                $params["secure"],
+                $params["httponly"]
             );
         }
 
@@ -245,7 +253,8 @@ class UsuarioController
         exit();
     }
 
-    public function buscarReservasPorHerramientas() {
+    public function buscarReservasPorHerramientas()
+    {
         if (isset($_GET['query'])) {
             if (!isset($_SESSION)) session_start();
             $usuario = $_SESSION['usuario'];
@@ -260,26 +269,27 @@ class UsuarioController
         }
     }
 
-    public function buscarReservasPorInstalaciones() {
+    public function buscarReservasPorInstalaciones()
+    {
         if (isset($_GET['query_instalaciones'])) {
             if (!isset($_SESSION)) session_start();
             $usuario = $_SESSION['usuario'];
             $idUsuario = $usuario['idUsuario'];
             $query = $_GET['query_instalaciones'];
             $resultadosI = $this->model->buscarReservasPorInstalacion($idUsuario, $query);
-            require_once VUSUARIOS.'list.php';
+            require_once VUSUARIOS . 'list.php';
         } else {
             // Manejar el caso donde no hay query
             $resultados = [];
-            require_once VUSUARIOS.'list.php';
+            require_once VUSUARIOS . 'list.php';
         }
     }
 
-   
+
     public function cancelarReservaHerramienta()
     {
         $id = $_GET['id'] ?? null;
-    
+
         if ($id) {
             $result = $this->model->deleteReservationHerrById($id);
             if ($result) {
@@ -292,12 +302,12 @@ class UsuarioController
             echo "ID de reserva no válido.";
         }
     }
-    
-    
+
+
     public function cancelarReservaInstalaciones()
     {
         $id = $_GET['id'] ?? null;
-    
+
         if ($id) {
             $result = $this->model->deleteReservationInstById($id);
             if ($result) {
@@ -310,10 +320,10 @@ class UsuarioController
             echo "ID de reserva no válido.";
         }
     }
-        
 
- 
-    
+
+
+
 
 
     public function obtenerRolUsuario()
