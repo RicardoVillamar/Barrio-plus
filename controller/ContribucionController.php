@@ -92,7 +92,7 @@ class ContribucionController
 
     public function populate() {
         $contribu = new Contribucion();
-        $contribu->setId(htmlentities($_POST['id'] ?? null));
+        $contribu->setId(htmlentities($_POST['idContribucion'] ?? null));
         $contribu->setIdEstado(htmlentities($_POST['campoEstadoContr'])); 
         $contribu->setIdUsuario(htmlentities($_POST['idUsuario'])); 
         $recurso = htmlentities($_POST['recurso'] ?? null);
