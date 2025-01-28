@@ -21,16 +21,14 @@
 
             <fieldset>
                 <h3 class="subtitulos">Información personal</h3>
-                <label for="nombre">Nombre completo</label>
+                <label for="nombre" style="display: none;">Nombre completo</label>
                 <input
+                    style="display: none;"
                     class="input"
                     type="text"
                     placeholder="Ingrese su nombre"
                     id="nombre"
                     name="nombre" />
-                <span class="error">
-                    <?php echo $errores['nombre'] ?? ''; ?>
-                </span>
 
                 <label for="telefono">Teléfono</label>
                 <input

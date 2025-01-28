@@ -466,8 +466,7 @@ class InstalacionController
 
         $reservacionInstalacion = [
             'idInstalacionFK' => $idInstalacion,
-            // 'idUsuarioFK' => $_SESSION['idUsuario'],
-            'idUsuarioFK' => 1,
+            'idUsuarioFK' => $_SESSION['usuario']['idUsuario'],
             'telefono' => $telefono,
             'miembro' => $miembro,
             'fechaInicio' => $fechaInicio,
