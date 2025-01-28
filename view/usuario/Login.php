@@ -49,9 +49,14 @@
 <div class="login-container">
     <h2>Iniciar Sesión</h2>
     <form action="index.php?c=usuario&f=login" method="POST">
-
-        <input type="text" id="email" name="email" placeholder="Escriba su correo">
-        <input type="password" id="password" name="password" placeholder="Contraseña">
+        <div style="margin: 20px 0px;">
+            <label for="Nombre">Ingrese su nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre de usuario">
+        </div>
+        <div style="margin: 20px 0px;">
+            <label for="Nombre">Ingrese su contraseña</label>
+            <input type="password" id="password" name="password" placeholder="Contraseña">
+        </div>
         <button type="submit">Entrar</button>
         <br>
         <p>¿No estas registrado?</p>

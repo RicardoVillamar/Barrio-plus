@@ -64,7 +64,7 @@ class UsuarioDAO
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
 
 
     public function selectReservasInstalacionesByUserId($userId)
@@ -83,13 +83,13 @@ class UsuarioDAO
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 
-    public function selectOneByEmail($correo)
+
+    public function selectOneByNombre($nombre)
     {
-        $sql = "SELECT * FROM usuario WHERE correo = :correo";
+        $sql = "SELECT * FROM usuario WHERE nombre = :nombre";
         $stmt = $this->con->prepare($sql);
-        $stmt->bindParam(':correo', $correo, PDO::PARAM_STR);
+        $stmt->bindParam(':nombre', $nombre, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -135,20 +135,21 @@ class UsuarioDAO
         }
     }
 
-    public function buscarReservasPorHerramienta($idUsuario, $query) {
+    public function buscarReservasPorHerramienta($idUsuario, $query)
+    {
         $sql = "SELECT rh.*, h.nombre 
                 FROM ReservacionHerramienta rh
                 JOIN Herramienta h ON rh.idHerramientaFK = h.idHerramienta
                 WHERE rh.idUsuarioFK = :idUsuario 
                 AND h.nombre LIKE :nombreHerramienta";
-    
+
         $stmt = $this->con->prepare($sql);
         $stmt->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
         $stmt->bindParam(':nombreHerramienta', $query, PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
 
     public function buscarReservasPorInstalacion($idUsuario, $nombreInstalacion)
     {
@@ -203,19 +204,18 @@ class UsuarioDAO
     }
 
     public function deleteReservationInstById($reservationId)
-{
-    try {
-        $sql = "DELETE FROM ReservacionInstalacion WHERE idReservacion = :id";
-        $stmt = $this->con->prepare($sql);
-        $stmt->bindParam(':id', $reservationId, PDO::PARAM_INT);
-        $stmt->execute();
-        return true;
-    } catch (PDOException $er) {
-        error_log("Error en deleteReservationInstById de UsuarioDAO: " . $er->getMessage());
-        return false;
+    {
+        try {
+            $sql = "DELETE FROM ReservacionInstalacion WHERE idReservacion = :id";
+            $stmt = $this->con->prepare($sql);
+            $stmt->bindParam(':id', $reservationId, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $er) {
+            error_log("Error en deleteReservationInstById de UsuarioDAO: " . $er->getMessage());
+            return false;
+        }
     }
-}
-
 }
 
 ?>
