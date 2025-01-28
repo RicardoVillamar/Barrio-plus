@@ -49,7 +49,7 @@ class ContribucionDAO
         try {
             $sql = "select * from contribucion c
             JOIN usuario u on c.idUsuarioFK = u.idUsuario
-            JOIN estadocontribucion ec on c.idEstadoContribucionFK = ec.idEstadoContribucions
+            JOIN estadocontribucion ec on c.idEstadoContribucionFK = ec.idEstadoContribucion
             LEFT JOIN herramienta h on c.idHerramientaFK = h.idHerramienta
             LEFT JOIN instalacion i on c.idInstalacionFK = i.idInstalacion
             where c.idContribucion=:id";
