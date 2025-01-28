@@ -2,48 +2,6 @@
 <?php
 require_once HEADER; ?>
 <main id="main">
-    <!-- Filtro -->
-    <aside class="filtro">
-        <h2 class="subtitulos">Filtros</h2>
-        <section>
-            <p class="texto">Estado</p>
-            <select id="estado" style="width: 90%; height: 25px; border-radius: 4px">
-                <option value="todos">Todos</option>
-                <?php
-                foreach ($estados as $fila) {
-                ?>
-                    <option value="<?php echo $fila['idEstado']; ?>"><?php echo $fila['nombre']; ?></option>
-                <?php
-                }
-                ?>
-            </select>
-        </section>
-
-        <section>
-            <p class="texto">Tipos</p>
-            <ul>
-                <li>
-                    <label class="texto">
-                        <input type="radio" name="tipos" value="todos" />
-                        Todos
-                    </label>
-                </li>
-                <?php
-                foreach ($tipos as $fila) {
-                ?>
-                    <li>
-                        <label class="texto">
-                            <input type="radio" name="tipos" value="<?php echo $fila['idTipo']; ?>" />
-                            <?php echo $fila['nombre']; ?>
-                        </label>
-                    </li>
-
-                <?php
-                }
-                ?>
-            </ul>
-        </section>
-    </aside>
     <!-- Main -->
     <div class="principal">
         <!-- Cabecera -->
